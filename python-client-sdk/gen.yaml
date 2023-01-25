@@ -1,0 +1,4 @@
+python:
+  version: 1.0.0
+  packagename: 'codatapi'
+  author: codatio
