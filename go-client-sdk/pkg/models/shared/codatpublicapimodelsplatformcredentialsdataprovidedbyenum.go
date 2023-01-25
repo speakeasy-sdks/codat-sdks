@@ -1,0 +1,9 @@
+package shared
+
+type CodatPublicAPIModelsPlatformCredentialsDataProvidedByEnum string
+
+const (
+	CodatPublicAPIModelsPlatformCredentialsDataProvidedByEnumUnknown CodatPublicAPIModelsPlatformCredentialsDataProvidedByEnum = "Unknown"
+	CodatPublicAPIModelsPlatformCredentialsDataProvidedByEnumCodat   CodatPublicAPIModelsPlatformCredentialsDataProvidedByEnum = "Codat"
+	CodatPublicAPIModelsPlatformCredentialsDataProvidedByEnumClient  CodatPublicAPIModelsPlatformCredentialsDataProvidedByEnum = "Client"
+)

@@ -1,0 +1,5 @@
+package shared
+
+type CodatAssessDataContractsCashFlowTransactionsTransactionsDataSource struct {
+	Transactions []CodatAssessDataContractsCashFlowTransactionsCashFlowReportBankingTransaction `json:"transactions,omitempty"`
+}

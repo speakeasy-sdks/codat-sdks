@@ -1,0 +1,10 @@
+package shared
+
+type CodatDataContractsDatasetsAccountTransactionStatusEnum string
+
+const (
+	CodatDataContractsDatasetsAccountTransactionStatusEnumUnknown      CodatDataContractsDatasetsAccountTransactionStatusEnum = "Unknown"
+	CodatDataContractsDatasetsAccountTransactionStatusEnumUnreconciled CodatDataContractsDatasetsAccountTransactionStatusEnum = "Unreconciled"
+	CodatDataContractsDatasetsAccountTransactionStatusEnumReconciled   CodatDataContractsDatasetsAccountTransactionStatusEnum = "Reconciled"
+	CodatDataContractsDatasetsAccountTransactionStatusEnumVoid         CodatDataContractsDatasetsAccountTransactionStatusEnum = "Void"
+)

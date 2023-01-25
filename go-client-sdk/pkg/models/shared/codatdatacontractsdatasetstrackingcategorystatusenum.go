@@ -1,0 +1,9 @@
+package shared
+
+type CodatDataContractsDatasetsTrackingCategoryStatusEnum string
+
+const (
+	CodatDataContractsDatasetsTrackingCategoryStatusEnumUnknown  CodatDataContractsDatasetsTrackingCategoryStatusEnum = "Unknown"
+	CodatDataContractsDatasetsTrackingCategoryStatusEnumActive   CodatDataContractsDatasetsTrackingCategoryStatusEnum = "Active"
+	CodatDataContractsDatasetsTrackingCategoryStatusEnumArchived CodatDataContractsDatasetsTrackingCategoryStatusEnum = "Archived"
+)

@@ -1,0 +1,9 @@
+package shared
+
+type CodatDataContractsDatasetsBankingTransactionCategoryStatusEnum string
+
+const (
+	CodatDataContractsDatasetsBankingTransactionCategoryStatusEnumUnknown  CodatDataContractsDatasetsBankingTransactionCategoryStatusEnum = "Unknown"
+	CodatDataContractsDatasetsBankingTransactionCategoryStatusEnumActive   CodatDataContractsDatasetsBankingTransactionCategoryStatusEnum = "Active"
+	CodatDataContractsDatasetsBankingTransactionCategoryStatusEnumArchived CodatDataContractsDatasetsBankingTransactionCategoryStatusEnum = "Archived"
+)

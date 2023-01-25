@@ -1,0 +1,10 @@
+package shared
+
+type CodatDataContractsDatasetsAccountsPayableIsBilledToTypeEnum string
+
+const (
+	CodatDataContractsDatasetsAccountsPayableIsBilledToTypeEnumUnknown       CodatDataContractsDatasetsAccountsPayableIsBilledToTypeEnum = "Unknown"
+	CodatDataContractsDatasetsAccountsPayableIsBilledToTypeEnumNotApplicable CodatDataContractsDatasetsAccountsPayableIsBilledToTypeEnum = "NotApplicable"
+	CodatDataContractsDatasetsAccountsPayableIsBilledToTypeEnumCustomer      CodatDataContractsDatasetsAccountsPayableIsBilledToTypeEnum = "Customer"
+	CodatDataContractsDatasetsAccountsPayableIsBilledToTypeEnumProject       CodatDataContractsDatasetsAccountsPayableIsBilledToTypeEnum = "Project"
+)

@@ -1,0 +1,9 @@
+package shared
+
+type CodatAssessDataContractsFinancialsMetricsMetricErrorTypeEnum string
+
+const (
+	CodatAssessDataContractsFinancialsMetricsMetricErrorTypeEnumUncategorizedAccounts CodatAssessDataContractsFinancialsMetricsMetricErrorTypeEnum = "UncategorizedAccounts"
+	CodatAssessDataContractsFinancialsMetricsMetricErrorTypeEnumMissingInputData      CodatAssessDataContractsFinancialsMetricsMetricErrorTypeEnum = "MissingInputData"
+	CodatAssessDataContractsFinancialsMetricsMetricErrorTypeEnumInputDataError        CodatAssessDataContractsFinancialsMetricsMetricErrorTypeEnum = "InputDataError"
+)

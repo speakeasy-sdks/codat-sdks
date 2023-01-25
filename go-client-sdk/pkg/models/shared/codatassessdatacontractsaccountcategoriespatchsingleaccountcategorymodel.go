@@ -1,0 +1,5 @@
+package shared
+
+type CodatAssessDataContractsAccountCategoriesPatchSingleAccountCategoryModel struct {
+	Confirmed *CodatAssessDataContractsAccountCategoriesConfirmedAccountCategoryModel `json:"confirmed,omitempty"`
+}

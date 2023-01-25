@@ -1,0 +1,12 @@
+package shared
+
+type CodatPublicAPIModelsDataAccountTypeResponseEnum string
+
+const (
+	CodatPublicAPIModelsDataAccountTypeResponseEnumUnknown   CodatPublicAPIModelsDataAccountTypeResponseEnum = "Unknown"
+	CodatPublicAPIModelsDataAccountTypeResponseEnumAsset     CodatPublicAPIModelsDataAccountTypeResponseEnum = "Asset"
+	CodatPublicAPIModelsDataAccountTypeResponseEnumExpense   CodatPublicAPIModelsDataAccountTypeResponseEnum = "Expense"
+	CodatPublicAPIModelsDataAccountTypeResponseEnumIncome    CodatPublicAPIModelsDataAccountTypeResponseEnum = "Income"
+	CodatPublicAPIModelsDataAccountTypeResponseEnumLiability CodatPublicAPIModelsDataAccountTypeResponseEnum = "Liability"
+	CodatPublicAPIModelsDataAccountTypeResponseEnumEquity    CodatPublicAPIModelsDataAccountTypeResponseEnum = "Equity"
+)

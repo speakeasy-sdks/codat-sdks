@@ -1,0 +1,8 @@
+package shared
+
+type CodatAssessDataContractsFinancialsMetricsMetricUnitEnum string
+
+const (
+	CodatAssessDataContractsFinancialsMetricsMetricUnitEnumRatio CodatAssessDataContractsFinancialsMetricsMetricUnitEnum = "Ratio"
+	CodatAssessDataContractsFinancialsMetricsMetricUnitEnumMoney CodatAssessDataContractsFinancialsMetricsMetricUnitEnum = "Money"
+)
