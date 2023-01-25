@@ -1,4 +1,4 @@
-# @codatio/codat-ts
+# Codat Node SDK
 
 <!-- Start SDK Installation -->
 ## SDK Installation

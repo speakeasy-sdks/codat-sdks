@@ -1,4 +1,4 @@
-# github.com/speakeasy-sdks/codat-sdks/go-client-sdk
+# Codat Go SDK
 
 <!-- Start SDK Installation -->
 ## SDK Installation

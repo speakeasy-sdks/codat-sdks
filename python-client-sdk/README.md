@@ -1,4 +1,4 @@
-# codatapi
+# Codat Python SDK
 
 <!-- Start SDK Installation -->
 ## SDK Installation
