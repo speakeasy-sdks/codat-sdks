@@ -1,3 +1,4 @@
 go:
   packagename: "github.com/speakeasy-sdks/codat-sdks/go-client-sdk"# The package name for the generated Go SDK. Should be based on the `go get` package name that would be used to get the SDK. Defaults to `openapi`.
   version: "1.0.0"
+baseserverurl: "https://api.codat.io"
