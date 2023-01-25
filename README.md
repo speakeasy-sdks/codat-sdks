@@ -4,7 +4,7 @@ The Codat API SDKs are language specific libraries for accessing the [Codat API]
 
 ## Installation
 
-For installation please see instructions on fetching from each langauge specific SDK.
+For installation please see instructions on fetching from package managers for each langauge specific SDK.
 
 ## Requirements
 
