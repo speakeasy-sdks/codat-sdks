@@ -1,0 +1,8 @@
+package shared
+
+type CodatAssessDataContractsFinancialsMetricsMetricPeriodErrorTypeEnum string
+
+const (
+	CodatAssessDataContractsFinancialsMetricsMetricPeriodErrorTypeEnumMissingAccountData CodatAssessDataContractsFinancialsMetricsMetricPeriodErrorTypeEnum = "MissingAccountData"
+	CodatAssessDataContractsFinancialsMetricsMetricPeriodErrorTypeEnumDatesOutOfRange    CodatAssessDataContractsFinancialsMetricsMetricPeriodErrorTypeEnum = "DatesOutOfRange"
+)

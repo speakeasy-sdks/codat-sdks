@@ -1,0 +1,9 @@
+package shared
+
+type CodatDataContractsDatasetsBankingAccountTypeEnum string
+
+const (
+	CodatDataContractsDatasetsBankingAccountTypeEnumUnknown CodatDataContractsDatasetsBankingAccountTypeEnum = "Unknown"
+	CodatDataContractsDatasetsBankingAccountTypeEnumCredit  CodatDataContractsDatasetsBankingAccountTypeEnum = "Credit"
+	CodatDataContractsDatasetsBankingAccountTypeEnumDebit   CodatDataContractsDatasetsBankingAccountTypeEnum = "Debit"
+)

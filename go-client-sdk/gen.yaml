@@ -1,4 +1,8 @@
+management:
+    openapi-checksum: 255ceb6a6ce7baeaa2fdefcaab818be9
+    openapi-version: v1
+    speakeasy-version: 0.21.0
 go:
-  packagename: "github.com/speakeasy-sdks/codat-sdks/go-client-sdk"# The package name for the generated Go SDK. Should be based on the `go get` package name that would be used to get the SDK. Defaults to `openapi`.
-  version: "1.0.0"
-baseserverurl: "https://api.codat.io"
+    version: 1.1.0
+    packagename: github.com/speakeasy-sdks/codat-sdks/go-client-sdk
+baseserverurl: https://api.codat.io

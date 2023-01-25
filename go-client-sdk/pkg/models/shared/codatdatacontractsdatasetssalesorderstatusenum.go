@@ -1,0 +1,11 @@
+package shared
+
+type CodatDataContractsDatasetsSalesOrderStatusEnum string
+
+const (
+	CodatDataContractsDatasetsSalesOrderStatusEnumUnknown CodatDataContractsDatasetsSalesOrderStatusEnum = "Unknown"
+	CodatDataContractsDatasetsSalesOrderStatusEnumDraft   CodatDataContractsDatasetsSalesOrderStatusEnum = "Draft"
+	CodatDataContractsDatasetsSalesOrderStatusEnumOpen    CodatDataContractsDatasetsSalesOrderStatusEnum = "Open"
+	CodatDataContractsDatasetsSalesOrderStatusEnumClosed  CodatDataContractsDatasetsSalesOrderStatusEnum = "Closed"
+	CodatDataContractsDatasetsSalesOrderStatusEnumVoid    CodatDataContractsDatasetsSalesOrderStatusEnum = "Void"
+)

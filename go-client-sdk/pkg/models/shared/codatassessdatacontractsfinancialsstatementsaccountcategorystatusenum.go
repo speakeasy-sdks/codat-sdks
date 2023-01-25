@@ -1,0 +1,8 @@
+package shared
+
+type CodatAssessDataContractsFinancialsStatementsAccountCategoryStatusEnum string
+
+const (
+	CodatAssessDataContractsFinancialsStatementsAccountCategoryStatusEnumConfirmed CodatAssessDataContractsFinancialsStatementsAccountCategoryStatusEnum = "Confirmed"
+	CodatAssessDataContractsFinancialsStatementsAccountCategoryStatusEnumSuggested CodatAssessDataContractsFinancialsStatementsAccountCategoryStatusEnum = "Suggested"
+)

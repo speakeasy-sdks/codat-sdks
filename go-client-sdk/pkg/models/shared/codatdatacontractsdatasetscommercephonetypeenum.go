@@ -1,0 +1,11 @@
+package shared
+
+type CodatDataContractsDatasetsCommercePhoneTypeEnum string
+
+const (
+	CodatDataContractsDatasetsCommercePhoneTypeEnumUnknown  CodatDataContractsDatasetsCommercePhoneTypeEnum = "Unknown"
+	CodatDataContractsDatasetsCommercePhoneTypeEnumPrimary  CodatDataContractsDatasetsCommercePhoneTypeEnum = "Primary"
+	CodatDataContractsDatasetsCommercePhoneTypeEnumLandline CodatDataContractsDatasetsCommercePhoneTypeEnum = "Landline"
+	CodatDataContractsDatasetsCommercePhoneTypeEnumMobile   CodatDataContractsDatasetsCommercePhoneTypeEnum = "Mobile"
+	CodatDataContractsDatasetsCommercePhoneTypeEnumFax      CodatDataContractsDatasetsCommercePhoneTypeEnum = "Fax"
+)

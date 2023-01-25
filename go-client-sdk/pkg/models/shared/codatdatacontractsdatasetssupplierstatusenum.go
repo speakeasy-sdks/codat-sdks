@@ -1,0 +1,9 @@
+package shared
+
+type CodatDataContractsDatasetsSupplierStatusEnum string
+
+const (
+	CodatDataContractsDatasetsSupplierStatusEnumUnknown  CodatDataContractsDatasetsSupplierStatusEnum = "Unknown"
+	CodatDataContractsDatasetsSupplierStatusEnumActive   CodatDataContractsDatasetsSupplierStatusEnum = "Active"
+	CodatDataContractsDatasetsSupplierStatusEnumArchived CodatDataContractsDatasetsSupplierStatusEnum = "Archived"
+)

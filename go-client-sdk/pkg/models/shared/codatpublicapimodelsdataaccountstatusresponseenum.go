@@ -1,0 +1,10 @@
+package shared
+
+type CodatPublicAPIModelsDataAccountStatusResponseEnum string
+
+const (
+	CodatPublicAPIModelsDataAccountStatusResponseEnumUnknown  CodatPublicAPIModelsDataAccountStatusResponseEnum = "Unknown"
+	CodatPublicAPIModelsDataAccountStatusResponseEnumActive   CodatPublicAPIModelsDataAccountStatusResponseEnum = "Active"
+	CodatPublicAPIModelsDataAccountStatusResponseEnumArchived CodatPublicAPIModelsDataAccountStatusResponseEnum = "Archived"
+	CodatPublicAPIModelsDataAccountStatusResponseEnumPending  CodatPublicAPIModelsDataAccountStatusResponseEnum = "Pending"
+)

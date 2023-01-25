@@ -1,0 +1,21 @@
+package shared
+
+type CodatDataContractsDatasetsBankingBankingTransactionCodeEnum string
+
+const (
+	CodatDataContractsDatasetsBankingBankingTransactionCodeEnumUnknown       CodatDataContractsDatasetsBankingBankingTransactionCodeEnum = "Unknown"
+	CodatDataContractsDatasetsBankingBankingTransactionCodeEnumFee           CodatDataContractsDatasetsBankingBankingTransactionCodeEnum = "Fee"
+	CodatDataContractsDatasetsBankingBankingTransactionCodeEnumPayment       CodatDataContractsDatasetsBankingBankingTransactionCodeEnum = "Payment"
+	CodatDataContractsDatasetsBankingBankingTransactionCodeEnumCash          CodatDataContractsDatasetsBankingBankingTransactionCodeEnum = "Cash"
+	CodatDataContractsDatasetsBankingBankingTransactionCodeEnumTransfer      CodatDataContractsDatasetsBankingBankingTransactionCodeEnum = "Transfer"
+	CodatDataContractsDatasetsBankingBankingTransactionCodeEnumInterest      CodatDataContractsDatasetsBankingBankingTransactionCodeEnum = "Interest"
+	CodatDataContractsDatasetsBankingBankingTransactionCodeEnumCashback      CodatDataContractsDatasetsBankingBankingTransactionCodeEnum = "Cashback"
+	CodatDataContractsDatasetsBankingBankingTransactionCodeEnumCheque        CodatDataContractsDatasetsBankingBankingTransactionCodeEnum = "Cheque"
+	CodatDataContractsDatasetsBankingBankingTransactionCodeEnumDirectDebit   CodatDataContractsDatasetsBankingBankingTransactionCodeEnum = "DirectDebit"
+	CodatDataContractsDatasetsBankingBankingTransactionCodeEnumPurchase      CodatDataContractsDatasetsBankingBankingTransactionCodeEnum = "Purchase"
+	CodatDataContractsDatasetsBankingBankingTransactionCodeEnumStandingOrder CodatDataContractsDatasetsBankingBankingTransactionCodeEnum = "StandingOrder"
+	CodatDataContractsDatasetsBankingBankingTransactionCodeEnumAdjustment    CodatDataContractsDatasetsBankingBankingTransactionCodeEnum = "Adjustment"
+	CodatDataContractsDatasetsBankingBankingTransactionCodeEnumCredit        CodatDataContractsDatasetsBankingBankingTransactionCodeEnum = "Credit"
+	CodatDataContractsDatasetsBankingBankingTransactionCodeEnumOther         CodatDataContractsDatasetsBankingBankingTransactionCodeEnum = "Other"
+	CodatDataContractsDatasetsBankingBankingTransactionCodeEnumNotSupported  CodatDataContractsDatasetsBankingBankingTransactionCodeEnum = "NotSupported"
+)

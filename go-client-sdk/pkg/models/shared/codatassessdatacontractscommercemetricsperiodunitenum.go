@@ -1,0 +1,10 @@
+package shared
+
+type CodatAssessDataContractsCommerceMetricsPeriodUnitEnum string
+
+const (
+	CodatAssessDataContractsCommerceMetricsPeriodUnitEnumDay   CodatAssessDataContractsCommerceMetricsPeriodUnitEnum = "Day"
+	CodatAssessDataContractsCommerceMetricsPeriodUnitEnumWeek  CodatAssessDataContractsCommerceMetricsPeriodUnitEnum = "Week"
+	CodatAssessDataContractsCommerceMetricsPeriodUnitEnumMonth CodatAssessDataContractsCommerceMetricsPeriodUnitEnum = "Month"
+	CodatAssessDataContractsCommerceMetricsPeriodUnitEnumYear  CodatAssessDataContractsCommerceMetricsPeriodUnitEnum = "Year"
+)

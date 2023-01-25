@@ -1,0 +1,9 @@
+package shared
+
+type CodatDataContractsDatasetsWebLinkTypeEnum string
+
+const (
+	CodatDataContractsDatasetsWebLinkTypeEnumUnknown CodatDataContractsDatasetsWebLinkTypeEnum = "Unknown"
+	CodatDataContractsDatasetsWebLinkTypeEnumWebsite CodatDataContractsDatasetsWebLinkTypeEnum = "Website"
+	CodatDataContractsDatasetsWebLinkTypeEnumSocial  CodatDataContractsDatasetsWebLinkTypeEnum = "Social"
+)

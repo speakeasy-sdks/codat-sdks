@@ -1,0 +1,7 @@
+package shared
+
+type CodatAssessDataContractsCashFlowTransactionsSourceTypeEnum string
+
+const (
+	CodatAssessDataContractsCashFlowTransactionsSourceTypeEnumBanking CodatAssessDataContractsCashFlowTransactionsSourceTypeEnum = "Banking"
+)

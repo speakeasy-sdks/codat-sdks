@@ -1,0 +1,9 @@
+package shared
+
+type CodatDataContractsDatasetsCashFlowStatementReportingBasisEnum string
+
+const (
+	CodatDataContractsDatasetsCashFlowStatementReportingBasisEnumUnknown CodatDataContractsDatasetsCashFlowStatementReportingBasisEnum = "Unknown"
+	CodatDataContractsDatasetsCashFlowStatementReportingBasisEnumAccrual CodatDataContractsDatasetsCashFlowStatementReportingBasisEnum = "Accrual"
+	CodatDataContractsDatasetsCashFlowStatementReportingBasisEnumCash    CodatDataContractsDatasetsCashFlowStatementReportingBasisEnum = "Cash"
+)

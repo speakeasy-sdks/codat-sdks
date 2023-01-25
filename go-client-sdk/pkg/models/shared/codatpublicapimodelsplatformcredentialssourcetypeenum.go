@@ -1,0 +1,13 @@
+package shared
+
+type CodatPublicAPIModelsPlatformCredentialsSourceTypeEnum string
+
+const (
+	CodatPublicAPIModelsPlatformCredentialsSourceTypeEnumUnknown    CodatPublicAPIModelsPlatformCredentialsSourceTypeEnum = "Unknown"
+	CodatPublicAPIModelsPlatformCredentialsSourceTypeEnumAccounting CodatPublicAPIModelsPlatformCredentialsSourceTypeEnum = "Accounting"
+	CodatPublicAPIModelsPlatformCredentialsSourceTypeEnumBanking    CodatPublicAPIModelsPlatformCredentialsSourceTypeEnum = "Banking"
+	CodatPublicAPIModelsPlatformCredentialsSourceTypeEnumBankFeed   CodatPublicAPIModelsPlatformCredentialsSourceTypeEnum = "BankFeed"
+	CodatPublicAPIModelsPlatformCredentialsSourceTypeEnumCommerce   CodatPublicAPIModelsPlatformCredentialsSourceTypeEnum = "Commerce"
+	CodatPublicAPIModelsPlatformCredentialsSourceTypeEnumExpense    CodatPublicAPIModelsPlatformCredentialsSourceTypeEnum = "Expense"
+	CodatPublicAPIModelsPlatformCredentialsSourceTypeEnumOther      CodatPublicAPIModelsPlatformCredentialsSourceTypeEnum = "Other"
+)
