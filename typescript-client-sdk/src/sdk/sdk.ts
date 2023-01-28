@@ -131,7 +131,7 @@ export class SDK {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "1.1.1";
+  private _sdkVersion = "1.1.2";
   private _genVersion = "0.21.0";
 
   constructor(props: SDKProps) {

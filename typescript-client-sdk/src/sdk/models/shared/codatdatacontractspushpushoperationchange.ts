@@ -5,6 +5,9 @@ import { CodatDataContractsPushPushChangeTypeEnum } from "./codatdatacontractspu
 
 
 export class CodatDataContractsPushPushOperationChange extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "json, name=attachmentId" })
+  attachmentId?: string;
+
   @SpeakeasyMetadata({ data: "json, name=recordRef" })
   recordRef?: CodatDataContractsPushPushOperationRecordRef;
 
