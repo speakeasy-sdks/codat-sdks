@@ -8,5 +8,6 @@ from sdk import utils
 @dataclasses.dataclass
 class CodatPublicAPIModelsCompanyAddCompanyModel:
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('name') }})
+    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('description') }})
     platform_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('platformType') }})
     

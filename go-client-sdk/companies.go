@@ -306,7 +306,7 @@ func (s *Companies) PostCompaniesCompanyIDSyncSettings(ctx context.Context, requ
 	return res, nil
 }
 
-// PutCompaniesCompanyID - Update a company with a new name
+// PutCompaniesCompanyID - Update a company with a new name and optional description
 func (s *Companies) PutCompaniesCompanyID(ctx context.Context, request operations.PutCompaniesCompanyIDRequest) (*operations.PutCompaniesCompanyIDResponse, error) {
 	baseURL := s._serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}", request.PathParams)

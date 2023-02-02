@@ -8,6 +8,7 @@ type CodatPublicAPIModelsCompanyCompany struct {
 	Created           *time.Time                                  `json:"created,omitempty"`
 	CreatedByUserName *string                                     `json:"createdByUserName,omitempty"`
 	DataConnections   []CodatPublicAPIModelsCompanyDataConnection `json:"dataConnections"`
+	Description       *string                                     `json:"description,omitempty"`
 	ID                string                                      `json:"id"`
 	LastSync          *time.Time                                  `json:"lastSync,omitempty"`
 	Name              string                                      `json:"name"`

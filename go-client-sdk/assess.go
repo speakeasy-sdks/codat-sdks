@@ -362,6 +362,48 @@ func (s *Assess) GetDataCompaniesCompanyIDAssessExcel(ctx context.Context, reque
 	return res, nil
 }
 
+// GetDataCompaniesCompanyIDAssessExcelDownload - Download the Excel report to a local drive.
+func (s *Assess) GetDataCompaniesCompanyIDAssessExcelDownload(ctx context.Context, request operations.GetDataCompaniesCompanyIDAssessExcelDownloadRequest) (*operations.GetDataCompaniesCompanyIDAssessExcelDownloadResponse, error) {
+	baseURL := s._serverURL
+	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/assess/excel/download", request.PathParams)
+
+	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+
+	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+
+	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	defer httpRes.Body.Close()
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.GetDataCompaniesCompanyIDAssessExcelDownloadResponse{
+		StatusCode:  int64(httpRes.StatusCode),
+		ContentType: contentType,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out []byte
+			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+				return nil, err
+			}
+
+			res.GetDataCompaniesCompanyIDAssessExcelDownload200ApplicationJSONBinaryString = out
+		}
+	}
+
+	return res, nil
+}
+
 // GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountingMetricsMarketing - Gets the marketing metrics from an accounting source for a given company, over one or more periods of time.
 func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountingMetricsMarketing(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountingMetricsMarketingRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountingMetricsMarketingResponse, error) {
 	baseURL := s._serverURL

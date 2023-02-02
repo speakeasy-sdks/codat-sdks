@@ -394,7 +394,7 @@ export * from "./codatpublicapimodelscompanydataconnectionpagedresponsehrefmodel
 export * from "./codatpublicapimodelscompanydataconnectionpagedresponselinksmodel";
 export * from "./codatpublicapimodelscompanydataconnectionpagedresponsemodel";
 export * from "./codatpublicapimodelscompanyprofilemodel";
-export * from "./codatpublicapimodelscompanyrenamecompanymodel";
+export * from "./codatpublicapimodelscompanyupdatecompanymodel";
 export * from "./codatpublicapimodelsdataaccountresponse";
 export * from "./codatpublicapimodelsdataaccountstatusresponseenum";
 export * from "./codatpublicapimodelsdataaccounttyperesponseenum";

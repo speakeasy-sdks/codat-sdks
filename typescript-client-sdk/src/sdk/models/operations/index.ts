@@ -132,6 +132,7 @@ export * from "./getdatacompaniescompanyidassessdatatypesdatatypedataintegrityde
 export * from "./getdatacompaniescompanyidassessdatatypesdatatypedataintegritystatus";
 export * from "./getdatacompaniescompanyidassessdatatypesdatatypedataintegritysummaries";
 export * from "./getdatacompaniescompanyidassessexcel";
+export * from "./getdatacompaniescompanyidassessexceldownload";
 export * from "./getdatacompaniescompanyidconnectionsconnectionidassessaccountingmetricsmarketing";
 export * from "./getdatacompaniescompanyidconnectionsconnectionidassessaccountsaccountidcategories";
 export * from "./getdatacompaniescompanyidconnectionsconnectionidassessaccountscategories";

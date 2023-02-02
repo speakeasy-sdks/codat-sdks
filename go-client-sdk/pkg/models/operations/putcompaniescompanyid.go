@@ -15,7 +15,7 @@ type PutCompaniesCompanyIDSecurity struct {
 
 type PutCompaniesCompanyIDRequest struct {
 	PathParams PutCompaniesCompanyIDPathParams
-	Request    *shared.CodatPublicAPIModelsCompanyRenameCompanyModel `request:"mediaType=application/json"`
+	Request    *shared.CodatPublicAPIModelsCompanyUpdateCompanyModel `request:"mediaType=application/json"`
 	Security   PutCompaniesCompanyIDSecurity
 }
 

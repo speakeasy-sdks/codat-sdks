@@ -1,9 +1,9 @@
 management:
-    openapi-checksum: 8f23357b102c3e79fee22ab1670a1cc4
+    openapi-checksum: 3805b0ff1b484564159b11d26a03f5c8
     openapi-version: v1
-    speakeasy-version: 0.21.2
+    speakeasy-version: 0.22.0
 typescript:
-    version: 1.1.4
+    version: 1.2.0
     packagename: '@codatio/codat-ts'
     author: codatio
 baseserverurl: https://api.codat.io
