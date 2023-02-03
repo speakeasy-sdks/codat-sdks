@@ -1,8 +1,8 @@
 management:
-    openapi-checksum: 3805b0ff1b484564159b11d26a03f5c8
+    openapi-checksum: 3be9bad6aaa52c1f985c1d74421368c8
     openapi-version: v1
     speakeasy-version: 0.22.0
 go:
-    version: 1.2.0
+    version: 1.2.1
     packagename: github.com/speakeasy-sdks/codat-sdks/go-client-sdk
 baseserverurl: https://api.codat.io
