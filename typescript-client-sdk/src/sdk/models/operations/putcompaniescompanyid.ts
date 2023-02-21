@@ -23,7 +23,7 @@ export class PutCompaniesCompanyIdRequest extends SpeakeasyBase {
   pathParams: PutCompaniesCompanyIdPathParams;
 
   @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request?: shared.CodatPublicApiModelsCompanyRenameCompanyModel;
+  request?: shared.CodatPublicApiModelsCompanyUpdateCompanyModel;
 
   @SpeakeasyMetadata()
   security: PutCompaniesCompanyIdSecurity;

@@ -13,6 +13,9 @@ export class CodatPublicApiModelsCompanyCompany extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "json, name=dataConnections", elemType: CodatPublicApiModelsCompanyDataConnection })
   dataConnections: CodatPublicApiModelsCompanyDataConnection[];
 
+  @SpeakeasyMetadata({ data: "json, name=description" })
+  description?: string;
+
   @SpeakeasyMetadata({ data: "json, name=id" })
   id: string;
 

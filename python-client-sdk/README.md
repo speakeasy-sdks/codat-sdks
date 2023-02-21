@@ -72,6 +72,7 @@ if res.codat_data_contracts_datasets_account_transaction_paged_response is not N
 * `get_data_companies_company_id_assess_data_types_data_type_data_integrity_status` - Gets match status for a given company and datatype.
 * `get_data_companies_company_id_assess_data_types_data_type_data_integrity_summaries` - Gets match summary for a given company and datatype, optionally restricted by a Codat query string.
 * `get_data_companies_company_id_assess_excel` - Returns the status of the latest report requested.
+* `get_data_companies_company_id_assess_excel_download` - Download the Excel report to a local drive.
 * `get_data_companies_company_id_connections_connection_id_assess_accounting_metrics_marketing` - Gets the marketing metrics from an accounting source for a given company, over one or more periods of time.
 * `get_data_companies_company_id_connections_connection_id_assess_accounts_categories` - Get account categories (suggested and confirmed) for a company connection.
 * `get_data_companies_company_id_connections_connection_id_assess_accounts_account_id_categories` - Gets the suggested and/or confirmed category for a specific account.
@@ -206,7 +207,7 @@ activity.
 * `get_companies_company_id_sync_settings`
 * `post_companies` - Initiate the process of onboarding a new company on the Codat platform
 * `post_companies_company_id_sync_settings`
-* `put_companies_company_id_` - Update a company with a new name
+* `put_companies_company_id_` - Update a company with a new name and optional description
 * `put_companies_company_id_settings` - Update settings on a single company.
 
 ### Connection

@@ -79,6 +79,7 @@ sdk.accountTransactions.getCompaniesCompanyIdConnectionsConnectionIdDataAccountT
 * `getDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegrityStatus` - Gets match status for a given company and datatype.
 * `getDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegritySummaries` - Gets match summary for a given company and datatype, optionally restricted by a Codat query string.
 * `getDataCompaniesCompanyIdAssessExcel` - Returns the status of the latest report requested.
+* `getDataCompaniesCompanyIdAssessExcelDownload` - Download the Excel report to a local drive.
 * `getDataCompaniesCompanyIdConnectionsConnectionIdAssessAccountingMetricsMarketing` - Gets the marketing metrics from an accounting source for a given company, over one or more periods of time.
 * `getDataCompaniesCompanyIdConnectionsConnectionIdAssessAccountsCategories` - Get account categories (suggested and confirmed) for a company connection.
 * `getDataCompaniesCompanyIdConnectionsConnectionIdAssessAccountsAccountIdCategories` - Gets the suggested and/or confirmed category for a specific account.
@@ -213,7 +214,7 @@ activity.
 * `getCompaniesCompanyIdSyncSettings`
 * `postCompanies` - Initiate the process of onboarding a new company on the Codat platform
 * `postCompaniesCompanyIdSyncSettings`
-* `putCompaniesCompanyId` - Update a company with a new name
+* `putCompaniesCompanyId` - Update a company with a new name and optional description
 * `putCompaniesCompanyIdSettings` - Update settings on a single company.
 
 ### Connection

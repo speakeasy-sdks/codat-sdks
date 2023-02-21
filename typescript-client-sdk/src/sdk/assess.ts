@@ -396,6 +396,55 @@ export class Assess {
 
   
   /**
+   * getDataCompaniesCompanyIdAssessExcelDownload - Download the Excel report to a local drive.
+  **/
+  getDataCompaniesCompanyIdAssessExcelDownload(
+    req: operations.GetDataCompaniesCompanyIdAssessExcelDownloadRequest,
+    config?: AxiosRequestConfig
+  ): Promise<operations.GetDataCompaniesCompanyIdAssessExcelDownloadResponse> {
+    if (!(req instanceof utils.SpeakeasyBase)) {
+      req = new operations.GetDataCompaniesCompanyIdAssessExcelDownloadRequest(req);
+    }
+    
+    const baseURL: string = this._serverURL;
+    const url: string = utils.generateURL(baseURL, "/data/companies/{companyId}/assess/excel/download", req.pathParams);
+    
+    const client: AxiosInstance = this._securityClient!;
+    
+    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
+
+    const requestConfig: AxiosRequestConfig = {
+      ...config,
+      params: req.queryParams,
+      paramsSerializer: qpSerializer,
+    };
+    
+    
+    const r = client.request({
+      url: url,
+      method: "get",
+      ...requestConfig,
+    });
+    
+    return r.then((httpRes: AxiosResponse) => {
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
+        const res: operations.GetDataCompaniesCompanyIdAssessExcelDownloadResponse = {statusCode: httpRes.status, contentType: contentType};
+        switch (true) {
+          case httpRes?.status == 200:
+            if (utils.matchContentType(contentType, `application/json`)) {
+                res.getDataCompaniesCompanyIdAssessExcelDownload200ApplicationJSONBinaryString = httpRes?.data;
+            }
+            break;
+        }
+
+        return res;
+      })
+  }
+
+  
+  /**
    * getDataCompaniesCompanyIdConnectionsConnectionIdAssessAccountingMetricsMarketing - Gets the marketing metrics from an accounting source for a given company, over one or more periods of time.
   **/
   getDataCompaniesCompanyIdConnectionsConnectionIdAssessAccountingMetricsMarketing(

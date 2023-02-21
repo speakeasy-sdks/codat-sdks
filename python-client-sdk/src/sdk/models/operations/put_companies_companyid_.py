@@ -1,8 +1,11 @@
 import dataclasses
+from datetime import date, datetime
+from marshmallow import fields
+import dateutil.parser
 from typing import Optional
 from ..shared import security as shared_security
 from ..shared import security as shared_security
-from ..shared import codat_public_api_models_company_renamecompanymodel as shared_codat_public_api_models_company_renamecompanymodel
+from ..shared import codat_public_api_models_company_updatecompanymodel as shared_codat_public_api_models_company_updatecompanymodel
 from ..shared import codat_public_api_models_company_company as shared_codat_public_api_models_company_company
 
 
@@ -21,7 +24,7 @@ class PutCompaniesCompanyIDSecurity:
 class PutCompaniesCompanyIDRequest:
     path_params: PutCompaniesCompanyIDPathParams = dataclasses.field()
     security: PutCompaniesCompanyIDSecurity = dataclasses.field()
-    request: Optional[shared_codat_public_api_models_company_renamecompanymodel.CodatPublicAPIModelsCompanyRenameCompanyModel] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    request: Optional[shared_codat_public_api_models_company_updatecompanymodel.CodatPublicAPIModelsCompanyUpdateCompanyModel] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclasses.dataclass

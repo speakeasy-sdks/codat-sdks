@@ -329,7 +329,7 @@ export class Companies {
 
   
   /**
-   * putCompaniesCompanyId - Update a company with a new name
+   * putCompaniesCompanyId - Update a company with a new name and optional description
   **/
   putCompaniesCompanyId(
     req: operations.PutCompaniesCompanyIdRequest,

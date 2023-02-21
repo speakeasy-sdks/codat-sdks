@@ -9,6 +9,7 @@ type CodatPublicAPIModelsDataDataSet struct {
 	Completed                *time.Time                                `json:"completed,omitempty"`
 	ConnectionID             string                                    `json:"connectionId"`
 	DataType                 *string                                   `json:"dataType,omitempty"`
+	DatasetLogsURL           *string                                   `json:"datasetLogsUrl,omitempty"`
 	ErrorMessage             *string                                   `json:"errorMessage,omitempty"`
 	ID                       string                                    `json:"id"`
 	IsCompleted              bool                                      `json:"isCompleted"`

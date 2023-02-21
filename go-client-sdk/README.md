@@ -85,6 +85,7 @@ func main() {
 * `GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityStatus` - Gets match status for a given company and datatype.
 * `GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegritySummaries` - Gets match summary for a given company and datatype, optionally restricted by a Codat query string.
 * `GetDataCompaniesCompanyIDAssessExcel` - Returns the status of the latest report requested.
+* `GetDataCompaniesCompanyIDAssessExcelDownload` - Download the Excel report to a local drive.
 * `GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountingMetricsMarketing` - Gets the marketing metrics from an accounting source for a given company, over one or more periods of time.
 * `GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategories` - Get account categories (suggested and confirmed) for a company connection.
 * `GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategories` - Gets the suggested and/or confirmed category for a specific account.
@@ -219,7 +220,7 @@ activity.
 * `GetCompaniesCompanyIDSyncSettings`
 * `PostCompanies` - Initiate the process of onboarding a new company on the Codat platform
 * `PostCompaniesCompanyIDSyncSettings`
-* `PutCompaniesCompanyID` - Update a company with a new name
+* `PutCompaniesCompanyID` - Update a company with a new name and optional description
 * `PutCompaniesCompanyIDSettings` - Update settings on a single company.
 
 ### Connection

@@ -16,6 +16,9 @@ export class CodatPublicApiModelsDataDataSet extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "json, name=dataType" })
   dataType?: string;
 
+  @SpeakeasyMetadata({ data: "json, name=datasetLogsUrl" })
+  datasetLogsUrl?: string;
+
   @SpeakeasyMetadata({ data: "json, name=errorMessage" })
   errorMessage?: string;
 

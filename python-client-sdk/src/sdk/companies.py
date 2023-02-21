@@ -188,7 +188,7 @@ class Companies:
 
     
     def put_companies_company_id_(self, request: operations.PutCompaniesCompanyIDRequest) -> operations.PutCompaniesCompanyIDResponse:
-        r"""Update a company with a new name
+        r"""Update a company with a new name and optional description
         """
         
         base_url = self._server_url

@@ -6,4 +6,5 @@ class CodatDataContractsPushPushChangeTypeEnum(str, Enum):
     CREATED = "Created"
     MODIFIED = "Modified"
     DELETED = "Deleted"
+    ATTACHMENT_UPLOADED = "AttachmentUploaded"
 
