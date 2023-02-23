@@ -5,4 +5,3 @@ class CodatDataContractsDatasetsTrackingCategoryStatusEnum(str, Enum):
     UNKNOWN = "Unknown"
     ACTIVE = "Active"
     ARCHIVED = "Archived"
-

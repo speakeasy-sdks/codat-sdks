@@ -6,4 +6,3 @@ class CodatDataContractsDatasetsAccountTransactionStatusEnum(str, Enum):
     UNRECONCILED = "Unreconciled"
     RECONCILED = "Reconciled"
     VOID = "Void"
-

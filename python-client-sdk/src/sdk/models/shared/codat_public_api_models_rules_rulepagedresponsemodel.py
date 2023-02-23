@@ -1,9 +1,9 @@
 import dataclasses
-from typing import Optional
+from ..shared import codat_public_api_models_rules_rule as shared_codat_public_api_models_rules_rule
+from ..shared import codat_public_api_models_rules_rulepagedresponselinksmodel as shared_codat_public_api_models_rules_rulepagedresponselinksmodel
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_public_api_models_rules_rulepagedresponselinksmodel as shared_codat_public_api_models_rules_rulepagedresponselinksmodel
-from ..shared import codat_public_api_models_rules_rule as shared_codat_public_api_models_rules_rule
+from typing import Optional
 
 
 @dataclass_json

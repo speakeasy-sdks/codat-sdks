@@ -23,4 +23,3 @@ class CodatPublicAPIModelsDataDatasetStatusEnum(str, Enum):
     RATE_LIMIT_ERROR = "RateLimitError"
     PERMISSIONS_ERROR = "PermissionsError"
     PREREQUISITE_NOT_MET = "PrerequisiteNotMet"
-

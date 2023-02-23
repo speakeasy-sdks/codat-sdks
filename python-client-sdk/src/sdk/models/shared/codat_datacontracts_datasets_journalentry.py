@@ -1,15 +1,15 @@
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
 import dateutil.parser
-from typing import Optional
-from dataclasses_json import dataclass_json
-from sdk import utils
+from ..shared import codat_datacontracts_datasets_datainterfaces_supplementaldata as shared_codat_datacontracts_datasets_datainterfaces_supplementaldata
 from ..shared import codat_datacontracts_datasets_journalline as shared_codat_datacontracts_datasets_journalline
 from ..shared import codat_datacontracts_datasets_journalref as shared_codat_datacontracts_datasets_journalref
 from ..shared import codat_datacontracts_datasets_metadata as shared_codat_datacontracts_datasets_metadata
 from ..shared import codat_datacontracts_datasets_recordref as shared_codat_datacontracts_datasets_recordref
-from ..shared import codat_datacontracts_datasets_datainterfaces_supplementaldata as shared_codat_datacontracts_datasets_datainterfaces_supplementaldata
+from dataclasses_json import dataclass_json
+from datetime import datetime
+from marshmallow import fields
+from sdk import utils
+from typing import Optional
 
 
 @dataclass_json

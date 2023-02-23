@@ -5,4 +5,3 @@ class CodatDataContractsDatasetsCashFlowStatementReportingDataEnum(str, Enum):
     UNKNOWN = "Unknown"
     INDIRECT = "Indirect"
     DIRECT = "Direct"
-

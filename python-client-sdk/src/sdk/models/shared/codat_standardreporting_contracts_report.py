@@ -1,11 +1,11 @@
 import dataclasses
-from typing import Optional
-from dataclasses_json import dataclass_json
-from sdk import utils
 from ..shared import codat_standardreporting_contracts_idimension as shared_codat_standardreporting_contracts_idimension
-from ..shared import codat_standardreporting_contracts_reporterror as shared_codat_standardreporting_contracts_reporterror
 from ..shared import codat_standardreporting_contracts_measure as shared_codat_standardreporting_contracts_measure
 from ..shared import codat_standardreporting_contracts_reportdata as shared_codat_standardreporting_contracts_reportdata
+from ..shared import codat_standardreporting_contracts_reporterror as shared_codat_standardreporting_contracts_reporterror
+from dataclasses_json import dataclass_json
+from sdk import utils
+from typing import Optional
 
 
 @dataclass_json

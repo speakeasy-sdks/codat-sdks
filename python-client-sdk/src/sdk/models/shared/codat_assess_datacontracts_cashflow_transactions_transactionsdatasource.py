@@ -1,8 +1,8 @@
 import dataclasses
-from typing import Optional
+from ..shared import codat_assess_datacontracts_cashflow_transactions_cashflowreportbankingtransaction as shared_codat_assess_datacontracts_cashflow_transactions_cashflowreportbankingtransaction
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_assess_datacontracts_cashflow_transactions_cashflowreportbankingtransaction as shared_codat_assess_datacontracts_cashflow_transactions_cashflowreportbankingtransaction
+from typing import Optional
 
 
 @dataclass_json

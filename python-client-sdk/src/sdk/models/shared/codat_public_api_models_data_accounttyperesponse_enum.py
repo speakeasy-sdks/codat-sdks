@@ -8,4 +8,3 @@ class CodatPublicAPIModelsDataAccountTypeResponseEnum(str, Enum):
     INCOME = "Income"
     LIABILITY = "Liability"
     EQUITY = "Equity"
-

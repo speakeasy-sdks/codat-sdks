@@ -1,12 +1,12 @@
 import dataclasses
-from typing import Optional
-from dataclasses_json import dataclass_json
-from sdk import utils
 from ..shared import codat_datacontracts_datasets_accountref as shared_codat_datacontracts_datasets_accountref
+from ..shared import codat_datacontracts_datasets_invoiceabletracking as shared_codat_datacontracts_datasets_invoiceabletracking
 from ..shared import codat_datacontracts_datasets_itemref as shared_codat_datacontracts_datasets_itemref
 from ..shared import codat_datacontracts_datasets_taxrateref as shared_codat_datacontracts_datasets_taxrateref
-from ..shared import codat_datacontracts_datasets_invoiceabletracking as shared_codat_datacontracts_datasets_invoiceabletracking
 from ..shared import codat_datacontracts_datasets_trackingcategoryref as shared_codat_datacontracts_datasets_trackingcategoryref
+from dataclasses_json import dataclass_json
+from sdk import utils
+from typing import Optional
 
 
 @dataclass_json

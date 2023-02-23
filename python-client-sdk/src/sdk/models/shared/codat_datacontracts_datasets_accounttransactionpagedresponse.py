@@ -1,9 +1,9 @@
 import dataclasses
-from typing import Optional
+from ..shared import codat_datacontracts_datasets_accounttransaction as shared_codat_datacontracts_datasets_accounttransaction
+from ..shared import codat_datacontracts_responses_hallink as shared_codat_datacontracts_responses_hallink
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_datacontracts_responses_hallink as shared_codat_datacontracts_responses_hallink
-from ..shared import codat_datacontracts_datasets_accounttransaction as shared_codat_datacontracts_datasets_accounttransaction
+from typing import Optional
 
 
 @dataclass_json

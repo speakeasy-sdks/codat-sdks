@@ -12,4 +12,3 @@ class CodatDataContractsDatasetsPaymentLinkTypeEnum(str, Enum):
     PAYMENT_ON_ACCOUNT = "PaymentOnAccount"
     MANUAL_JOURNAL = "ManualJournal"
     DISCOUNT = "Discount"
-

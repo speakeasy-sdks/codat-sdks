@@ -1,7 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { CodatDataContractsPushPushOperationRecordRef } from "./codatdatacontractspushpushoperationrecordref";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsPushPushChangeTypeEnum } from "./codatdatacontractspushpushchangetypeenum";
-
+import { CodatDataContractsPushPushOperationRecordRef } from "./codatdatacontractspushpushoperationrecordref";
 
 
 export class CodatDataContractsPushPushOperationChange extends SpeakeasyBase {

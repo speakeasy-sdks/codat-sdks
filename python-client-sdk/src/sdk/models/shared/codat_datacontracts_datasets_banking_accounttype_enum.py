@@ -5,4 +5,3 @@ class CodatDataContractsDatasetsBankingAccountTypeEnum(str, Enum):
     UNKNOWN = "Unknown"
     CREDIT = "Credit"
     DEBIT = "Debit"
-

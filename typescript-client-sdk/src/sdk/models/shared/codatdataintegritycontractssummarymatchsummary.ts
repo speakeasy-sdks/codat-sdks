@@ -1,7 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataIntegrityContractsSummaryMatchAmountSummary } from "./codatdataintegritycontractssummarymatchamountsummary";
 import { CodatDataIntegrityContractsSummaryMatchCountSummary } from "./codatdataintegritycontractssummarymatchcountsummary";
-
 
 
 export class CodatDataIntegrityContractsSummaryMatchSummary extends SpeakeasyBase {

@@ -1,7 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { SystemObjectPushOperationPagedResponseLinksModel } from "./systemobjectpushoperationpagedresponselinksmodel";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { SystemObjectPushOperation } from "./systemobjectpushoperation";
-
+import { SystemObjectPushOperationPagedResponseLinksModel } from "./systemobjectpushoperationpagedresponselinksmodel";
 
 
 // SystemObjectPushOperationPagedResponseModel

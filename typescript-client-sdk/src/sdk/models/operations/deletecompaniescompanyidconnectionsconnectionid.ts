@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
 
 
 export class DeleteCompaniesCompanyIdConnectionsConnectionIdPathParams extends SpeakeasyBase {
@@ -11,15 +10,13 @@ export class DeleteCompaniesCompanyIdConnectionsConnectionIdPathParams extends S
   connectionId: string;
 }
 
-
 export class DeleteCompaniesCompanyIdConnectionsConnectionIdSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class DeleteCompaniesCompanyIdConnectionsConnectionIdRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -28,7 +25,6 @@ export class DeleteCompaniesCompanyIdConnectionsConnectionIdRequest extends Spea
   @SpeakeasyMetadata()
   security: DeleteCompaniesCompanyIdConnectionsConnectionIdSecurity;
 }
-
 
 export class DeleteCompaniesCompanyIdConnectionsConnectionIdResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

@@ -11,22 +11,22 @@ s.config_security(
         ),
     )
 )
-    
+   
 req = operations.GetCompaniesCompanyIDConnectionsConnectionIDDataAccountTransactionsRequest(
     security=operations.GetCompaniesCompanyIDConnectionsConnectionIDDataAccountTransactionsSecurity(
-        codat_login=shared.SchemeCodatLogin(
-            authorization="Bearer YOUR_ACCESS_TOKEN_HERE",
+        api_key_auth=shared.SchemeAPIKeyAuth(
+            api_key="YOUR_API_KEY_HERE",
         ),
     ),
     path_params=operations.GetCompaniesCompanyIDConnectionsConnectionIDDataAccountTransactionsPathParams(
-        company_id="sit",
-        connection_id="voluptas",
+        company_id="unde",
+        connection_id="deserunt",
     ),
     query_params=operations.GetCompaniesCompanyIDConnectionsConnectionIDDataAccountTransactionsQueryParams(
-        order_by="culpa",
-        page=501233450539197794,
-        page_size=3390393562759376202,
-        query="dolor",
+        order_by="porro",
+        page=844266,
+        page_size=602763,
+        query="vero",
     ),
 )
     

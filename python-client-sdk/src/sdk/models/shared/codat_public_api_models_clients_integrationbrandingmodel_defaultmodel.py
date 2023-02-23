@@ -1,8 +1,8 @@
 import dataclasses
-from typing import Optional
+from ..shared import codat_public_api_models_clients_integrationbrandingmodel_imagemodel as shared_codat_public_api_models_clients_integrationbrandingmodel_imagemodel
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_public_api_models_clients_integrationbrandingmodel_imagemodel as shared_codat_public_api_models_clients_integrationbrandingmodel_imagemodel
+from typing import Optional
 
 
 @dataclass_json

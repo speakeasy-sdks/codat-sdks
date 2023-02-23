@@ -1,7 +1,7 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 )
 
 type GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceCustomersPathParams struct {
@@ -11,14 +11,14 @@ type GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceCustomersPathParams
 
 type GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceCustomersQueryParams struct {
 	OrderBy  *string `queryParam:"style=form,explode=true,name=orderBy"`
-	Page     int32   `queryParam:"style=form,explode=true,name=page"`
-	PageSize *int32  `queryParam:"style=form,explode=true,name=pageSize"`
+	Page     int     `queryParam:"style=form,explode=true,name=page"`
+	PageSize *int    `queryParam:"style=form,explode=true,name=pageSize"`
 	Query    *string `queryParam:"style=form,explode=true,name=query"`
 }
 
 type GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceCustomersSecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
 type GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceCustomersRequest struct {
@@ -30,5 +30,5 @@ type GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceCustomersRequest st
 type GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceCustomersResponse struct {
 	CodatDataContractsDatasetsCommerceCustomerPagedResponseModel *shared.CodatDataContractsDatasetsCommerceCustomerPagedResponseModel
 	ContentType                                                  string
-	StatusCode                                                   int64
+	StatusCode                                                   int
 }

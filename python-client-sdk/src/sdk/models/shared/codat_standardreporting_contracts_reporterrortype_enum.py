@@ -10,4 +10,3 @@ class CodatStandardReportingContractsReportErrorTypeEnum(str, Enum):
     UNCATEGORIZED_ACCOUNTS = "UncategorizedAccounts"
     DATA_SET_NOT_AVAILABLE = "DataSetNotAvailable"
     VALIDATION_ERROR = "ValidationError"
-

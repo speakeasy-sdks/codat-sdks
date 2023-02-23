@@ -5,4 +5,3 @@ class CodatDataContractsDatasetsSupplierStatusEnum(str, Enum):
     UNKNOWN = "Unknown"
     ACTIVE = "Active"
     ARCHIVED = "Archived"
-

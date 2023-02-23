@@ -1,7 +1,7 @@
 import requests
-from typing import Any,Optional
-from sdk.models import shared, operations
 from . import utils
+from sdk.models import operations, shared
+from typing import Any, Optional
 
 class Integrations:
     _client: requests.Session
@@ -39,7 +39,7 @@ class Integrations:
         if r.status_code == 200:
             if utils.match_content_type(content_type, "application/json"):
                 out = utils.unmarshal_json(r.text, Optional[dict[str, Any]])
-                res.codat_public_api_models_platform_credentials_platform_credentials = out
+                res.delete_integrations_credentials_platform_key_200_application_json_object = out
 
         return res
 
@@ -108,7 +108,7 @@ class Integrations:
         if r.status_code == 200:
             if utils.match_content_type(content_type, "application/json"):
                 out = utils.unmarshal_json(r.text, Optional[dict[str, Any]])
-                res.codat_public_api_models_platform_credentials_platform_credentials = out
+                res.get_integrations_credentials_platform_key_200_application_json_object = out
 
         return res
 
@@ -203,7 +203,7 @@ class Integrations:
         if r.status_code == 200:
             if utils.match_content_type(content_type, "application/json"):
                 out = utils.unmarshal_json(r.text, Optional[dict[str, Any]])
-                res.codat_public_api_models_platform_credentials_platform_credentials = out
+                res.put_integrations_credentials_platform_key_200_application_json_object = out
 
         return res
 

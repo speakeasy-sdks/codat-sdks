@@ -1,9 +1,8 @@
 import dataclasses
-from typing import Optional
-from ..shared import security as shared_security
-from ..shared import security as shared_security
 from ..shared import codat_public_api_models_clients_clientsyncsettingssingleputmodel as shared_codat_public_api_models_clients_clientsyncsettingssingleputmodel
 from ..shared import codat_public_api_models_syncsettings_syncsettingmodel as shared_codat_public_api_models_syncsettings_syncsettingmodel
+from ..shared import security as shared_security
+from typing import Optional
 
 
 @dataclasses.dataclass

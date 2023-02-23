@@ -8,4 +8,3 @@ class CodatDataContractsDatasetsBillStatusEnum(str, Enum):
     PAID = "Paid"
     VOID = "Void"
     DRAFT = "Draft"
-

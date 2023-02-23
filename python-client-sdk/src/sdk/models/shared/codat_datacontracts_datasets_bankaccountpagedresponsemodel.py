@@ -1,9 +1,9 @@
 import dataclasses
-from typing import Optional
+from ..shared import codat_datacontracts_datasets_bankaccount as shared_codat_datacontracts_datasets_bankaccount
+from ..shared import codat_datacontracts_datasets_bankaccountpagedresponselinksmodel as shared_codat_datacontracts_datasets_bankaccountpagedresponselinksmodel
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_datacontracts_datasets_bankaccountpagedresponselinksmodel as shared_codat_datacontracts_datasets_bankaccountpagedresponselinksmodel
-from ..shared import codat_datacontracts_datasets_bankaccount as shared_codat_datacontracts_datasets_bankaccount
+from typing import Optional
 
 
 @dataclass_json

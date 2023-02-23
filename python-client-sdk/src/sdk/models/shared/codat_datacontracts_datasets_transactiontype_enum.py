@@ -20,4 +20,3 @@ class CodatDataContractsDatasetsTransactionTypeEnum(str, Enum):
     DIRECT_DEBIT = "DirectDebit"
     REPEAT_PMT = "RepeatPmt"
     OTHER = "Other"
-

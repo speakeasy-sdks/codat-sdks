@@ -1,8 +1,7 @@
 import dataclasses
-from typing import Optional
-from ..shared import security as shared_security
-from ..shared import security as shared_security
 from ..shared import codat_assess_datacontracts_cashflow_transactions_cashflowtransactionsreport as shared_codat_assess_datacontracts_cashflow_transactions_cashflowtransactionsreport
+from ..shared import security as shared_security
+from typing import Optional
 
 
 @dataclasses.dataclass

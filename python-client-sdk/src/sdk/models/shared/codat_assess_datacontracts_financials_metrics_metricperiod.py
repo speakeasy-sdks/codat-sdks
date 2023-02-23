@@ -1,12 +1,12 @@
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
 import dateutil.parser
-from typing import Optional
-from dataclasses_json import dataclass_json
-from sdk import utils
 from ..shared import codat_assess_datacontracts_financials_metrics_metricperioderror as shared_codat_assess_datacontracts_financials_metrics_metricperioderror
 from ..shared import codat_assess_datacontracts_financials_metrics_metricperiodinput as shared_codat_assess_datacontracts_financials_metrics_metricperiodinput
+from dataclasses_json import dataclass_json
+from datetime import datetime
+from marshmallow import fields
+from sdk import utils
+from typing import Optional
 
 
 @dataclass_json

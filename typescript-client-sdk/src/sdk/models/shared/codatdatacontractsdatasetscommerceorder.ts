@@ -1,10 +1,10 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCommerceCustomerRef } from "./codatdatacontractsdatasetscommercecustomerref";
 import { CodatDataContractsDatasetsCommerceLocationRef } from "./codatdatacontractsdatasetscommercelocationref";
 import { CodatDataContractsDatasetsCommerceOrderLineItem } from "./codatdatacontractsdatasetscommerceorderlineitem";
 import { CodatDataContractsDatasetsCommercePaymentRef } from "./codatdatacontractsdatasetscommercepaymentref";
 import { CodatDataContractsDatasetsCommerceServiceCharge } from "./codatdatacontractsdatasetscommerceservicecharge";
-
+import { CodatDataContractsDatasetsDataInterfacesSupplementalData } from "./codatdatacontractsdatasetsdatainterfacessupplementaldata";
 
 
 export class CodatDataContractsDatasetsCommerceOrder extends SpeakeasyBase {
@@ -46,6 +46,9 @@ export class CodatDataContractsDatasetsCommerceOrder extends SpeakeasyBase {
 
   @SpeakeasyMetadata({ data: "json, name=sourceModifiedDate" })
   sourceModifiedDate?: Date;
+
+  @SpeakeasyMetadata({ data: "json, name=supplementalData" })
+  supplementalData?: CodatDataContractsDatasetsDataInterfacesSupplementalData;
 
   @SpeakeasyMetadata({ data: "json, name=totalAmount" })
   totalAmount?: number;

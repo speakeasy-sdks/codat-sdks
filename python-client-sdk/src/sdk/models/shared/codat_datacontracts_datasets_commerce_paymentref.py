@@ -1,13 +1,13 @@
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
 import dateutil.parser
-from typing import Optional
-from enum import Enum
-from dataclasses_json import dataclass_json
-from sdk import utils
 from ..shared import codat_datacontracts_datasets_commerce_paymentstatus_enum as shared_codat_datacontracts_datasets_commerce_paymentstatus_enum
 from ..shared import codat_datacontracts_datasets_commerce_paymenttype_enum as shared_codat_datacontracts_datasets_commerce_paymenttype_enum
+from ..shared import codat_datacontracts_datasets_datainterfaces_supplementaldata as shared_codat_datacontracts_datasets_datainterfaces_supplementaldata
+from dataclasses_json import dataclass_json
+from datetime import datetime
+from marshmallow import fields
+from sdk import utils
+from typing import Optional
 
 
 @dataclass_json
@@ -22,5 +22,6 @@ class CodatDataContractsDatasetsCommercePaymentRef:
     payment_provider: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('paymentProvider') }})
     source_modified_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('sourceModifiedDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
     status: Optional[shared_codat_datacontracts_datasets_commerce_paymentstatus_enum.CodatDataContractsDatasetsCommercePaymentStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('status') }})
+    supplemental_data: Optional[shared_codat_datacontracts_datasets_datainterfaces_supplementaldata.CodatDataContractsDatasetsDataInterfacesSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('supplementalData') }})
     type: Optional[shared_codat_datacontracts_datasets_commerce_paymenttype_enum.CodatDataContractsDatasetsCommercePaymentTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
     

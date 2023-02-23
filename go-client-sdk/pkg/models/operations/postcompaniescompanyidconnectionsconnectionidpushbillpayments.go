@@ -1,7 +1,7 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 )
 
 type PostCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsPathParams struct {
@@ -10,12 +10,12 @@ type PostCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsPathParams str
 }
 
 type PostCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsQueryParams struct {
-	TimeoutInMinutes *int32 `queryParam:"style=form,explode=true,name=timeoutInMinutes"`
+	TimeoutInMinutes *int `queryParam:"style=form,explode=true,name=timeoutInMinutes"`
 }
 
 type PostCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsSecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
 type PostCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsRequest struct {
@@ -28,5 +28,5 @@ type PostCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsRequest struct
 type PostCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsResponse struct {
 	CodatDataContractsDatasetsBillPaymentPushOperation *shared.CodatDataContractsDatasetsBillPaymentPushOperation
 	ContentType                                        string
-	StatusCode                                         int64
+	StatusCode                                         int
 }

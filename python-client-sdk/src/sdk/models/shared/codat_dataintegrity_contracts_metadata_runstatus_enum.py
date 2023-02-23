@@ -8,4 +8,3 @@ class CodatDataIntegrityContractsMetadataRunStatusEnum(str, Enum):
     PROCESSING = "Processing"
     COMPLETE_WITH_WARNING = "CompleteWithWarning"
     COMPLETE = "Complete"
-

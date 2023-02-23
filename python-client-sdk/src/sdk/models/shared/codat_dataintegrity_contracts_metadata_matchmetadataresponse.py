@@ -1,8 +1,8 @@
 import dataclasses
-from typing import Optional
+from ..shared import codat_dataintegrity_contracts_metadata_matchmetadata as shared_codat_dataintegrity_contracts_metadata_matchmetadata
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_dataintegrity_contracts_metadata_matchmetadata as shared_codat_dataintegrity_contracts_metadata_matchmetadata
+from typing import Optional
 
 
 @dataclass_json

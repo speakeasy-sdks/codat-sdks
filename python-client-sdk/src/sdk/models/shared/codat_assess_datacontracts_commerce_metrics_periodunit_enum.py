@@ -6,4 +6,3 @@ class CodatAssessDataContractsCommerceMetricsPeriodUnitEnum(str, Enum):
     WEEK = "Week"
     MONTH = "Month"
     YEAR = "Year"
-

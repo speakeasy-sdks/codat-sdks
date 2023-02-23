@@ -1,8 +1,7 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { CodatDataContractsDatasetsCashFlowStatement } from "./codatdatacontractsdatasetscashflowstatement";
 import { CodatDataContractsDatasetsCashFlowStatementReportingBasisEnum } from "./codatdatacontractsdatasetscashflowstatementreportingbasisenum";
 import { CodatDataContractsDatasetsCashFlowStatementReportingDataEnum } from "./codatdatacontractsdatasetscashflowstatementreportingdataenum";
-import { CodatDataContractsDatasetsCashFlowStatement } from "./codatdatacontractsdatasetscashflowstatement";
-
 
 
 export class CodatPublicApiModelsDataCashFlowStatementResponse extends SpeakeasyBase {

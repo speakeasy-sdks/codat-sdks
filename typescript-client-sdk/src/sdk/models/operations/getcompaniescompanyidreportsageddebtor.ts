@@ -1,13 +1,11 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
 
 
 export class GetCompaniesCompanyIdReportsAgedDebtorPathParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=companyId" })
   companyId: string;
 }
-
 
 export class GetCompaniesCompanyIdReportsAgedDebtorQueryParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=numberOfPeriods" })
@@ -20,15 +18,13 @@ export class GetCompaniesCompanyIdReportsAgedDebtorQueryParams extends Speakeasy
   reportDate?: Date;
 }
 
-
 export class GetCompaniesCompanyIdReportsAgedDebtorSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class GetCompaniesCompanyIdReportsAgedDebtorRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -40,7 +36,6 @@ export class GetCompaniesCompanyIdReportsAgedDebtorRequest extends SpeakeasyBase
   @SpeakeasyMetadata()
   security: GetCompaniesCompanyIdReportsAgedDebtorSecurity;
 }
-
 
 export class GetCompaniesCompanyIdReportsAgedDebtorResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

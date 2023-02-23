@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsCompanyDataConnection } from "./codatpublicapimodelscompanydataconnection";
-
 
 
 export class CodatPublicApiModelsCompanyCompany extends SpeakeasyBase {

@@ -1,7 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatAssessDataContractsFinancialsMetricsMetricPeriodError } from "./codatassessdatacontractsfinancialsmetricsmetricperioderror";
 import { CodatAssessDataContractsFinancialsMetricsMetricPeriodInput } from "./codatassessdatacontractsfinancialsmetricsmetricperiodinput";
-
 
 
 export class CodatAssessDataContractsFinancialsMetricsMetricPeriod extends SpeakeasyBase {

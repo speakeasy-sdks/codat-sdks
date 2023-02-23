@@ -6,4 +6,3 @@ class CodatDataContractsDatasetsAccountStatusEnum(str, Enum):
     ACTIVE = "Active"
     ARCHIVED = "Archived"
     PENDING = "Pending"
-

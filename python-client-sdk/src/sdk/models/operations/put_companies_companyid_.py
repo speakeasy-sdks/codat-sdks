@@ -1,12 +1,8 @@
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
-import dateutil.parser
-from typing import Optional
-from ..shared import security as shared_security
-from ..shared import security as shared_security
-from ..shared import codat_public_api_models_company_updatecompanymodel as shared_codat_public_api_models_company_updatecompanymodel
 from ..shared import codat_public_api_models_company_company as shared_codat_public_api_models_company_company
+from ..shared import codat_public_api_models_company_updatecompanymodel as shared_codat_public_api_models_company_updatecompanymodel
+from ..shared import security as shared_security
+from typing import Optional
 
 
 @dataclasses.dataclass

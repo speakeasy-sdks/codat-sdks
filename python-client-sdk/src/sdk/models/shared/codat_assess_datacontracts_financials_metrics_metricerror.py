@@ -1,9 +1,8 @@
 import dataclasses
-from typing import Optional
-from enum import Enum
+from ..shared import codat_assess_datacontracts_financials_metrics_metricerrortype_enum as shared_codat_assess_datacontracts_financials_metrics_metricerrortype_enum
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_assess_datacontracts_financials_metrics_metricerrortype_enum as shared_codat_assess_datacontracts_financials_metrics_metricerrortype_enum
+from typing import Optional
 
 
 @dataclass_json

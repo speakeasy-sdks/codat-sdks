@@ -14,4 +14,3 @@ class CodatDataContractsDatasetsCommercePaymentTypeEnum(str, Enum):
     PAYPAL = "Paypal"
     CUSTOM = "Custom"
     PREPAID = "Prepaid"
-

@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
 
 
 export class GetDataCompaniesCompanyIdAssessExcelPathParams extends SpeakeasyBase {
@@ -8,21 +7,18 @@ export class GetDataCompaniesCompanyIdAssessExcelPathParams extends SpeakeasyBas
   companyId: string;
 }
 
-
 export class GetDataCompaniesCompanyIdAssessExcelQueryParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=reportType" })
   reportType?: string;
 }
 
-
 export class GetDataCompaniesCompanyIdAssessExcelSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class GetDataCompaniesCompanyIdAssessExcelRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -34,7 +30,6 @@ export class GetDataCompaniesCompanyIdAssessExcelRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
   security: GetDataCompaniesCompanyIdAssessExcelSecurity;
 }
-
 
 export class GetDataCompaniesCompanyIdAssessExcelResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

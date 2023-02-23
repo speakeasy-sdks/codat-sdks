@@ -1,15 +1,16 @@
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
 import dateutil.parser
-from typing import Optional
-from dataclasses_json import dataclass_json
-from sdk import utils
 from ..shared import codat_datacontracts_datasets_commerce_customerref as shared_codat_datacontracts_datasets_commerce_customerref
 from ..shared import codat_datacontracts_datasets_commerce_locationref as shared_codat_datacontracts_datasets_commerce_locationref
 from ..shared import codat_datacontracts_datasets_commerce_orderlineitem as shared_codat_datacontracts_datasets_commerce_orderlineitem
 from ..shared import codat_datacontracts_datasets_commerce_paymentref as shared_codat_datacontracts_datasets_commerce_paymentref
 from ..shared import codat_datacontracts_datasets_commerce_servicecharge as shared_codat_datacontracts_datasets_commerce_servicecharge
+from ..shared import codat_datacontracts_datasets_datainterfaces_supplementaldata as shared_codat_datacontracts_datasets_datainterfaces_supplementaldata
+from dataclasses_json import dataclass_json
+from datetime import datetime
+from marshmallow import fields
+from sdk import utils
+from typing import Optional
 
 
 @dataclass_json
@@ -28,6 +29,7 @@ class CodatDataContractsDatasetsCommerceOrder:
     payments: Optional[list[shared_codat_datacontracts_datasets_commerce_paymentref.CodatDataContractsDatasetsCommercePaymentRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('payments') }})
     service_charges: Optional[list[shared_codat_datacontracts_datasets_commerce_servicecharge.CodatDataContractsDatasetsCommerceServiceCharge]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('serviceCharges') }})
     source_modified_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('sourceModifiedDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
+    supplemental_data: Optional[shared_codat_datacontracts_datasets_datainterfaces_supplementaldata.CodatDataContractsDatasetsDataInterfacesSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('supplementalData') }})
     total_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('totalAmount') }})
     total_discount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('totalDiscount') }})
     total_gratuity: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('totalGratuity') }})

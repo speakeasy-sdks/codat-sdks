@@ -1,10 +1,9 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsAddress } from "./codatdatacontractsdatasetsaddress";
 import { CodatDataContractsDatasetsContact } from "./codatdatacontractsdatasetscontact";
-import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasetsmetadata";
 import { CodatDataContractsDatasetsCustomerStatusEnum } from "./codatdatacontractsdatasetscustomerstatusenum";
 import { CodatDataContractsDatasetsDataInterfacesSupplementalData } from "./codatdatacontractsdatasetsdatainterfacessupplementaldata";
-
+import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasetsmetadata";
 
 
 export class CodatDataContractsDatasetsCustomer extends SpeakeasyBase {

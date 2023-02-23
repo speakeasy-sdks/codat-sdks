@@ -1,9 +1,6 @@
-import axios, { AxiosInstance } from "axios";
 import * as utils from "../internal/utils";
-import { Security } from "./models/shared";
-
-import { AccountTransactions } from "./accounttransactions";
 import { Accounts } from "./accounts";
+import { AccountTransactions } from "./accounttransactions";
 import { Assess } from "./assess";
 import { BankAccounts } from "./bankaccounts";
 import { BankingAccountBalances } from "./bankingaccountbalances";
@@ -28,9 +25,9 @@ import { Connection } from "./connection";
 import { CreditNotes } from "./creditnotes";
 import { Customers } from "./customers";
 import { Data } from "./data";
+import { DatasetLogs } from "./datasetlogs";
 import { DataStatus } from "./datastatus";
 import { DataTypes } from "./datatypes";
-import { DatasetLogs } from "./datasetlogs";
 import { DirectCosts } from "./directcosts";
 import { DirectIncomes } from "./directincomes";
 import { Files } from "./files";
@@ -42,6 +39,7 @@ import { Items } from "./items";
 import { JournalEntries } from "./journalentries";
 import { Journals } from "./journals";
 import { Metrics } from "./metrics";
+import { Security } from "./models/shared";
 import { PaymentMethods } from "./paymentmethods";
 import { Payments } from "./payments";
 import { Profile } from "./profile";
@@ -55,7 +53,7 @@ import { Suppliers } from "./suppliers";
 import { TaxRates } from "./taxrates";
 import { TrackingCategories } from "./trackingcategories";
 import { Transfers } from "./transfers";
-
+import axios, { AxiosInstance } from "axios";
 
 export const ServerList = [
 	"https://api.codat.io",
@@ -131,8 +129,8 @@ export class SDK {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "1.2.2";
-  private _genVersion = "0.22.1";
+  private _sdkVersion = "2.0.0";
+  private _genVersion = "1.4.8";
 
   constructor(props: SDKProps) {
     this._serverURL = props.serverUrl ?? ServerList[0];
@@ -627,4 +625,5 @@ export class SDK {
       this._genVersion
     );
   }
+  
 }

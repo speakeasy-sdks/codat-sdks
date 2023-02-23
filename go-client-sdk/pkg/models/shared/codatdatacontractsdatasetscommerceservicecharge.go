@@ -2,7 +2,7 @@ package shared
 
 type CodatDataContractsDatasetsCommerceServiceCharge struct {
 	Description   *string                                                    `json:"description,omitempty"`
-	Quantity      *int32                                                     `json:"quantity,omitempty"`
+	Quantity      *int                                                       `json:"quantity,omitempty"`
 	TaxAmount     *float64                                                   `json:"taxAmount,omitempty"`
 	TaxPercentage *float64                                                   `json:"taxPercentage,omitempty"`
 	Taxes         []CodatDataContractsDatasetsCommerceTaxComponentAllocation `json:"taxes,omitempty"`

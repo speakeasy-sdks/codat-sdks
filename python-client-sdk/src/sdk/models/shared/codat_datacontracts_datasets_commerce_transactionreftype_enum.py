@@ -7,4 +7,3 @@ class CodatDataContractsDatasetsCommerceTransactionRefTypeEnum(str, Enum):
     ORDER = "Order"
     PAYMENT = "Payment"
     SERVICE_CHARGE = "ServiceCharge"
-

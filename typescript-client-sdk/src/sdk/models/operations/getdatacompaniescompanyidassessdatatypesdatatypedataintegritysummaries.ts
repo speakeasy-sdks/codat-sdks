@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
 
 
 export class GetDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegritySummariesPathParams extends SpeakeasyBase {
@@ -11,21 +10,18 @@ export class GetDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegritySummar
   dataType: string;
 }
 
-
 export class GetDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegritySummariesQueryParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=query" })
   query?: string;
 }
 
-
 export class GetDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegritySummariesSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class GetDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegritySummariesRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -37,7 +33,6 @@ export class GetDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegritySummar
   @SpeakeasyMetadata()
   security: GetDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegritySummariesSecurity;
 }
-
 
 export class GetDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegritySummariesResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

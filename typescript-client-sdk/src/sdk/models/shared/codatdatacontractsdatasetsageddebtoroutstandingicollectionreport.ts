@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsAgedDebtorOutstanding } from "./codatdatacontractsdatasetsageddebtoroutstanding";
-
 
 
 export class CodatDataContractsDatasetsAgedDebtorOutstandingICollectionReport extends SpeakeasyBase {

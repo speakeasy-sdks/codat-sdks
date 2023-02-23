@@ -3,35 +3,35 @@ package sdk
 import (
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/utils"
 	"net/http"
 )
 
-type CommerceTransactions struct {
-	_defaultClient  HTTPClient
-	_securityClient HTTPClient
-	_serverURL      string
-	_language       string
-	_sdkVersion     string
-	_genVersion     string
+type commerceTransactions struct {
+	defaultClient  HTTPClient
+	securityClient HTTPClient
+	serverURL      string
+	language       string
+	sdkVersion     string
+	genVersion     string
 }
 
-func NewCommerceTransactions(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *CommerceTransactions {
-	return &CommerceTransactions{
-		_defaultClient:  defaultClient,
-		_securityClient: securityClient,
-		_serverURL:      serverURL,
-		_language:       language,
-		_sdkVersion:     sdkVersion,
-		_genVersion:     genVersion,
+func newCommerceTransactions(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *commerceTransactions {
+	return &commerceTransactions{
+		defaultClient:  defaultClient,
+		securityClient: securityClient,
+		serverURL:      serverURL,
+		language:       language,
+		sdkVersion:     sdkVersion,
+		genVersion:     genVersion,
 	}
 }
 
 // GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTransactions - Gets the latest commerce transactions for a company, with pagination
-func (s *CommerceTransactions) GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTransactions(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTransactionsRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTransactionsResponse, error) {
-	baseURL := s._serverURL
+func (s *commerceTransactions) GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTransactions(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTransactionsRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTransactionsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/data/commerce-transactions", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -39,20 +39,25 @@ func (s *CommerceTransactions) GetCompaniesCompanyIDConnectionsConnectionIDDataC
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTransactionsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -72,8 +77,8 @@ func (s *CommerceTransactions) GetCompaniesCompanyIDConnectionsConnectionIDDataC
 }
 
 // GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTransactionsTransactionID - Gets the specified commerce transaction for a given company
-func (s *CommerceTransactions) GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTransactionsTransactionID(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTransactionsTransactionIDRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTransactionsTransactionIDResponse, error) {
-	baseURL := s._serverURL
+func (s *commerceTransactions) GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTransactionsTransactionID(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTransactionsTransactionIDRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTransactionsTransactionIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/data/commerce-transactions/{transactionId}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -81,18 +86,21 @@ func (s *CommerceTransactions) GetCompaniesCompanyIDConnectionsConnectionIDDataC
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTransactionsTransactionIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {

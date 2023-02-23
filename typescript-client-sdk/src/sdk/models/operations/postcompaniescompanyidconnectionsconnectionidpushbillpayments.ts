@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
 
 
 export class PostCompaniesCompanyIdConnectionsConnectionIdPushBillPaymentsPathParams extends SpeakeasyBase {
@@ -11,21 +10,18 @@ export class PostCompaniesCompanyIdConnectionsConnectionIdPushBillPaymentsPathPa
   connectionId: string;
 }
 
-
 export class PostCompaniesCompanyIdConnectionsConnectionIdPushBillPaymentsQueryParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=timeoutInMinutes" })
   timeoutInMinutes?: number;
 }
 
-
 export class PostCompaniesCompanyIdConnectionsConnectionIdPushBillPaymentsSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class PostCompaniesCompanyIdConnectionsConnectionIdPushBillPaymentsRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -40,7 +36,6 @@ export class PostCompaniesCompanyIdConnectionsConnectionIdPushBillPaymentsReques
   @SpeakeasyMetadata()
   security: PostCompaniesCompanyIdConnectionsConnectionIdPushBillPaymentsSecurity;
 }
-
 
 export class PostCompaniesCompanyIdConnectionsConnectionIdPushBillPaymentsResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

@@ -1,8 +1,8 @@
 import dataclasses
-from typing import Optional
+from ..shared import codat_datacontracts_push_pushfieldvalidation as shared_codat_datacontracts_push_pushfieldvalidation
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_datacontracts_push_pushfieldvalidation as shared_codat_datacontracts_push_pushfieldvalidation
+from typing import Optional
 
 
 @dataclass_json

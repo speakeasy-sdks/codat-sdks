@@ -1,7 +1,7 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCommercePaymentMethodRef } from "./codatdatacontractsdatasetscommercepaymentmethodref";
 import { CodatDataContractsDatasetsCommercePaymentStatusEnum } from "./codatdatacontractsdatasetscommercepaymentstatusenum";
-
+import { CodatDataContractsDatasetsDataInterfacesSupplementalData } from "./codatdatacontractsdatasetsdatainterfacessupplementaldata";
 
 
 export class CodatDataContractsDatasetsCommercePayment extends SpeakeasyBase {
@@ -34,4 +34,7 @@ export class CodatDataContractsDatasetsCommercePayment extends SpeakeasyBase {
 
   @SpeakeasyMetadata({ data: "json, name=status" })
   status?: CodatDataContractsDatasetsCommercePaymentStatusEnum;
+
+  @SpeakeasyMetadata({ data: "json, name=supplementalData" })
+  supplementalData?: CodatDataContractsDatasetsDataInterfacesSupplementalData;
 }

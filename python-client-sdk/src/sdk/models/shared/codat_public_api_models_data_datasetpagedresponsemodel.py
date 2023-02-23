@@ -1,9 +1,9 @@
 import dataclasses
-from typing import Optional
+from ..shared import codat_public_api_models_data_dataset as shared_codat_public_api_models_data_dataset
+from ..shared import codat_public_api_models_data_datasetpagedresponselinksmodel as shared_codat_public_api_models_data_datasetpagedresponselinksmodel
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_public_api_models_data_datasetpagedresponselinksmodel as shared_codat_public_api_models_data_datasetpagedresponselinksmodel
-from ..shared import codat_public_api_models_data_dataset as shared_codat_public_api_models_data_dataset
+from typing import Optional
 
 
 @dataclass_json

@@ -6,4 +6,3 @@ class CodatDataContractsDatasetsInvoicingStatusEnum(str, Enum):
     PARTIALLY_INVOICED = "PartiallyInvoiced"
     INVOICED = "Invoiced"
     NOT_INVOICED = "NotInvoiced"
-

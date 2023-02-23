@@ -13,4 +13,3 @@ class CodatDataContractsDatasetsCommerceDisputeStatusEnum(str, Enum):
     INQUIRY_PROCESSING = "InquiryProcessing"
     INQUIRY_CLOSED = "InquiryClosed"
     WAITING_THIRD_PARTY = "WaitingThirdParty"
-

@@ -1,9 +1,9 @@
 import dataclasses
-from typing import Optional
+from ..shared import codat_datacontracts_datasets_bill as shared_codat_datacontracts_datasets_bill
+from ..shared import codat_datacontracts_datasets_billpagedresponselinksmodel as shared_codat_datacontracts_datasets_billpagedresponselinksmodel
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_datacontracts_datasets_billpagedresponselinksmodel as shared_codat_datacontracts_datasets_billpagedresponselinksmodel
-from ..shared import codat_datacontracts_datasets_bill as shared_codat_datacontracts_datasets_bill
+from typing import Optional
 
 
 @dataclass_json

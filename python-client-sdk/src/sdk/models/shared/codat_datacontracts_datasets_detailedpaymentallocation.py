@@ -1,8 +1,8 @@
 import dataclasses
-from dataclasses_json import dataclass_json
-from sdk import utils
 from ..shared import codat_datacontracts_datasets_allocation as shared_codat_datacontracts_datasets_allocation
 from ..shared import codat_datacontracts_datasets_paymentallocationpayment as shared_codat_datacontracts_datasets_paymentallocationpayment
+from dataclasses_json import dataclass_json
+from sdk import utils
 
 
 @dataclass_json

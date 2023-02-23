@@ -1,8 +1,8 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCommerceProductCategoryRef } from "./codatdatacontractsdatasetscommerceproductcategoryref";
 import { CodatDataContractsDatasetsCommerceProductStatusEnum } from "./codatdatacontractsdatasetscommerceproductstatusenum";
 import { CodatDataContractsDatasetsCommerceProductVariant } from "./codatdatacontractsdatasetscommerceproductvariant";
-
+import { CodatDataContractsDatasetsDataInterfacesSupplementalData } from "./codatdatacontractsdatasetsdatainterfacessupplementaldata";
 
 
 export class CodatDataContractsDatasetsCommerceProduct extends SpeakeasyBase {
@@ -35,6 +35,9 @@ export class CodatDataContractsDatasetsCommerceProduct extends SpeakeasyBase {
 
   @SpeakeasyMetadata({ data: "json, name=status" })
   status?: CodatDataContractsDatasetsCommerceProductStatusEnum;
+
+  @SpeakeasyMetadata({ data: "json, name=supplementalData" })
+  supplementalData?: CodatDataContractsDatasetsDataInterfacesSupplementalData;
 
   @SpeakeasyMetadata({ data: "json, name=variants", elemType: CodatDataContractsDatasetsCommerceProductVariant })
   variants?: CodatDataContractsDatasetsCommerceProductVariant[];

@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
 
 
 export class GetDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegrityStatusPathParams extends SpeakeasyBase {
@@ -11,15 +10,13 @@ export class GetDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegrityStatus
   dataType: string;
 }
 
-
 export class GetDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegrityStatusSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class GetDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegrityStatusRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -28,7 +25,6 @@ export class GetDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegrityStatus
   @SpeakeasyMetadata()
   security: GetDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegrityStatusSecurity;
 }
-
 
 export class GetDataCompaniesCompanyIdAssessDataTypesDataTypeDataIntegrityStatusResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

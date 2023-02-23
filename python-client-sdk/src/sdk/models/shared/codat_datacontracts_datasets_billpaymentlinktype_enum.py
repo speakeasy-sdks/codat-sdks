@@ -12,4 +12,3 @@ class CodatDataContractsDatasetsBillPaymentLinkTypeEnum(str, Enum):
     REFUND = "Refund"
     MANUAL_JOURNAL = "ManualJournal"
     DISCOUNT = "Discount"
-

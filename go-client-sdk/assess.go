@@ -3,36 +3,36 @@ package sdk
 import (
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/utils"
 	"net/http"
 	"strings"
 )
 
-type Assess struct {
-	_defaultClient  HTTPClient
-	_securityClient HTTPClient
-	_serverURL      string
-	_language       string
-	_sdkVersion     string
-	_genVersion     string
+type assess struct {
+	defaultClient  HTTPClient
+	securityClient HTTPClient
+	serverURL      string
+	language       string
+	sdkVersion     string
+	genVersion     string
 }
 
-func NewAssess(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *Assess {
-	return &Assess{
-		_defaultClient:  defaultClient,
-		_securityClient: securityClient,
-		_serverURL:      serverURL,
-		_language:       language,
-		_sdkVersion:     sdkVersion,
-		_genVersion:     genVersion,
+func newAssess(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *assess {
+	return &assess{
+		defaultClient:  defaultClient,
+		securityClient: securityClient,
+		serverURL:      serverURL,
+		language:       language,
+		sdkVersion:     sdkVersion,
+		genVersion:     genVersion,
 	}
 }
 
 // GetCompaniesCompanyIDReportsEnhancedBalanceSheetAccounts - Gets a list of accounts with account categories per statement period, specific to balance sheet
-func (s *Assess) GetCompaniesCompanyIDReportsEnhancedBalanceSheetAccounts(ctx context.Context, request operations.GetCompaniesCompanyIDReportsEnhancedBalanceSheetAccountsRequest) (*operations.GetCompaniesCompanyIDReportsEnhancedBalanceSheetAccountsResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetCompaniesCompanyIDReportsEnhancedBalanceSheetAccounts(ctx context.Context, request operations.GetCompaniesCompanyIDReportsEnhancedBalanceSheetAccountsRequest) (*operations.GetCompaniesCompanyIDReportsEnhancedBalanceSheetAccountsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/reports/enhancedBalanceSheet/accounts", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -40,20 +40,25 @@ func (s *Assess) GetCompaniesCompanyIDReportsEnhancedBalanceSheetAccounts(ctx co
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDReportsEnhancedBalanceSheetAccountsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -73,8 +78,8 @@ func (s *Assess) GetCompaniesCompanyIDReportsEnhancedBalanceSheetAccounts(ctx co
 }
 
 // GetCompaniesCompanyIDReportsEnhancedCashFlowTransactions - Gets a list of banking transactions and their categories.
-func (s *Assess) GetCompaniesCompanyIDReportsEnhancedCashFlowTransactions(ctx context.Context, request operations.GetCompaniesCompanyIDReportsEnhancedCashFlowTransactionsRequest) (*operations.GetCompaniesCompanyIDReportsEnhancedCashFlowTransactionsResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetCompaniesCompanyIDReportsEnhancedCashFlowTransactions(ctx context.Context, request operations.GetCompaniesCompanyIDReportsEnhancedCashFlowTransactionsRequest) (*operations.GetCompaniesCompanyIDReportsEnhancedCashFlowTransactionsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/reports/enhancedCashFlow/transactions", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -82,20 +87,25 @@ func (s *Assess) GetCompaniesCompanyIDReportsEnhancedCashFlowTransactions(ctx co
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDReportsEnhancedCashFlowTransactionsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -115,8 +125,8 @@ func (s *Assess) GetCompaniesCompanyIDReportsEnhancedCashFlowTransactions(ctx co
 }
 
 // GetCompaniesCompanyIDReportsEnhancedProfitAndLossAccounts - Gets a list of accounts with account categories per statement period, specific to profit and loss
-func (s *Assess) GetCompaniesCompanyIDReportsEnhancedProfitAndLossAccounts(ctx context.Context, request operations.GetCompaniesCompanyIDReportsEnhancedProfitAndLossAccountsRequest) (*operations.GetCompaniesCompanyIDReportsEnhancedProfitAndLossAccountsResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetCompaniesCompanyIDReportsEnhancedProfitAndLossAccounts(ctx context.Context, request operations.GetCompaniesCompanyIDReportsEnhancedProfitAndLossAccountsRequest) (*operations.GetCompaniesCompanyIDReportsEnhancedProfitAndLossAccountsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/reports/enhancedProfitAndLoss/accounts", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -124,20 +134,25 @@ func (s *Assess) GetCompaniesCompanyIDReportsEnhancedProfitAndLossAccounts(ctx c
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDReportsEnhancedProfitAndLossAccountsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -157,8 +172,8 @@ func (s *Assess) GetCompaniesCompanyIDReportsEnhancedProfitAndLossAccounts(ctx c
 }
 
 // GetDataAssessAccountsCategories - Gets a list of all the Codat standard categories.
-func (s *Assess) GetDataAssessAccountsCategories(ctx context.Context, request operations.GetDataAssessAccountsCategoriesRequest) (*operations.GetDataAssessAccountsCategoriesResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataAssessAccountsCategories(ctx context.Context, request operations.GetDataAssessAccountsCategoriesRequest) (*operations.GetDataAssessAccountsCategoriesResponse, error) {
+	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/data/assess/accounts/categories"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -166,18 +181,21 @@ func (s *Assess) GetDataAssessAccountsCategories(ctx context.Context, request op
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataAssessAccountsCategoriesResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -197,8 +215,8 @@ func (s *Assess) GetDataAssessAccountsCategories(ctx context.Context, request op
 }
 
 // GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityDetails - Gets record-by-record match results for a given company and datatype, optionally restricted by a Codat query string.
-func (s *Assess) GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityDetails(ctx context.Context, request operations.GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityDetailsRequest) (*operations.GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityDetailsResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityDetails(ctx context.Context, request operations.GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityDetailsRequest) (*operations.GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityDetailsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/details", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -206,20 +224,25 @@ func (s *Assess) GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityDe
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityDetailsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -239,8 +262,8 @@ func (s *Assess) GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityDe
 }
 
 // GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityStatus - Gets match status for a given company and datatype.
-func (s *Assess) GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityStatus(ctx context.Context, request operations.GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityStatusRequest) (*operations.GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityStatusResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityStatus(ctx context.Context, request operations.GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityStatusRequest) (*operations.GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityStatusResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/status", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -248,18 +271,21 @@ func (s *Assess) GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegritySt
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegrityStatusResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -279,8 +305,8 @@ func (s *Assess) GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegritySt
 }
 
 // GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegritySummaries - Gets match summary for a given company and datatype, optionally restricted by a Codat query string.
-func (s *Assess) GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegritySummaries(ctx context.Context, request operations.GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegritySummariesRequest) (*operations.GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegritySummariesResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegritySummaries(ctx context.Context, request operations.GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegritySummariesRequest) (*operations.GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegritySummariesResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/summaries", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -288,20 +314,25 @@ func (s *Assess) GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegritySu
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegritySummariesResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -321,8 +352,8 @@ func (s *Assess) GetDataCompaniesCompanyIDAssessDataTypesDataTypeDataIntegritySu
 }
 
 // GetDataCompaniesCompanyIDAssessExcel - Returns the status of the latest report requested.
-func (s *Assess) GetDataCompaniesCompanyIDAssessExcel(ctx context.Context, request operations.GetDataCompaniesCompanyIDAssessExcelRequest) (*operations.GetDataCompaniesCompanyIDAssessExcelResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDAssessExcel(ctx context.Context, request operations.GetDataCompaniesCompanyIDAssessExcelRequest) (*operations.GetDataCompaniesCompanyIDAssessExcelResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/assess/excel", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -330,20 +361,25 @@ func (s *Assess) GetDataCompaniesCompanyIDAssessExcel(ctx context.Context, reque
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDAssessExcelResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -363,8 +399,8 @@ func (s *Assess) GetDataCompaniesCompanyIDAssessExcel(ctx context.Context, reque
 }
 
 // GetDataCompaniesCompanyIDAssessExcelDownload - Download the Excel report to a local drive.
-func (s *Assess) GetDataCompaniesCompanyIDAssessExcelDownload(ctx context.Context, request operations.GetDataCompaniesCompanyIDAssessExcelDownloadRequest) (*operations.GetDataCompaniesCompanyIDAssessExcelDownloadResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDAssessExcelDownload(ctx context.Context, request operations.GetDataCompaniesCompanyIDAssessExcelDownloadRequest) (*operations.GetDataCompaniesCompanyIDAssessExcelDownloadResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/assess/excel/download", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -372,20 +408,25 @@ func (s *Assess) GetDataCompaniesCompanyIDAssessExcelDownload(ctx context.Contex
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDAssessExcelDownloadResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -405,8 +446,8 @@ func (s *Assess) GetDataCompaniesCompanyIDAssessExcelDownload(ctx context.Contex
 }
 
 // GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountingMetricsMarketing - Gets the marketing metrics from an accounting source for a given company, over one or more periods of time.
-func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountingMetricsMarketing(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountingMetricsMarketingRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountingMetricsMarketingResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountingMetricsMarketing(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountingMetricsMarketingRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountingMetricsMarketingResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/connections/{connectionId}/assess/accountingMetrics/marketing", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -414,20 +455,25 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountin
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountingMetricsMarketingResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -447,8 +493,8 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountin
 }
 
 // GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategories - Get account categories (suggested and confirmed) for a company connection.
-func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategories(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategoriesRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategoriesResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategories(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategoriesRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategoriesResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/connections/{connectionId}/assess/accounts/categories", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -456,20 +502,25 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsC
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategoriesResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -489,8 +540,8 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsC
 }
 
 // GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategories - Gets the suggested and/or confirmed category for a specific account.
-func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategories(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategoriesRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategoriesResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategories(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategoriesRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategoriesResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/connections/{connectionId}/assess/accounts/{accountId}/categories", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -498,18 +549,21 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsA
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategoriesResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -529,8 +583,8 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsA
 }
 
 // GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsCustomerRetention - Gets the customer retention metrics for a specific company connection, over one or more periods of time.
-func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsCustomerRetention(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsCustomerRetentionRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsCustomerRetentionResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsCustomerRetention(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsCustomerRetentionRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsCustomerRetentionResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/customerRetention", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -538,20 +592,25 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceM
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsCustomerRetentionResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -571,8 +630,8 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceM
 }
 
 // GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsLifetimeValue - Gets the lifetime value metric for a specific company connection, over one or more periods of time.
-func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsLifetimeValue(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsLifetimeValueRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsLifetimeValueResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsLifetimeValue(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsLifetimeValueRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsLifetimeValueResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/lifetimeValue", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -580,20 +639,25 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceM
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsLifetimeValueResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -613,8 +677,8 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceM
 }
 
 // GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsOrders - Gets the order information for a specific company connection, over one or more periods of time.
-func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsOrders(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsOrdersRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsOrdersResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsOrders(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsOrdersRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsOrdersResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/orders", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -622,20 +686,25 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceM
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsOrdersResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -655,8 +724,8 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceM
 }
 
 // GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsRefunds - Gets the refunds information for a specific company connection, over one or more periods of time.
-func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsRefunds(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsRefundsRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsRefundsResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsRefunds(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsRefundsRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsRefundsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/refunds", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -664,20 +733,25 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceM
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsRefundsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -697,8 +771,8 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceM
 }
 
 // GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsRevenue - Gets the revenue and revenue growth for a specific company connection, over one or more periods of time.
-func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsRevenue(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsRevenueRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsRevenueResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsRevenue(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsRevenueRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsRevenueResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/revenue", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -706,20 +780,25 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceM
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsRevenueResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -739,8 +818,8 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceM
 }
 
 // GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedBalanceSheet - Gets a fully categorized balance sheet statement for a given company, over one or more period(s).
-func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedBalanceSheet(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedBalanceSheetRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedBalanceSheetResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedBalanceSheet(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedBalanceSheetRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedBalanceSheetResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/connections/{connectionId}/assess/enhancedBalanceSheet", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -748,20 +827,25 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedB
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedBalanceSheetResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -781,8 +865,8 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedB
 }
 
 // GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedProfitAndLoss - Gets a fully categorized profit and loss statement for a given company, over one or more period(s).
-func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedProfitAndLoss(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedProfitAndLossRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedProfitAndLossResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedProfitAndLoss(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedProfitAndLossRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedProfitAndLossResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/connections/{connectionId}/assess/enhancedProfitAndLoss", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -790,20 +874,25 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedP
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedProfitAndLossResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -823,8 +912,8 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessEnhancedP
 }
 
 // GetDataCompaniesCompanyIDConnectionsConnectionIDAssessFinancialMetrics - Gets all the available financial metrics for a given company, over one or more periods.
-func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessFinancialMetrics(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessFinancialMetricsRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessFinancialMetricsResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessFinancialMetrics(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessFinancialMetricsRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessFinancialMetricsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/connections/{connectionId}/assess/financialMetrics", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -832,20 +921,25 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessFinancial
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessFinancialMetricsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -865,8 +959,8 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessFinancial
 }
 
 // GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscriptionsMrr - Gets key metrics for subscription revenue.
-func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscriptionsMrr(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscriptionsMrrRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscriptionsMrrResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscriptionsMrr(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscriptionsMrrRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscriptionsMrrResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/connections/{connectionId}/assess/subscriptions/mrr", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -874,18 +968,21 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscript
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscriptionsMrrResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -905,8 +1002,8 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscript
 }
 
 // GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscriptionsProcess - Gets key metrics for subscription revenue.
-func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscriptionsProcess(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscriptionsProcessRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscriptionsProcessResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscriptionsProcess(ctx context.Context, request operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscriptionsProcessRequest) (*operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscriptionsProcessResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/connections/{connectionId}/assess/subscriptions/process", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -914,18 +1011,21 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscript
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscriptionsProcessResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -936,8 +1036,8 @@ func (s *Assess) GetDataCompaniesCompanyIDConnectionsConnectionIDAssessSubscript
 }
 
 // PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategories - Updates the categories for all or a batch of accounts for a specific connection.
-func (s *Assess) PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategories(ctx context.Context, request operations.PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategoriesRequest) (*operations.PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategoriesResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategories(ctx context.Context, request operations.PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategoriesRequest) (*operations.PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategoriesResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/connections/{connectionId}/assess/accounts/categories", request.PathParams)
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
@@ -952,18 +1052,21 @@ func (s *Assess) PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccount
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsCategoriesResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -983,8 +1086,8 @@ func (s *Assess) PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccount
 }
 
 // PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategories - Updates or removes the confirmed category of a specific account.
-func (s *Assess) PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategories(ctx context.Context, request operations.PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategoriesRequest) (*operations.PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategoriesResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategories(ctx context.Context, request operations.PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategoriesRequest) (*operations.PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategoriesResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/connections/{connectionId}/assess/accounts/{accountId}/categories", request.PathParams)
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
@@ -999,18 +1102,21 @@ func (s *Assess) PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccount
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccountsAccountIDCategoriesResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -1030,8 +1136,8 @@ func (s *Assess) PatchDataCompaniesCompanyIDConnectionsConnectionIDAssessAccount
 }
 
 // PostDataCompaniesCompanyIDAssessExcel - Request an Excel report for download.
-func (s *Assess) PostDataCompaniesCompanyIDAssessExcel(ctx context.Context, request operations.PostDataCompaniesCompanyIDAssessExcelRequest) (*operations.PostDataCompaniesCompanyIDAssessExcelResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) PostDataCompaniesCompanyIDAssessExcel(ctx context.Context, request operations.PostDataCompaniesCompanyIDAssessExcelRequest) (*operations.PostDataCompaniesCompanyIDAssessExcelResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/assess/excel", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, nil)
@@ -1039,20 +1145,25 @@ func (s *Assess) PostDataCompaniesCompanyIDAssessExcel(ctx context.Context, requ
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PostDataCompaniesCompanyIDAssessExcelResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -1072,8 +1183,8 @@ func (s *Assess) PostDataCompaniesCompanyIDAssessExcel(ctx context.Context, requ
 }
 
 // PostDataCompaniesCompanyIDAssessExcelDownload - Download the Excel report to a local drive.
-func (s *Assess) PostDataCompaniesCompanyIDAssessExcelDownload(ctx context.Context, request operations.PostDataCompaniesCompanyIDAssessExcelDownloadRequest) (*operations.PostDataCompaniesCompanyIDAssessExcelDownloadResponse, error) {
-	baseURL := s._serverURL
+func (s *assess) PostDataCompaniesCompanyIDAssessExcelDownload(ctx context.Context, request operations.PostDataCompaniesCompanyIDAssessExcelDownloadRequest) (*operations.PostDataCompaniesCompanyIDAssessExcelDownloadResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/data/companies/{companyId}/assess/excel/download", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, nil)
@@ -1081,20 +1192,25 @@ func (s *Assess) PostDataCompaniesCompanyIDAssessExcelDownload(ctx context.Conte
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PostDataCompaniesCompanyIDAssessExcelDownloadResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {

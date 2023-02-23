@@ -1,7 +1,7 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 	"time"
 )
 
@@ -10,14 +10,14 @@ type GetCompaniesCompanyIDDataFinancialsCashFlowStatementPathParams struct {
 }
 
 type GetCompaniesCompanyIDDataFinancialsCashFlowStatementQueryParams struct {
-	PeriodLength     int32      `queryParam:"style=form,explode=true,name=periodLength"`
-	PeriodsToCompare int32      `queryParam:"style=form,explode=true,name=periodsToCompare"`
+	PeriodLength     int        `queryParam:"style=form,explode=true,name=periodLength"`
+	PeriodsToCompare int        `queryParam:"style=form,explode=true,name=periodsToCompare"`
 	StartMonth       *time.Time `queryParam:"style=form,explode=true,name=startMonth"`
 }
 
 type GetCompaniesCompanyIDDataFinancialsCashFlowStatementSecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
 type GetCompaniesCompanyIDDataFinancialsCashFlowStatementRequest struct {
@@ -29,5 +29,5 @@ type GetCompaniesCompanyIDDataFinancialsCashFlowStatementRequest struct {
 type GetCompaniesCompanyIDDataFinancialsCashFlowStatementResponse struct {
 	CodatPublicAPIModelsDataCashFlowStatementResponse *shared.CodatPublicAPIModelsDataCashFlowStatementResponse
 	ContentType                                       string
-	StatusCode                                        int64
+	StatusCode                                        int
 }

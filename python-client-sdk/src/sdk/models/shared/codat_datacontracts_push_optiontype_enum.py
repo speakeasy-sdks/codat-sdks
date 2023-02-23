@@ -10,4 +10,3 @@ class CodatDataContractsPushOptionTypeEnum(str, Enum):
     DATE_TIME = "DateTime"
     FILE = "File"
     MULTI_PART = "MultiPart"
-

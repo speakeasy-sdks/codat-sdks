@@ -7,4 +7,3 @@ class CodatDataContractsDatasetsCommerceAddressTypeEnum(str, Enum):
     DELIVERY = "Delivery"
     ORDER = "Order"
     INVENTORY = "Inventory"
-

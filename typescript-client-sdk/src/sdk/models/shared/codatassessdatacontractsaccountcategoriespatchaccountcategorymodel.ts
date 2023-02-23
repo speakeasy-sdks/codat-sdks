@@ -1,7 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { CodatAssessDataContractsAccountCategoriesPatchAccountRefModel } from "./codatassessdatacontractsaccountcategoriespatchaccountrefmodel";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatAssessDataContractsAccountCategoriesConfirmedAccountCategoryModel } from "./codatassessdatacontractsaccountcategoriesconfirmedaccountcategorymodel";
-
+import { CodatAssessDataContractsAccountCategoriesPatchAccountRefModel } from "./codatassessdatacontractsaccountcategoriespatchaccountrefmodel";
 
 
 export class CodatAssessDataContractsAccountCategoriesPatchAccountCategoryModel extends SpeakeasyBase {

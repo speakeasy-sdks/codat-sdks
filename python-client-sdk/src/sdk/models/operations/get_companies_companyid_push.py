@@ -1,8 +1,7 @@
 import dataclasses
-from typing import Optional
-from ..shared import security as shared_security
 from ..shared import security as shared_security
 from ..shared import system_objectpushoperationpagedresponsemodel as shared_system_objectpushoperationpagedresponsemodel
+from typing import Optional
 
 
 @dataclasses.dataclass

@@ -14,19 +14,19 @@ const sdk = new SDK(withSecurity(
     
 const req: GetCompaniesCompanyIdConnectionsConnectionIdDataAccountTransactionsRequest = {
   security: {
-    codatLogin: {
-      authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    apiKeyAuth: {
+      apiKey: "YOUR_API_KEY_HERE",
     },
   },
   pathParams: {
-    companyId: "sit",
-    connectionId: "voluptas",
+    companyId: "unde",
+    connectionId: "deserunt",
   },
   queryParams: {
-    orderBy: "culpa",
-    page: 501233450539197794,
-    pageSize: 3390393562759376202,
-    query: "dolor",
+    orderBy: "porro",
+    page: 844266,
+    pageSize: 602763,
+    query: "vero",
   },
 };
 

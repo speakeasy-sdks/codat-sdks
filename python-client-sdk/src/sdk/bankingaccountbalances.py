@@ -1,7 +1,7 @@
 import requests
-from typing import Optional
-from sdk.models import shared, operations
 from . import utils
+from sdk.models import operations, shared
+from typing import Optional
 
 class BankingAccountBalances:
     _client: requests.Session

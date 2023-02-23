@@ -8,4 +8,3 @@ class CodatDataContractsDatasetsCommercePaymentStatusEnum(str, Enum):
     PAID = "Paid"
     FAILED = "Failed"
     CANCELLED = "Cancelled"
-

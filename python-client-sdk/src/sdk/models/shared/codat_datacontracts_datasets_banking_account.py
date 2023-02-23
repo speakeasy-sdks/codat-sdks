@@ -1,15 +1,14 @@
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
 import dateutil.parser
-from typing import Optional
-from enum import Enum
-from dataclasses_json import dataclass_json
-from sdk import utils
 from ..shared import codat_datacontracts_datasets_banking_accountbalanceamounts as shared_codat_datacontracts_datasets_banking_accountbalanceamounts
 from ..shared import codat_datacontracts_datasets_banking_accountidentifiers as shared_codat_datacontracts_datasets_banking_accountidentifiers
 from ..shared import codat_datacontracts_datasets_banking_accountinstitution as shared_codat_datacontracts_datasets_banking_accountinstitution
 from ..shared import codat_datacontracts_datasets_banking_accounttype_enum as shared_codat_datacontracts_datasets_banking_accounttype_enum
+from dataclasses_json import dataclass_json
+from datetime import datetime
+from marshmallow import fields
+from sdk import utils
+from typing import Optional
 
 
 @dataclass_json

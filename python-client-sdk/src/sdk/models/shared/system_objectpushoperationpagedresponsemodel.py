@@ -1,9 +1,9 @@
 import dataclasses
-from typing import Optional
+from ..shared import system_objectpushoperation as shared_system_objectpushoperation
+from ..shared import system_objectpushoperationpagedresponselinksmodel as shared_system_objectpushoperationpagedresponselinksmodel
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import system_objectpushoperationpagedresponselinksmodel as shared_system_objectpushoperationpagedresponselinksmodel
-from ..shared import system_objectpushoperation as shared_system_objectpushoperation
+from typing import Optional
 
 
 @dataclass_json

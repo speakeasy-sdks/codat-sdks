@@ -8,4 +8,3 @@ class CodatDataContractsDatasetsCreditNoteStatusEnum(str, Enum):
     PAID = "Paid"
     VOID = "Void"
     PARTIALLY_PAID = "PartiallyPaid"
-

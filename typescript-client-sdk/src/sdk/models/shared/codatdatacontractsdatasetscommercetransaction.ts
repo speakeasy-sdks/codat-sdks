@@ -1,7 +1,7 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { CodatDataContractsDatasetsCommerceTransactionSourceRef } from "./codatdatacontractsdatasetscommercetransactionsourceref";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCommercePlatformTransactionTypeEnum } from "./codatdatacontractsdatasetscommerceplatformtransactiontypeenum";
-
+import { CodatDataContractsDatasetsCommerceTransactionSourceRef } from "./codatdatacontractsdatasetscommercetransactionsourceref";
+import { CodatDataContractsDatasetsDataInterfacesSupplementalData } from "./codatdatacontractsdatasetsdatainterfacessupplementaldata";
 
 
 export class CodatDataContractsDatasetsCommerceTransaction extends SpeakeasyBase {
@@ -22,6 +22,9 @@ export class CodatDataContractsDatasetsCommerceTransaction extends SpeakeasyBase
 
   @SpeakeasyMetadata({ data: "json, name=subType" })
   subType?: string;
+
+  @SpeakeasyMetadata({ data: "json, name=supplementalData" })
+  supplementalData?: CodatDataContractsDatasetsDataInterfacesSupplementalData;
 
   @SpeakeasyMetadata({ data: "json, name=totalAmount" })
   totalAmount?: number;

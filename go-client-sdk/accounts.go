@@ -3,35 +3,35 @@ package sdk
 import (
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/utils"
 	"net/http"
 )
 
-type Accounts struct {
-	_defaultClient  HTTPClient
-	_securityClient HTTPClient
-	_serverURL      string
-	_language       string
-	_sdkVersion     string
-	_genVersion     string
+type accounts struct {
+	defaultClient  HTTPClient
+	securityClient HTTPClient
+	serverURL      string
+	language       string
+	sdkVersion     string
+	genVersion     string
 }
 
-func NewAccounts(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *Accounts {
-	return &Accounts{
-		_defaultClient:  defaultClient,
-		_securityClient: securityClient,
-		_serverURL:      serverURL,
-		_language:       language,
-		_sdkVersion:     sdkVersion,
-		_genVersion:     genVersion,
+func newAccounts(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *accounts {
+	return &accounts{
+		defaultClient:  defaultClient,
+		securityClient: securityClient,
+		serverURL:      serverURL,
+		language:       language,
+		sdkVersion:     sdkVersion,
+		genVersion:     genVersion,
 	}
 }
 
 // GetCompaniesCompanyIDDataAccounts - Gets the latest chart of accounts for a company
-func (s *Accounts) GetCompaniesCompanyIDDataAccounts(ctx context.Context, request operations.GetCompaniesCompanyIDDataAccountsRequest) (*operations.GetCompaniesCompanyIDDataAccountsResponse, error) {
-	baseURL := s._serverURL
+func (s *accounts) GetCompaniesCompanyIDDataAccounts(ctx context.Context, request operations.GetCompaniesCompanyIDDataAccountsRequest) (*operations.GetCompaniesCompanyIDDataAccountsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/data/accounts", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -39,20 +39,25 @@ func (s *Accounts) GetCompaniesCompanyIDDataAccounts(ctx context.Context, reques
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDDataAccountsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -72,8 +77,8 @@ func (s *Accounts) GetCompaniesCompanyIDDataAccounts(ctx context.Context, reques
 }
 
 // GetCompaniesCompanyIDDataAccountsAccountID - Gets a single account corresponding to the supplied Id
-func (s *Accounts) GetCompaniesCompanyIDDataAccountsAccountID(ctx context.Context, request operations.GetCompaniesCompanyIDDataAccountsAccountIDRequest) (*operations.GetCompaniesCompanyIDDataAccountsAccountIDResponse, error) {
-	baseURL := s._serverURL
+func (s *accounts) GetCompaniesCompanyIDDataAccountsAccountID(ctx context.Context, request operations.GetCompaniesCompanyIDDataAccountsAccountIDRequest) (*operations.GetCompaniesCompanyIDDataAccountsAccountIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/data/accounts/{accountId}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -81,18 +86,21 @@ func (s *Accounts) GetCompaniesCompanyIDDataAccountsAccountID(ctx context.Contex
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDDataAccountsAccountIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -112,8 +120,8 @@ func (s *Accounts) GetCompaniesCompanyIDDataAccountsAccountID(ctx context.Contex
 }
 
 // PostCompaniesCompanyIDConnectionsConnectionIDPushAccounts - Posts an individual account for a given company.
-func (s *Accounts) PostCompaniesCompanyIDConnectionsConnectionIDPushAccounts(ctx context.Context, request operations.PostCompaniesCompanyIDConnectionsConnectionIDPushAccountsRequest) (*operations.PostCompaniesCompanyIDConnectionsConnectionIDPushAccountsResponse, error) {
-	baseURL := s._serverURL
+func (s *accounts) PostCompaniesCompanyIDConnectionsConnectionIDPushAccounts(ctx context.Context, request operations.PostCompaniesCompanyIDConnectionsConnectionIDPushAccountsRequest) (*operations.PostCompaniesCompanyIDConnectionsConnectionIDPushAccountsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/push/accounts", request.PathParams)
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
@@ -128,20 +136,25 @@ func (s *Accounts) PostCompaniesCompanyIDConnectionsConnectionIDPushAccounts(ctx
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PostCompaniesCompanyIDConnectionsConnectionIDPushAccountsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {

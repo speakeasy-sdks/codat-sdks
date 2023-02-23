@@ -1,14 +1,11 @@
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
-import dateutil.parser
-from typing import Optional
-from dataclasses_json import dataclass_json
-from sdk import utils
 from ..shared import codat_dataintegrity_contracts_metadata_matchamountinfo as shared_codat_dataintegrity_contracts_metadata_matchamountinfo
 from ..shared import codat_dataintegrity_contracts_metadata_matchconnectionids as shared_codat_dataintegrity_contracts_metadata_matchconnectionids
 from ..shared import codat_dataintegrity_contracts_metadata_matchdateinfo as shared_codat_dataintegrity_contracts_metadata_matchdateinfo
 from ..shared import codat_dataintegrity_contracts_metadata_matchstatusinfo as shared_codat_dataintegrity_contracts_metadata_matchstatusinfo
+from dataclasses_json import dataclass_json
+from sdk import utils
+from typing import Optional
 
 
 @dataclass_json

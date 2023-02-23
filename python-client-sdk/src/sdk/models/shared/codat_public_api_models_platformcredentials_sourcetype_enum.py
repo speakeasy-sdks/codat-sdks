@@ -9,4 +9,3 @@ class CodatPublicAPIModelsPlatformCredentialsSourceTypeEnum(str, Enum):
     COMMERCE = "Commerce"
     EXPENSE = "Expense"
     OTHER = "Other"
-

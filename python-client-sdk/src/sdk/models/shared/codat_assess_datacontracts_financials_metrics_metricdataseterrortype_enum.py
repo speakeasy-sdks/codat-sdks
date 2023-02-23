@@ -7,4 +7,3 @@ class CodatAssessDataContractsFinancialsMetricsMetricDataSetErrorTypeEnum(str, E
     DATA_SET_NOT_SUPPORTED = "DataSetNotSupported"
     DATA_SYNC_FAILED = "DataSyncFailed"
     DATA_TYPE_NOT_ENABLED = "DataTypeNotEnabled"
-

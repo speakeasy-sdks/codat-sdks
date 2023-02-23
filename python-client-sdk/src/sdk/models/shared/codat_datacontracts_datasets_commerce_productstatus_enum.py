@@ -5,4 +5,3 @@ class CodatDataContractsDatasetsCommerceProductStatusEnum(str, Enum):
     UNKNOWN = "Unknown"
     PUBLISHED = "Published"
     UNPUBLISHED = "Unpublished"
-

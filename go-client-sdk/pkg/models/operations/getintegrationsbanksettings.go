@@ -1,12 +1,12 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 )
 
 type GetIntegrationsBankSettingsSecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
 type GetIntegrationsBankSettingsRequest struct {
@@ -16,5 +16,5 @@ type GetIntegrationsBankSettingsRequest struct {
 type GetIntegrationsBankSettingsResponse struct {
 	CodatPublicAPIModelsClientsBankingSettingsModelsBankSettingsDataset *shared.CodatPublicAPIModelsClientsBankingSettingsModelsBankSettingsDataset
 	ContentType                                                         string
-	StatusCode                                                          int64
+	StatusCode                                                          int
 }

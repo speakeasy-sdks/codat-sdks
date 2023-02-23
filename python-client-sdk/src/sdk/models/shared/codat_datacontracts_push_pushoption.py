@@ -1,11 +1,10 @@
 import dataclasses
-from typing import Optional
-from enum import Enum
+from ..shared import codat_datacontracts_push_optiontype_enum as shared_codat_datacontracts_push_optiontype_enum
+from ..shared import codat_datacontracts_push_pushoptionchoice as shared_codat_datacontracts_push_pushoptionchoice
+from ..shared import codat_datacontracts_push_pushvalidationinfo as shared_codat_datacontracts_push_pushvalidationinfo
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_datacontracts_push_pushoptionchoice as shared_codat_datacontracts_push_pushoptionchoice
-from ..shared import codat_datacontracts_push_optiontype_enum as shared_codat_datacontracts_push_optiontype_enum
-from ..shared import codat_datacontracts_push_pushvalidationinfo as shared_codat_datacontracts_push_pushvalidationinfo
+from typing import Optional
 
 
 @dataclass_json

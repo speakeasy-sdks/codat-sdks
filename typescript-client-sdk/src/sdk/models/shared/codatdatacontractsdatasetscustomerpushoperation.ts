@@ -1,8 +1,7 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { CodatDataContractsPushPushOperationChange } from "./codatdatacontractspushpushoperationchange";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCustomer } from "./codatdatacontractsdatasetscustomer";
+import { CodatDataContractsPushPushOperationChange } from "./codatdatacontractspushpushoperationchange";
 import { CodatDataContractsValidationValidationResult } from "./codatdatacontractsvalidationvalidationresult";
-
 
 
 export class CodatDataContractsDatasetsCustomerPushOperation extends SpeakeasyBase {

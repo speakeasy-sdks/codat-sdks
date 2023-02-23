@@ -1,9 +1,8 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsBankingAccountBalanceAmounts } from "./codatdatacontractsdatasetsbankingaccountbalanceamounts";
 import { CodatDataContractsDatasetsBankingAccountIdentifiers } from "./codatdatacontractsdatasetsbankingaccountidentifiers";
 import { CodatDataContractsDatasetsBankingAccountInstitution } from "./codatdatacontractsdatasetsbankingaccountinstitution";
 import { CodatDataContractsDatasetsBankingAccountTypeEnum } from "./codatdatacontractsdatasetsbankingaccounttypeenum";
-
 
 
 export class CodatDataContractsDatasetsBankingAccount extends SpeakeasyBase {

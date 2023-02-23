@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
 
 
 export class GetCompaniesCompanyIdConnectionsConnectionIdDataTransfersTransferIdPathParams extends SpeakeasyBase {
@@ -14,15 +13,13 @@ export class GetCompaniesCompanyIdConnectionsConnectionIdDataTransfersTransferId
   transferId: string;
 }
 
-
 export class GetCompaniesCompanyIdConnectionsConnectionIdDataTransfersTransferIdSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class GetCompaniesCompanyIdConnectionsConnectionIdDataTransfersTransferIdRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -31,7 +28,6 @@ export class GetCompaniesCompanyIdConnectionsConnectionIdDataTransfersTransferId
   @SpeakeasyMetadata()
   security: GetCompaniesCompanyIdConnectionsConnectionIdDataTransfersTransferIdSecurity;
 }
-
 
 export class GetCompaniesCompanyIdConnectionsConnectionIdDataTransfersTransferIdResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

@@ -1,7 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { CodatDataContractsDatasetsBankTransactionPagedResponseLinksModel } from "./codatdatacontractsdatasetsbanktransactionpagedresponselinksmodel";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsBankTransaction } from "./codatdatacontractsdatasetsbanktransaction";
-
+import { CodatDataContractsDatasetsBankTransactionPagedResponseLinksModel } from "./codatdatacontractsdatasetsbanktransactionpagedresponselinksmodel";
 
 
 // CodatDataContractsDatasetsBankTransactionPagedResponseModel

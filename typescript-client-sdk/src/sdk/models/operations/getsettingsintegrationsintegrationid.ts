@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
 
 
 export class GetSettingsIntegrationsIntegrationIdPathParams extends SpeakeasyBase {
@@ -8,15 +7,13 @@ export class GetSettingsIntegrationsIntegrationIdPathParams extends SpeakeasyBas
   integrationId: string;
 }
 
-
 export class GetSettingsIntegrationsIntegrationIdSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class GetSettingsIntegrationsIntegrationIdRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -25,7 +22,6 @@ export class GetSettingsIntegrationsIntegrationIdRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
   security: GetSettingsIntegrationsIntegrationIdSecurity;
 }
-
 
 export class GetSettingsIntegrationsIntegrationIdResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

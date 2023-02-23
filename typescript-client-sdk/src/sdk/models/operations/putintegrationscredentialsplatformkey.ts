@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
 
 
 export class PutIntegrationsCredentialsPlatformKeyPathParams extends SpeakeasyBase {
@@ -8,15 +7,13 @@ export class PutIntegrationsCredentialsPlatformKeyPathParams extends SpeakeasyBa
   platformKey: string;
 }
 
-
 export class PutIntegrationsCredentialsPlatformKeySecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class PutIntegrationsCredentialsPlatformKeyRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -29,14 +26,13 @@ export class PutIntegrationsCredentialsPlatformKeyRequest extends SpeakeasyBase 
   security: PutIntegrationsCredentialsPlatformKeySecurity;
 }
 
-
 export class PutIntegrationsCredentialsPlatformKeyResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  codatPublicApiModelsPlatformCredentialsPlatformCredentials?: Record<string, any>;
-
   @SpeakeasyMetadata()
   contentType: string;
 
   @SpeakeasyMetadata()
   statusCode: number;
+
+  @SpeakeasyMetadata()
+  putIntegrationsCredentialsPlatformKey200ApplicationJSONObject?: Record<string, any>;
 }

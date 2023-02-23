@@ -1,7 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsBankAccountTypeEnum } from "./codatdatacontractsdatasetsbankaccounttypeenum";
 import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasetsmetadata";
-
 
 
 export class CodatDataContractsDatasetsBankAccount extends SpeakeasyBase {

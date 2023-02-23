@@ -1,7 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsClientsIntegrationBrandingModelFullModel } from "./codatpublicapimodelsclientsintegrationbrandingmodelfullmodel";
 import { CodatPublicApiModelsClientsIntegrationBrandingModelSquareModel } from "./codatpublicapimodelsclientsintegrationbrandingmodelsquaremodel";
-
 
 
 export class CodatPublicApiModelsClientsIntegrationBrandingModelLogoModel extends SpeakeasyBase {

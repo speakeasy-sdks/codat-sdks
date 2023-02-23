@@ -1,8 +1,7 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { CodatDataContractsPushPushOption } from "./codatdatacontractspushpushoption";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsPushOptionTypeEnum } from "./codatdatacontractspushoptiontypeenum";
+import { CodatDataContractsPushPushOption } from "./codatdatacontractspushpushoption";
 import { CodatDataContractsPushPushValidationInfo } from "./codatdatacontractspushpushvalidationinfo";
-
 
 
 export class CodatDataContractsPushPushOptionChoice extends SpeakeasyBase {

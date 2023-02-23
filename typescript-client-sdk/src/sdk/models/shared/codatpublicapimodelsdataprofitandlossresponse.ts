@@ -1,7 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { CodatDataContractsDatasetsProfitAndLossReportingTypeEnum } from "./codatdatacontractsdatasetsprofitandlossreportingtypeenum";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsProfitAndLossReport } from "./codatdatacontractsdatasetsprofitandlossreport";
-
+import { CodatDataContractsDatasetsProfitAndLossReportingTypeEnum } from "./codatdatacontractsdatasetsprofitandlossreportingtypeenum";
 
 
 export class CodatPublicApiModelsDataProfitAndLossResponse extends SpeakeasyBase {

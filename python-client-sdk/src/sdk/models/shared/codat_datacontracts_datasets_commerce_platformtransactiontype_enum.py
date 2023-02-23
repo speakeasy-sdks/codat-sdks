@@ -10,4 +10,3 @@ class CodatDataContractsDatasetsCommercePlatformTransactionTypeEnum(str, Enum):
     TRANSFER = "Transfer"
     PAYMENT_FEE = "PaymentFee"
     PAYMENT_FEE_REFUND = "PaymentFeeRefund"
-

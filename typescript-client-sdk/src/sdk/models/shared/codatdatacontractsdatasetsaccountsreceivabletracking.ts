@@ -1,9 +1,8 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { CodatDataContractsDatasetsTrackingCategoryRef } from "./codatdatacontractsdatasetstrackingcategoryref";
-import { CodatDataContractsDatasetsCustomerRef } from "./codatdatacontractsdatasetscustomerref";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsAccountsReceivableIsBilledToTypeEnum } from "./codatdatacontractsdatasetsaccountsreceivableisbilledtotypeenum";
+import { CodatDataContractsDatasetsCustomerRef } from "./codatdatacontractsdatasetscustomerref";
 import { CodatDataContractsDatasetsProjectRef } from "./codatdatacontractsdatasetsprojectref";
-
+import { CodatDataContractsDatasetsTrackingCategoryRef } from "./codatdatacontractsdatasetstrackingcategoryref";
 
 
 export class CodatDataContractsDatasetsAccountsReceivableTracking extends SpeakeasyBase {

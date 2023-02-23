@@ -1,9 +1,8 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatStandardReportingContractsIDimension } from "./codatstandardreportingcontractsidimension";
-import { CodatStandardReportingContractsReportError } from "./codatstandardreportingcontractsreporterror";
 import { CodatStandardReportingContractsMeasure } from "./codatstandardreportingcontractsmeasure";
 import { CodatStandardReportingContractsReportData } from "./codatstandardreportingcontractsreportdata";
-
+import { CodatStandardReportingContractsReportError } from "./codatstandardreportingcontractsreporterror";
 
 
 export class CodatStandardReportingContractsReport extends SpeakeasyBase {

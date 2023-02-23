@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
 
 
 export class PatchCompaniesCompanyIdConnectionsConnectionIdConnectionInfoBankFeedAccountsBankAccountIdPathParams extends SpeakeasyBase {
@@ -14,15 +13,13 @@ export class PatchCompaniesCompanyIdConnectionsConnectionIdConnectionInfoBankFee
   connectionId: string;
 }
 
-
 export class PatchCompaniesCompanyIdConnectionsConnectionIdConnectionInfoBankFeedAccountsBankAccountIdSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class PatchCompaniesCompanyIdConnectionsConnectionIdConnectionInfoBankFeedAccountsBankAccountIdRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -34,7 +31,6 @@ export class PatchCompaniesCompanyIdConnectionsConnectionIdConnectionInfoBankFee
   @SpeakeasyMetadata()
   security: PatchCompaniesCompanyIdConnectionsConnectionIdConnectionInfoBankFeedAccountsBankAccountIdSecurity;
 }
-
 
 export class PatchCompaniesCompanyIdConnectionsConnectionIdConnectionInfoBankFeedAccountsBankAccountIdResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

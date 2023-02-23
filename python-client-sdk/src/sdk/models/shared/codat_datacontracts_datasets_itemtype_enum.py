@@ -6,4 +6,3 @@ class CodatDataContractsDatasetsItemTypeEnum(str, Enum):
     INVENTORY = "Inventory"
     NON_INVENTORY = "NonInventory"
     SERVICE = "Service"
-

@@ -1,6 +1,6 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
-import * as operations from "./models/operations";
 import * as utils from "../internal/utils";
+import * as operations from "./models/operations";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
 
 export class Companies {
   _defaultClient: AxiosInstance;
@@ -319,7 +319,7 @@ export class Companies {
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
         const res: operations.PostCompaniesCompanyIdSyncSettingsResponse = {statusCode: httpRes.status, contentType: contentType};
         switch (true) {
-          case httpRes?.status == 200:
+          case httpRes?.status == 204:
             break;
         }
 

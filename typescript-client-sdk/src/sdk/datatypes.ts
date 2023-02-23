@@ -1,6 +1,6 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import * as operations from "./models/operations";
 import * as utils from "../internal/utils";
+import * as operations from "./models/operations";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 export class DataTypes {
   _defaultClient: AxiosInstance;
@@ -61,14 +61,14 @@ export class DataTypes {
 
   
   /**
-   * getCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPost - Gets the POST push options for the given data type
+   * getCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPOST - Gets the POST push options for the given data type
   **/
-  getCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPost(
-    req: operations.GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPostRequest,
+  getCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPOST(
+    req: operations.GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPOSTRequest,
     config?: AxiosRequestConfig
-  ): Promise<operations.GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPostResponse> {
+  ): Promise<operations.GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPOSTResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPostRequest(req);
+      req = new operations.GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPOSTRequest(req);
     }
     
     const baseURL: string = this._serverURL;
@@ -87,7 +87,7 @@ export class DataTypes {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPostResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPOSTResponse = {statusCode: httpRes.status, contentType: contentType};
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
@@ -102,14 +102,14 @@ export class DataTypes {
 
   
   /**
-   * getCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPut - Gets the PUT push options for the given data type
+   * getCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPUT - Gets the PUT push options for the given data type
   **/
-  getCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPut(
-    req: operations.GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPutRequest,
+  getCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPUT(
+    req: operations.GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPUTRequest,
     config?: AxiosRequestConfig
-  ): Promise<operations.GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPutResponse> {
+  ): Promise<operations.GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPUTResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPutRequest(req);
+      req = new operations.GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPUTRequest(req);
     }
     
     const baseURL: string = this._serverURL;
@@ -128,7 +128,7 @@ export class DataTypes {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPutResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPUTResponse = {statusCode: httpRes.status, contentType: contentType};
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {

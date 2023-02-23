@@ -1,19 +1,18 @@
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
 import dateutil.parser
-from typing import Optional
-from enum import Enum
-from dataclasses_json import dataclass_json
-from sdk import utils
 from ..shared import codat_datacontracts_datasets_billlineitem as shared_codat_datacontracts_datasets_billlineitem
-from ..shared import codat_datacontracts_datasets_metadata as shared_codat_datacontracts_datasets_metadata
-from ..shared import codat_datacontracts_datasets_detailedpaymentallocation as shared_codat_datacontracts_datasets_detailedpaymentallocation
-from ..shared import codat_datacontracts_datasets_purchaseorderref as shared_codat_datacontracts_datasets_purchaseorderref
 from ..shared import codat_datacontracts_datasets_billstatus_enum as shared_codat_datacontracts_datasets_billstatus_enum
 from ..shared import codat_datacontracts_datasets_datainterfaces_supplementaldata as shared_codat_datacontracts_datasets_datainterfaces_supplementaldata
+from ..shared import codat_datacontracts_datasets_detailedpaymentallocation as shared_codat_datacontracts_datasets_detailedpaymentallocation
+from ..shared import codat_datacontracts_datasets_metadata as shared_codat_datacontracts_datasets_metadata
+from ..shared import codat_datacontracts_datasets_purchaseorderref as shared_codat_datacontracts_datasets_purchaseorderref
 from ..shared import codat_datacontracts_datasets_supplierref as shared_codat_datacontracts_datasets_supplierref
 from ..shared import codat_datacontracts_datasets_withholdingtax as shared_codat_datacontracts_datasets_withholdingtax
+from dataclasses_json import dataclass_json
+from datetime import datetime
+from marshmallow import fields
+from sdk import utils
+from typing import Optional
 
 
 @dataclass_json

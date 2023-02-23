@@ -1,13 +1,11 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
 
 
 export class GetCompaniesCompanyIdReportsEventsPathParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=companyId" })
   companyId: string;
 }
-
 
 export class GetCompaniesCompanyIdReportsEventsQueryParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=fromDate" })
@@ -20,15 +18,13 @@ export class GetCompaniesCompanyIdReportsEventsQueryParams extends SpeakeasyBase
   toDate?: Date;
 }
 
-
 export class GetCompaniesCompanyIdReportsEventsSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class GetCompaniesCompanyIdReportsEventsRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -40,7 +36,6 @@ export class GetCompaniesCompanyIdReportsEventsRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
   security: GetCompaniesCompanyIdReportsEventsSecurity;
 }
-
 
 export class GetCompaniesCompanyIdReportsEventsResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

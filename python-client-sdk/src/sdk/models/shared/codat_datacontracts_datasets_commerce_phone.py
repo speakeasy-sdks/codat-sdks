@@ -1,9 +1,8 @@
 import dataclasses
-from typing import Optional
-from enum import Enum
+from ..shared import codat_datacontracts_datasets_commerce_phonetype_enum as shared_codat_datacontracts_datasets_commerce_phonetype_enum
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_datacontracts_datasets_commerce_phonetype_enum as shared_codat_datacontracts_datasets_commerce_phonetype_enum
+from typing import Optional
 
 
 @dataclass_json

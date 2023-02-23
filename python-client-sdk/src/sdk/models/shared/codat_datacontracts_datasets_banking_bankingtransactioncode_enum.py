@@ -17,4 +17,3 @@ class CodatDataContractsDatasetsBankingBankingTransactionCodeEnum(str, Enum):
     CREDIT = "Credit"
     OTHER = "Other"
     NOT_SUPPORTED = "NotSupported"
-

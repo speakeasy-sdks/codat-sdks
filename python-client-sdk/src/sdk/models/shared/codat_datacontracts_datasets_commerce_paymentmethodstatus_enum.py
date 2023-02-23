@@ -5,4 +5,3 @@ class CodatDataContractsDatasetsCommercePaymentMethodStatusEnum(str, Enum):
     UNKNOWN = "Unknown"
     ACTIVE = "Active"
     ARCHIVED = "Archived"
-

@@ -9,4 +9,3 @@ class CodatDataContractsDatasetsPaymentMethodTypeEnum(str, Enum):
     DEBIT_CARD = "DebitCard"
     BANK_TRANSFER = "BankTransfer"
     OTHER = "Other"
-

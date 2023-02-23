@@ -1,13 +1,12 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsBillLineItem } from "./codatdatacontractsdatasetsbilllineitem";
-import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasetsmetadata";
-import { CodatDataContractsDatasetsDetailedPaymentAllocation } from "./codatdatacontractsdatasetsdetailedpaymentallocation";
-import { CodatDataContractsDatasetsPurchaseOrderRef } from "./codatdatacontractsdatasetspurchaseorderref";
 import { CodatDataContractsDatasetsBillStatusEnum } from "./codatdatacontractsdatasetsbillstatusenum";
 import { CodatDataContractsDatasetsDataInterfacesSupplementalData } from "./codatdatacontractsdatasetsdatainterfacessupplementaldata";
+import { CodatDataContractsDatasetsDetailedPaymentAllocation } from "./codatdatacontractsdatasetsdetailedpaymentallocation";
+import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasetsmetadata";
+import { CodatDataContractsDatasetsPurchaseOrderRef } from "./codatdatacontractsdatasetspurchaseorderref";
 import { CodatDataContractsDatasetsSupplierRef } from "./codatdatacontractsdatasetssupplierref";
 import { CodatDataContractsDatasetsWithholdingTax } from "./codatdatacontractsdatasetswithholdingtax";
-
 
 
 export class CodatDataContractsDatasetsBill extends SpeakeasyBase {

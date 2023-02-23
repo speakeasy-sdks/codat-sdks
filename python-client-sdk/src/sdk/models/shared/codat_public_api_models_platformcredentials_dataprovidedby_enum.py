@@ -5,4 +5,3 @@ class CodatPublicAPIModelsPlatformCredentialsDataProvidedByEnum(str, Enum):
     UNKNOWN = "Unknown"
     CODAT = "Codat"
     CLIENT = "Client"
-

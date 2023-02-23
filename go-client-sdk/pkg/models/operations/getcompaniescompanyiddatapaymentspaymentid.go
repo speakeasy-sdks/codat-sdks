@@ -1,7 +1,7 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 )
 
 type GetCompaniesCompanyIDDataPaymentsPaymentIDPathParams struct {
@@ -10,8 +10,8 @@ type GetCompaniesCompanyIDDataPaymentsPaymentIDPathParams struct {
 }
 
 type GetCompaniesCompanyIDDataPaymentsPaymentIDSecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
 type GetCompaniesCompanyIDDataPaymentsPaymentIDRequest struct {
@@ -22,5 +22,5 @@ type GetCompaniesCompanyIDDataPaymentsPaymentIDRequest struct {
 type GetCompaniesCompanyIDDataPaymentsPaymentIDResponse struct {
 	CodatDataContractsDatasetsPayment *shared.CodatDataContractsDatasetsPayment
 	ContentType                       string
-	StatusCode                        int64
+	StatusCode                        int
 }

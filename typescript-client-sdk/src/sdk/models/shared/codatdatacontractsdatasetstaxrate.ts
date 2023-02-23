@@ -1,9 +1,8 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { CodatDataContractsDatasetsTaxRateComponent } from "./codatdatacontractsdatasetstaxratecomponent";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasetsmetadata";
+import { CodatDataContractsDatasetsTaxRateComponent } from "./codatdatacontractsdatasetstaxratecomponent";
 import { CodatDataContractsDatasetsTaxRateStatusEnum } from "./codatdatacontractsdatasetstaxratestatusenum";
 import { CodatDataContractsDatasetsValidDatatypeLinks } from "./codatdatacontractsdatasetsvaliddatatypelinks";
-
 
 
 export class CodatDataContractsDatasetsTaxRate extends SpeakeasyBase {

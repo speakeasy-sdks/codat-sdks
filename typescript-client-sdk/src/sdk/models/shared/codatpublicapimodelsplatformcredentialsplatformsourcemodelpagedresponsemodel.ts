@@ -1,7 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { CodatPublicApiModelsPlatformCredentialsPlatformSourceModelPagedResponseLinksModel } from "./codatpublicapimodelsplatformcredentialsplatformsourcemodelpagedresponselinksmodel";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsPlatformCredentialsPlatformSourceModel } from "./codatpublicapimodelsplatformcredentialsplatformsourcemodel";
-
+import { CodatPublicApiModelsPlatformCredentialsPlatformSourceModelPagedResponseLinksModel } from "./codatpublicapimodelsplatformcredentialsplatformsourcemodelpagedresponselinksmodel";
 
 
 // CodatPublicApiModelsPlatformCredentialsPlatformSourceModelPagedResponseModel

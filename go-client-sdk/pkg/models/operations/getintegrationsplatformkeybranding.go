@@ -1,7 +1,7 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 )
 
 type GetIntegrationsPlatformKeyBrandingPathParams struct {
@@ -9,8 +9,8 @@ type GetIntegrationsPlatformKeyBrandingPathParams struct {
 }
 
 type GetIntegrationsPlatformKeyBrandingSecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
 type GetIntegrationsPlatformKeyBrandingRequest struct {
@@ -21,5 +21,5 @@ type GetIntegrationsPlatformKeyBrandingRequest struct {
 type GetIntegrationsPlatformKeyBrandingResponse struct {
 	CodatPublicAPIModelsClientsIntegrationBrandingModel *shared.CodatPublicAPIModelsClientsIntegrationBrandingModel
 	ContentType                                         string
-	StatusCode                                          int64
+	StatusCode                                          int
 }

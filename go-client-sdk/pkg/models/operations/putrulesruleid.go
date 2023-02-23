@@ -1,7 +1,7 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 )
 
 type PutRulesRuleIDPathParams struct {
@@ -9,8 +9,8 @@ type PutRulesRuleIDPathParams struct {
 }
 
 type PutRulesRuleIDSecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
 type PutRulesRuleIDRequest struct {
@@ -22,5 +22,5 @@ type PutRulesRuleIDRequest struct {
 type PutRulesRuleIDResponse struct {
 	CodatPublicAPIModelsRulesRule *shared.CodatPublicAPIModelsRulesRule
 	ContentType                   string
-	StatusCode                    int64
+	StatusCode                    int
 }

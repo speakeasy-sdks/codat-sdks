@@ -1,8 +1,7 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCommerceDiscountAllocation } from "./codatdatacontractsdatasetscommercediscountallocation";
 import { CodatDataContractsDatasetsCommerceProductRef } from "./codatdatacontractsdatasetscommerceproductref";
 import { CodatDataContractsDatasetsCommerceTaxComponentAllocation } from "./codatdatacontractsdatasetscommercetaxcomponentallocation";
-
 
 
 export class CodatDataContractsDatasetsCommerceOrderLineItem extends SpeakeasyBase {

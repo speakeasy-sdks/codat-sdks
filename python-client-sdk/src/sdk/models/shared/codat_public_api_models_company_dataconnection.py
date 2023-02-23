@@ -1,11 +1,11 @@
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
 import dateutil.parser
-from typing import Any,Optional
-from dataclasses_json import dataclass_json
-from sdk import utils
 from ..shared import codat_public_api_models_company_dataconnectionerror as shared_codat_public_api_models_company_dataconnectionerror
+from dataclasses_json import dataclass_json
+from datetime import datetime
+from marshmallow import fields
+from sdk import utils
+from typing import Any, Optional
 
 
 @dataclass_json

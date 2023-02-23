@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
 
 
 export class GetRulesRuleIdPathParams extends SpeakeasyBase {
@@ -8,15 +7,13 @@ export class GetRulesRuleIdPathParams extends SpeakeasyBase {
   ruleId: string;
 }
 
-
 export class GetRulesRuleIdSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class GetRulesRuleIdRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -25,7 +22,6 @@ export class GetRulesRuleIdRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
   security: GetRulesRuleIdSecurity;
 }
-
 
 export class GetRulesRuleIdResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

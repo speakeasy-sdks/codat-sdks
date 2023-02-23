@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsRulesNotifiers } from "./codatpublicapimodelsrulesnotifiers";
-
 
 
 export class CodatPublicApiModelsRulesRule extends SpeakeasyBase {

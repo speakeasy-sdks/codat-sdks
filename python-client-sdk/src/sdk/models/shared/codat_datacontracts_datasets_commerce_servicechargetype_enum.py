@@ -6,4 +6,3 @@ class CodatDataContractsDatasetsCommerceServiceChargeTypeEnum(str, Enum):
     GENERIC = "Generic"
     SHIPPING = "Shipping"
     OVERPAYMENT = "Overpayment"
-

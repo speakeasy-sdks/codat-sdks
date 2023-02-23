@@ -1,9 +1,9 @@
 import dataclasses
-from typing import Optional
+from ..shared import codat_datacontracts_datasets_commerce_payment as shared_codat_datacontracts_datasets_commerce_payment
+from ..shared import codat_datacontracts_datasets_commerce_paymentpagedresponselinksmodel as shared_codat_datacontracts_datasets_commerce_paymentpagedresponselinksmodel
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_datacontracts_datasets_commerce_paymentpagedresponselinksmodel as shared_codat_datacontracts_datasets_commerce_paymentpagedresponselinksmodel
-from ..shared import codat_datacontracts_datasets_commerce_payment as shared_codat_datacontracts_datasets_commerce_payment
+from typing import Optional
 
 
 @dataclass_json

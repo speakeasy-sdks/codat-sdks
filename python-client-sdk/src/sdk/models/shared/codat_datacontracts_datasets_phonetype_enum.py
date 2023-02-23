@@ -7,4 +7,3 @@ class CodatDataContractsDatasetsPhoneTypeEnum(str, Enum):
     LANDLINE = "Landline"
     MOBILE = "Mobile"
     FAX = "Fax"
-

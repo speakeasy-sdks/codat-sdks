@@ -1,11 +1,10 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsAccountRef } from "./codatdatacontractsdatasetsaccountref";
 import { CodatDataContractsDatasetsCustomerRef } from "./codatdatacontractsdatasetscustomerref";
-import { CodatDataContractsDatasetsPaymentLine } from "./codatdatacontractsdatasetspaymentline";
-import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasetsmetadata";
-import { CodatDataContractsDatasetsPaymentMethodRef } from "./codatdatacontractsdatasetspaymentmethodref";
 import { CodatDataContractsDatasetsDataInterfacesSupplementalData } from "./codatdatacontractsdatasetsdatainterfacessupplementaldata";
-
+import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasetsmetadata";
+import { CodatDataContractsDatasetsPaymentLine } from "./codatdatacontractsdatasetspaymentline";
+import { CodatDataContractsDatasetsPaymentMethodRef } from "./codatdatacontractsdatasetspaymentmethodref";
 
 
 export class CodatDataContractsDatasetsPayment extends SpeakeasyBase {

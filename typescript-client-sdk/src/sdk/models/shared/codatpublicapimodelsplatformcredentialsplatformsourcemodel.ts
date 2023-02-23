@@ -1,9 +1,8 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsPlatformCredentialsDataProvidedByEnum } from "./codatpublicapimodelsplatformcredentialsdataprovidedbyenum";
 import { CodatPublicApiModelsPlatformCredentialsDatatypeFeatures } from "./codatpublicapimodelsplatformcredentialsdatatypefeatures";
-import { CodatPublicApiModelsPlatformCredentialsSourceTypeEnum } from "./codatpublicapimodelsplatformcredentialssourcetypeenum";
 import { CodatPublicApiModelsPlatformCredentialsIntegrationSupportedEnvironmentsEnum } from "./codatpublicapimodelsplatformcredentialsintegrationsupportedenvironmentsenum";
-
+import { CodatPublicApiModelsPlatformCredentialsSourceTypeEnum } from "./codatpublicapimodelsplatformcredentialssourcetypeenum";
 
 
 export class CodatPublicApiModelsPlatformCredentialsPlatformSourceModel extends SpeakeasyBase {

@@ -1,11 +1,13 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatAssessDataContractsFinancialsStatementsAccountCategory } from "./codatassessdatacontractsfinancialsstatementsaccountcategory";
-
 
 
 export class CodatAssessDataContractsFinancialsStatementsFinancialStatementReportItem extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "json, name=accountCategory" })
   accountCategory?: CodatAssessDataContractsFinancialsStatementsAccountCategory;
+
+  @SpeakeasyMetadata({ data: "json, name=accountId" })
+  accountId?: string;
 
   @SpeakeasyMetadata({ data: "json, name=accountName" })
   accountName?: string;

@@ -1,8 +1,8 @@
 import dataclasses
-from typing import Optional
+from ..shared import codat_assess_datacontracts_accountcategories_patchaccountcategorymodel as shared_codat_assess_datacontracts_accountcategories_patchaccountcategorymodel
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_assess_datacontracts_accountcategories_patchaccountcategorymodel as shared_codat_assess_datacontracts_accountcategories_patchaccountcategorymodel
+from typing import Optional
 
 
 @dataclass_json

@@ -3,35 +3,35 @@ package sdk
 import (
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/utils"
 	"net/http"
 )
 
-type DatasetLogs struct {
-	_defaultClient  HTTPClient
-	_securityClient HTTPClient
-	_serverURL      string
-	_language       string
-	_sdkVersion     string
-	_genVersion     string
+type datasetLogs struct {
+	defaultClient  HTTPClient
+	securityClient HTTPClient
+	serverURL      string
+	language       string
+	sdkVersion     string
+	genVersion     string
 }
 
-func NewDatasetLogs(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *DatasetLogs {
-	return &DatasetLogs{
-		_defaultClient:  defaultClient,
-		_securityClient: securityClient,
-		_serverURL:      serverURL,
-		_language:       language,
-		_sdkVersion:     sdkVersion,
-		_genVersion:     genVersion,
+func newDatasetLogs(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *datasetLogs {
+	return &datasetLogs{
+		defaultClient:  defaultClient,
+		securityClient: securityClient,
+		serverURL:      serverURL,
+		language:       language,
+		sdkVersion:     sdkVersion,
+		genVersion:     genVersion,
 	}
 }
 
 // GetCompaniesCompanyIDDataDatasetLogsDatasetID - Gets dataset messages for a given dataset
-func (s *DatasetLogs) GetCompaniesCompanyIDDataDatasetLogsDatasetID(ctx context.Context, request operations.GetCompaniesCompanyIDDataDatasetLogsDatasetIDRequest) (*operations.GetCompaniesCompanyIDDataDatasetLogsDatasetIDResponse, error) {
-	baseURL := s._serverURL
+func (s *datasetLogs) GetCompaniesCompanyIDDataDatasetLogsDatasetID(ctx context.Context, request operations.GetCompaniesCompanyIDDataDatasetLogsDatasetIDRequest) (*operations.GetCompaniesCompanyIDDataDatasetLogsDatasetIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/data/datasetLogs/{datasetId}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -39,18 +39,21 @@ func (s *DatasetLogs) GetCompaniesCompanyIDDataDatasetLogsDatasetID(ctx context.
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDDataDatasetLogsDatasetIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {

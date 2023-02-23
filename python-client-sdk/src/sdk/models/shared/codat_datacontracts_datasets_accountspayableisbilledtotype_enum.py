@@ -6,4 +6,3 @@ class CodatDataContractsDatasetsAccountsPayableIsBilledToTypeEnum(str, Enum):
     NOT_APPLICABLE = "NotApplicable"
     CUSTOMER = "Customer"
     PROJECT = "Project"
-

@@ -1,8 +1,8 @@
 import dataclasses
-from typing import Optional
+from ..shared import codat_datacontracts_datasets_accountpagedresponsehrefmodel as shared_codat_datacontracts_datasets_accountpagedresponsehrefmodel
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_datacontracts_datasets_accountpagedresponsehrefmodel as shared_codat_datacontracts_datasets_accountpagedresponsehrefmodel
+from typing import Optional
 
 
 @dataclass_json

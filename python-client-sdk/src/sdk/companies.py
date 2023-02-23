@@ -1,7 +1,7 @@
 import requests
-from typing import Optional
-from sdk.models import shared, operations
 from . import utils
+from sdk.models import operations, shared
+from typing import Optional
 
 class Companies:
     _client: requests.Session
@@ -181,7 +181,7 @@ class Companies:
 
         res = operations.PostCompaniesCompanyIDSyncSettingsResponse(status_code=r.status_code, content_type=content_type)
         
-        if r.status_code == 200:
+        if r.status_code == 204:
             pass
 
         return res

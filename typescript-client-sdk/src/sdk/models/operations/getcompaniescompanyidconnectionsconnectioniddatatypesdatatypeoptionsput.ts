@@ -1,9 +1,8 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 
 
-
-export class GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPutPathParams extends SpeakeasyBase {
+export class GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPUTPathParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=companyId" })
   companyId: string;
 
@@ -14,26 +13,23 @@ export class GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOption
   dataType: string;
 }
 
+export class GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPUTSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
 
-export class GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPutSecurity extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
 
-
-export class GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPutRequest extends SpeakeasyBase {
+export class GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPUTRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
-  pathParams: GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPutPathParams;
+  pathParams: GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPUTPathParams;
 
   @SpeakeasyMetadata()
-  security: GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPutSecurity;
+  security: GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPUTSecurity;
 }
 
-
-export class GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPutResponse extends SpeakeasyBase {
+export class GetCompaniesCompanyIdConnectionsConnectionIdDataTypesDataTypeOptionsPUTResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   codatDataContractsPushPushOption?: shared.CodatDataContractsPushPushOption;
 

@@ -5,4 +5,3 @@ class CodatDataContractsDatasetsTaxRateStatusEnum(str, Enum):
     UNKNOWN = "Unknown"
     ACTIVE = "Active"
     ARCHIVED = "Archived"
-

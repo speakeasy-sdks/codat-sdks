@@ -1,10 +1,9 @@
 import dataclasses
-from typing import Optional
+from ..shared import codat_public_api_models_company_dataconnection as shared_codat_public_api_models_company_dataconnection
+from ..shared import security as shared_security
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import security as shared_security
-from ..shared import security as shared_security
-from ..shared import codat_public_api_models_company_dataconnection as shared_codat_public_api_models_company_dataconnection
+from typing import Optional
 
 
 @dataclasses.dataclass

@@ -1,8 +1,7 @@
 import dataclasses
-from typing import Optional
-from ..shared import security as shared_security
-from ..shared import security as shared_security
 from ..shared import codat_datacontracts_datasets_salesorderpagedresponsemodel as shared_codat_datacontracts_datasets_salesorderpagedresponsemodel
+from ..shared import security as shared_security
+from typing import Optional
 
 
 @dataclasses.dataclass

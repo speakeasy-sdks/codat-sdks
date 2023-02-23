@@ -6,4 +6,3 @@ class CodatPublicAPIModelsDataAccountStatusResponseEnum(str, Enum):
     ACTIVE = "Active"
     ARCHIVED = "Archived"
     PENDING = "Pending"
-

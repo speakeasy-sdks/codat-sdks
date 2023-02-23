@@ -1,13 +1,12 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCustomerRef } from "./codatdatacontractsdatasetscustomerref";
-import { CodatDataContractsDatasetsInvoiceLineItem } from "./codatdatacontractsdatasetsinvoicelineitem";
-import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasetsmetadata";
-import { CodatDataContractsDatasetsDetailedPaymentAllocation } from "./codatdatacontractsdatasetsdetailedpaymentallocation";
-import { CodatDataContractsDatasetsRecordRef } from "./codatdatacontractsdatasetsrecordref";
-import { CodatDataContractsDatasetsInvoiceStatusEnum } from "./codatdatacontractsdatasetsinvoicestatusenum";
 import { CodatDataContractsDatasetsDataInterfacesSupplementalData } from "./codatdatacontractsdatasetsdatainterfacessupplementaldata";
+import { CodatDataContractsDatasetsDetailedPaymentAllocation } from "./codatdatacontractsdatasetsdetailedpaymentallocation";
+import { CodatDataContractsDatasetsInvoiceLineItem } from "./codatdatacontractsdatasetsinvoicelineitem";
+import { CodatDataContractsDatasetsInvoiceStatusEnum } from "./codatdatacontractsdatasetsinvoicestatusenum";
+import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasetsmetadata";
+import { CodatDataContractsDatasetsRecordRef } from "./codatdatacontractsdatasetsrecordref";
 import { CodatDataContractsDatasetsWithholdingTax } from "./codatdatacontractsdatasetswithholdingtax";
-
 
 
 export class CodatDataContractsDatasetsInvoice extends SpeakeasyBase {

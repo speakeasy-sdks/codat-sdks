@@ -1,9 +1,8 @@
 import dataclasses
-from typing import Optional
-from ..shared import security as shared_security
-from ..shared import security as shared_security
 from ..shared import codat_datacontracts_datasets_journal as shared_codat_datacontracts_datasets_journal
 from ..shared import codat_datacontracts_datasets_journalpushoperation as shared_codat_datacontracts_datasets_journalpushoperation
+from ..shared import security as shared_security
+from typing import Optional
 
 
 @dataclasses.dataclass

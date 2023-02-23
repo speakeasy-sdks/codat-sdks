@@ -1,8 +1,7 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatAssessDataContractsCashFlowTransactionsAccountsDataSource } from "./codatassessdatacontractscashflowtransactionsaccountsdatasource";
-import { CodatAssessDataContractsCommonPagedReportInfo } from "./codatassessdatacontractscommonpagedreportinfo";
 import { CodatAssessDataContractsCashFlowTransactionsTransactionsDataSource } from "./codatassessdatacontractscashflowtransactionstransactionsdatasource";
-
+import { CodatAssessDataContractsCommonPagedReportInfo } from "./codatassessdatacontractscommonpagedreportinfo";
 
 
 export class CodatAssessDataContractsCashFlowTransactionsCashFlowTransactionsReport extends SpeakeasyBase {

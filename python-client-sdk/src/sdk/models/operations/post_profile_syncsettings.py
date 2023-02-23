@@ -1,8 +1,7 @@
 import dataclasses
-from typing import Optional
-from ..shared import security as shared_security
-from ..shared import security as shared_security
 from ..shared import codat_clients_api_client_contract_clientsyncsettings as shared_codat_clients_api_client_contract_clientsyncsettings
+from ..shared import security as shared_security
+from typing import Optional
 
 
 @dataclasses.dataclass

@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
 
 
 export class GetRulesAlertsAlertIdPathParams extends SpeakeasyBase {
@@ -8,15 +7,13 @@ export class GetRulesAlertsAlertIdPathParams extends SpeakeasyBase {
   alertId: string;
 }
 
-
 export class GetRulesAlertsAlertIdSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class GetRulesAlertsAlertIdRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -25,7 +22,6 @@ export class GetRulesAlertsAlertIdRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
   security: GetRulesAlertsAlertIdSecurity;
 }
-
 
 export class GetRulesAlertsAlertIdResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

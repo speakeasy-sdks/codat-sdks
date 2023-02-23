@@ -24,4 +24,3 @@ class CodatAssessDataContractsFinancialsMetricsMetricKeyEnum(str, Enum):
     WORKING_CAPITAL_TURNOVER_RATIO = "WorkingCapitalTurnoverRatio"
     DAYS_SALES_OUTSTANDING = "DaysSalesOutstanding"
     DAYS_PAYABLES_OUTSTANDING = "DaysPayablesOutstanding"
-

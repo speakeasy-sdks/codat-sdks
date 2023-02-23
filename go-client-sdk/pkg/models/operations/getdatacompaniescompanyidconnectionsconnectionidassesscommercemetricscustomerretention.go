@@ -1,7 +1,7 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 	"time"
 )
 
@@ -12,15 +12,15 @@ type GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsCustom
 
 type GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsCustomerRetentionQueryParams struct {
 	IncludeDisplayNames *bool                                                        `queryParam:"style=form,explode=true,name=includeDisplayNames"`
-	NumberOfPeriods     int32                                                        `queryParam:"style=form,explode=true,name=numberOfPeriods"`
-	PeriodLength        int32                                                        `queryParam:"style=form,explode=true,name=periodLength"`
+	NumberOfPeriods     int                                                          `queryParam:"style=form,explode=true,name=numberOfPeriods"`
+	PeriodLength        int                                                          `queryParam:"style=form,explode=true,name=periodLength"`
 	PeriodUnit          shared.CodatAssessDataContractsCommerceMetricsPeriodUnitEnum `queryParam:"style=form,explode=true,name=periodUnit"`
 	ReportDate          time.Time                                                    `queryParam:"style=form,explode=true,name=reportDate"`
 }
 
 type GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsCustomerRetentionSecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
 type GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsCustomerRetentionRequest struct {
@@ -32,5 +32,5 @@ type GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsCustom
 type GetDataCompaniesCompanyIDConnectionsConnectionIDAssessCommerceMetricsCustomerRetentionResponse struct {
 	CodatStandardReportingContractsReport *shared.CodatStandardReportingContractsReport
 	ContentType                           string
-	StatusCode                            int64
+	StatusCode                            int
 }

@@ -1,6 +1,6 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
-import * as operations from "./models/operations";
 import * as utils from "../internal/utils";
+import * as operations from "./models/operations";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
 
 export class Integrations {
   _defaultClient: AxiosInstance;
@@ -50,7 +50,7 @@ export class Integrations {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsPlatformCredentialsPlatformCredentials = httpRes?.data;
+                res.deleteIntegrationsCredentialsPlatformKey200ApplicationJSONObject = httpRes?.data;
             }
             break;
         }
@@ -178,7 +178,7 @@ export class Integrations {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsPlatformCredentialsPlatformCredentials = httpRes?.data;
+                res.getIntegrationsCredentialsPlatformKey200ApplicationJSONObject = httpRes?.data;
             }
             break;
         }
@@ -359,7 +359,7 @@ export class Integrations {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsPlatformCredentialsPlatformCredentials = httpRes?.data;
+                res.putIntegrationsCredentialsPlatformKey200ApplicationJSONObject = httpRes?.data;
             }
             break;
         }

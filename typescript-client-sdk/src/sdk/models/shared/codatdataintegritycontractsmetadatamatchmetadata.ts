@@ -1,9 +1,8 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataIntegrityContractsMetadataMatchAmountInfo } from "./codatdataintegritycontractsmetadatamatchamountinfo";
 import { CodatDataIntegrityContractsMetadataMatchConnectionIds } from "./codatdataintegritycontractsmetadatamatchconnectionids";
 import { CodatDataIntegrityContractsMetadataMatchDateInfo } from "./codatdataintegritycontractsmetadatamatchdateinfo";
 import { CodatDataIntegrityContractsMetadataMatchStatusInfo } from "./codatdataintegritycontractsmetadatamatchstatusinfo";
-
 
 
 export class CodatDataIntegrityContractsMetadataMatchMetadata extends SpeakeasyBase {

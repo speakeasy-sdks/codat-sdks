@@ -1,8 +1,7 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasetsmetadata";
 import { CodatDataContractsDatasetsPaymentMethodStatusEnum } from "./codatdatacontractsdatasetspaymentmethodstatusenum";
 import { CodatDataContractsDatasetsPaymentMethodTypeEnum } from "./codatdatacontractsdatasetspaymentmethodtypeenum";
-
 
 
 export class CodatDataContractsDatasetsPaymentMethod extends SpeakeasyBase {

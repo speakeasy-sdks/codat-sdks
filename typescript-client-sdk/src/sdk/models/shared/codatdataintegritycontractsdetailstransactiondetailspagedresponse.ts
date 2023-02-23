@@ -1,7 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsResponsesHalLink } from "./codatdatacontractsresponseshallink";
 import { CodatDataIntegrityContractsDetailsTransactionDetails } from "./codatdataintegritycontractsdetailstransactiondetails";
-
 
 
 export class CodatDataIntegrityContractsDetailsTransactionDetailsPagedResponse extends SpeakeasyBase {

@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsBillPagedResponseHrefModel } from "./codatdatacontractsdatasetsbillpagedresponsehrefmodel";
-
 
 
 export class CodatDataContractsDatasetsBillPagedResponseLinksModel extends SpeakeasyBase {

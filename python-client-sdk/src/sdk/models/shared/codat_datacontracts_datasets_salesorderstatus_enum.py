@@ -7,4 +7,3 @@ class CodatDataContractsDatasetsSalesOrderStatusEnum(str, Enum):
     OPEN = "Open"
     CLOSED = "Closed"
     VOID = "Void"
-

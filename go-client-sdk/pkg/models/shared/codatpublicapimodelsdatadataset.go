@@ -14,7 +14,7 @@ type CodatPublicAPIModelsDataDataSet struct {
 	ID                       string                                    `json:"id"`
 	IsCompleted              bool                                      `json:"isCompleted"`
 	IsErrored                bool                                      `json:"isErrored"`
-	Progress                 int32                                     `json:"progress"`
+	Progress                 int                                       `json:"progress"`
 	Requested                time.Time                                 `json:"requested"`
 	Status                   CodatPublicAPIModelsDataDatasetStatusEnum `json:"status"`
 	ValidationinformationURL *string                                   `json:"validationinformationUrl,omitempty"`

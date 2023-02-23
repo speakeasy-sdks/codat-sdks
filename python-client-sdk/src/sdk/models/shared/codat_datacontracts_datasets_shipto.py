@@ -1,9 +1,9 @@
 import dataclasses
-from typing import Optional
-from dataclasses_json import dataclass_json
-from sdk import utils
 from ..shared import codat_datacontracts_datasets_address as shared_codat_datacontracts_datasets_address
 from ..shared import codat_datacontracts_datasets_shiptocontact as shared_codat_datacontracts_datasets_shiptocontact
+from dataclasses_json import dataclass_json
+from sdk import utils
+from typing import Optional
 
 
 @dataclass_json

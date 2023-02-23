@@ -1,7 +1,7 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 	"time"
 )
 
@@ -10,14 +10,14 @@ type GetCompaniesCompanyIDReportsAgedCreditorPathParams struct {
 }
 
 type GetCompaniesCompanyIDReportsAgedCreditorQueryParams struct {
-	NumberOfPeriods  *int32     `queryParam:"style=form,explode=true,name=numberOfPeriods"`
-	PeriodLengthDays *int32     `queryParam:"style=form,explode=true,name=periodLengthDays"`
+	NumberOfPeriods  *int       `queryParam:"style=form,explode=true,name=numberOfPeriods"`
+	PeriodLengthDays *int       `queryParam:"style=form,explode=true,name=periodLengthDays"`
 	ReportDate       *time.Time `queryParam:"style=form,explode=true,name=reportDate"`
 }
 
 type GetCompaniesCompanyIDReportsAgedCreditorSecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
 type GetCompaniesCompanyIDReportsAgedCreditorRequest struct {
@@ -29,5 +29,5 @@ type GetCompaniesCompanyIDReportsAgedCreditorRequest struct {
 type GetCompaniesCompanyIDReportsAgedCreditorResponse struct {
 	CodatDataContractsDatasetsAgedCreditorOutstandingICollectionReport *shared.CodatDataContractsDatasetsAgedCreditorOutstandingICollectionReport
 	ContentType                                                        string
-	StatusCode                                                         int64
+	StatusCode                                                         int
 }

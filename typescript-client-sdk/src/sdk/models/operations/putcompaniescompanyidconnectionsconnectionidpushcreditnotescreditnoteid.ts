@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
 
 
 export class PutCompaniesCompanyIdConnectionsConnectionIdPushCreditNotesCreditNoteIdPathParams extends SpeakeasyBase {
@@ -14,7 +13,6 @@ export class PutCompaniesCompanyIdConnectionsConnectionIdPushCreditNotesCreditNo
   creditNoteId: string;
 }
 
-
 export class PutCompaniesCompanyIdConnectionsConnectionIdPushCreditNotesCreditNoteIdQueryParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=forceUpdate" })
   forceUpdate?: boolean;
@@ -23,15 +21,13 @@ export class PutCompaniesCompanyIdConnectionsConnectionIdPushCreditNotesCreditNo
   timeoutInMinutes?: number;
 }
 
-
 export class PutCompaniesCompanyIdConnectionsConnectionIdPushCreditNotesCreditNoteIdSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class PutCompaniesCompanyIdConnectionsConnectionIdPushCreditNotesCreditNoteIdRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -46,7 +42,6 @@ export class PutCompaniesCompanyIdConnectionsConnectionIdPushCreditNotesCreditNo
   @SpeakeasyMetadata()
   security: PutCompaniesCompanyIdConnectionsConnectionIdPushCreditNotesCreditNoteIdSecurity;
 }
-
 
 export class PutCompaniesCompanyIdConnectionsConnectionIdPushCreditNotesCreditNoteIdResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

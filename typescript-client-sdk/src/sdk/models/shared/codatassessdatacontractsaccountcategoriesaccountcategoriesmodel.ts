@@ -1,8 +1,7 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatAssessDataContractsAccountCategoriesAccountRefModel } from "./codatassessdatacontractsaccountcategoriesaccountrefmodel";
 import { CodatAssessDataContractsAccountCategoriesConfirmedAccountCategoryModel } from "./codatassessdatacontractsaccountcategoriesconfirmedaccountcategorymodel";
 import { CodatAssessDataContractsAccountCategoriesSuggestedAccountCategoryModel } from "./codatassessdatacontractsaccountcategoriessuggestedaccountcategorymodel";
-
 
 
 export class CodatAssessDataContractsAccountCategoriesAccountCategoriesModel extends SpeakeasyBase {

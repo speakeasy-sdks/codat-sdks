@@ -1,10 +1,9 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsAccountRef } from "./codatdatacontractsdatasetsaccountref";
+import { CodatDataContractsDatasetsAccountsPayableTracking } from "./codatdatacontractsdatasetsaccountspayabletracking";
 import { CodatDataContractsDatasetsItemRef } from "./codatdatacontractsdatasetsitemref";
 import { CodatDataContractsDatasetsTaxRateRef } from "./codatdatacontractsdatasetstaxrateref";
-import { CodatDataContractsDatasetsAccountsPayableTracking } from "./codatdatacontractsdatasetsaccountspayabletracking";
 import { CodatDataContractsDatasetsTrackingCategoryRef } from "./codatdatacontractsdatasetstrackingcategoryref";
-
 
 
 export class CodatDataContractsDatasetsBillCreditNoteLineItem extends SpeakeasyBase {

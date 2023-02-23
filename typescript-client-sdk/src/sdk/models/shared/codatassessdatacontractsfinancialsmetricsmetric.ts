@@ -1,9 +1,8 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatAssessDataContractsFinancialsMetricsMetricError } from "./codatassessdatacontractsfinancialsmetricsmetricerror";
 import { CodatAssessDataContractsFinancialsMetricsMetricKeyEnum } from "./codatassessdatacontractsfinancialsmetricsmetrickeyenum";
-import { CodatAssessDataContractsFinancialsMetricsMetricUnitEnum } from "./codatassessdatacontractsfinancialsmetricsmetricunitenum";
 import { CodatAssessDataContractsFinancialsMetricsMetricPeriod } from "./codatassessdatacontractsfinancialsmetricsmetricperiod";
-
+import { CodatAssessDataContractsFinancialsMetricsMetricUnitEnum } from "./codatassessdatacontractsfinancialsmetricsmetricunitenum";
 
 
 export class CodatAssessDataContractsFinancialsMetricsMetric extends SpeakeasyBase {

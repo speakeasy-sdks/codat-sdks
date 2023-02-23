@@ -6,4 +6,3 @@ class CodatPublicAPIModelsPlatformCredentialsIntegrationSupportedEnvironmentsEnu
     SANDBOX_ONLY = "SandboxOnly"
     LIVE_ONLY = "LiveOnly"
     LIVE_AND_SANDBOX = "LiveAndSandbox"
-

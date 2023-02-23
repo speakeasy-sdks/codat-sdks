@@ -1,9 +1,9 @@
 import dataclasses
-from typing import Optional
+from ..shared import codat_datacontracts_datasets_directincome as shared_codat_datacontracts_datasets_directincome
+from ..shared import codat_datacontracts_datasets_directincomepagedresponselinksmodel as shared_codat_datacontracts_datasets_directincomepagedresponselinksmodel
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_datacontracts_datasets_directincomepagedresponselinksmodel as shared_codat_datacontracts_datasets_directincomepagedresponselinksmodel
-from ..shared import codat_datacontracts_datasets_directincome as shared_codat_datacontracts_datasets_directincome
+from typing import Optional
 
 
 @dataclass_json

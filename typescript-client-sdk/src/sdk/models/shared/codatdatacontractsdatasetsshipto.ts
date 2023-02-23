@@ -1,7 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsAddress } from "./codatdatacontractsdatasetsaddress";
 import { CodatDataContractsDatasetsShipToContact } from "./codatdatacontractsdatasetsshiptocontact";
-
 
 
 export class CodatDataContractsDatasetsShipTo extends SpeakeasyBase {

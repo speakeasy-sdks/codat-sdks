@@ -8,4 +8,3 @@ class CodatDataContractsDatasetsAccountTypeEnum(str, Enum):
     INCOME = "Income"
     LIABILITY = "Liability"
     EQUITY = "Equity"
-

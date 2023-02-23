@@ -1,12 +1,11 @@
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
 import dateutil.parser
-from typing import Optional
-from enum import Enum
-from dataclasses_json import dataclass_json
-from sdk import utils
 from ..shared import codat_dataintegrity_contracts_metadata_runstatus_enum as shared_codat_dataintegrity_contracts_metadata_runstatus_enum
+from dataclasses_json import dataclass_json
+from datetime import datetime
+from marshmallow import fields
+from sdk import utils
+from typing import Optional
 
 
 @dataclass_json

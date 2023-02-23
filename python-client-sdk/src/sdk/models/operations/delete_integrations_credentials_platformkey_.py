@@ -1,7 +1,6 @@
 import dataclasses
-from typing import Any,Optional
 from ..shared import security as shared_security
-from ..shared import security as shared_security
+from typing import Any, Optional
 
 
 @dataclasses.dataclass
@@ -25,5 +24,5 @@ class DeleteIntegrationsCredentialsPlatformKeyRequest:
 class DeleteIntegrationsCredentialsPlatformKeyResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    codat_public_api_models_platform_credentials_platform_credentials: Optional[dict[str, Any]] = dataclasses.field(default=None)
+    delete_integrations_credentials_platform_key_200_application_json_object: Optional[dict[str, Any]] = dataclasses.field(default=None)
     

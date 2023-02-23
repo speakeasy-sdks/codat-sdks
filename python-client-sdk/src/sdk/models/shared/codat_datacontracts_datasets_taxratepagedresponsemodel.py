@@ -1,9 +1,9 @@
 import dataclasses
-from typing import Optional
+from ..shared import codat_datacontracts_datasets_taxrate as shared_codat_datacontracts_datasets_taxrate
+from ..shared import codat_datacontracts_datasets_taxratepagedresponselinksmodel as shared_codat_datacontracts_datasets_taxratepagedresponselinksmodel
 from dataclasses_json import dataclass_json
 from sdk import utils
-from ..shared import codat_datacontracts_datasets_taxratepagedresponselinksmodel as shared_codat_datacontracts_datasets_taxratepagedresponselinksmodel
-from ..shared import codat_datacontracts_datasets_taxrate as shared_codat_datacontracts_datasets_taxrate
+from typing import Optional
 
 
 @dataclass_json

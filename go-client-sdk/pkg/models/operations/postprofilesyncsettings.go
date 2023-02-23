@@ -1,12 +1,12 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 )
 
 type PostProfileSyncSettingsSecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
 type PostProfileSyncSettingsRequest struct {
@@ -16,5 +16,5 @@ type PostProfileSyncSettingsRequest struct {
 
 type PostProfileSyncSettingsResponse struct {
 	ContentType string
-	StatusCode  int64
+	StatusCode  int
 }

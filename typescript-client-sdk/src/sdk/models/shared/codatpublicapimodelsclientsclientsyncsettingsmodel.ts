@@ -1,6 +1,5 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsSyncSettingsSyncSettingModel } from "./codatpublicapimodelssyncsettingssyncsettingmodel";
-
 
 
 export class CodatPublicApiModelsClientsClientSyncSettingsModel extends SpeakeasyBase {
