@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import codat_datacontracts_datasets_journal as shared_codat_datacontracts_datasets_journal
 from ..shared import codat_datacontracts_datasets_journalpushoperation as shared_codat_datacontracts_datasets_journalpushoperation

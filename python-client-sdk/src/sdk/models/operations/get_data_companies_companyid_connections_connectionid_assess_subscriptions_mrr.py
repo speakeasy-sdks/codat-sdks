@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import codat_standardreporting_contracts_report as shared_codat_standardreporting_contracts_report
 from ..shared import security as shared_security

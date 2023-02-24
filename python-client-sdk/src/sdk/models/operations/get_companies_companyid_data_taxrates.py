@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import codat_datacontracts_datasets_taxratepagedresponsemodel as shared_codat_datacontracts_datasets_taxratepagedresponsemodel
 from ..shared import security as shared_security

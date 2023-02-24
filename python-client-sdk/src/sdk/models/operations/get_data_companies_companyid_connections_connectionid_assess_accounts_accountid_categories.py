@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import codat_assess_datacontracts_accountcategories_accountcategoriesmodel as shared_codat_assess_datacontracts_accountcategories_accountcategoriesmodel
 from ..shared import security as shared_security

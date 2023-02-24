@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import codat_datacontracts_push_pushoption as shared_codat_datacontracts_push_pushoption
 from ..shared import security as shared_security

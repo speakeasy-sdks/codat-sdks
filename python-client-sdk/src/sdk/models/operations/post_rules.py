@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import codat_public_api_models_rules_addrulemodel as shared_codat_public_api_models_rules_addrulemodel
 from ..shared import codat_public_api_models_rules_rule as shared_codat_public_api_models_rules_rule

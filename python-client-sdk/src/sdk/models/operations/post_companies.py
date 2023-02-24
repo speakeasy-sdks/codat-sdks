@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import codat_public_api_models_company_addcompanymodel as shared_codat_public_api_models_company_addcompanymodel
 from ..shared import codat_public_api_models_company_company as shared_codat_public_api_models_company_company

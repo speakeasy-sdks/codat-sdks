@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import codat_clients_api_client_contract_companysyncsettings as shared_codat_clients_api_client_contract_companysyncsettings
 from ..shared import security as shared_security

@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 import dateutil.parser
 from ..shared import codat_assess_datacontracts_financials_metrics_financialmetricsdataset as shared_codat_assess_datacontracts_financials_metrics_financialmetricsdataset

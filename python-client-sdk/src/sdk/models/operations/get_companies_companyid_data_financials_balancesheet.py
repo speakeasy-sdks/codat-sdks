@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 import dateutil.parser
 from ..shared import codat_public_api_models_data_balancesheetresponse as shared_codat_public_api_models_data_balancesheetresponse

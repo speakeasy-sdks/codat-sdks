@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import codat_assess_datacontracts_cashflow_transactions_cashflowtransactionsreport as shared_codat_assess_datacontracts_cashflow_transactions_cashflowtransactionsreport
 from ..shared import security as shared_security

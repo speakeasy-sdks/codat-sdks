@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import codat_datacontracts_datasets_purchaseorder as shared_codat_datacontracts_datasets_purchaseorder
 from ..shared import codat_datacontracts_datasets_purchaseorderpushoperation as shared_codat_datacontracts_datasets_purchaseorderpushoperation

@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import codat_pullmessages_contracts_datasetmessages as shared_codat_pullmessages_contracts_datasetmessages
 from ..shared import security as shared_security

@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import codat_public_api_models_company_companysettings as shared_codat_public_api_models_company_companysettings
 from ..shared import security as shared_security

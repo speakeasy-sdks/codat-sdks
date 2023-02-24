@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 import dateutil.parser
 from ..shared import codat_standardreporting_contracts_report as shared_codat_standardreporting_contracts_report

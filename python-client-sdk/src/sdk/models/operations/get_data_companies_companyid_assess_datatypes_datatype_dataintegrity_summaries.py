@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import codat_dataintegrity_contracts_summary_matchsummariesresponse as shared_codat_dataintegrity_contracts_summary_matchsummariesresponse
 from ..shared import security as shared_security

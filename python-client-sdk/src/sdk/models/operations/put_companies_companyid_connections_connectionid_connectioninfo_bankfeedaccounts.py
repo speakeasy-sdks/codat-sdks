@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import codat_standardization_bankfeedsaccounts_contract_bankfeedbankaccount as shared_codat_standardization_bankfeedsaccounts_contract_bankfeedbankaccount
 from ..shared import security as shared_security

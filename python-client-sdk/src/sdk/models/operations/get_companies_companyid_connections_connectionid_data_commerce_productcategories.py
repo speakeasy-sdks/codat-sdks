@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import codat_datacontracts_datasets_commerce_productcategorypagedresponsemodel as shared_codat_datacontracts_datasets_commerce_productcategorypagedresponsemodel
 from ..shared import security as shared_security

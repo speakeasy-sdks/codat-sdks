@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 import dateutil.parser
 from ..shared import codat_datacontracts_datasets_agedcreditoroutstandingicollectionreport as shared_codat_datacontracts_datasets_agedcreditoroutstandingicollectionreport

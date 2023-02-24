@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import codat_public_api_models_clients_integrationsettingsmodel as shared_codat_public_api_models_clients_integrationsettingsmodel
 from ..shared import codat_public_api_models_clients_integrationsettingspatchmodel as shared_codat_public_api_models_clients_integrationsettingspatchmodel
