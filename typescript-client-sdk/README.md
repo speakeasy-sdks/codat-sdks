@@ -19,17 +19,21 @@ yarn add @codatio/codat-ts
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```typescript
-import { SDK, withSecurity} from "@codatio/codat-ts";
-import { GetCompaniesCompanyIdConnectionsConnectionIdDataAccountTransactionsRequest, GetCompaniesCompanyIdConnectionsConnectionIdDataAccountTransactionsResponse } from "@codatio/codat-ts/src/sdk/models/operations";
-import { AxiosError } from "axios";
+import {
+  GetCompaniesCompanyIdConnectionsConnectionIdDataAccountTransactionsRequest,
+  GetCompaniesCompanyIdConnectionsConnectionIdDataAccountTransactionsResponse 
+} from "@codatio/codat-ts/dist/sdk/models/operations";
 
-const sdk = new SDK(withSecurity(
+import { AxiosError } from "axios";
+import { SDK } from "@codatio/codat-ts";
+
+const sdk = new SDK({
   security: {
     apiKeyAuth: {
       apiKey: "YOUR_API_KEY_HERE",
     },
   }
-));
+});
     
 const req: GetCompaniesCompanyIdConnectionsConnectionIdDataAccountTransactionsRequest = {
   security: {

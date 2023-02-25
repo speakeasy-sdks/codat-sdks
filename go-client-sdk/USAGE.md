@@ -3,6 +3,7 @@
 package main
 
 import (
+    "context"
     "log"
     "github.com/speakeasy-sdks/codat-sdks/go-client-sdk"
     "github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
@@ -16,7 +17,7 @@ func main() {
                 APIKeyAuth: shared.SchemeAPIKeyAuth{
                     APIKey: "YOUR_API_KEY_HERE",
                 },
-            }
+            },
         ),
     }
 
@@ -39,7 +40,8 @@ func main() {
             Query: "vero",
         },
     }
-    
+
+    ctx := context.Background()
     res, err := s.AccountTransactions.GetCompaniesCompanyIDConnectionsConnectionIDDataAccountTransactions(ctx, req)
     if err != nil {
         log.Fatal(err)
@@ -48,5 +50,6 @@ func main() {
     if res.CodatDataContractsDatasetsAccountTransactionPagedResponse != nil {
         // handle response
     }
+}
 ```
 <!-- End SDK Example Usage -->
