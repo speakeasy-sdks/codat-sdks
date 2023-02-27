@@ -1,6 +1,6 @@
 {
   "name": "@codatio/codat-ts",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "author": "codatio",
   "scripts": {
     "prepare": "tsc --build"

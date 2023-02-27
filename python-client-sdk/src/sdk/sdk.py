@@ -122,7 +122,7 @@ class SDK:
     _security: shared.Security
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "2.1.1"
+    _sdk_version: str = "2.1.2"
     _gen_version: str = "1.5.3"
 
     def __init__(self) -> None:
