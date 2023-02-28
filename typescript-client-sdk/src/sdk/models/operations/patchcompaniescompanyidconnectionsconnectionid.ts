@@ -1,5 +1,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
+import { Expose, Type } from "class-transformer";
 
 
 export class PatchCompaniesCompanyIdConnectionsConnectionIdPathParams extends SpeakeasyBase {
@@ -11,7 +12,8 @@ export class PatchCompaniesCompanyIdConnectionsConnectionIdPathParams extends Sp
 }
 
 export class PatchCompaniesCompanyIdConnectionsConnectionIdRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=status" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "status" })
   status?: string;
 }
 

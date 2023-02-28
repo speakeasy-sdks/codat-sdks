@@ -1,6 +1,8 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class Transfers {
   _defaultClient: AxiosInstance;
@@ -33,21 +35,14 @@ export class Transfers {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/transfers", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -58,7 +53,11 @@ export class Transfers {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsTransferPagedResponseModel = httpRes?.data;
+              res.codatDataContractsDatasetsTransferPagedResponseModel = plainToInstance(
+                shared.CodatDataContractsDatasetsTransferPagedResponseModel,
+                httpRes?.data as shared.CodatDataContractsDatasetsTransferPagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -82,7 +81,7 @@ export class Transfers {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/transfers/{transferId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -99,7 +98,11 @@ export class Transfers {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsTransfer = httpRes?.data;
+              res.codatDataContractsDatasetsTransfer = plainToInstance(
+                shared.CodatDataContractsDatasetsTransfer,
+                httpRes?.data as shared.CodatDataContractsDatasetsTransfer,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -133,24 +136,17 @@ export class Transfers {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "post",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -161,7 +157,11 @@ export class Transfers {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsTransferPushOperation = httpRes?.data;
+              res.codatDataContractsDatasetsTransferPushOperation = plainToInstance(
+                shared.CodatDataContractsDatasetsTransferPushOperation,
+                httpRes?.data as shared.CodatDataContractsDatasetsTransferPushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

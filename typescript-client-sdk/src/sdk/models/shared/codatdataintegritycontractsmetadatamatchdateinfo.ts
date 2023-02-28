@@ -1,16 +1,25 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class CodatDataIntegrityContractsMetadataMatchDateInfo extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=maxDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "maxDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   maxDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=maxOverlappingDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "maxOverlappingDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   maxOverlappingDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=minDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "minDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   minDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=minOverlappingDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "minOverlappingDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   minOverlappingDate?: Date;
 }

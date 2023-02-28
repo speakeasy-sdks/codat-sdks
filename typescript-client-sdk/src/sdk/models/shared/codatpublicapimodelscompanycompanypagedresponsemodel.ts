@@ -1,6 +1,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsCompanyCompany } from "./codatpublicapimodelscompanycompany";
 import { CodatPublicApiModelsCompanyCompanyPagedResponseLinksModel } from "./codatpublicapimodelscompanycompanypagedresponselinksmodel";
+import { Expose, Type } from "class-transformer";
 
 
 // CodatPublicApiModelsCompanyCompanyPagedResponseModel
@@ -9,18 +10,25 @@ import { CodatPublicApiModelsCompanyCompanyPagedResponseLinksModel } from "./cod
  * Usable with the [ProducesResponseType] attribute on a controller action.
 **/
 export class CodatPublicApiModelsCompanyCompanyPagedResponseModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=_links" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "_links" })
+  @Type(() => CodatPublicApiModelsCompanyCompanyPagedResponseLinksModel)
   links?: CodatPublicApiModelsCompanyCompanyPagedResponseLinksModel;
 
-  @SpeakeasyMetadata({ data: "json, name=pageNumber" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageNumber" })
   pageNumber?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=pageSize" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageSize" })
   pageSize?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=results", elemType: CodatPublicApiModelsCompanyCompany })
+  @SpeakeasyMetadata({ elemType: CodatPublicApiModelsCompanyCompany })
+  @Expose({ name: "results" })
+  @Type(() => CodatPublicApiModelsCompanyCompany)
   results?: CodatPublicApiModelsCompanyCompany[];
 
-  @SpeakeasyMetadata({ data: "json, name=totalResults" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "totalResults" })
   totalResults?: number;
 }

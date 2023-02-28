@@ -4,42 +4,65 @@ import { CodatDataContractsDatasetsJournalLine } from "./codatdatacontractsdatas
 import { CodatDataContractsDatasetsJournalRef } from "./codatdatacontractsdatasetsjournalref";
 import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasetsmetadata";
 import { CodatDataContractsDatasetsRecordRef } from "./codatdatacontractsdatasetsrecordref";
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsJournalEntry extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=createdOn" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "createdOn" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   createdOn?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=description" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "description" })
   description?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=journalLines", elemType: CodatDataContractsDatasetsJournalLine })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsJournalLine })
+  @Expose({ name: "journalLines" })
+  @Type(() => CodatDataContractsDatasetsJournalLine)
   journalLines?: CodatDataContractsDatasetsJournalLine[];
 
-  @SpeakeasyMetadata({ data: "json, name=journalRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "journalRef" })
+  @Type(() => CodatDataContractsDatasetsJournalRef)
   journalRef?: CodatDataContractsDatasetsJournalRef;
 
-  @SpeakeasyMetadata({ data: "json, name=metadata" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "metadata" })
+  @Type(() => CodatDataContractsDatasetsMetadata)
   metadata?: CodatDataContractsDatasetsMetadata;
 
-  @SpeakeasyMetadata({ data: "json, name=modifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   modifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=postedOn" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "postedOn" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   postedOn?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=recordRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "recordRef" })
+  @Type(() => CodatDataContractsDatasetsRecordRef)
   recordRef?: CodatDataContractsDatasetsRecordRef;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceModifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceModifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   sourceModifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=supplementalData" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "supplementalData" })
+  @Type(() => CodatDataContractsDatasetsDataInterfacesSupplementalData)
   supplementalData?: CodatDataContractsDatasetsDataInterfacesSupplementalData;
 
-  @SpeakeasyMetadata({ data: "json, name=updatedOn" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "updatedOn" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   updatedOn?: Date;
 }

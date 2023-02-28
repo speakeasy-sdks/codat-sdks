@@ -1,17 +1,26 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCommerceDisputePagedResponseHrefModel } from "./codatdatacontractsdatasetscommercedisputepagedresponsehrefmodel";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsCommerceDisputePagedResponseLinksModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=current" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "current" })
+  @Type(() => CodatDataContractsDatasetsCommerceDisputePagedResponseHrefModel)
   current?: CodatDataContractsDatasetsCommerceDisputePagedResponseHrefModel;
 
-  @SpeakeasyMetadata({ data: "json, name=next" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "next" })
+  @Type(() => CodatDataContractsDatasetsCommerceDisputePagedResponseHrefModel)
   next?: CodatDataContractsDatasetsCommerceDisputePagedResponseHrefModel;
 
-  @SpeakeasyMetadata({ data: "json, name=previous" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "previous" })
+  @Type(() => CodatDataContractsDatasetsCommerceDisputePagedResponseHrefModel)
   previous?: CodatDataContractsDatasetsCommerceDisputePagedResponseHrefModel;
 
-  @SpeakeasyMetadata({ data: "json, name=self" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "self" })
+  @Type(() => CodatDataContractsDatasetsCommerceDisputePagedResponseHrefModel)
   self?: CodatDataContractsDatasetsCommerceDisputePagedResponseHrefModel;
 }

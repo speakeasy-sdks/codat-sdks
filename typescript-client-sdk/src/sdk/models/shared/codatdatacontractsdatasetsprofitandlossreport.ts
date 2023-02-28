@@ -1,38 +1,57 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsReportLine } from "./codatdatacontractsdatasetsreportline";
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsProfitAndLossReport extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=costOfSales" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "costOfSales" })
+  @Type(() => CodatDataContractsDatasetsReportLine)
   costOfSales?: CodatDataContractsDatasetsReportLine;
 
-  @SpeakeasyMetadata({ data: "json, name=expenses" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "expenses" })
+  @Type(() => CodatDataContractsDatasetsReportLine)
   expenses?: CodatDataContractsDatasetsReportLine;
 
-  @SpeakeasyMetadata({ data: "json, name=fromDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "fromDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   fromDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=grossProfit" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "grossProfit" })
   grossProfit: number;
 
-  @SpeakeasyMetadata({ data: "json, name=income" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "income" })
+  @Type(() => CodatDataContractsDatasetsReportLine)
   income?: CodatDataContractsDatasetsReportLine;
 
-  @SpeakeasyMetadata({ data: "json, name=netOperatingProfit" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "netOperatingProfit" })
   netOperatingProfit: number;
 
-  @SpeakeasyMetadata({ data: "json, name=netOtherIncome" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "netOtherIncome" })
   netOtherIncome: number;
 
-  @SpeakeasyMetadata({ data: "json, name=netProfit" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "netProfit" })
   netProfit: number;
 
-  @SpeakeasyMetadata({ data: "json, name=otherExpenses" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "otherExpenses" })
+  @Type(() => CodatDataContractsDatasetsReportLine)
   otherExpenses?: CodatDataContractsDatasetsReportLine;
 
-  @SpeakeasyMetadata({ data: "json, name=otherIncome" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "otherIncome" })
+  @Type(() => CodatDataContractsDatasetsReportLine)
   otherIncome?: CodatDataContractsDatasetsReportLine;
 
-  @SpeakeasyMetadata({ data: "json, name=toDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "toDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   toDate?: Date;
 }

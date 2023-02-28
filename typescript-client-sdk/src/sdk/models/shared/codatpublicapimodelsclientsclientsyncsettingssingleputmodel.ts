@@ -1,19 +1,26 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class CodatPublicApiModelsClientsClientSyncSettingsSinglePutModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=fetchOnFirstLink" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "fetchOnFirstLink" })
   fetchOnFirstLink?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=monthsToSync" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "monthsToSync" })
   monthsToSync?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=syncFromUtc" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "syncFromUtc" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   syncFromUtc?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=syncFromWindow" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "syncFromWindow" })
   syncFromWindow?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=syncSchedule" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "syncSchedule" })
   syncSchedule?: number;
 }

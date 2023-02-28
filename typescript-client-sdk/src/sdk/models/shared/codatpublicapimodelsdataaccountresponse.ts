@@ -2,48 +2,66 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsDataAccountStatusResponseEnum } from "./codatpublicapimodelsdataaccountstatusresponseenum";
 import { CodatPublicApiModelsDataAccountTypeResponseEnum } from "./codatpublicapimodelsdataaccounttyperesponseenum";
 import { CodatPublicApiModelsDataValidDatatypeLinksResponse } from "./codatpublicapimodelsdatavaliddatatypelinksresponse";
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatPublicApiModelsDataAccountResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=currency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currency" })
   currency?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=currentBalance" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currentBalance" })
   currentBalance?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=description" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "description" })
   description?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=fullyQualifiedCategory" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "fullyQualifiedCategory" })
   fullyQualifiedCategory?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=fullyQualifiedName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "fullyQualifiedName" })
   fullyQualifiedName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=isBankAccount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "isBankAccount" })
   isBankAccount?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=modifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   modifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=nominalCode" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "nominalCode" })
   nominalCode?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceModifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceModifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   sourceModifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=status" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "status" })
   status?: CodatPublicApiModelsDataAccountStatusResponseEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=type" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "type" })
   type?: CodatPublicApiModelsDataAccountTypeResponseEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=validDatatypeLinks", elemType: CodatPublicApiModelsDataValidDatatypeLinksResponse })
+  @SpeakeasyMetadata({ elemType: CodatPublicApiModelsDataValidDatatypeLinksResponse })
+  @Expose({ name: "validDatatypeLinks" })
+  @Type(() => CodatPublicApiModelsDataValidDatatypeLinksResponse)
   validDatatypeLinks?: CodatPublicApiModelsDataValidDatatypeLinksResponse[];
 }

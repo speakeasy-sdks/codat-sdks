@@ -52,6 +52,7 @@ src/sdk/taxrates.ts
 src/sdk/trackingcategories.ts
 src/sdk/transfers.ts
 src/sdk/sdk.ts
+jest.config.js
 package-lock.json
 package.json
 src/index.ts

@@ -1,6 +1,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCommerceCustomer } from "./codatdatacontractsdatasetscommercecustomer";
 import { CodatDataContractsDatasetsCommerceCustomerPagedResponseLinksModel } from "./codatdatacontractsdatasetscommercecustomerpagedresponselinksmodel";
+import { Expose, Type } from "class-transformer";
 
 
 // CodatDataContractsDatasetsCommerceCustomerPagedResponseModel
@@ -9,18 +10,25 @@ import { CodatDataContractsDatasetsCommerceCustomerPagedResponseLinksModel } fro
  * Usable with the [ProducesResponseType] attribute on a controller action.
 **/
 export class CodatDataContractsDatasetsCommerceCustomerPagedResponseModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=_links" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "_links" })
+  @Type(() => CodatDataContractsDatasetsCommerceCustomerPagedResponseLinksModel)
   links?: CodatDataContractsDatasetsCommerceCustomerPagedResponseLinksModel;
 
-  @SpeakeasyMetadata({ data: "json, name=pageNumber" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageNumber" })
   pageNumber?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=pageSize" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageSize" })
   pageSize?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=results", elemType: CodatDataContractsDatasetsCommerceCustomer })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsCommerceCustomer })
+  @Expose({ name: "results" })
+  @Type(() => CodatDataContractsDatasetsCommerceCustomer)
   results?: CodatDataContractsDatasetsCommerceCustomer[];
 
-  @SpeakeasyMetadata({ data: "json, name=totalResults" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "totalResults" })
   totalResults?: number;
 }

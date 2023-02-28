@@ -1,35 +1,50 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCommerceAddress } from "./codatdatacontractsdatasetscommerceaddress";
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsCommerceCustomer extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=addresses", elemType: CodatDataContractsDatasetsCommerceAddress })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsCommerceAddress })
+  @Expose({ name: "addresses" })
+  @Type(() => CodatDataContractsDatasetsCommerceAddress)
   addresses?: CodatDataContractsDatasetsCommerceAddress[];
 
-  @SpeakeasyMetadata({ data: "json, name=createdDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "createdDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   createdDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=customerName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "customerName" })
   customerName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=defaultCurrency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "defaultCurrency" })
   defaultCurrency?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=emailAddress" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "emailAddress" })
   emailAddress?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=modifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   modifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=note" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "note" })
   note?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=phone" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "phone" })
   phone?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceModifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceModifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   sourceModifiedDate?: Date;
 }

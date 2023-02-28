@@ -1,15 +1,21 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataIntegrityContractsSummaryMatchAmountSummary } from "./codatdataintegritycontractssummarymatchamountsummary";
 import { CodatDataIntegrityContractsSummaryMatchCountSummary } from "./codatdataintegritycontractssummarymatchcountsummary";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataIntegrityContractsSummaryMatchSummary extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=byAmount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "byAmount" })
+  @Type(() => CodatDataIntegrityContractsSummaryMatchAmountSummary)
   byAmount?: CodatDataIntegrityContractsSummaryMatchAmountSummary;
 
-  @SpeakeasyMetadata({ data: "json, name=byCount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "byCount" })
+  @Type(() => CodatDataIntegrityContractsSummaryMatchCountSummary)
   byCount?: CodatDataIntegrityContractsSummaryMatchCountSummary;
 
-  @SpeakeasyMetadata({ data: "json, name=type" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "type" })
   type?: string;
 }

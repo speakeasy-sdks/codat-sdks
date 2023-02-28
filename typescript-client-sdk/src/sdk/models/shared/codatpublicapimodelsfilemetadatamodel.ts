@@ -1,16 +1,22 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class CodatPublicApiModelsFileMetadataModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=displayName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "displayName" })
   displayName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=fileName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "fileName" })
   fileName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceType" })
   sourceType?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=uploaded" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "uploaded" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   uploaded?: Date;
 }

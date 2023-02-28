@@ -1,10 +1,13 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatPublicApiModelsClientsIntegrationSettingsModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=integrationId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "integrationId" })
   integrationId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=oneTimeSync" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "oneTimeSync" })
   oneTimeSync?: string;
 }

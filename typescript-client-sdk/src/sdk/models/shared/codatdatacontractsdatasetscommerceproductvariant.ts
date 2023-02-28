@@ -1,42 +1,58 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCommerceInventory } from "./codatdatacontractsdatasetscommerceinventory";
 import { CodatDataContractsDatasetsCommerceProductVariantPrice } from "./codatdatacontractsdatasetscommerceproductvariantprice";
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsCommerceProductVariant extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=barcode" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "barcode" })
   barcode?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=createdDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "createdDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   createdDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=inventory" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "inventory" })
+  @Type(() => CodatDataContractsDatasetsCommerceInventory)
   inventory?: CodatDataContractsDatasetsCommerceInventory;
 
-  @SpeakeasyMetadata({ data: "json, name=isTaxEnabled" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "isTaxEnabled" })
   isTaxEnabled?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=prices", elemType: CodatDataContractsDatasetsCommerceProductVariantPrice })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsCommerceProductVariantPrice })
+  @Expose({ name: "prices" })
+  @Type(() => CodatDataContractsDatasetsCommerceProductVariantPrice)
   prices?: CodatDataContractsDatasetsCommerceProductVariantPrice[];
 
-  @SpeakeasyMetadata({ data: "json, name=quantity" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "quantity" })
   quantity?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=shippingRequired" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "shippingRequired" })
   shippingRequired?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=sku" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sku" })
   sku?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=unitOfMeasure" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "unitOfMeasure" })
   unitOfMeasure?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=vatPercentage" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "vatPercentage" })
   vatPercentage?: number;
 }

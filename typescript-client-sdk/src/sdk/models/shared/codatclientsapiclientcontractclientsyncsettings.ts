@@ -1,14 +1,19 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatClientsApiClientContractSyncSetting } from "./codatclientsapiclientcontractsyncsetting";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatClientsApiClientContractClientSyncSettings extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=clientId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "clientId" })
   clientId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=overridesDefaults" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "overridesDefaults" })
   overridesDefaults?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=settings", elemType: CodatClientsApiClientContractSyncSetting })
+  @SpeakeasyMetadata({ elemType: CodatClientsApiClientContractSyncSetting })
+  @Expose({ name: "settings" })
+  @Type(() => CodatClientsApiClientContractSyncSetting)
   settings?: CodatClientsApiClientContractSyncSetting[];
 }

@@ -1,22 +1,30 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class CodatPullMessagesContractsValidationMessage extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=itemId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "itemId" })
   itemId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=logDateTimeUtc" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "logDateTimeUtc" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   logDateTimeUtc?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=logLevel" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "logLevel" })
   logLevel?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=message" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "message" })
   message?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=ruleId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "ruleId" })
   ruleId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=validatorName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "validatorName" })
   validatorName?: string;
 }

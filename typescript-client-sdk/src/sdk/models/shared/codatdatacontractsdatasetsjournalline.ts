@@ -1,21 +1,29 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsAccountRef } from "./codatdatacontractsdatasetsaccountref";
 import { CodatDataContractsDatasetsTracking } from "./codatdatacontractsdatasetstracking";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsJournalLine extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=accountRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountRef" })
+  @Type(() => CodatDataContractsDatasetsAccountRef)
   accountRef?: CodatDataContractsDatasetsAccountRef;
 
-  @SpeakeasyMetadata({ data: "json, name=currency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currency" })
   currency?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=description" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "description" })
   description?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=netAmount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "netAmount" })
   netAmount: number;
 
-  @SpeakeasyMetadata({ data: "json, name=tracking" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "tracking" })
+  @Type(() => CodatDataContractsDatasetsTracking)
   tracking?: CodatDataContractsDatasetsTracking;
 }

@@ -1,6 +1,8 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class Companies {
   _defaultClient: AxiosInstance;
@@ -33,7 +35,7 @@ export class Companies {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -71,21 +73,14 @@ export class Companies {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/companies";
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -96,7 +91,11 @@ export class Companies {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsCompanyCompanyPagedResponseModel = httpRes?.data;
+              res.codatPublicApiModelsCompanyCompanyPagedResponseModel = plainToInstance(
+                shared.CodatPublicApiModelsCompanyCompanyPagedResponseModel,
+                httpRes?.data as shared.CodatPublicApiModelsCompanyCompanyPagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -120,7 +119,7 @@ export class Companies {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -137,7 +136,11 @@ export class Companies {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsCompanyCompany = httpRes?.data;
+              res.codatPublicApiModelsCompanyCompany = plainToInstance(
+                shared.CodatPublicApiModelsCompanyCompany,
+                httpRes?.data as shared.CodatPublicApiModelsCompanyCompany,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -161,7 +164,7 @@ export class Companies {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/settings", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -178,7 +181,11 @@ export class Companies {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsCompanyCompanySettings = httpRes?.data;
+              res.codatPublicApiModelsCompanyCompanySettings = plainToInstance(
+                shared.CodatPublicApiModelsCompanyCompanySettings,
+                httpRes?.data as shared.CodatPublicApiModelsCompanyCompanySettings,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -199,7 +206,7 @@ export class Companies {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/syncSettings", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -216,7 +223,11 @@ export class Companies {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatClientsApiClientContractCompanySyncSettings = httpRes?.data;
+              res.codatClientsApiClientContractCompanySyncSettings = plainToInstance(
+                shared.CodatClientsApiClientContractCompanySyncSettings,
+                httpRes?.data as shared.CodatClientsApiClientContractCompanySyncSettings,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -250,7 +261,7 @@ export class Companies {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -270,7 +281,11 @@ export class Companies {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsCompanyCompany = httpRes?.data;
+              res.codatPublicApiModelsCompanyCompany = plainToInstance(
+                shared.CodatPublicApiModelsCompanyCompany,
+                httpRes?.data as shared.CodatPublicApiModelsCompanyCompany,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -301,7 +316,7 @@ export class Companies {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -352,7 +367,7 @@ export class Companies {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -372,7 +387,11 @@ export class Companies {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsCompanyCompany = httpRes?.data;
+              res.codatPublicApiModelsCompanyCompany = plainToInstance(
+                shared.CodatPublicApiModelsCompanyCompany,
+                httpRes?.data as shared.CodatPublicApiModelsCompanyCompany,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -406,7 +425,7 @@ export class Companies {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -426,7 +445,11 @@ export class Companies {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsCompanyCompanySettings = httpRes?.data;
+              res.codatPublicApiModelsCompanyCompanySettings = plainToInstance(
+                shared.CodatPublicApiModelsCompanyCompanySettings,
+                httpRes?.data as shared.CodatPublicApiModelsCompanyCompanySettings,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

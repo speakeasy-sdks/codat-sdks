@@ -1,6 +1,8 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class PurchaseOrders {
   _defaultClient: AxiosInstance;
@@ -30,21 +32,14 @@ export class PurchaseOrders {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/purchaseOrders", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -55,7 +50,11 @@ export class PurchaseOrders {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsPurchaseOrderPagedResponseModel = httpRes?.data;
+              res.codatDataContractsDatasetsPurchaseOrderPagedResponseModel = plainToInstance(
+                shared.CodatDataContractsDatasetsPurchaseOrderPagedResponseModel,
+                httpRes?.data as shared.CodatDataContractsDatasetsPurchaseOrderPagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -76,7 +75,7 @@ export class PurchaseOrders {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/purchaseOrders/{purchaseOrderId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -93,7 +92,11 @@ export class PurchaseOrders {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsPurchaseOrder = httpRes?.data;
+              res.codatDataContractsDatasetsPurchaseOrder = plainToInstance(
+                shared.CodatDataContractsDatasetsPurchaseOrder,
+                httpRes?.data as shared.CodatDataContractsDatasetsPurchaseOrder,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -127,24 +130,17 @@ export class PurchaseOrders {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "post",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -155,7 +151,11 @@ export class PurchaseOrders {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsPurchaseOrderPushOperation = httpRes?.data;
+              res.codatDataContractsDatasetsPurchaseOrderPushOperation = plainToInstance(
+                shared.CodatDataContractsDatasetsPurchaseOrderPushOperation,
+                httpRes?.data as shared.CodatDataContractsDatasetsPurchaseOrderPushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -189,24 +189,17 @@ export class PurchaseOrders {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "put",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -217,7 +210,11 @@ export class PurchaseOrders {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsPurchaseOrderPushOperation = httpRes?.data;
+              res.codatDataContractsDatasetsPurchaseOrderPushOperation = plainToInstance(
+                shared.CodatDataContractsDatasetsPurchaseOrderPushOperation,
+                httpRes?.data as shared.CodatDataContractsDatasetsPurchaseOrderPushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

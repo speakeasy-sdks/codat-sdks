@@ -1,6 +1,8 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class DirectIncomes {
   _defaultClient: AxiosInstance;
@@ -33,21 +35,14 @@ export class DirectIncomes {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/directIncomes", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -58,7 +53,11 @@ export class DirectIncomes {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsDirectIncomePagedResponseModel = httpRes?.data;
+              res.codatDataContractsDatasetsDirectIncomePagedResponseModel = plainToInstance(
+                shared.CodatDataContractsDatasetsDirectIncomePagedResponseModel,
+                httpRes?.data as shared.CodatDataContractsDatasetsDirectIncomePagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -82,7 +81,7 @@ export class DirectIncomes {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -99,7 +98,11 @@ export class DirectIncomes {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsDirectIncome = httpRes?.data;
+              res.codatDataContractsDatasetsDirectIncome = plainToInstance(
+                shared.CodatDataContractsDatasetsDirectIncome,
+                httpRes?.data as shared.CodatDataContractsDatasetsDirectIncome,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -123,7 +126,7 @@ export class DirectIncomes {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -140,7 +143,11 @@ export class DirectIncomes {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsAttachmentsDataset = httpRes?.data;
+              res.codatDataContractsDatasetsAttachmentsDataset = plainToInstance(
+                shared.CodatDataContractsDatasetsAttachmentsDataset,
+                httpRes?.data as shared.CodatDataContractsDatasetsAttachmentsDataset,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -164,7 +171,7 @@ export class DirectIncomes {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments/{attachmentId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -181,7 +188,11 @@ export class DirectIncomes {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsAttachmentsDatasetAttachment = httpRes?.data;
+              res.codatDataContractsDatasetsAttachmentsDatasetAttachment = plainToInstance(
+                shared.CodatDataContractsDatasetsAttachmentsDatasetAttachment,
+                httpRes?.data as shared.CodatDataContractsDatasetsAttachmentsDatasetAttachment,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -205,7 +216,7 @@ export class DirectIncomes {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments/{attachmentId}/download", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -253,24 +264,17 @@ export class DirectIncomes {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "post",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -281,7 +285,11 @@ export class DirectIncomes {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsDirectIncomePushOperation = httpRes?.data;
+              res.codatDataContractsDatasetsDirectIncomePushOperation = plainToInstance(
+                shared.CodatDataContractsDatasetsDirectIncomePushOperation,
+                httpRes?.data as shared.CodatDataContractsDatasetsDirectIncomePushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -305,7 +313,7 @@ export class DirectIncomes {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/push/directIncomes/{directIncomeId}/attachment", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({

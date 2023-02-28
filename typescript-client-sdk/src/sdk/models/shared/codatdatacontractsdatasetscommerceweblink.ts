@@ -1,11 +1,14 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCommerceWebLinkTypeEnum } from "./codatdatacontractsdatasetscommerceweblinktypeenum";
+import { Expose } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsCommerceWebLink extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=type" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "type" })
   type?: CodatDataContractsDatasetsCommerceWebLinkTypeEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=url" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "url" })
   url?: string;
 }

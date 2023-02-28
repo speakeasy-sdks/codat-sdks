@@ -3,39 +3,56 @@ import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasets
 import { CodatDataContractsDatasetsTaxRateComponent } from "./codatdatacontractsdatasetstaxratecomponent";
 import { CodatDataContractsDatasetsTaxRateStatusEnum } from "./codatdatacontractsdatasetstaxratestatusenum";
 import { CodatDataContractsDatasetsValidDatatypeLinks } from "./codatdatacontractsdatasetsvaliddatatypelinks";
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsTaxRate extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=code" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "code" })
   code?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=components", elemType: CodatDataContractsDatasetsTaxRateComponent })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsTaxRateComponent })
+  @Expose({ name: "components" })
+  @Type(() => CodatDataContractsDatasetsTaxRateComponent)
   components?: CodatDataContractsDatasetsTaxRateComponent[];
 
-  @SpeakeasyMetadata({ data: "json, name=effectiveTaxRate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "effectiveTaxRate" })
   effectiveTaxRate?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=metadata" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "metadata" })
+  @Type(() => CodatDataContractsDatasetsMetadata)
   metadata?: CodatDataContractsDatasetsMetadata;
 
-  @SpeakeasyMetadata({ data: "json, name=modifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   modifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceModifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceModifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   sourceModifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=status" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "status" })
   status?: CodatDataContractsDatasetsTaxRateStatusEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=totalTaxRate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "totalTaxRate" })
   totalTaxRate?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=validDatatypeLinks", elemType: CodatDataContractsDatasetsValidDatatypeLinks })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsValidDatatypeLinks })
+  @Expose({ name: "validDatatypeLinks" })
+  @Type(() => CodatDataContractsDatasetsValidDatatypeLinks)
   validDatatypeLinks?: CodatDataContractsDatasetsValidDatatypeLinks[];
 }

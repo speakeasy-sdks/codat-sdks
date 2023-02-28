@@ -2,24 +2,34 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCashFlowStatement } from "./codatdatacontractsdatasetscashflowstatement";
 import { CodatDataContractsDatasetsCashFlowStatementReportingBasisEnum } from "./codatdatacontractsdatasetscashflowstatementreportingbasisenum";
 import { CodatDataContractsDatasetsCashFlowStatementReportingDataEnum } from "./codatdatacontractsdatasetscashflowstatementreportingdataenum";
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatPublicApiModelsDataCashFlowStatementResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=currency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currency" })
   currency: string;
 
-  @SpeakeasyMetadata({ data: "json, name=earliestAvailableMonth" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "earliestAvailableMonth" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   earliestAvailableMonth?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=mostRecentAvailableMonth" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "mostRecentAvailableMonth" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   mostRecentAvailableMonth?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=reportBasis" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "reportBasis" })
   reportBasis: CodatDataContractsDatasetsCashFlowStatementReportingBasisEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=reportInput" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "reportInput" })
   reportInput: CodatDataContractsDatasetsCashFlowStatementReportingDataEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=reports", elemType: CodatDataContractsDatasetsCashFlowStatement })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsCashFlowStatement })
+  @Expose({ name: "reports" })
+  @Type(() => CodatDataContractsDatasetsCashFlowStatement)
   reports: CodatDataContractsDatasetsCashFlowStatement[];
 }

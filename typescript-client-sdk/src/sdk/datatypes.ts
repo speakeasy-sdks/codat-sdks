@@ -1,6 +1,8 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
+import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class DataTypes {
   _defaultClient: AxiosInstance;
@@ -33,7 +35,7 @@ export class DataTypes {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/dataTypes/{dataType}/options", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -50,7 +52,11 @@ export class DataTypes {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsDataPushOptionsAggregate = httpRes?.data;
+              res.codatPublicApiModelsDataPushOptionsAggregate = plainToInstance(
+                shared.CodatPublicApiModelsDataPushOptionsAggregate,
+                httpRes?.data as shared.CodatPublicApiModelsDataPushOptionsAggregate,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -74,7 +80,7 @@ export class DataTypes {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/dataTypes/{dataType}/options/POST", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -91,7 +97,11 @@ export class DataTypes {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsPushPushOption = httpRes?.data;
+              res.codatDataContractsPushPushOption = plainToInstance(
+                shared.CodatDataContractsPushPushOption,
+                httpRes?.data as shared.CodatDataContractsPushPushOption,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -115,7 +125,7 @@ export class DataTypes {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/dataTypes/{dataType}/options/PUT", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -132,7 +142,11 @@ export class DataTypes {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsPushPushOption = httpRes?.data;
+              res.codatDataContractsPushPushOption = plainToInstance(
+                shared.CodatDataContractsPushPushOption,
+                httpRes?.data as shared.CodatDataContractsPushPushOption,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

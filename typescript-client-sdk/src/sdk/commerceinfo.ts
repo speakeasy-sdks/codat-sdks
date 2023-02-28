@@ -1,6 +1,8 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
+import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class CommerceInfo {
   _defaultClient: AxiosInstance;
@@ -33,7 +35,7 @@ export class CommerceInfo {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/commerce-info", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -50,7 +52,11 @@ export class CommerceInfo {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsCommerceCompanyInfo = httpRes?.data;
+              res.codatDataContractsDatasetsCommerceCompanyInfo = plainToInstance(
+                shared.CodatDataContractsDatasetsCommerceCompanyInfo,
+                httpRes?.data as shared.CodatDataContractsDatasetsCommerceCompanyInfo,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

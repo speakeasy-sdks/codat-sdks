@@ -1,18 +1,25 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsAccountRef } from "./codatdatacontractsdatasetsaccountref";
 import { CodatDataContractsDatasetsTaxRateRef } from "./codatdatacontractsdatasetstaxrateref";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsInvoiceItem extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=accountRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountRef" })
+  @Type(() => CodatDataContractsDatasetsAccountRef)
   accountRef?: CodatDataContractsDatasetsAccountRef;
 
-  @SpeakeasyMetadata({ data: "json, name=description" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "description" })
   description?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=taxRateRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "taxRateRef" })
+  @Type(() => CodatDataContractsDatasetsTaxRateRef)
   taxRateRef?: CodatDataContractsDatasetsTaxRateRef;
 
-  @SpeakeasyMetadata({ data: "json, name=unitPrice" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "unitPrice" })
   unitPrice?: number;
 }

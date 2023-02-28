@@ -1,10 +1,13 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatStandardReportingContractsIReportDataMeasure extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=index" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "index" })
   index?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=measureDisplayName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "measureDisplayName" })
   measureDisplayName?: string;
 }

@@ -1,16 +1,22 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class CodatPublicApiModelsCompanyDataConnectionError extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=errorMessage" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "errorMessage" })
   errorMessage?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=erroredOnUtc" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "erroredOnUtc" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   erroredOnUtc?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=statusCode" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "statusCode" })
   statusCode?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=statusText" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "statusText" })
   statusText?: string;
 }

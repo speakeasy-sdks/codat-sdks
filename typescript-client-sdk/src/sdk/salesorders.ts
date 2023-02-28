@@ -1,6 +1,8 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class SalesOrders {
   _defaultClient: AxiosInstance;
@@ -30,21 +32,14 @@ export class SalesOrders {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/salesOrders", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -55,7 +50,11 @@ export class SalesOrders {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsSalesOrderPagedResponseModel = httpRes?.data;
+              res.codatDataContractsDatasetsSalesOrderPagedResponseModel = plainToInstance(
+                shared.CodatDataContractsDatasetsSalesOrderPagedResponseModel,
+                httpRes?.data as shared.CodatDataContractsDatasetsSalesOrderPagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -76,7 +75,7 @@ export class SalesOrders {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/salesOrders/{salesOrderId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -93,7 +92,11 @@ export class SalesOrders {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsSalesOrder = httpRes?.data;
+              res.codatDataContractsDatasetsSalesOrder = plainToInstance(
+                shared.CodatDataContractsDatasetsSalesOrder,
+                httpRes?.data as shared.CodatDataContractsDatasetsSalesOrder,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

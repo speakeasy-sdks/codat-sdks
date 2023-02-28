@@ -1,23 +1,32 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatStandardReportingContractsIReportDataMeasure } from "./codatstandardreportingcontractsireportdatameasure";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatStandardReportingContractsReportData extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=components", elemType: CodatStandardReportingContractsReportData })
+  @SpeakeasyMetadata({ elemType: CodatStandardReportingContractsReportData })
+  @Expose({ name: "components" })
+  @Type(() => CodatStandardReportingContractsReportData)
   components?: CodatStandardReportingContractsReportData[];
 
-  @SpeakeasyMetadata({ data: "json, name=dimension" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "dimension" })
   dimension?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=dimensionDisplayName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "dimensionDisplayName" })
   dimensionDisplayName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=item" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "item" })
   item?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=itemDisplayName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "itemDisplayName" })
   itemDisplayName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=measures", elemType: CodatStandardReportingContractsIReportDataMeasure })
+  @SpeakeasyMetadata({ elemType: CodatStandardReportingContractsIReportDataMeasure })
+  @Expose({ name: "measures" })
+  @Type(() => CodatStandardReportingContractsIReportDataMeasure)
   measures?: CodatStandardReportingContractsIReportDataMeasure[];
 }

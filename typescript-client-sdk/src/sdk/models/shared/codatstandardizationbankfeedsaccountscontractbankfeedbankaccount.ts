@@ -1,34 +1,47 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class CodatStandardizationBankFeedsAccountsContractBankFeedBankAccount extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=accountName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountName" })
   accountName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=accountNumber" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountNumber" })
   accountNumber?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=accountType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountType" })
   accountType?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=balance" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "balance" })
   balance?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=currency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currency" })
   currency?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=feedStartDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "feedStartDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   feedStartDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=modifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   modifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=sortCode" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sortCode" })
   sortCode?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=status" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "status" })
   status?: string;
 }

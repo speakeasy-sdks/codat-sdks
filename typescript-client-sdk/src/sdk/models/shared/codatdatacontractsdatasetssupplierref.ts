@@ -1,10 +1,13 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsSupplierRef extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id: string;
 
-  @SpeakeasyMetadata({ data: "json, name=supplierName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "supplierName" })
   supplierName?: string;
 }

@@ -1,41 +1,57 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsCompanyDataConnectionError } from "./codatpublicapimodelscompanydataconnectionerror";
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatPublicApiModelsCompanyDataConnection extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=connectionInfo" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "connectionInfo" })
   connectionInfo?: Record<string, any>;
 
-  @SpeakeasyMetadata({ data: "json, name=created" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "created" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   created?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=dataConnectionErrors", elemType: CodatPublicApiModelsCompanyDataConnectionError })
+  @SpeakeasyMetadata({ elemType: CodatPublicApiModelsCompanyDataConnectionError })
+  @Expose({ name: "dataConnectionErrors" })
+  @Type(() => CodatPublicApiModelsCompanyDataConnectionError)
   dataConnectionErrors?: CodatPublicApiModelsCompanyDataConnectionError[];
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id: string;
 
-  @SpeakeasyMetadata({ data: "json, name=integrationId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "integrationId" })
   integrationId: string;
 
-  @SpeakeasyMetadata({ data: "json, name=integrationKey" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "integrationKey" })
   integrationKey?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=lastSync" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "lastSync" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   lastSync?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=linkUrl" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "linkUrl" })
   linkUrl: string;
 
-  @SpeakeasyMetadata({ data: "json, name=platformName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "platformName" })
   platformName: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceId" })
   sourceId: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceType" })
   sourceType?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=status" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "status" })
   status?: string;
 }

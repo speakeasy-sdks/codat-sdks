@@ -1,28 +1,39 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class CodatPublicApiModelsAssessAssessExcelMeta extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=errorMessage" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "errorMessage" })
   errorMessage?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=fileSize" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "fileSize" })
   fileSize?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=inProgress" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "inProgress" })
   inProgress?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=lastGenerated" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "lastGenerated" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   lastGenerated?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=lastInvocationId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "lastInvocationId" })
   lastInvocationId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=queued" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "queued" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   queued?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=reportType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "reportType" })
   reportType?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=success" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "success" })
   success?: boolean;
 }

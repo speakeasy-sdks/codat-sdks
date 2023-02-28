@@ -2,33 +2,55 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsPushOptionTypeEnum } from "./codatdatacontractspushoptiontypeenum";
 import { CodatDataContractsPushPushOption } from "./codatdatacontractspushpushoption";
 import { CodatDataContractsPushPushValidationInfo } from "./codatdatacontractspushpushvalidationinfo";
+import { Expose, plainToInstance, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsPushPushOptionChoice extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=description" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "description" })
   description: string;
 
-  @SpeakeasyMetadata({ data: "json, name=displayName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "displayName" })
   displayName: string;
 
-  @SpeakeasyMetadata({ data: "json, name=options", elemType: CodatDataContractsPushPushOptionChoice })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsPushPushOptionChoice })
+  @Expose({ name: "options" })
+  @Type(() => CodatDataContractsPushPushOptionChoice)
   options?: CodatDataContractsPushPushOptionChoice[];
 
-  @SpeakeasyMetadata({ data: "json, name=properties", elemType: CodatDataContractsPushPushOption })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsPushPushOption })
+  @Expose({ name: "properties" })
+  @Transform(({ value }) => {
+    const obj: Record<string, CodatDataContractsPushPushOption> = {};
+    for (const key in value) {
+      obj[key] = plainToInstance(CodatDataContractsPushPushOption,
+        value[key] as CodatDataContractsPushPushOption,
+        { excludeExtraneousValues: true }
+      );
+    }
+    return obj;
+  }, { toClassOnly: true })
   properties?: Record<string, CodatDataContractsPushPushOption>;
 
-  @SpeakeasyMetadata({ data: "json, name=rel" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "rel" })
   rel?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=required" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "required" })
   required: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=type" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "type" })
   type: CodatDataContractsPushOptionTypeEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=validation" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "validation" })
+  @Type(() => CodatDataContractsPushPushValidationInfo)
   validation?: CodatDataContractsPushPushValidationInfo;
 
-  @SpeakeasyMetadata({ data: "json, name=value" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "value" })
   value: string;
 }

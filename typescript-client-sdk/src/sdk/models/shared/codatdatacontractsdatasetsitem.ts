@@ -4,42 +4,60 @@ import { CodatDataContractsDatasetsInvoiceItem } from "./codatdatacontractsdatas
 import { CodatDataContractsDatasetsItemStatusEnum } from "./codatdatacontractsdatasetsitemstatusenum";
 import { CodatDataContractsDatasetsItemTypeEnum } from "./codatdatacontractsdatasetsitemtypeenum";
 import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasetsmetadata";
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsItem extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=billItem" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "billItem" })
+  @Type(() => CodatDataContractsDatasetsBillItem)
   billItem?: CodatDataContractsDatasetsBillItem;
 
-  @SpeakeasyMetadata({ data: "json, name=code" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "code" })
   code?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=invoiceItem" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "invoiceItem" })
+  @Type(() => CodatDataContractsDatasetsInvoiceItem)
   invoiceItem?: CodatDataContractsDatasetsInvoiceItem;
 
-  @SpeakeasyMetadata({ data: "json, name=isBillItem" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "isBillItem" })
   isBillItem: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=isInvoiceItem" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "isInvoiceItem" })
   isInvoiceItem: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=itemStatus" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "itemStatus" })
   itemStatus: CodatDataContractsDatasetsItemStatusEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=metadata" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "metadata" })
+  @Type(() => CodatDataContractsDatasetsMetadata)
   metadata?: CodatDataContractsDatasetsMetadata;
 
-  @SpeakeasyMetadata({ data: "json, name=modifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   modifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceModifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceModifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   sourceModifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=type" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "type" })
   type: CodatDataContractsDatasetsItemTypeEnum;
 }

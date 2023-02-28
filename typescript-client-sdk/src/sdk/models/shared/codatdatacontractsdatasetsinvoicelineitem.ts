@@ -4,48 +4,68 @@ import { CodatDataContractsDatasetsAccountsReceivableTracking } from "./codatdat
 import { CodatDataContractsDatasetsItemRef } from "./codatdatacontractsdatasetsitemref";
 import { CodatDataContractsDatasetsTaxRateRef } from "./codatdatacontractsdatasetstaxrateref";
 import { CodatDataContractsDatasetsTrackingCategoryRef } from "./codatdatacontractsdatasetstrackingcategoryref";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsInvoiceLineItem extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=accountRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountRef" })
+  @Type(() => CodatDataContractsDatasetsAccountRef)
   accountRef?: CodatDataContractsDatasetsAccountRef;
 
-  @SpeakeasyMetadata({ data: "json, name=description" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "description" })
   description?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=discountAmount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "discountAmount" })
   discountAmount?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=discountPercentage" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "discountPercentage" })
   discountPercentage?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=isDirectIncome" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "isDirectIncome" })
   isDirectIncome?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=itemRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "itemRef" })
+  @Type(() => CodatDataContractsDatasetsItemRef)
   itemRef?: CodatDataContractsDatasetsItemRef;
 
-  @SpeakeasyMetadata({ data: "json, name=quantity" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "quantity" })
   quantity: number;
 
-  @SpeakeasyMetadata({ data: "json, name=subTotal" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "subTotal" })
   subTotal?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=taxAmount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "taxAmount" })
   taxAmount?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=taxRateRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "taxRateRef" })
+  @Type(() => CodatDataContractsDatasetsTaxRateRef)
   taxRateRef?: CodatDataContractsDatasetsTaxRateRef;
 
-  @SpeakeasyMetadata({ data: "json, name=totalAmount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "totalAmount" })
   totalAmount?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=tracking" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "tracking" })
+  @Type(() => CodatDataContractsDatasetsAccountsReceivableTracking)
   tracking?: CodatDataContractsDatasetsAccountsReceivableTracking;
 
-  @SpeakeasyMetadata({ data: "json, name=trackingCategoryRefs", elemType: CodatDataContractsDatasetsTrackingCategoryRef })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsTrackingCategoryRef })
+  @Expose({ name: "trackingCategoryRefs" })
+  @Type(() => CodatDataContractsDatasetsTrackingCategoryRef)
   trackingCategoryRefs?: CodatDataContractsDatasetsTrackingCategoryRef[];
 
-  @SpeakeasyMetadata({ data: "json, name=unitAmount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "unitAmount" })
   unitAmount: number;
 }

@@ -1,8 +1,11 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsClientsIntegrationBrandingModelImageModel } from "./codatpublicapimodelsclientsintegrationbrandingmodelimagemodel";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatPublicApiModelsClientsIntegrationBrandingModelDefaultModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=image" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "image" })
+  @Type(() => CodatPublicApiModelsClientsIntegrationBrandingModelImageModel)
   image?: CodatPublicApiModelsClientsIntegrationBrandingModelImageModel;
 }

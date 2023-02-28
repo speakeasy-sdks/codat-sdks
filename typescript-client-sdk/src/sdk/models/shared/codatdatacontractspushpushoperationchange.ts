@@ -1,15 +1,20 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsPushPushChangeTypeEnum } from "./codatdatacontractspushpushchangetypeenum";
 import { CodatDataContractsPushPushOperationRecordRef } from "./codatdatacontractspushpushoperationrecordref";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataContractsPushPushOperationChange extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=attachmentId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "attachmentId" })
   attachmentId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=recordRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "recordRef" })
+  @Type(() => CodatDataContractsPushPushOperationRecordRef)
   recordRef?: CodatDataContractsPushPushOperationRecordRef;
 
-  @SpeakeasyMetadata({ data: "json, name=type" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "type" })
   type?: CodatDataContractsPushPushChangeTypeEnum;
 }

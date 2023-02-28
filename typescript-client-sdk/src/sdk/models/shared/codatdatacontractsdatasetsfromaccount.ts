@@ -1,14 +1,19 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsRecordRef } from "./codatdatacontractsdatasetsrecordref";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsFromAccount extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=accountRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountRef" })
+  @Type(() => CodatDataContractsDatasetsRecordRef)
   accountRef?: CodatDataContractsDatasetsRecordRef;
 
-  @SpeakeasyMetadata({ data: "json, name=amount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "amount" })
   amount?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=currency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currency" })
   currency?: string;
 }

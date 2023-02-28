@@ -3,42 +3,61 @@ import { CodatDataContractsDatasetsCommerceProductCategoryRef } from "./codatdat
 import { CodatDataContractsDatasetsCommerceProductStatusEnum } from "./codatdatacontractsdatasetscommerceproductstatusenum";
 import { CodatDataContractsDatasetsCommerceProductVariant } from "./codatdatacontractsdatasetscommerceproductvariant";
 import { CodatDataContractsDatasetsDataInterfacesSupplementalData } from "./codatdatacontractsdatasetsdatainterfacessupplementaldata";
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsCommerceProduct extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=categorization" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "categorization" })
   categorization?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=createdDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "createdDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   createdDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=description" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "description" })
   description?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=isGiftCard" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "isGiftCard" })
   isGiftCard?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=modifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   modifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=productCategoryRefs", elemType: CodatDataContractsDatasetsCommerceProductCategoryRef })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsCommerceProductCategoryRef })
+  @Expose({ name: "productCategoryRefs" })
+  @Type(() => CodatDataContractsDatasetsCommerceProductCategoryRef)
   productCategoryRefs?: CodatDataContractsDatasetsCommerceProductCategoryRef[];
 
-  @SpeakeasyMetadata({ data: "json, name=sourceModifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceModifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   sourceModifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=status" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "status" })
   status?: CodatDataContractsDatasetsCommerceProductStatusEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=supplementalData" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "supplementalData" })
+  @Type(() => CodatDataContractsDatasetsDataInterfacesSupplementalData)
   supplementalData?: CodatDataContractsDatasetsDataInterfacesSupplementalData;
 
-  @SpeakeasyMetadata({ data: "json, name=variants", elemType: CodatDataContractsDatasetsCommerceProductVariant })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsCommerceProductVariant })
+  @Expose({ name: "variants" })
+  @Type(() => CodatDataContractsDatasetsCommerceProductVariant)
   variants?: CodatDataContractsDatasetsCommerceProductVariant[];
 }

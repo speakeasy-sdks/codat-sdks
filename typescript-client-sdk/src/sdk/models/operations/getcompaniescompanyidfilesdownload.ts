@@ -1,5 +1,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
+import { Transform, Type } from "class-transformer";
 
 
 export class GetCompaniesCompanyIdFilesDownloadPathParams extends SpeakeasyBase {
@@ -8,7 +9,7 @@ export class GetCompaniesCompanyIdFilesDownloadPathParams extends SpeakeasyBase 
 }
 
 export class GetCompaniesCompanyIdFilesDownloadQueryParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=date" })
+  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=date;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ" })
   date?: Date;
 }
 

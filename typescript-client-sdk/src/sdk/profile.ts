@@ -1,6 +1,8 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
+import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class Profile {
   _defaultClient: AxiosInstance;
@@ -33,7 +35,7 @@ export class Profile {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/profile";
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -50,7 +52,11 @@ export class Profile {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsCompanyProfileModel = httpRes?.data;
+              res.codatPublicApiModelsCompanyProfileModel = plainToInstance(
+                shared.CodatPublicApiModelsCompanyProfileModel,
+                httpRes?.data as shared.CodatPublicApiModelsCompanyProfileModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -71,7 +77,7 @@ export class Profile {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/profile/syncSettings";
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -88,7 +94,11 @@ export class Profile {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsClientsClientSyncSettingsModel = httpRes?.data;
+              res.codatPublicApiModelsClientsClientSyncSettingsModel = plainToInstance(
+                shared.CodatPublicApiModelsClientsClientSyncSettingsModel,
+                httpRes?.data as shared.CodatPublicApiModelsClientsClientSyncSettingsModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -119,7 +129,7 @@ export class Profile {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -172,7 +182,7 @@ export class Profile {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -192,7 +202,11 @@ export class Profile {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsCompanyProfileModel = httpRes?.data;
+              res.codatPublicApiModelsCompanyProfileModel = plainToInstance(
+                shared.CodatPublicApiModelsCompanyProfileModel,
+                httpRes?.data as shared.CodatPublicApiModelsCompanyProfileModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -216,7 +230,7 @@ export class Profile {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/profile/apiKey";
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -233,7 +247,11 @@ export class Profile {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsCompanyProfileModel = httpRes?.data;
+              res.codatPublicApiModelsCompanyProfileModel = plainToInstance(
+                shared.CodatPublicApiModelsCompanyProfileModel,
+                httpRes?.data as shared.CodatPublicApiModelsCompanyProfileModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -264,7 +282,7 @@ export class Profile {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -284,7 +302,11 @@ export class Profile {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsSyncSettingsSyncSettingModel = httpRes?.data;
+              res.codatPublicApiModelsSyncSettingsSyncSettingModel = plainToInstance(
+                shared.CodatPublicApiModelsSyncSettingsSyncSettingModel,
+                httpRes?.data as shared.CodatPublicApiModelsSyncSettingsSyncSettingModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

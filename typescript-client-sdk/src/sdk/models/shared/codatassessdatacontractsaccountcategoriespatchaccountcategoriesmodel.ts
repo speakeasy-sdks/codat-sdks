@@ -1,8 +1,11 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatAssessDataContractsAccountCategoriesPatchAccountCategoryModel } from "./codatassessdatacontractsaccountcategoriespatchaccountcategorymodel";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatAssessDataContractsAccountCategoriesPatchAccountCategoriesModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=categories", elemType: CodatAssessDataContractsAccountCategoriesPatchAccountCategoryModel })
+  @SpeakeasyMetadata({ elemType: CodatAssessDataContractsAccountCategoriesPatchAccountCategoryModel })
+  @Expose({ name: "categories" })
+  @Type(() => CodatAssessDataContractsAccountCategoriesPatchAccountCategoryModel)
   categories?: CodatAssessDataContractsAccountCategoriesPatchAccountCategoryModel[];
 }

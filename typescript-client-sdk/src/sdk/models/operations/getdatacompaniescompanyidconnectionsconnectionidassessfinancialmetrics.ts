@@ -1,5 +1,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
+import { Transform, Type } from "class-transformer";
 
 
 export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessFinancialMetricsPathParams extends SpeakeasyBase {
@@ -17,7 +18,7 @@ export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessFinancialMetr
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=periodLength" })
   periodLength: number;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=reportDate" })
+  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=reportDate;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ" })
   reportDate: Date;
 
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=showMetricInputs" })

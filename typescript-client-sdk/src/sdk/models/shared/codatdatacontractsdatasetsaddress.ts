@@ -1,26 +1,34 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsAddressTypeEnum } from "./codatdatacontractsdatasetsaddresstypeenum";
+import { Expose } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsAddress extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=city" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "city" })
   city?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=country" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "country" })
   country?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=line1" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "line1" })
   line1?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=line2" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "line2" })
   line2?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=postalCode" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "postalCode" })
   postalCode?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=region" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "region" })
   region?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=type" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "type" })
   type: CodatDataContractsDatasetsAddressTypeEnum;
 }

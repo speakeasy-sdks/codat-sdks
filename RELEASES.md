@@ -119,3 +119,13 @@ Based on:
 - [NPM v2.1.2] https://www.npmjs.com/package/@codatio/codat-ts/v/2.1.2 - typescript-client-sdk
 - [PyPI v2.1.2] https://pypi.org/project/codatapi/2.1.2 - python-client-sdk
 - [Go v2.1.2] https://github.com/speakeasy-sdks/codat-sdks/releases/tag/v2.1.2 - go-client-sdk
+
+## Version 2.1.3
+### Changes
+Based on:
+- OpenAPI Doc v1 https://api.codat.io/swagger/v1/swagger.json
+- Speakeasy CLI 1.5.4 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v2.1.3] https://www.npmjs.com/package/@codatio/codat-ts/v/2.1.3 - typescript-client-sdk
+- [PyPI v2.1.3] https://pypi.org/project/codatapi/2.1.3 - python-client-sdk
+- [Go v2.1.3] https://github.com/speakeasy-sdks/codat-sdks/releases/tag/v2.1.3 - go-client-sdk

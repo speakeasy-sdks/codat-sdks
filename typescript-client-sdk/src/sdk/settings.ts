@@ -1,6 +1,8 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
+import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class Settings {
   _defaultClient: AxiosInstance;
@@ -33,7 +35,7 @@ export class Settings {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/settings";
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -50,7 +52,11 @@ export class Settings {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsClientsClientSettingsModel = httpRes?.data;
+              res.codatPublicApiModelsClientsClientSettingsModel = plainToInstance(
+                shared.CodatPublicApiModelsClientsClientSettingsModel,
+                httpRes?.data as shared.CodatPublicApiModelsClientsClientSettingsModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -74,7 +80,7 @@ export class Settings {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/settings/integrations/{integrationId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -91,7 +97,11 @@ export class Settings {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsClientsIntegrationSettingsModel = httpRes?.data;
+              res.codatPublicApiModelsClientsIntegrationSettingsModel = plainToInstance(
+                shared.CodatPublicApiModelsClientsIntegrationSettingsModel,
+                httpRes?.data as shared.CodatPublicApiModelsClientsIntegrationSettingsModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -125,7 +135,7 @@ export class Settings {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -145,7 +155,11 @@ export class Settings {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsClientsClientSettingsModel = httpRes?.data;
+              res.codatPublicApiModelsClientsClientSettingsModel = plainToInstance(
+                shared.CodatPublicApiModelsClientsClientSettingsModel,
+                httpRes?.data as shared.CodatPublicApiModelsClientsClientSettingsModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -179,7 +193,7 @@ export class Settings {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -199,7 +213,11 @@ export class Settings {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsClientsIntegrationSettingsModel = httpRes?.data;
+              res.codatPublicApiModelsClientsIntegrationSettingsModel = plainToInstance(
+                shared.CodatPublicApiModelsClientsIntegrationSettingsModel,
+                httpRes?.data as shared.CodatPublicApiModelsClientsIntegrationSettingsModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

@@ -1,21 +1,38 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsAccountTransaction } from "./codatdatacontractsdatasetsaccounttransaction";
 import { CodatDataContractsResponsesHalLink } from "./codatdatacontractsresponseshallink";
+import { Expose, plainToInstance, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsAccountTransactionPagedResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=_links", elemType: CodatDataContractsResponsesHalLink })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsResponsesHalLink })
+  @Expose({ name: "_links" })
+  @Transform(({ value }) => {
+    const obj: Record<string, CodatDataContractsResponsesHalLink> = {};
+    for (const key in value) {
+      obj[key] = plainToInstance(CodatDataContractsResponsesHalLink,
+        value[key] as CodatDataContractsResponsesHalLink,
+        { excludeExtraneousValues: true }
+      );
+    }
+    return obj;
+  }, { toClassOnly: true })
   links?: Record<string, CodatDataContractsResponsesHalLink>;
 
-  @SpeakeasyMetadata({ data: "json, name=pageNumber" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageNumber" })
   pageNumber: number;
 
-  @SpeakeasyMetadata({ data: "json, name=pageSize" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageSize" })
   pageSize: number;
 
-  @SpeakeasyMetadata({ data: "json, name=results", elemType: CodatDataContractsDatasetsAccountTransaction })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsAccountTransaction })
+  @Expose({ name: "results" })
+  @Type(() => CodatDataContractsDatasetsAccountTransaction)
   results?: CodatDataContractsDatasetsAccountTransaction[];
 
-  @SpeakeasyMetadata({ data: "json, name=totalResults" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "totalResults" })
   totalResults: number;
 }

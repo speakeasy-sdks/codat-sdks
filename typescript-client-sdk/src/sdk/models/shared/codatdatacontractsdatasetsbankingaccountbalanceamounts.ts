@@ -1,13 +1,17 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsBankingAccountBalanceAmounts extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=available" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "available" })
   available?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=current" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "current" })
   current: number;
 
-  @SpeakeasyMetadata({ data: "json, name=limit" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "limit" })
   limit?: number;
 }

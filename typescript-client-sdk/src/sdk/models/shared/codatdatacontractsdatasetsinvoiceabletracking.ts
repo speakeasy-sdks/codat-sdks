@@ -1,11 +1,16 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsRecordRef } from "./codatdatacontractsdatasetsrecordref";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsInvoiceableTracking extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=invoiceTo" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "invoiceTo" })
+  @Type(() => CodatDataContractsDatasetsRecordRef)
   invoiceTo?: CodatDataContractsDatasetsRecordRef;
 
-  @SpeakeasyMetadata({ data: "json, name=recordRefs", elemType: CodatDataContractsDatasetsRecordRef })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsRecordRef })
+  @Expose({ name: "recordRefs" })
+  @Type(() => CodatDataContractsDatasetsRecordRef)
   recordRefs: CodatDataContractsDatasetsRecordRef[];
 }

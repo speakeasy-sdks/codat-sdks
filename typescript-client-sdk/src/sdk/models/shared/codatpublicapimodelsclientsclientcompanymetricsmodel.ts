@@ -1,16 +1,21 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatPublicApiModelsClientsClientCompanyMetricsModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=allTimeLinked" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "allTimeLinked" })
   allTimeLinked?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=currentlyLinked" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currentlyLinked" })
   currentlyLinked?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=noLongerLinked" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "noLongerLinked" })
   noLongerLinked?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=notYetLinked" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "notYetLinked" })
   notYetLinked?: number;
 }

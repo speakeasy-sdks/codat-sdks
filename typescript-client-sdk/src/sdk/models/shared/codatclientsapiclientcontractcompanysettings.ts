@@ -1,13 +1,17 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatClientsApiClientContractCompanySettings extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=companyId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "companyId" })
   companyId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=offlineConnectorInstall" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "offlineConnectorInstall" })
   offlineConnectorInstall?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=oneTimeSync" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "oneTimeSync" })
   oneTimeSync?: string;
 }

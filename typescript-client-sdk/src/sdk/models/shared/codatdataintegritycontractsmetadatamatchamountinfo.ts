@@ -1,13 +1,17 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatDataIntegrityContractsMetadataMatchAmountInfo extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=currency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currency" })
   currency?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=max" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "max" })
   max?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=min" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "min" })
   min?: number;
 }

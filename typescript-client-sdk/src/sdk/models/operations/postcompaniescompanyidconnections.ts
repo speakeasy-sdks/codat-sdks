@@ -1,5 +1,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
+import { Expose, Type } from "class-transformer";
 
 
 export class PostCompaniesCompanyIdConnectionsPathParams extends SpeakeasyBase {
@@ -8,7 +9,8 @@ export class PostCompaniesCompanyIdConnectionsPathParams extends SpeakeasyBase {
 }
 
 export class PostCompaniesCompanyIdConnectionsRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=platformKey" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "platformKey" })
   platformKey?: string;
 }
 

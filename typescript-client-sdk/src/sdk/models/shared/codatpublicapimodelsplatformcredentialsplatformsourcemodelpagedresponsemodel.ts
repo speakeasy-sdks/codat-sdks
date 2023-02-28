@@ -1,6 +1,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsPlatformCredentialsPlatformSourceModel } from "./codatpublicapimodelsplatformcredentialsplatformsourcemodel";
 import { CodatPublicApiModelsPlatformCredentialsPlatformSourceModelPagedResponseLinksModel } from "./codatpublicapimodelsplatformcredentialsplatformsourcemodelpagedresponselinksmodel";
+import { Expose, Type } from "class-transformer";
 
 
 // CodatPublicApiModelsPlatformCredentialsPlatformSourceModelPagedResponseModel
@@ -9,18 +10,25 @@ import { CodatPublicApiModelsPlatformCredentialsPlatformSourceModelPagedResponse
  * Usable with the [ProducesResponseType] attribute on a controller action.
 **/
 export class CodatPublicApiModelsPlatformCredentialsPlatformSourceModelPagedResponseModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=_links" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "_links" })
+  @Type(() => CodatPublicApiModelsPlatformCredentialsPlatformSourceModelPagedResponseLinksModel)
   links?: CodatPublicApiModelsPlatformCredentialsPlatformSourceModelPagedResponseLinksModel;
 
-  @SpeakeasyMetadata({ data: "json, name=pageNumber" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageNumber" })
   pageNumber?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=pageSize" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageSize" })
   pageSize?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=results", elemType: CodatPublicApiModelsPlatformCredentialsPlatformSourceModel })
+  @SpeakeasyMetadata({ elemType: CodatPublicApiModelsPlatformCredentialsPlatformSourceModel })
+  @Expose({ name: "results" })
+  @Type(() => CodatPublicApiModelsPlatformCredentialsPlatformSourceModel)
   results?: CodatPublicApiModelsPlatformCredentialsPlatformSourceModel[];
 
-  @SpeakeasyMetadata({ data: "json, name=totalResults" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "totalResults" })
   totalResults?: number;
 }

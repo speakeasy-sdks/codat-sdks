@@ -1,8 +1,11 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatAssessDataContractsCashFlowTransactionsCashFlowReportBankingAccount } from "./codatassessdatacontractscashflowtransactionscashflowreportbankingaccount";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatAssessDataContractsCashFlowTransactionsAccountsDataSource extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=accounts", elemType: CodatAssessDataContractsCashFlowTransactionsCashFlowReportBankingAccount })
+  @SpeakeasyMetadata({ elemType: CodatAssessDataContractsCashFlowTransactionsCashFlowReportBankingAccount })
+  @Expose({ name: "accounts" })
+  @Type(() => CodatAssessDataContractsCashFlowTransactionsCashFlowReportBankingAccount)
   accounts?: CodatAssessDataContractsCashFlowTransactionsCashFlowReportBankingAccount[];
 }

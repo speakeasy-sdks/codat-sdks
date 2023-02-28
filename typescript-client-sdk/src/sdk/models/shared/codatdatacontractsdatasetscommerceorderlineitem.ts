@@ -2,36 +2,51 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCommerceDiscountAllocation } from "./codatdatacontractsdatasetscommercediscountallocation";
 import { CodatDataContractsDatasetsCommerceProductRef } from "./codatdatacontractsdatasetscommerceproductref";
 import { CodatDataContractsDatasetsCommerceTaxComponentAllocation } from "./codatdatacontractsdatasetscommercetaxcomponentallocation";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsCommerceOrderLineItem extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=discountAllocations", elemType: CodatDataContractsDatasetsCommerceDiscountAllocation })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsCommerceDiscountAllocation })
+  @Expose({ name: "discountAllocations" })
+  @Type(() => CodatDataContractsDatasetsCommerceDiscountAllocation)
   discountAllocations?: CodatDataContractsDatasetsCommerceDiscountAllocation[];
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=productRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "productRef" })
+  @Type(() => CodatDataContractsDatasetsCommerceProductRef)
   productRef?: CodatDataContractsDatasetsCommerceProductRef;
 
-  @SpeakeasyMetadata({ data: "json, name=productVariantRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "productVariantRef" })
+  @Type(() => CodatDataContractsDatasetsCommerceProductRef)
   productVariantRef?: CodatDataContractsDatasetsCommerceProductRef;
 
-  @SpeakeasyMetadata({ data: "json, name=quantity" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "quantity" })
   quantity?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=taxPercentage" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "taxPercentage" })
   taxPercentage?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=taxes", elemType: CodatDataContractsDatasetsCommerceTaxComponentAllocation })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsCommerceTaxComponentAllocation })
+  @Expose({ name: "taxes" })
+  @Type(() => CodatDataContractsDatasetsCommerceTaxComponentAllocation)
   taxes?: CodatDataContractsDatasetsCommerceTaxComponentAllocation[];
 
-  @SpeakeasyMetadata({ data: "json, name=totalAmount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "totalAmount" })
   totalAmount?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=totalTaxAmount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "totalTaxAmount" })
   totalTaxAmount?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=unitPrice" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "unitPrice" })
   unitPrice?: number;
 }

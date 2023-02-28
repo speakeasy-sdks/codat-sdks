@@ -3,21 +3,31 @@ import { CodatDataIntegrityContractsMetadataMatchAmountInfo } from "./codatdatai
 import { CodatDataIntegrityContractsMetadataMatchConnectionIds } from "./codatdataintegritycontractsmetadatamatchconnectionids";
 import { CodatDataIntegrityContractsMetadataMatchDateInfo } from "./codatdataintegritycontractsmetadatamatchdateinfo";
 import { CodatDataIntegrityContractsMetadataMatchStatusInfo } from "./codatdataintegritycontractsmetadatamatchstatusinfo";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataIntegrityContractsMetadataMatchMetadata extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=amounts" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "amounts" })
+  @Type(() => CodatDataIntegrityContractsMetadataMatchAmountInfo)
   amounts?: CodatDataIntegrityContractsMetadataMatchAmountInfo;
 
-  @SpeakeasyMetadata({ data: "json, name=connectionIds" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "connectionIds" })
+  @Type(() => CodatDataIntegrityContractsMetadataMatchConnectionIds)
   connectionIds?: CodatDataIntegrityContractsMetadataMatchConnectionIds;
 
-  @SpeakeasyMetadata({ data: "json, name=dates" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "dates" })
+  @Type(() => CodatDataIntegrityContractsMetadataMatchDateInfo)
   dates?: CodatDataIntegrityContractsMetadataMatchDateInfo;
 
-  @SpeakeasyMetadata({ data: "json, name=statusInfo" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "statusInfo" })
+  @Type(() => CodatDataIntegrityContractsMetadataMatchStatusInfo)
   statusInfo?: CodatDataIntegrityContractsMetadataMatchStatusInfo;
 
-  @SpeakeasyMetadata({ data: "json, name=type" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "type" })
   type?: string;
 }

@@ -3,21 +3,31 @@ import { CodatStandardReportingContractsIDimension } from "./codatstandardreport
 import { CodatStandardReportingContractsMeasure } from "./codatstandardreportingcontractsmeasure";
 import { CodatStandardReportingContractsReportData } from "./codatstandardreportingcontractsreportdata";
 import { CodatStandardReportingContractsReportError } from "./codatstandardreportingcontractsreporterror";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatStandardReportingContractsReport extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=dimensions", elemType: CodatStandardReportingContractsIDimension })
+  @SpeakeasyMetadata({ elemType: CodatStandardReportingContractsIDimension })
+  @Expose({ name: "dimensions" })
+  @Type(() => CodatStandardReportingContractsIDimension)
   dimensions?: CodatStandardReportingContractsIDimension[];
 
-  @SpeakeasyMetadata({ data: "json, name=errors", elemType: CodatStandardReportingContractsReportError })
+  @SpeakeasyMetadata({ elemType: CodatStandardReportingContractsReportError })
+  @Expose({ name: "errors" })
+  @Type(() => CodatStandardReportingContractsReportError)
   errors?: CodatStandardReportingContractsReportError[];
 
-  @SpeakeasyMetadata({ data: "json, name=measures", elemType: CodatStandardReportingContractsMeasure })
+  @SpeakeasyMetadata({ elemType: CodatStandardReportingContractsMeasure })
+  @Expose({ name: "measures" })
+  @Type(() => CodatStandardReportingContractsMeasure)
   measures?: CodatStandardReportingContractsMeasure[];
 
-  @SpeakeasyMetadata({ data: "json, name=reportData", elemType: CodatStandardReportingContractsReportData })
+  @SpeakeasyMetadata({ elemType: CodatStandardReportingContractsReportData })
+  @Expose({ name: "reportData" })
+  @Type(() => CodatStandardReportingContractsReportData)
   reportData?: CodatStandardReportingContractsReportData[];
 
-  @SpeakeasyMetadata({ data: "json, name=reportInfo" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "reportInfo" })
   reportInfo?: Record<string, string>;
 }

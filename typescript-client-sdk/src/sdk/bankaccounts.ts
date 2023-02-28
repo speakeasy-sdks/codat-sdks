@@ -1,6 +1,8 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class BankAccounts {
   _defaultClient: AxiosInstance;
@@ -33,21 +35,14 @@ export class BankAccounts {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/bankAccounts", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -58,7 +53,11 @@ export class BankAccounts {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsBankAccountPagedResponseModel = httpRes?.data;
+              res.codatDataContractsDatasetsBankAccountPagedResponseModel = plainToInstance(
+                shared.CodatDataContractsDatasetsBankAccountPagedResponseModel,
+                httpRes?.data as shared.CodatDataContractsDatasetsBankAccountPagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -82,7 +81,7 @@ export class BankAccounts {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -99,7 +98,11 @@ export class BankAccounts {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsBankAccount = httpRes?.data;
+              res.codatDataContractsDatasetsBankAccount = plainToInstance(
+                shared.CodatDataContractsDatasetsBankAccount,
+                httpRes?.data as shared.CodatDataContractsDatasetsBankAccount,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -123,21 +126,14 @@ export class BankAccounts {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}/bankTransactions", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -148,7 +144,11 @@ export class BankAccounts {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsBankTransactionPagedResponseModel = httpRes?.data;
+              res.codatDataContractsDatasetsBankTransactionPagedResponseModel = plainToInstance(
+                shared.CodatDataContractsDatasetsBankTransactionPagedResponseModel,
+                httpRes?.data as shared.CodatDataContractsDatasetsBankTransactionPagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -172,7 +172,7 @@ export class BankAccounts {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/options/bankAccounts/{accountId}/bankTransactions", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -189,7 +189,11 @@ export class BankAccounts {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsPushPushOption = httpRes?.data;
+              res.codatDataContractsPushPushOption = plainToInstance(
+                shared.CodatDataContractsPushPushOption,
+                httpRes?.data as shared.CodatDataContractsPushPushOption,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -213,21 +217,14 @@ export class BankAccounts {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/bankAccounts/{accountId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -238,7 +235,11 @@ export class BankAccounts {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsBankStatementAccount = httpRes?.data;
+              res.codatDataContractsDatasetsBankStatementAccount = plainToInstance(
+                shared.CodatDataContractsDatasetsBankStatementAccount,
+                httpRes?.data as shared.CodatDataContractsDatasetsBankStatementAccount,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -262,21 +263,14 @@ export class BankAccounts {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/bankAccounts/{accountId}/transactions", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -287,7 +281,11 @@ export class BankAccounts {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsBankStatementLinePagedResponseModel = httpRes?.data;
+              res.codatDataContractsDatasetsBankStatementLinePagedResponseModel = plainToInstance(
+                shared.CodatDataContractsDatasetsBankStatementLinePagedResponseModel,
+                httpRes?.data as shared.CodatDataContractsDatasetsBankStatementLinePagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -321,24 +319,17 @@ export class BankAccounts {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "post",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -349,7 +340,11 @@ export class BankAccounts {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsBankAccountPushOperation = httpRes?.data;
+              res.codatDataContractsDatasetsBankAccountPushOperation = plainToInstance(
+                shared.CodatDataContractsDatasetsBankAccountPushOperation,
+                httpRes?.data as shared.CodatDataContractsDatasetsBankAccountPushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -383,24 +378,17 @@ export class BankAccounts {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "post",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -411,7 +399,11 @@ export class BankAccounts {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsBankTransactionsPushOperation = httpRes?.data;
+              res.codatDataContractsDatasetsBankTransactionsPushOperation = plainToInstance(
+                shared.CodatDataContractsDatasetsBankTransactionsPushOperation,
+                httpRes?.data as shared.CodatDataContractsDatasetsBankTransactionsPushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -445,24 +437,17 @@ export class BankAccounts {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "put",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -473,7 +458,11 @@ export class BankAccounts {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsBankAccountPushOperation = httpRes?.data;
+              res.codatDataContractsDatasetsBankAccountPushOperation = plainToInstance(
+                shared.CodatDataContractsDatasetsBankAccountPushOperation,
+                httpRes?.data as shared.CodatDataContractsDatasetsBankAccountPushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

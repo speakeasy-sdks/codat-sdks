@@ -1,6 +1,8 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class BillPayments {
   _defaultClient: AxiosInstance;
@@ -33,21 +35,14 @@ export class BillPayments {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/billPayments", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -58,7 +53,11 @@ export class BillPayments {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsBillPaymentPagedResponseModel = httpRes?.data;
+              res.codatDataContractsDatasetsBillPaymentPagedResponseModel = plainToInstance(
+                shared.CodatDataContractsDatasetsBillPaymentPagedResponseModel,
+                httpRes?.data as shared.CodatDataContractsDatasetsBillPaymentPagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -79,7 +78,7 @@ export class BillPayments {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/billPayments/{billPaymentId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -96,7 +95,11 @@ export class BillPayments {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsBillPayment = httpRes?.data;
+              res.codatDataContractsDatasetsBillPayment = plainToInstance(
+                shared.CodatDataContractsDatasetsBillPayment,
+                httpRes?.data as shared.CodatDataContractsDatasetsBillPayment,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -130,24 +133,17 @@ export class BillPayments {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "post",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -158,7 +154,11 @@ export class BillPayments {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsBillPaymentPushOperation = httpRes?.data;
+              res.codatDataContractsDatasetsBillPaymentPushOperation = plainToInstance(
+                shared.CodatDataContractsDatasetsBillPaymentPushOperation,
+                httpRes?.data as shared.CodatDataContractsDatasetsBillPaymentPushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

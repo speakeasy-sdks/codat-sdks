@@ -1,11 +1,16 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsPushPushFieldValidation } from "./codatdatacontractspushpushfieldvalidation";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataContractsPushPushValidationInfo extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=information", elemType: CodatDataContractsPushPushFieldValidation })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsPushPushFieldValidation })
+  @Expose({ name: "information" })
+  @Type(() => CodatDataContractsPushPushFieldValidation)
   information?: CodatDataContractsPushPushFieldValidation[];
 
-  @SpeakeasyMetadata({ data: "json, name=warnings", elemType: CodatDataContractsPushPushFieldValidation })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsPushPushFieldValidation })
+  @Expose({ name: "warnings" })
+  @Type(() => CodatDataContractsPushPushFieldValidation)
   warnings?: CodatDataContractsPushPushFieldValidation[];
 }

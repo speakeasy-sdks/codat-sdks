@@ -1,17 +1,26 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsBankAccountPagedResponseHrefModel } from "./codatdatacontractsdatasetsbankaccountpagedresponsehrefmodel";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsBankAccountPagedResponseLinksModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=current" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "current" })
+  @Type(() => CodatDataContractsDatasetsBankAccountPagedResponseHrefModel)
   current?: CodatDataContractsDatasetsBankAccountPagedResponseHrefModel;
 
-  @SpeakeasyMetadata({ data: "json, name=next" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "next" })
+  @Type(() => CodatDataContractsDatasetsBankAccountPagedResponseHrefModel)
   next?: CodatDataContractsDatasetsBankAccountPagedResponseHrefModel;
 
-  @SpeakeasyMetadata({ data: "json, name=previous" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "previous" })
+  @Type(() => CodatDataContractsDatasetsBankAccountPagedResponseHrefModel)
   previous?: CodatDataContractsDatasetsBankAccountPagedResponseHrefModel;
 
-  @SpeakeasyMetadata({ data: "json, name=self" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "self" })
+  @Type(() => CodatDataContractsDatasetsBankAccountPagedResponseHrefModel)
   self?: CodatDataContractsDatasetsBankAccountPagedResponseHrefModel;
 }

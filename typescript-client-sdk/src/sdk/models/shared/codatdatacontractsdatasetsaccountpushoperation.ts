@@ -2,48 +2,68 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsAccount } from "./codatdatacontractsdatasetsaccount";
 import { CodatDataContractsPushPushOperationChange } from "./codatdatacontractspushpushoperationchange";
 import { CodatDataContractsValidationValidationResult } from "./codatdatacontractsvalidationvalidationresult";
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsAccountPushOperation extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=changes", elemType: CodatDataContractsPushPushOperationChange })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsPushPushOperationChange })
+  @Expose({ name: "changes" })
+  @Type(() => CodatDataContractsPushPushOperationChange)
   changes?: CodatDataContractsPushPushOperationChange[];
 
-  @SpeakeasyMetadata({ data: "json, name=companyId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "companyId" })
   companyId: string;
 
-  @SpeakeasyMetadata({ data: "json, name=completedOnUtc" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "completedOnUtc" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   completedOnUtc?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=data" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "data" })
+  @Type(() => CodatDataContractsDatasetsAccount)
   data?: CodatDataContractsDatasetsAccount;
 
-  @SpeakeasyMetadata({ data: "json, name=dataConnectionKey" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "dataConnectionKey" })
   dataConnectionKey: string;
 
-  @SpeakeasyMetadata({ data: "json, name=dataType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "dataType" })
   dataType?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=errorMessage" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "errorMessage" })
   errorMessage?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=pushOperationKey" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pushOperationKey" })
   pushOperationKey: string;
 
-  @SpeakeasyMetadata({ data: "json, name=requestedOnUtc" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "requestedOnUtc" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   requestedOnUtc: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=status" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "status" })
   status: string;
 
-  @SpeakeasyMetadata({ data: "json, name=statusCode" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "statusCode" })
   statusCode: number;
 
-  @SpeakeasyMetadata({ data: "json, name=timeoutInMinutes" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "timeoutInMinutes" })
   timeoutInMinutes?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=timeoutInSeconds" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "timeoutInSeconds" })
   timeoutInSeconds?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=validation" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "validation" })
+  @Type(() => CodatDataContractsValidationValidationResult)
   validation?: CodatDataContractsValidationValidationResult;
 }

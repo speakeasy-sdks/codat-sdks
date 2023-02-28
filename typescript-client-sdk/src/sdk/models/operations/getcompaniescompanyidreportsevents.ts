@@ -1,5 +1,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
+import { Transform, Type } from "class-transformer";
 
 
 export class GetCompaniesCompanyIdReportsEventsPathParams extends SpeakeasyBase {
@@ -8,13 +9,13 @@ export class GetCompaniesCompanyIdReportsEventsPathParams extends SpeakeasyBase 
 }
 
 export class GetCompaniesCompanyIdReportsEventsQueryParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=fromDate" })
+  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=fromDate;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ" })
   fromDate?: Date;
 
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=pageSize" })
   pageSize?: number;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=toDate" })
+  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=toDate;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ" })
   toDate?: Date;
 }
 

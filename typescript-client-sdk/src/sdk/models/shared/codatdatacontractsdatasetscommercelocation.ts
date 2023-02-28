@@ -1,24 +1,35 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCommerceAddress } from "./codatdatacontractsdatasetscommerceaddress";
 import { CodatDataContractsDatasetsDataInterfacesSupplementalData } from "./codatdatacontractsdatasetsdatainterfacessupplementaldata";
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsCommerceLocation extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=address" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "address" })
+  @Type(() => CodatDataContractsDatasetsCommerceAddress)
   address?: CodatDataContractsDatasetsCommerceAddress;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=modifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   modifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceModifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceModifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   sourceModifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=supplementalData" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "supplementalData" })
+  @Type(() => CodatDataContractsDatasetsDataInterfacesSupplementalData)
   supplementalData?: CodatDataContractsDatasetsDataInterfacesSupplementalData;
 }

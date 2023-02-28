@@ -1,10 +1,13 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatAssessDataContractsCashFlowTransactionsTransactionCategory extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=confidence" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "confidence" })
   confidence?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=levels" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "levels" })
   levels?: string[];
 }

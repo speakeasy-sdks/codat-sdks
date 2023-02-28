@@ -1,8 +1,10 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatAssessDataContractsCashFlowTransactionsSourceTypeEnum } from "./codatassessdatacontractscashflowtransactionssourcetypeenum";
+import { Expose } from "class-transformer";
 
 
 export class CodatAssessDataContractsCashFlowTransactionsSourceRef extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=sourceType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceType" })
   sourceType?: CodatAssessDataContractsCashFlowTransactionsSourceTypeEnum;
 }

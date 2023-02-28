@@ -3,21 +3,30 @@ import { CodatDataContractsDatasetsAccountsPayableIsBilledToTypeEnum } from "./c
 import { CodatDataContractsDatasetsCustomerRef } from "./codatdatacontractsdatasetscustomerref";
 import { CodatDataContractsDatasetsProjectRef } from "./codatdatacontractsdatasetsprojectref";
 import { CodatDataContractsDatasetsTrackingCategoryRef } from "./codatdatacontractsdatasetstrackingcategoryref";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsAccountsPayableTracking extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=categoryRefs", elemType: CodatDataContractsDatasetsTrackingCategoryRef })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsTrackingCategoryRef })
+  @Expose({ name: "categoryRefs" })
+  @Type(() => CodatDataContractsDatasetsTrackingCategoryRef)
   categoryRefs: CodatDataContractsDatasetsTrackingCategoryRef[];
 
-  @SpeakeasyMetadata({ data: "json, name=customerRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "customerRef" })
+  @Type(() => CodatDataContractsDatasetsCustomerRef)
   customerRef?: CodatDataContractsDatasetsCustomerRef;
 
-  @SpeakeasyMetadata({ data: "json, name=isBilledTo" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "isBilledTo" })
   isBilledTo: CodatDataContractsDatasetsAccountsPayableIsBilledToTypeEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=isRebilledTo" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "isRebilledTo" })
   isRebilledTo: CodatDataContractsDatasetsAccountsPayableIsBilledToTypeEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=projectRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "projectRef" })
+  @Type(() => CodatDataContractsDatasetsProjectRef)
   projectRef?: CodatDataContractsDatasetsProjectRef;
 }

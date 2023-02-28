@@ -1,5 +1,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
+import { plainToInstance, Transform, Type } from "class-transformer";
 
 
 export class GetCompaniesCompanyIdDataStatusPathParams extends SpeakeasyBase {

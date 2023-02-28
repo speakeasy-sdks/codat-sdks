@@ -1,13 +1,18 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class CodatPublicApiModelsCompanyCompanyEventStreamItem extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=description" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "description" })
   description: string;
 
-  @SpeakeasyMetadata({ data: "json, name=eventTimeUtc" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "eventTimeUtc" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   eventTimeUtc: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=type" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "type" })
   type: string;
 }

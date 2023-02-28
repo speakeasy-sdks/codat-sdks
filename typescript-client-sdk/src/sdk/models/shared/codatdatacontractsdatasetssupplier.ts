@@ -3,48 +3,68 @@ import { CodatDataContractsDatasetsAddress } from "./codatdatacontractsdatasetsa
 import { CodatDataContractsDatasetsDataInterfacesSupplementalData } from "./codatdatacontractsdatasetsdatainterfacessupplementaldata";
 import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasetsmetadata";
 import { CodatDataContractsDatasetsSupplierStatusEnum } from "./codatdatacontractsdatasetssupplierstatusenum";
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsSupplier extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=addresses", elemType: CodatDataContractsDatasetsAddress })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsAddress })
+  @Expose({ name: "addresses" })
+  @Type(() => CodatDataContractsDatasetsAddress)
   addresses?: CodatDataContractsDatasetsAddress[];
 
-  @SpeakeasyMetadata({ data: "json, name=contactName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "contactName" })
   contactName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=defaultCurrency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "defaultCurrency" })
   defaultCurrency?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=emailAddress" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "emailAddress" })
   emailAddress?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=metadata" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "metadata" })
+  @Type(() => CodatDataContractsDatasetsMetadata)
   metadata?: CodatDataContractsDatasetsMetadata;
 
-  @SpeakeasyMetadata({ data: "json, name=modifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   modifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=phone" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "phone" })
   phone?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=registrationNumber" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "registrationNumber" })
   registrationNumber?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceModifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceModifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   sourceModifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=status" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "status" })
   status: CodatDataContractsDatasetsSupplierStatusEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=supplementalData" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "supplementalData" })
+  @Type(() => CodatDataContractsDatasetsDataInterfacesSupplementalData)
   supplementalData?: CodatDataContractsDatasetsDataInterfacesSupplementalData;
 
-  @SpeakeasyMetadata({ data: "json, name=supplierName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "supplierName" })
   supplierName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=taxNumber" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "taxNumber" })
   taxNumber?: string;
 }

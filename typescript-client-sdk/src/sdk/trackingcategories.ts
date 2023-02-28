@@ -1,6 +1,8 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class TrackingCategories {
   _defaultClient: AxiosInstance;
@@ -33,21 +35,14 @@ export class TrackingCategories {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/trackingCategories", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -58,7 +53,11 @@ export class TrackingCategories {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsDataTrackingCategoryPagedResponseModel = httpRes?.data;
+              res.codatPublicApiModelsDataTrackingCategoryPagedResponseModel = plainToInstance(
+                shared.CodatPublicApiModelsDataTrackingCategoryPagedResponseModel,
+                httpRes?.data as shared.CodatPublicApiModelsDataTrackingCategoryPagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -82,7 +81,7 @@ export class TrackingCategories {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/trackingCategories/{trackingCategoryId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -99,7 +98,11 @@ export class TrackingCategories {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsDataTrackingCategoryTree = httpRes?.data;
+              res.codatPublicApiModelsDataTrackingCategoryTree = plainToInstance(
+                shared.CodatPublicApiModelsDataTrackingCategoryTree,
+                httpRes?.data as shared.CodatPublicApiModelsDataTrackingCategoryTree,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
