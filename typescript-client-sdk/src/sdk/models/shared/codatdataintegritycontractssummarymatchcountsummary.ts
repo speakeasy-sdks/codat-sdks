@@ -1,17 +1,21 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatDataIntegrityContractsSummaryMatchCountSummary extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=matchPercentage" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "matchPercentage" })
   matchPercentage?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=matched" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "matched" })
   matched?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=total" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "total" })
   total?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=unmatched" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "unmatched" })
   unmatched?: number;
 }

@@ -1,58 +1,82 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsContactRef } from "./codatdatacontractsdatasetscontactref";
+import { CodatDataContractsDatasetsDataInterfacesSupplementalData } from "./codatdatacontractsdatasetsdatainterfacessupplementaldata";
+import { CodatDataContractsDatasetsDetailedPaymentAllocation } from "./codatdatacontractsdatasetsdetailedpaymentallocation";
 import { CodatDataContractsDatasetsDirectIncomeLineItem } from "./codatdatacontractsdatasetsdirectincomelineitem";
 import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasetsmetadata";
-import { CodatDataContractsDatasetsDetailedPaymentAllocation } from "./codatdatacontractsdatasetsdetailedpaymentallocation";
-import { CodatDataContractsDatasetsDataInterfacesSupplementalData } from "./codatdatacontractsdatasetsdatainterfacessupplementaldata";
-
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsDirectIncome extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=contactRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "contactRef" })
+  @Type(() => CodatDataContractsDatasetsContactRef)
   contactRef?: CodatDataContractsDatasetsContactRef;
 
-  @SpeakeasyMetadata({ data: "json, name=currency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currency" })
   currency: string;
 
-  @SpeakeasyMetadata({ data: "json, name=currencyRate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currencyRate" })
   currencyRate?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=issueDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "issueDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   issueDate: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=lineItems", elemType: CodatDataContractsDatasetsDirectIncomeLineItem })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsDirectIncomeLineItem })
+  @Expose({ name: "lineItems" })
+  @Type(() => CodatDataContractsDatasetsDirectIncomeLineItem)
   lineItems: CodatDataContractsDatasetsDirectIncomeLineItem[];
 
-  @SpeakeasyMetadata({ data: "json, name=metadata" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "metadata" })
+  @Type(() => CodatDataContractsDatasetsMetadata)
   metadata?: CodatDataContractsDatasetsMetadata;
 
-  @SpeakeasyMetadata({ data: "json, name=modifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   modifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=note" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "note" })
   note?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=paymentAllocations", elemType: CodatDataContractsDatasetsDetailedPaymentAllocation })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsDetailedPaymentAllocation })
+  @Expose({ name: "paymentAllocations" })
+  @Type(() => CodatDataContractsDatasetsDetailedPaymentAllocation)
   paymentAllocations: CodatDataContractsDatasetsDetailedPaymentAllocation[];
 
-  @SpeakeasyMetadata({ data: "json, name=reference" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "reference" })
   reference?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceModifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceModifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   sourceModifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=subTotal" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "subTotal" })
   subTotal: number;
 
-  @SpeakeasyMetadata({ data: "json, name=supplementalData" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "supplementalData" })
+  @Type(() => CodatDataContractsDatasetsDataInterfacesSupplementalData)
   supplementalData?: CodatDataContractsDatasetsDataInterfacesSupplementalData;
 
-  @SpeakeasyMetadata({ data: "json, name=taxAmount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "taxAmount" })
   taxAmount: number;
 
-  @SpeakeasyMetadata({ data: "json, name=totalAmount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "totalAmount" })
   totalAmount: number;
 }

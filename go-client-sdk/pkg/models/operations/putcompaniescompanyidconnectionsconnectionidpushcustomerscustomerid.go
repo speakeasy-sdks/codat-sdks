@@ -1,7 +1,7 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 )
 
 type PutCompaniesCompanyIDConnectionsConnectionIDPushCustomersCustomerIDPathParams struct {
@@ -11,13 +11,13 @@ type PutCompaniesCompanyIDConnectionsConnectionIDPushCustomersCustomerIDPathPara
 }
 
 type PutCompaniesCompanyIDConnectionsConnectionIDPushCustomersCustomerIDQueryParams struct {
-	ForceUpdate      *bool  `queryParam:"style=form,explode=true,name=forceUpdate"`
-	TimeoutInMinutes *int32 `queryParam:"style=form,explode=true,name=timeoutInMinutes"`
+	ForceUpdate      *bool `queryParam:"style=form,explode=true,name=forceUpdate"`
+	TimeoutInMinutes *int  `queryParam:"style=form,explode=true,name=timeoutInMinutes"`
 }
 
 type PutCompaniesCompanyIDConnectionsConnectionIDPushCustomersCustomerIDSecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
 type PutCompaniesCompanyIDConnectionsConnectionIDPushCustomersCustomerIDRequest struct {
@@ -30,5 +30,5 @@ type PutCompaniesCompanyIDConnectionsConnectionIDPushCustomersCustomerIDRequest 
 type PutCompaniesCompanyIDConnectionsConnectionIDPushCustomersCustomerIDResponse struct {
 	CodatDataContractsDatasetsCustomerPushOperation *shared.CodatDataContractsDatasetsCustomerPushOperation
 	ContentType                                     string
-	StatusCode                                      int64
+	StatusCode                                      int
 }

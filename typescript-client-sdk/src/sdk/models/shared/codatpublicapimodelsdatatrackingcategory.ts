@@ -1,6 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsTrackingCategoryStatusEnum } from "./codatdatacontractsdatasetstrackingcategorystatusenum";
-
+import { Expose, Transform } from "class-transformer";
 
 
 // CodatPublicApiModelsDataTrackingCategory
@@ -8,24 +8,33 @@ import { CodatDataContractsDatasetsTrackingCategoryStatusEnum } from "./codatdat
  * Details of a category used for tracking transactions
 **/
 export class CodatPublicApiModelsDataTrackingCategory extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=hasChildren" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "hasChildren" })
   hasChildren?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=modifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   modifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=parentId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "parentId" })
   parentId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceModifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceModifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   sourceModifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=status" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "status" })
   status?: CodatDataContractsDatasetsTrackingCategoryStatusEnum;
 }

@@ -3,35 +3,35 @@ package sdk
 import (
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/utils"
 	"net/http"
 )
 
-type DirectCosts struct {
-	_defaultClient  HTTPClient
-	_securityClient HTTPClient
-	_serverURL      string
-	_language       string
-	_sdkVersion     string
-	_genVersion     string
+type directCosts struct {
+	defaultClient  HTTPClient
+	securityClient HTTPClient
+	serverURL      string
+	language       string
+	sdkVersion     string
+	genVersion     string
 }
 
-func NewDirectCosts(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *DirectCosts {
-	return &DirectCosts{
-		_defaultClient:  defaultClient,
-		_securityClient: securityClient,
-		_serverURL:      serverURL,
-		_language:       language,
-		_sdkVersion:     sdkVersion,
-		_genVersion:     genVersion,
+func newDirectCosts(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *directCosts {
+	return &directCosts{
+		defaultClient:  defaultClient,
+		securityClient: securityClient,
+		serverURL:      serverURL,
+		language:       language,
+		sdkVersion:     sdkVersion,
+		genVersion:     genVersion,
 	}
 }
 
 // GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCosts - Gets the direct costs for the company.
-func (s *DirectCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCosts(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsResponse, error) {
-	baseURL := s._serverURL
+func (s *directCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCosts(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/data/directCosts", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -39,20 +39,25 @@ func (s *DirectCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCost
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -72,8 +77,8 @@ func (s *DirectCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCost
 }
 
 // GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostID - Gets the specified direct cost for a given company.
-func (s *DirectCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostID(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDResponse, error) {
-	baseURL := s._serverURL
+func (s *directCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostID(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -81,18 +86,21 @@ func (s *DirectCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCost
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -112,8 +120,8 @@ func (s *DirectCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCost
 }
 
 // GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachments - Gets all attachments for the specified direct cost for a given company.
-func (s *DirectCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachments(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsResponse, error) {
-	baseURL := s._serverURL
+func (s *directCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachments(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -121,18 +129,21 @@ func (s *DirectCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCost
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -152,8 +163,8 @@ func (s *DirectCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCost
 }
 
 // GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsAttachmentID - Gets the specified direct cost attachment for a given company.
-func (s *DirectCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsAttachmentID(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsAttachmentIDRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsAttachmentIDResponse, error) {
-	baseURL := s._serverURL
+func (s *directCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsAttachmentID(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsAttachmentIDRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsAttachmentIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments/{attachmentId}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -161,18 +172,21 @@ func (s *DirectCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCost
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsAttachmentIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -192,8 +206,8 @@ func (s *DirectCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCost
 }
 
 // GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsAttachmentIDDownload - Downloads an attachment for the specified direct cost for a given company.
-func (s *DirectCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsAttachmentIDDownload(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsAttachmentIDDownloadRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsAttachmentIDDownloadResponse, error) {
-	baseURL := s._serverURL
+func (s *directCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsAttachmentIDDownload(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsAttachmentIDDownloadRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsAttachmentIDDownloadResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments/{attachmentId}/download", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -201,18 +215,21 @@ func (s *DirectCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCost
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCostsDirectCostIDAttachmentsAttachmentIDDownloadResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -223,8 +240,8 @@ func (s *DirectCosts) GetCompaniesCompanyIDConnectionsConnectionIDDataDirectCost
 }
 
 // PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCosts - Posts a new direct cost to the accounting package for a given company.
-func (s *DirectCosts) PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCosts(ctx context.Context, request operations.PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCostsRequest) (*operations.PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCostsResponse, error) {
-	baseURL := s._serverURL
+func (s *directCosts) PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCosts(ctx context.Context, request operations.PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCostsRequest) (*operations.PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCostsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/push/directCosts", request.PathParams)
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
@@ -239,20 +256,25 @@ func (s *DirectCosts) PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCos
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCostsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -272,8 +294,8 @@ func (s *DirectCosts) PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCos
 }
 
 // PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCostsDirectCostIDAttachment - Posts a new direct cost attachment for a given company.
-func (s *DirectCosts) PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCostsDirectCostIDAttachment(ctx context.Context, request operations.PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCostsDirectCostIDAttachmentRequest) (*operations.PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCostsDirectCostIDAttachmentResponse, error) {
-	baseURL := s._serverURL
+func (s *directCosts) PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCostsDirectCostIDAttachment(ctx context.Context, request operations.PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCostsDirectCostIDAttachmentRequest) (*operations.PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCostsDirectCostIDAttachmentResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/push/directCosts/{directCostId}/attachment", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, nil)
@@ -281,18 +303,21 @@ func (s *DirectCosts) PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCos
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PostCompaniesCompanyIDConnectionsConnectionIDPushDirectCostsDirectCostIDAttachmentResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {

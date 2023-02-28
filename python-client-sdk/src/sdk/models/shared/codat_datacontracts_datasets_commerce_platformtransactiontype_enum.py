@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from enum import Enum
 
@@ -10,4 +11,3 @@ class CodatDataContractsDatasetsCommercePlatformTransactionTypeEnum(str, Enum):
     TRANSFER = "Transfer"
     PAYMENT_FEE = "PaymentFee"
     PAYMENT_FEE_REFUND = "PaymentFeeRefund"
-

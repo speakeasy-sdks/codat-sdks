@@ -1,10 +1,10 @@
 package sdk
 
 import (
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/utils"
 	"net/http"
-
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/utils"
+	"time"
 )
 
 var ServerList = []string{
@@ -16,60 +16,61 @@ type HTTPClient interface {
 }
 
 type SDK struct {
-	AccountTransactions          *AccountTransactions
-	Accounts                     *Accounts
-	Assess                       *Assess
-	BankAccounts                 *BankAccounts
-	BankingAccountBalances       *BankingAccountBalances
-	BankingAccounts              *BankingAccounts
-	BankingTransactionCategories *BankingTransactionCategories
-	BankingTransactions          *BankingTransactions
-	BillCreditNotes              *BillCreditNotes
-	BillPayments                 *BillPayments
-	Bills                        *Bills
-	CommerceCustomers            *CommerceCustomers
-	CommerceDisputes             *CommerceDisputes
-	CommerceInfo                 *CommerceInfo
-	CommerceLocations            *CommerceLocations
-	CommerceOrders               *CommerceOrders
-	CommercePaymentMethods       *CommercePaymentMethods
-	CommercePayments             *CommercePayments
-	CommerceProductCategories    *CommerceProductCategories
-	CommerceProducts             *CommerceProducts
-	CommerceTransactions         *CommerceTransactions
-	Companies                    *Companies
-	Connection                   *Connection
-	CreditNotes                  *CreditNotes
-	Customers                    *Customers
-	Data                         *Data
-	DataStatus                   *DataStatus
-	DataTypes                    *DataTypes
-	DatasetLogs                  *DatasetLogs
-	DirectCosts                  *DirectCosts
-	DirectIncomes                *DirectIncomes
-	Files                        *Files
-	Financials                   *Financials
-	Info                         *Info
-	Integrations                 *Integrations
-	Invoices                     *Invoices
-	Items                        *Items
-	JournalEntries               *JournalEntries
-	Journals                     *Journals
-	Metrics                      *Metrics
-	PaymentMethods               *PaymentMethods
-	Payments                     *Payments
-	Profile                      *Profile
-	PurchaseOrders               *PurchaseOrders
-	Push                         *Push
-	Reports                      *Reports
-	Rules                        *Rules
-	SalesOrders                  *SalesOrders
-	Settings                     *Settings
-	Suppliers                    *Suppliers
-	TaxRates                     *TaxRates
-	TrackingCategories           *TrackingCategories
-	Transfers                    *Transfers
+	AccountTransactions          *accountTransactions
+	Accounts                     *accounts
+	Assess                       *assess
+	BankAccounts                 *bankAccounts
+	BankingAccountBalances       *bankingAccountBalances
+	BankingAccounts              *bankingAccounts
+	BankingTransactionCategories *bankingTransactionCategories
+	BankingTransactions          *bankingTransactions
+	BillCreditNotes              *billCreditNotes
+	BillPayments                 *billPayments
+	Bills                        *bills
+	CommerceCustomers            *commerceCustomers
+	CommerceDisputes             *commerceDisputes
+	CommerceInfo                 *commerceInfo
+	CommerceLocations            *commerceLocations
+	CommerceOrders               *commerceOrders
+	CommercePaymentMethods       *commercePaymentMethods
+	CommercePayments             *commercePayments
+	CommerceProductCategories    *commerceProductCategories
+	CommerceProducts             *commerceProducts
+	CommerceTransactions         *commerceTransactions
+	Companies                    *companies
+	Connection                   *connection
+	CreditNotes                  *creditNotes
+	Customers                    *customers
+	Data                         *data
+	DataStatus                   *dataStatus
+	DataTypes                    *dataTypes
+	DatasetLogs                  *datasetLogs
+	DirectCosts                  *directCosts
+	DirectIncomes                *directIncomes
+	Files                        *files
+	Financials                   *financials
+	Info                         *info
+	Integrations                 *integrations
+	Invoices                     *invoices
+	Items                        *items
+	JournalEntries               *journalEntries
+	Journals                     *journals
+	Metrics                      *metrics
+	PaymentMethods               *paymentMethods
+	Payments                     *payments
+	Profile                      *profile
+	PurchaseOrders               *purchaseOrders
+	Push                         *push
+	Reports                      *reports
+	Rules                        *rules
+	SalesOrders                  *salesOrders
+	Settings                     *settings
+	Suppliers                    *suppliers
+	TaxRates                     *taxRates
+	TrackingCategories           *trackingCategories
+	Transfers                    *transfers
 
+	// Non-idiomatic field names below are to namespace fields from the fields names above to avoid name conflicts
 	_defaultClient  HTTPClient
 	_securityClient HTTPClient
 	_security       *shared.Security
@@ -106,15 +107,16 @@ func WithSecurity(security shared.Security) SDKOption {
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		_language:   "go",
-		_sdkVersion: "1.2.2",
-		_genVersion: "0.22.1",
+		_sdkVersion: "2.1.3",
+		_genVersion: "1.5.4",
 	}
 	for _, opt := range opts {
 		opt(sdk)
 	}
 
+	// Use WithClient to override the default client if you would like to customize the timeout
 	if sdk._defaultClient == nil {
-		sdk._defaultClient = http.DefaultClient
+		sdk._defaultClient = &http.Client{Timeout: 60 * time.Second}
 	}
 	if sdk._securityClient == nil {
 
@@ -130,7 +132,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._serverURL = ServerList[0]
 	}
 
-	sdk.AccountTransactions = NewAccountTransactions(
+	sdk.AccountTransactions = newAccountTransactions(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -139,7 +141,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Accounts = NewAccounts(
+	sdk.Accounts = newAccounts(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -148,7 +150,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Assess = NewAssess(
+	sdk.Assess = newAssess(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -157,7 +159,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.BankAccounts = NewBankAccounts(
+	sdk.BankAccounts = newBankAccounts(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -166,7 +168,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.BankingAccountBalances = NewBankingAccountBalances(
+	sdk.BankingAccountBalances = newBankingAccountBalances(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -175,7 +177,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.BankingAccounts = NewBankingAccounts(
+	sdk.BankingAccounts = newBankingAccounts(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -184,7 +186,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.BankingTransactionCategories = NewBankingTransactionCategories(
+	sdk.BankingTransactionCategories = newBankingTransactionCategories(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -193,7 +195,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.BankingTransactions = NewBankingTransactions(
+	sdk.BankingTransactions = newBankingTransactions(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -202,7 +204,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.BillCreditNotes = NewBillCreditNotes(
+	sdk.BillCreditNotes = newBillCreditNotes(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -211,7 +213,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.BillPayments = NewBillPayments(
+	sdk.BillPayments = newBillPayments(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -220,7 +222,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Bills = NewBills(
+	sdk.Bills = newBills(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -229,7 +231,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.CommerceCustomers = NewCommerceCustomers(
+	sdk.CommerceCustomers = newCommerceCustomers(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -238,7 +240,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.CommerceDisputes = NewCommerceDisputes(
+	sdk.CommerceDisputes = newCommerceDisputes(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -247,7 +249,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.CommerceInfo = NewCommerceInfo(
+	sdk.CommerceInfo = newCommerceInfo(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -256,7 +258,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.CommerceLocations = NewCommerceLocations(
+	sdk.CommerceLocations = newCommerceLocations(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -265,7 +267,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.CommerceOrders = NewCommerceOrders(
+	sdk.CommerceOrders = newCommerceOrders(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -274,7 +276,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.CommercePaymentMethods = NewCommercePaymentMethods(
+	sdk.CommercePaymentMethods = newCommercePaymentMethods(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -283,7 +285,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.CommercePayments = NewCommercePayments(
+	sdk.CommercePayments = newCommercePayments(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -292,7 +294,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.CommerceProductCategories = NewCommerceProductCategories(
+	sdk.CommerceProductCategories = newCommerceProductCategories(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -301,7 +303,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.CommerceProducts = NewCommerceProducts(
+	sdk.CommerceProducts = newCommerceProducts(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -310,7 +312,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.CommerceTransactions = NewCommerceTransactions(
+	sdk.CommerceTransactions = newCommerceTransactions(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -319,7 +321,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Companies = NewCompanies(
+	sdk.Companies = newCompanies(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -328,7 +330,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Connection = NewConnection(
+	sdk.Connection = newConnection(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -337,7 +339,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.CreditNotes = NewCreditNotes(
+	sdk.CreditNotes = newCreditNotes(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -346,7 +348,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Customers = NewCustomers(
+	sdk.Customers = newCustomers(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -355,7 +357,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Data = NewData(
+	sdk.Data = newData(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -364,7 +366,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.DataStatus = NewDataStatus(
+	sdk.DataStatus = newDataStatus(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -373,7 +375,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.DataTypes = NewDataTypes(
+	sdk.DataTypes = newDataTypes(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -382,7 +384,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.DatasetLogs = NewDatasetLogs(
+	sdk.DatasetLogs = newDatasetLogs(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -391,7 +393,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.DirectCosts = NewDirectCosts(
+	sdk.DirectCosts = newDirectCosts(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -400,7 +402,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.DirectIncomes = NewDirectIncomes(
+	sdk.DirectIncomes = newDirectIncomes(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -409,7 +411,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Files = NewFiles(
+	sdk.Files = newFiles(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -418,7 +420,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Financials = NewFinancials(
+	sdk.Financials = newFinancials(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -427,7 +429,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Info = NewInfo(
+	sdk.Info = newInfo(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -436,7 +438,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Integrations = NewIntegrations(
+	sdk.Integrations = newIntegrations(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -445,7 +447,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Invoices = NewInvoices(
+	sdk.Invoices = newInvoices(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -454,7 +456,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Items = NewItems(
+	sdk.Items = newItems(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -463,7 +465,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.JournalEntries = NewJournalEntries(
+	sdk.JournalEntries = newJournalEntries(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -472,7 +474,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Journals = NewJournals(
+	sdk.Journals = newJournals(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -481,7 +483,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Metrics = NewMetrics(
+	sdk.Metrics = newMetrics(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -490,7 +492,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.PaymentMethods = NewPaymentMethods(
+	sdk.PaymentMethods = newPaymentMethods(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -499,7 +501,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Payments = NewPayments(
+	sdk.Payments = newPayments(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -508,7 +510,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Profile = NewProfile(
+	sdk.Profile = newProfile(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -517,7 +519,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.PurchaseOrders = NewPurchaseOrders(
+	sdk.PurchaseOrders = newPurchaseOrders(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -526,7 +528,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Push = NewPush(
+	sdk.Push = newPush(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -535,7 +537,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Reports = NewReports(
+	sdk.Reports = newReports(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -544,7 +546,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Rules = NewRules(
+	sdk.Rules = newRules(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -553,7 +555,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.SalesOrders = NewSalesOrders(
+	sdk.SalesOrders = newSalesOrders(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -562,7 +564,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Settings = NewSettings(
+	sdk.Settings = newSettings(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -571,7 +573,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Suppliers = NewSuppliers(
+	sdk.Suppliers = newSuppliers(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -580,7 +582,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.TaxRates = NewTaxRates(
+	sdk.TaxRates = newTaxRates(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -589,7 +591,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.TrackingCategories = NewTrackingCategories(
+	sdk.TrackingCategories = newTrackingCategories(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -598,7 +600,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Transfers = NewTransfers(
+	sdk.Transfers = newTransfers(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,

@@ -1,7 +1,7 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { SystemObjectPushOperationPagedResponseLinksModel } from "./systemobjectpushoperationpagedresponselinksmodel";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { SystemObjectPushOperation } from "./systemobjectpushoperation";
-
+import { SystemObjectPushOperationPagedResponseLinksModel } from "./systemobjectpushoperationpagedresponselinksmodel";
+import { Expose, Type } from "class-transformer";
 
 
 // SystemObjectPushOperationPagedResponseModel
@@ -10,18 +10,25 @@ import { SystemObjectPushOperation } from "./systemobjectpushoperation";
  * Usable with the [ProducesResponseType] attribute on a controller action.
 **/
 export class SystemObjectPushOperationPagedResponseModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=_links" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "_links" })
+  @Type(() => SystemObjectPushOperationPagedResponseLinksModel)
   links?: SystemObjectPushOperationPagedResponseLinksModel;
 
-  @SpeakeasyMetadata({ data: "json, name=pageNumber" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageNumber" })
   pageNumber?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=pageSize" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageSize" })
   pageSize?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=results", elemType: SystemObjectPushOperation })
+  @SpeakeasyMetadata({ elemType: SystemObjectPushOperation })
+  @Expose({ name: "results" })
+  @Type(() => SystemObjectPushOperation)
   results?: SystemObjectPushOperation[];
 
-  @SpeakeasyMetadata({ data: "json, name=totalResults" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "totalResults" })
   totalResults?: number;
 }

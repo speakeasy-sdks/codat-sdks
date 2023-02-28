@@ -1,21 +1,30 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsReportLine } from "./codatdatacontractsdatasetsreportline";
-
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsBalanceSheet extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=assets" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "assets" })
+  @Type(() => CodatDataContractsDatasetsReportLine)
   assets?: CodatDataContractsDatasetsReportLine;
 
-  @SpeakeasyMetadata({ data: "json, name=date" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "date" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   date?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=equity" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "equity" })
+  @Type(() => CodatDataContractsDatasetsReportLine)
   equity?: CodatDataContractsDatasetsReportLine;
 
-  @SpeakeasyMetadata({ data: "json, name=liabilities" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "liabilities" })
+  @Type(() => CodatDataContractsDatasetsReportLine)
   liabilities?: CodatDataContractsDatasetsReportLine;
 
-  @SpeakeasyMetadata({ data: "json, name=netAssets" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "netAssets" })
   netAssets: number;
 }

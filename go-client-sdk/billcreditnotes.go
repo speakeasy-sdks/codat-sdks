@@ -3,35 +3,35 @@ package sdk
 import (
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/utils"
 	"net/http"
 )
 
-type BillCreditNotes struct {
-	_defaultClient  HTTPClient
-	_securityClient HTTPClient
-	_serverURL      string
-	_language       string
-	_sdkVersion     string
-	_genVersion     string
+type billCreditNotes struct {
+	defaultClient  HTTPClient
+	securityClient HTTPClient
+	serverURL      string
+	language       string
+	sdkVersion     string
+	genVersion     string
 }
 
-func NewBillCreditNotes(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *BillCreditNotes {
-	return &BillCreditNotes{
-		_defaultClient:  defaultClient,
-		_securityClient: securityClient,
-		_serverURL:      serverURL,
-		_language:       language,
-		_sdkVersion:     sdkVersion,
-		_genVersion:     genVersion,
+func newBillCreditNotes(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *billCreditNotes {
+	return &billCreditNotes{
+		defaultClient:  defaultClient,
+		securityClient: securityClient,
+		serverURL:      serverURL,
+		language:       language,
+		sdkVersion:     sdkVersion,
+		genVersion:     genVersion,
 	}
 }
 
 // GetCompaniesCompanyIDDataBillCreditNotes - Gets a list of all bill credit notes for a company, with pagination
-func (s *BillCreditNotes) GetCompaniesCompanyIDDataBillCreditNotes(ctx context.Context, request operations.GetCompaniesCompanyIDDataBillCreditNotesRequest) (*operations.GetCompaniesCompanyIDDataBillCreditNotesResponse, error) {
-	baseURL := s._serverURL
+func (s *billCreditNotes) GetCompaniesCompanyIDDataBillCreditNotes(ctx context.Context, request operations.GetCompaniesCompanyIDDataBillCreditNotesRequest) (*operations.GetCompaniesCompanyIDDataBillCreditNotesResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/data/billCreditNotes", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -39,20 +39,25 @@ func (s *BillCreditNotes) GetCompaniesCompanyIDDataBillCreditNotes(ctx context.C
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDDataBillCreditNotesResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -72,8 +77,8 @@ func (s *BillCreditNotes) GetCompaniesCompanyIDDataBillCreditNotes(ctx context.C
 }
 
 // GetCompaniesCompanyIDDataBillCreditNotesBillCreditNoteID - Gets a single billCreditNote corresponding to the supplied Id
-func (s *BillCreditNotes) GetCompaniesCompanyIDDataBillCreditNotesBillCreditNoteID(ctx context.Context, request operations.GetCompaniesCompanyIDDataBillCreditNotesBillCreditNoteIDRequest) (*operations.GetCompaniesCompanyIDDataBillCreditNotesBillCreditNoteIDResponse, error) {
-	baseURL := s._serverURL
+func (s *billCreditNotes) GetCompaniesCompanyIDDataBillCreditNotesBillCreditNoteID(ctx context.Context, request operations.GetCompaniesCompanyIDDataBillCreditNotesBillCreditNoteIDRequest) (*operations.GetCompaniesCompanyIDDataBillCreditNotesBillCreditNoteIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/data/billCreditNotes/{billCreditNoteId}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -81,18 +86,21 @@ func (s *BillCreditNotes) GetCompaniesCompanyIDDataBillCreditNotesBillCreditNote
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDDataBillCreditNotesBillCreditNoteIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -112,8 +120,8 @@ func (s *BillCreditNotes) GetCompaniesCompanyIDDataBillCreditNotesBillCreditNote
 }
 
 // PostCompaniesCompanyIDConnectionsConnectionIDPushBillCreditNotes - Posts a new billCreditNote to the accounting package for a given company.
-func (s *BillCreditNotes) PostCompaniesCompanyIDConnectionsConnectionIDPushBillCreditNotes(ctx context.Context, request operations.PostCompaniesCompanyIDConnectionsConnectionIDPushBillCreditNotesRequest) (*operations.PostCompaniesCompanyIDConnectionsConnectionIDPushBillCreditNotesResponse, error) {
-	baseURL := s._serverURL
+func (s *billCreditNotes) PostCompaniesCompanyIDConnectionsConnectionIDPushBillCreditNotes(ctx context.Context, request operations.PostCompaniesCompanyIDConnectionsConnectionIDPushBillCreditNotesRequest) (*operations.PostCompaniesCompanyIDConnectionsConnectionIDPushBillCreditNotesResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/push/billCreditNotes", request.PathParams)
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
@@ -128,20 +136,25 @@ func (s *BillCreditNotes) PostCompaniesCompanyIDConnectionsConnectionIDPushBillC
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PostCompaniesCompanyIDConnectionsConnectionIDPushBillCreditNotesResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -161,8 +174,8 @@ func (s *BillCreditNotes) PostCompaniesCompanyIDConnectionsConnectionIDPushBillC
 }
 
 // PutCompaniesCompanyIDConnectionsConnectionIDPushBillCreditNotesBillCreditNoteID - Posts an updated billCreditNote to the accounting package for a given company.
-func (s *BillCreditNotes) PutCompaniesCompanyIDConnectionsConnectionIDPushBillCreditNotesBillCreditNoteID(ctx context.Context, request operations.PutCompaniesCompanyIDConnectionsConnectionIDPushBillCreditNotesBillCreditNoteIDRequest) (*operations.PutCompaniesCompanyIDConnectionsConnectionIDPushBillCreditNotesBillCreditNoteIDResponse, error) {
-	baseURL := s._serverURL
+func (s *billCreditNotes) PutCompaniesCompanyIDConnectionsConnectionIDPushBillCreditNotesBillCreditNoteID(ctx context.Context, request operations.PutCompaniesCompanyIDConnectionsConnectionIDPushBillCreditNotesBillCreditNoteIDRequest) (*operations.PutCompaniesCompanyIDConnectionsConnectionIDPushBillCreditNotesBillCreditNoteIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/push/billCreditNotes/{billCreditNoteId}", request.PathParams)
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
@@ -177,20 +190,25 @@ func (s *BillCreditNotes) PutCompaniesCompanyIDConnectionsConnectionIDPushBillCr
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PutCompaniesCompanyIDConnectionsConnectionIDPushBillCreditNotesBillCreditNoteIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {

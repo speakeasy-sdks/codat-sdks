@@ -1,18 +1,25 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsBalanceSheet } from "./codatdatacontractsdatasetsbalancesheet";
-
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatPublicApiModelsDataBalanceSheetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=currency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currency" })
   currency: string;
 
-  @SpeakeasyMetadata({ data: "json, name=earliestAvailableMonth" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "earliestAvailableMonth" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   earliestAvailableMonth?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=mostRecentAvailableMonth" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "mostRecentAvailableMonth" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   mostRecentAvailableMonth?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=reports", elemType: CodatDataContractsDatasetsBalanceSheet })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsBalanceSheet })
+  @Expose({ name: "reports" })
+  @Type(() => CodatDataContractsDatasetsBalanceSheet)
   reports: CodatDataContractsDatasetsBalanceSheet[];
 }

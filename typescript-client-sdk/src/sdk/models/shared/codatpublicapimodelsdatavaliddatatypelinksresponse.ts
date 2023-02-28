@@ -1,11 +1,13 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatPublicApiModelsDataValidDatatypeLinksResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=links" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "links" })
   links?: string[];
 
-  @SpeakeasyMetadata({ data: "json, name=property" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "property" })
   property?: string;
 }

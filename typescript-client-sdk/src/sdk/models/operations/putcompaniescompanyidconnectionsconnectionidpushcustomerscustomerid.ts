@@ -1,6 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
+import { Type } from "class-transformer";
 
 
 export class PutCompaniesCompanyIdConnectionsConnectionIdPushCustomersCustomerIdPathParams extends SpeakeasyBase {
@@ -14,7 +14,6 @@ export class PutCompaniesCompanyIdConnectionsConnectionIdPushCustomersCustomerId
   customerId: string;
 }
 
-
 export class PutCompaniesCompanyIdConnectionsConnectionIdPushCustomersCustomerIdQueryParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=forceUpdate" })
   forceUpdate?: boolean;
@@ -23,15 +22,13 @@ export class PutCompaniesCompanyIdConnectionsConnectionIdPushCustomersCustomerId
   timeoutInMinutes?: number;
 }
 
-
 export class PutCompaniesCompanyIdConnectionsConnectionIdPushCustomersCustomerIdSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class PutCompaniesCompanyIdConnectionsConnectionIdPushCustomersCustomerIdRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -46,7 +43,6 @@ export class PutCompaniesCompanyIdConnectionsConnectionIdPushCustomersCustomerId
   @SpeakeasyMetadata()
   security: PutCompaniesCompanyIdConnectionsConnectionIdPushCustomersCustomerIdSecurity;
 }
-
 
 export class PutCompaniesCompanyIdConnectionsConnectionIdPushCustomersCustomerIdResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

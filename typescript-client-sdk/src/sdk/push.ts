@@ -1,6 +1,8 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
-import * as operations from "./models/operations";
 import * as utils from "../internal/utils";
+import * as operations from "./models/operations";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class Push {
   _defaultClient: AxiosInstance;
@@ -33,7 +35,7 @@ export class Push {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/options/{dataType}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -50,7 +52,11 @@ export class Push {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsPushPushOption = httpRes?.data;
+              res.codatDataContractsPushPushOption = plainToInstance(
+                shared.CodatDataContractsPushPushOption,
+                httpRes?.data as shared.CodatDataContractsPushPushOption,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -74,21 +80,14 @@ export class Push {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/push", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -99,7 +98,11 @@ export class Push {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.systemObjectPushOperationPagedResponseModel = httpRes?.data;
+              res.systemObjectPushOperationPagedResponseModel = plainToInstance(
+                shared.SystemObjectPushOperationPagedResponseModel,
+                httpRes?.data as shared.SystemObjectPushOperationPagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -123,7 +126,7 @@ export class Push {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/push/{pushOperationKey}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -140,7 +143,11 @@ export class Push {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.systemObjectPushOperation = httpRes?.data;
+              res.systemObjectPushOperation = plainToInstance(
+                shared.SystemObjectPushOperation,
+                httpRes?.data as shared.SystemObjectPushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

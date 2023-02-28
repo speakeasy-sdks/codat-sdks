@@ -1,17 +1,22 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsReportLine extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=accountId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountId" })
   accountId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=items", elemType: CodatDataContractsDatasetsReportLine })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsReportLine })
+  @Expose({ name: "items" })
+  @Type(() => CodatDataContractsDatasetsReportLine)
   items?: CodatDataContractsDatasetsReportLine[];
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=value" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "value" })
   value: number;
 }

@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from enum import Enum
 
@@ -23,4 +24,3 @@ class CodatPublicAPIModelsDataDatasetStatusEnum(str, Enum):
     RATE_LIMIT_ERROR = "RateLimitError"
     PERMISSIONS_ERROR = "PermissionsError"
     PREREQUISITE_NOT_MET = "PrerequisiteNotMet"
-

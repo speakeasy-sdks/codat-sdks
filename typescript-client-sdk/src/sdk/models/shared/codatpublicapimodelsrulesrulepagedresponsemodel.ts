@@ -1,7 +1,7 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { CodatPublicApiModelsRulesRulePagedResponseLinksModel } from "./codatpublicapimodelsrulesrulepagedresponselinksmodel";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsRulesRule } from "./codatpublicapimodelsrulesrule";
-
+import { CodatPublicApiModelsRulesRulePagedResponseLinksModel } from "./codatpublicapimodelsrulesrulepagedresponselinksmodel";
+import { Expose, Type } from "class-transformer";
 
 
 // CodatPublicApiModelsRulesRulePagedResponseModel
@@ -10,18 +10,25 @@ import { CodatPublicApiModelsRulesRule } from "./codatpublicapimodelsrulesrule";
  * Usable with the [ProducesResponseType] attribute on a controller action.
 **/
 export class CodatPublicApiModelsRulesRulePagedResponseModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=_links" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "_links" })
+  @Type(() => CodatPublicApiModelsRulesRulePagedResponseLinksModel)
   links?: CodatPublicApiModelsRulesRulePagedResponseLinksModel;
 
-  @SpeakeasyMetadata({ data: "json, name=pageNumber" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageNumber" })
   pageNumber?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=pageSize" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageSize" })
   pageSize?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=results", elemType: CodatPublicApiModelsRulesRule })
+  @SpeakeasyMetadata({ elemType: CodatPublicApiModelsRulesRule })
+  @Expose({ name: "results" })
+  @Type(() => CodatPublicApiModelsRulesRule)
   results?: CodatPublicApiModelsRulesRule[];
 
-  @SpeakeasyMetadata({ data: "json, name=totalResults" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "totalResults" })
   totalResults?: number;
 }

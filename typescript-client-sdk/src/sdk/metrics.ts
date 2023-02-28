@@ -1,6 +1,8 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import * as operations from "./models/operations";
 import * as utils from "../internal/utils";
+import * as operations from "./models/operations";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class Metrics {
   _defaultClient: AxiosInstance;
@@ -30,7 +32,7 @@ export class Metrics {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/metrics/companies";
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -47,7 +49,11 @@ export class Metrics {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsClientsClientCompanyMetricsModel = httpRes?.data;
+              res.codatPublicApiModelsClientsClientCompanyMetricsModel = plainToInstance(
+                shared.CodatPublicApiModelsClientsClientCompanyMetricsModel,
+                httpRes?.data as shared.CodatPublicApiModelsClientsClientCompanyMetricsModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

@@ -1,10 +1,10 @@
+from __future__ import annotations
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
 import dateutil.parser
+from ..shared import security as shared_security
+from datetime import datetime
+from marshmallow import fields
 from typing import Optional
-from ..shared import security as shared_security
-from ..shared import security as shared_security
 
 
 @dataclasses.dataclass

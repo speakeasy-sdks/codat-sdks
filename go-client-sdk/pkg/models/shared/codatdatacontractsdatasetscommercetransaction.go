@@ -11,6 +11,7 @@ type CodatDataContractsDatasetsCommerceTransaction struct {
 	ModifiedDate         *time.Time                                                     `json:"modifiedDate,omitempty"`
 	SourceModifiedDate   *time.Time                                                     `json:"sourceModifiedDate,omitempty"`
 	SubType              *string                                                        `json:"subType,omitempty"`
+	SupplementalData     *CodatDataContractsDatasetsDataInterfacesSupplementalData      `json:"supplementalData,omitempty"`
 	TotalAmount          *float64                                                       `json:"totalAmount,omitempty"`
 	TransactionSourceRef *CodatDataContractsDatasetsCommerceTransactionSourceRef        `json:"transactionSourceRef,omitempty"`
 	Type                 *CodatDataContractsDatasetsCommercePlatformTransactionTypeEnum `json:"type,omitempty"`

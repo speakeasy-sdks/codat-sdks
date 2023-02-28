@@ -1,14 +1,17 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsTaxRateComponent extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=isCompound" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "isCompound" })
   isCompound: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=rate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "rate" })
   rate?: number;
 }

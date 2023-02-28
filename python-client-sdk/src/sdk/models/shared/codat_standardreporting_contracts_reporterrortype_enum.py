@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from enum import Enum
 
@@ -10,4 +11,3 @@ class CodatStandardReportingContractsReportErrorTypeEnum(str, Enum):
     UNCATEGORIZED_ACCOUNTS = "UncategorizedAccounts"
     DATA_SET_NOT_AVAILABLE = "DataSetNotAvailable"
     VALIDATION_ERROR = "ValidationError"
-

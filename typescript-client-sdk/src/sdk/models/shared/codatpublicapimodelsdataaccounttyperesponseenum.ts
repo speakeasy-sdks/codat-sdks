@@ -1,5 +1,4 @@
-
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 
 export enum CodatPublicApiModelsDataAccountTypeResponseEnum {
     Unknown = "Unknown",

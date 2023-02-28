@@ -3,34 +3,34 @@ package sdk
 import (
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/utils"
 	"net/http"
 )
 
-type Bills struct {
-	_defaultClient  HTTPClient
-	_securityClient HTTPClient
-	_serverURL      string
-	_language       string
-	_sdkVersion     string
-	_genVersion     string
+type bills struct {
+	defaultClient  HTTPClient
+	securityClient HTTPClient
+	serverURL      string
+	language       string
+	sdkVersion     string
+	genVersion     string
 }
 
-func NewBills(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *Bills {
-	return &Bills{
-		_defaultClient:  defaultClient,
-		_securityClient: securityClient,
-		_serverURL:      serverURL,
-		_language:       language,
-		_sdkVersion:     sdkVersion,
-		_genVersion:     genVersion,
+func newBills(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *bills {
+	return &bills{
+		defaultClient:  defaultClient,
+		securityClient: securityClient,
+		serverURL:      serverURL,
+		language:       language,
+		sdkVersion:     sdkVersion,
+		genVersion:     genVersion,
 	}
 }
 
-func (s *Bills) GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachments(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsResponse, error) {
-	baseURL := s._serverURL
+func (s *bills) GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachments(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -38,18 +38,21 @@ func (s *Bills) GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttac
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -68,8 +71,8 @@ func (s *Bills) GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttac
 	return res, nil
 }
 
-func (s *Bills) GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsAttachmentID(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsAttachmentIDRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsAttachmentIDResponse, error) {
-	baseURL := s._serverURL
+func (s *bills) GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsAttachmentID(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsAttachmentIDRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsAttachmentIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments/{attachmentId}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -77,18 +80,21 @@ func (s *Bills) GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttac
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsAttachmentIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -107,8 +113,8 @@ func (s *Bills) GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttac
 	return res, nil
 }
 
-func (s *Bills) GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsAttachmentIDDownload(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsAttachmentIDDownloadRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsAttachmentIDDownloadResponse, error) {
-	baseURL := s._serverURL
+func (s *bills) GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsAttachmentIDDownload(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsAttachmentIDDownloadRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsAttachmentIDDownloadResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments/{attachmentId}/download", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -116,18 +122,21 @@ func (s *Bills) GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttac
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttachmentsAttachmentIDDownloadResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -138,8 +147,8 @@ func (s *Bills) GetCompaniesCompanyIDConnectionsConnectionIDDataBillsBillIDAttac
 }
 
 // GetCompaniesCompanyIDDataBills - Gets the latest bills for a company, with pagination
-func (s *Bills) GetCompaniesCompanyIDDataBills(ctx context.Context, request operations.GetCompaniesCompanyIDDataBillsRequest) (*operations.GetCompaniesCompanyIDDataBillsResponse, error) {
-	baseURL := s._serverURL
+func (s *bills) GetCompaniesCompanyIDDataBills(ctx context.Context, request operations.GetCompaniesCompanyIDDataBillsRequest) (*operations.GetCompaniesCompanyIDDataBillsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/data/bills", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -147,20 +156,25 @@ func (s *Bills) GetCompaniesCompanyIDDataBills(ctx context.Context, request oper
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDDataBillsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -179,8 +193,8 @@ func (s *Bills) GetCompaniesCompanyIDDataBills(ctx context.Context, request oper
 	return res, nil
 }
 
-func (s *Bills) GetCompaniesCompanyIDDataBillsBillID(ctx context.Context, request operations.GetCompaniesCompanyIDDataBillsBillIDRequest) (*operations.GetCompaniesCompanyIDDataBillsBillIDResponse, error) {
-	baseURL := s._serverURL
+func (s *bills) GetCompaniesCompanyIDDataBillsBillID(ctx context.Context, request operations.GetCompaniesCompanyIDDataBillsBillIDRequest) (*operations.GetCompaniesCompanyIDDataBillsBillIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/data/bills/{billId}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -188,18 +202,21 @@ func (s *Bills) GetCompaniesCompanyIDDataBillsBillID(ctx context.Context, reques
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDDataBillsBillIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -219,8 +236,8 @@ func (s *Bills) GetCompaniesCompanyIDDataBillsBillID(ctx context.Context, reques
 }
 
 // PostCompaniesCompanyIDConnectionsConnectionIDPushBills - Posts a new bill to the accounting package for a given company.
-func (s *Bills) PostCompaniesCompanyIDConnectionsConnectionIDPushBills(ctx context.Context, request operations.PostCompaniesCompanyIDConnectionsConnectionIDPushBillsRequest) (*operations.PostCompaniesCompanyIDConnectionsConnectionIDPushBillsResponse, error) {
-	baseURL := s._serverURL
+func (s *bills) PostCompaniesCompanyIDConnectionsConnectionIDPushBills(ctx context.Context, request operations.PostCompaniesCompanyIDConnectionsConnectionIDPushBillsRequest) (*operations.PostCompaniesCompanyIDConnectionsConnectionIDPushBillsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/push/bills", request.PathParams)
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
@@ -235,20 +252,25 @@ func (s *Bills) PostCompaniesCompanyIDConnectionsConnectionIDPushBills(ctx conte
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PostCompaniesCompanyIDConnectionsConnectionIDPushBillsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -267,8 +289,8 @@ func (s *Bills) PostCompaniesCompanyIDConnectionsConnectionIDPushBills(ctx conte
 	return res, nil
 }
 
-func (s *Bills) PostCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDAttachments(ctx context.Context, request operations.PostCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDAttachmentsRequest) (*operations.PostCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDAttachmentsResponse, error) {
-	baseURL := s._serverURL
+func (s *bills) PostCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDAttachments(ctx context.Context, request operations.PostCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDAttachmentsRequest) (*operations.PostCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDAttachmentsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/push/bills/{billId}/attachments", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, nil)
@@ -276,18 +298,21 @@ func (s *Bills) PostCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDAtta
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PostCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDAttachmentsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -298,8 +323,8 @@ func (s *Bills) PostCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDAtta
 }
 
 // PutCompaniesCompanyIDConnectionsConnectionIDPushBillsBillID - Posts an updated bill to the accounting package for a given company.
-func (s *Bills) PutCompaniesCompanyIDConnectionsConnectionIDPushBillsBillID(ctx context.Context, request operations.PutCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDRequest) (*operations.PutCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDResponse, error) {
-	baseURL := s._serverURL
+func (s *bills) PutCompaniesCompanyIDConnectionsConnectionIDPushBillsBillID(ctx context.Context, request operations.PutCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDRequest) (*operations.PutCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/push/bills/{billId}", request.PathParams)
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
@@ -314,20 +339,25 @@ func (s *Bills) PutCompaniesCompanyIDConnectionsConnectionIDPushBillsBillID(ctx 
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PutCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {

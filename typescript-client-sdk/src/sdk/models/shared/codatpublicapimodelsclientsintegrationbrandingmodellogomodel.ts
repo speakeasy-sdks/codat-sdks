@@ -1,13 +1,17 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsClientsIntegrationBrandingModelFullModel } from "./codatpublicapimodelsclientsintegrationbrandingmodelfullmodel";
 import { CodatPublicApiModelsClientsIntegrationBrandingModelSquareModel } from "./codatpublicapimodelsclientsintegrationbrandingmodelsquaremodel";
-
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatPublicApiModelsClientsIntegrationBrandingModelLogoModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=full" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "full" })
+  @Type(() => CodatPublicApiModelsClientsIntegrationBrandingModelFullModel)
   full?: CodatPublicApiModelsClientsIntegrationBrandingModelFullModel;
 
-  @SpeakeasyMetadata({ data: "json, name=square" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "square" })
+  @Type(() => CodatPublicApiModelsClientsIntegrationBrandingModelSquareModel)
   square?: CodatPublicApiModelsClientsIntegrationBrandingModelSquareModel;
 }

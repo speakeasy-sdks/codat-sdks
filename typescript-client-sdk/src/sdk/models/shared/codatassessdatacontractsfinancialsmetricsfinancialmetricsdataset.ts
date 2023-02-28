@@ -1,20 +1,26 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { CodatAssessDataContractsFinancialsMetricsMetricDataSetError } from "./codatassessdatacontractsfinancialsmetricsmetricdataseterror";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatAssessDataContractsFinancialsMetricsMetric } from "./codatassessdatacontractsfinancialsmetricsmetric";
+import { CodatAssessDataContractsFinancialsMetricsMetricDataSetError } from "./codatassessdatacontractsfinancialsmetricsmetricdataseterror";
 import { CodatAssessDataContractsFinancialsMetricsMetricPeriodUnitEnum } from "./codatassessdatacontractsfinancialsmetricsmetricperiodunitenum";
-
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatAssessDataContractsFinancialsMetricsFinancialMetricsDataSet extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=currency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currency" })
   currency?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=errors", elemType: CodatAssessDataContractsFinancialsMetricsMetricDataSetError })
+  @SpeakeasyMetadata({ elemType: CodatAssessDataContractsFinancialsMetricsMetricDataSetError })
+  @Expose({ name: "errors" })
+  @Type(() => CodatAssessDataContractsFinancialsMetricsMetricDataSetError)
   errors?: CodatAssessDataContractsFinancialsMetricsMetricDataSetError[];
 
-  @SpeakeasyMetadata({ data: "json, name=metrics", elemType: CodatAssessDataContractsFinancialsMetricsMetric })
+  @SpeakeasyMetadata({ elemType: CodatAssessDataContractsFinancialsMetricsMetric })
+  @Expose({ name: "metrics" })
+  @Type(() => CodatAssessDataContractsFinancialsMetricsMetric)
   metrics?: CodatAssessDataContractsFinancialsMetricsMetric[];
 
-  @SpeakeasyMetadata({ data: "json, name=periodUnit" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "periodUnit" })
   periodUnit?: CodatAssessDataContractsFinancialsMetricsMetricPeriodUnitEnum;
 }

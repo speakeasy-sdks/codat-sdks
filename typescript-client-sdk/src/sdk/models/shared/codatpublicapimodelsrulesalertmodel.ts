@@ -1,41 +1,54 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class CodatPublicApiModelsRulesAlertModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=alertId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "alertId" })
   alertId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=clientId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "clientId" })
   clientId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=clientName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "clientName" })
   clientName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=companyId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "companyId" })
   companyId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=companyName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "companyName" })
   companyName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=data" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "data" })
   data?: any;
 
-  @SpeakeasyMetadata({ data: "json, name=dataConnectionId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "dataConnectionId" })
   dataConnectionId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=message" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "message" })
   message?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=raisedOnUtc" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "raisedOnUtc" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   raisedOnUtc?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=ruleId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "ruleId" })
   ruleId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=ruleType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "ruleType" })
   ruleType?: string;
 }

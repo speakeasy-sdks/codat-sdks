@@ -3,35 +3,35 @@ package sdk
 import (
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/utils"
 	"net/http"
 )
 
-type BankingTransactions struct {
-	_defaultClient  HTTPClient
-	_securityClient HTTPClient
-	_serverURL      string
-	_language       string
-	_sdkVersion     string
-	_genVersion     string
+type bankingTransactions struct {
+	defaultClient  HTTPClient
+	securityClient HTTPClient
+	serverURL      string
+	language       string
+	sdkVersion     string
+	genVersion     string
 }
 
-func NewBankingTransactions(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *BankingTransactions {
-	return &BankingTransactions{
-		_defaultClient:  defaultClient,
-		_securityClient: securityClient,
-		_serverURL:      serverURL,
-		_language:       language,
-		_sdkVersion:     sdkVersion,
-		_genVersion:     genVersion,
+func newBankingTransactions(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *bankingTransactions {
+	return &bankingTransactions{
+		defaultClient:  defaultClient,
+		securityClient: securityClient,
+		serverURL:      serverURL,
+		language:       language,
+		sdkVersion:     sdkVersion,
+		genVersion:     genVersion,
 	}
 }
 
 // GetCompaniesCompanyIDConnectionsConnectionIDDataBankingTransactions - Gets a list of transactions incurred by a bank account.
-func (s *BankingTransactions) GetCompaniesCompanyIDConnectionsConnectionIDDataBankingTransactions(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBankingTransactionsRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBankingTransactionsResponse, error) {
-	baseURL := s._serverURL
+func (s *bankingTransactions) GetCompaniesCompanyIDConnectionsConnectionIDDataBankingTransactions(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBankingTransactionsRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBankingTransactionsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/data/banking-transactions", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -39,20 +39,25 @@ func (s *BankingTransactions) GetCompaniesCompanyIDConnectionsConnectionIDDataBa
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBankingTransactionsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -72,8 +77,8 @@ func (s *BankingTransactions) GetCompaniesCompanyIDConnectionsConnectionIDDataBa
 }
 
 // GetCompaniesCompanyIDConnectionsConnectionIDDataBankingTransactionsTransactionID - Gets a specified bank transaction for a given company
-func (s *BankingTransactions) GetCompaniesCompanyIDConnectionsConnectionIDDataBankingTransactionsTransactionID(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBankingTransactionsTransactionIDRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBankingTransactionsTransactionIDResponse, error) {
-	baseURL := s._serverURL
+func (s *bankingTransactions) GetCompaniesCompanyIDConnectionsConnectionIDDataBankingTransactionsTransactionID(ctx context.Context, request operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBankingTransactionsTransactionIDRequest) (*operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBankingTransactionsTransactionIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/data/banking-transactions/{transactionId}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -81,18 +86,21 @@ func (s *BankingTransactions) GetCompaniesCompanyIDConnectionsConnectionIDDataBa
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDConnectionsConnectionIDDataBankingTransactionsTransactionIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -112,8 +120,8 @@ func (s *BankingTransactions) GetCompaniesCompanyIDConnectionsConnectionIDDataBa
 }
 
 // GetCompaniesCompanyIDDataBankingTransactions - Gets a list of transactions incurred by a company across all bank accounts.
-func (s *BankingTransactions) GetCompaniesCompanyIDDataBankingTransactions(ctx context.Context, request operations.GetCompaniesCompanyIDDataBankingTransactionsRequest) (*operations.GetCompaniesCompanyIDDataBankingTransactionsResponse, error) {
-	baseURL := s._serverURL
+func (s *bankingTransactions) GetCompaniesCompanyIDDataBankingTransactions(ctx context.Context, request operations.GetCompaniesCompanyIDDataBankingTransactionsRequest) (*operations.GetCompaniesCompanyIDDataBankingTransactionsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/data/banking-transactions", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -121,20 +129,25 @@ func (s *BankingTransactions) GetCompaniesCompanyIDDataBankingTransactions(ctx c
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDDataBankingTransactionsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {

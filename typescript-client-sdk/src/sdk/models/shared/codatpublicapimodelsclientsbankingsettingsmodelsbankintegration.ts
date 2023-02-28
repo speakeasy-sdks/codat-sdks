@@ -1,14 +1,17 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatPublicApiModelsClientsBankingSettingsModelsBankIntegration extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=integrationGuid" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "integrationGuid" })
   integrationGuid?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=selected" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "selected" })
   selected?: boolean;
 }

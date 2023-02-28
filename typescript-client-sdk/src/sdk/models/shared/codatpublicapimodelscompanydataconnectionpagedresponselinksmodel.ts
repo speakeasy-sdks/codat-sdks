@@ -1,18 +1,26 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsCompanyDataConnectionPagedResponseHrefModel } from "./codatpublicapimodelscompanydataconnectionpagedresponsehrefmodel";
-
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatPublicApiModelsCompanyDataConnectionPagedResponseLinksModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=current" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "current" })
+  @Type(() => CodatPublicApiModelsCompanyDataConnectionPagedResponseHrefModel)
   current?: CodatPublicApiModelsCompanyDataConnectionPagedResponseHrefModel;
 
-  @SpeakeasyMetadata({ data: "json, name=next" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "next" })
+  @Type(() => CodatPublicApiModelsCompanyDataConnectionPagedResponseHrefModel)
   next?: CodatPublicApiModelsCompanyDataConnectionPagedResponseHrefModel;
 
-  @SpeakeasyMetadata({ data: "json, name=previous" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "previous" })
+  @Type(() => CodatPublicApiModelsCompanyDataConnectionPagedResponseHrefModel)
   previous?: CodatPublicApiModelsCompanyDataConnectionPagedResponseHrefModel;
 
-  @SpeakeasyMetadata({ data: "json, name=self" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "self" })
+  @Type(() => CodatPublicApiModelsCompanyDataConnectionPagedResponseHrefModel)
   self?: CodatPublicApiModelsCompanyDataConnectionPagedResponseHrefModel;
 }

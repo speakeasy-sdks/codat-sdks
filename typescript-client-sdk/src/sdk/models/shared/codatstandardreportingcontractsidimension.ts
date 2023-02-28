@@ -1,18 +1,23 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatStandardReportingContractsIDimensionItem } from "./codatstandardreportingcontractsidimensionitem";
-
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatStandardReportingContractsIDimension extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=displayName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "displayName" })
   displayName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=index" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "index" })
   index?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=items", elemType: CodatStandardReportingContractsIDimensionItem })
+  @SpeakeasyMetadata({ elemType: CodatStandardReportingContractsIDimensionItem })
+  @Expose({ name: "items" })
+  @Type(() => CodatStandardReportingContractsIDimensionItem)
   items?: CodatStandardReportingContractsIDimensionItem[];
 
-  @SpeakeasyMetadata({ data: "json, name=type" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "type" })
   type?: string;
 }

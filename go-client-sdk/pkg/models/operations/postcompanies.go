@@ -1,12 +1,12 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 )
 
 type PostCompaniesSecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
 type PostCompaniesRequest struct {
@@ -17,5 +17,5 @@ type PostCompaniesRequest struct {
 type PostCompaniesResponse struct {
 	CodatPublicAPIModelsCompanyCompany *shared.CodatPublicAPIModelsCompanyCompany
 	ContentType                        string
-	StatusCode                         int64
+	StatusCode                         int
 }

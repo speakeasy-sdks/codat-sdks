@@ -1,9 +1,9 @@
+from __future__ import annotations
 import dataclasses
-from typing import Optional
-from ..shared import security as shared_security
-from ..shared import security as shared_security
-from ..shared import codat_assess_datacontracts_accountcategories_patchsingleaccountcategorymodel as shared_codat_assess_datacontracts_accountcategories_patchsingleaccountcategorymodel
 from ..shared import codat_assess_datacontracts_accountcategories_accountcategoriesmodel as shared_codat_assess_datacontracts_accountcategories_accountcategoriesmodel
+from ..shared import codat_assess_datacontracts_accountcategories_patchsingleaccountcategorymodel as shared_codat_assess_datacontracts_accountcategories_patchsingleaccountcategorymodel
+from ..shared import security as shared_security
+from typing import Optional
 
 
 @dataclasses.dataclass

@@ -1,6 +1,8 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import * as operations from "./models/operations";
 import * as utils from "../internal/utils";
+import * as operations from "./models/operations";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class Info {
   _defaultClient: AxiosInstance;
@@ -33,7 +35,7 @@ export class Info {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/info", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -50,7 +52,11 @@ export class Info {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsCompanyDataset = httpRes?.data;
+              res.codatDataContractsDatasetsCompanyDataset = plainToInstance(
+                shared.CodatDataContractsDatasetsCompanyDataset,
+                httpRes?.data as shared.CodatDataContractsDatasetsCompanyDataset,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -74,7 +80,7 @@ export class Info {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/info", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -91,7 +97,11 @@ export class Info {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsDataDataSet = httpRes?.data;
+              res.codatPublicApiModelsDataDataSet = plainToInstance(
+                shared.CodatPublicApiModelsDataDataSet,
+                httpRes?.data as shared.CodatPublicApiModelsDataDataSet,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

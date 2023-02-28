@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from enum import Enum
 
@@ -6,4 +7,3 @@ class CodatDataContractsDatasetsInvoicingStatusEnum(str, Enum):
     PARTIALLY_INVOICED = "PartiallyInvoiced"
     INVOICED = "Invoiced"
     NOT_INVOICED = "NotInvoiced"
-

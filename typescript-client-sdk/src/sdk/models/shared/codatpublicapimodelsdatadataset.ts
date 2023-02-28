@@ -1,45 +1,60 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsDataDatasetStatusEnum } from "./codatpublicapimodelsdatadatasetstatusenum";
-
+import { Expose, Transform } from "class-transformer";
 
 
 export class CodatPublicApiModelsDataDataSet extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=companyId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "companyId" })
   companyId: string;
 
-  @SpeakeasyMetadata({ data: "json, name=completed" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "completed" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   completed?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=connectionId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "connectionId" })
   connectionId: string;
 
-  @SpeakeasyMetadata({ data: "json, name=dataType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "dataType" })
   dataType?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=datasetLogsUrl" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "datasetLogsUrl" })
   datasetLogsUrl?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=errorMessage" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "errorMessage" })
   errorMessage?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id: string;
 
-  @SpeakeasyMetadata({ data: "json, name=isCompleted" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "isCompleted" })
   isCompleted: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=isErrored" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "isErrored" })
   isErrored: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=progress" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "progress" })
   progress: number;
 
-  @SpeakeasyMetadata({ data: "json, name=requested" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "requested" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   requested: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=status" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "status" })
   status: CodatPublicApiModelsDataDatasetStatusEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=validationinformationUrl" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "validationinformationUrl" })
   validationinformationUrl?: string;
 }

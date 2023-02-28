@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from enum import Enum
 
@@ -6,4 +7,3 @@ class CodatDataContractsDatasetsCommerceServiceChargeTypeEnum(str, Enum):
     GENERIC = "Generic"
     SHIPPING = "Shipping"
     OVERPAYMENT = "Overpayment"
-

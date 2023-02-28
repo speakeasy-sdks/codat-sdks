@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from enum import Enum
 
@@ -6,4 +7,3 @@ class CodatDataContractsDatasetsAccountTransactionStatusEnum(str, Enum):
     UNRECONCILED = "Unreconciled"
     RECONCILED = "Reconciled"
     VOID = "Void"
-

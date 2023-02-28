@@ -1,29 +1,40 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsAttachmentsDatasetAttachment extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=contentType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "contentType" })
   contentType?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=dateCreated" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "dateCreated" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   dateCreated?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=fileSize" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "fileSize" })
   fileSize?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=includeWhenSent" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "includeWhenSent" })
   includeWhenSent?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=modifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   modifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceModifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceModifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   sourceModifiedDate?: Date;
 }

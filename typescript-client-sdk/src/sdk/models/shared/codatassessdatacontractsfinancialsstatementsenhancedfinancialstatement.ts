@@ -1,13 +1,17 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatAssessDataContractsFinancialsStatementsFinancialStatementReportInfo } from "./codatassessdatacontractsfinancialsstatementsfinancialstatementreportinfo";
 import { CodatAssessDataContractsFinancialsStatementsFinancialStatementReportItem } from "./codatassessdatacontractsfinancialsstatementsfinancialstatementreportitem";
-
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatAssessDataContractsFinancialsStatementsEnhancedFinancialStatement extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=reportInfo" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "reportInfo" })
+  @Type(() => CodatAssessDataContractsFinancialsStatementsFinancialStatementReportInfo)
   reportInfo?: CodatAssessDataContractsFinancialsStatementsFinancialStatementReportInfo;
 
-  @SpeakeasyMetadata({ data: "json, name=reportItems", elemType: CodatAssessDataContractsFinancialsStatementsFinancialStatementReportItem })
+  @SpeakeasyMetadata({ elemType: CodatAssessDataContractsFinancialsStatementsFinancialStatementReportItem })
+  @Expose({ name: "reportItems" })
+  @Type(() => CodatAssessDataContractsFinancialsStatementsFinancialStatementReportItem)
   reportItems?: CodatAssessDataContractsFinancialsStatementsFinancialStatementReportItem[];
 }

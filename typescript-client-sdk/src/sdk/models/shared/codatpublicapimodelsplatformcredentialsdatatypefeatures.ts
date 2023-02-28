@@ -1,12 +1,15 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsPlatformCredentialsSupportedFeatureState } from "./codatpublicapimodelsplatformcredentialssupportedfeaturestate";
-
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatPublicApiModelsPlatformCredentialsDatatypeFeatures extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=datatype" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "datatype" })
   datatype?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=supportedFeatures", elemType: CodatPublicApiModelsPlatformCredentialsSupportedFeatureState })
+  @SpeakeasyMetadata({ elemType: CodatPublicApiModelsPlatformCredentialsSupportedFeatureState })
+  @Expose({ name: "supportedFeatures" })
+  @Type(() => CodatPublicApiModelsPlatformCredentialsSupportedFeatureState)
   supportedFeatures?: CodatPublicApiModelsPlatformCredentialsSupportedFeatureState[];
 }

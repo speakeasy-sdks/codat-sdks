@@ -3,36 +3,36 @@ package sdk
 import (
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/utils"
 	"net/http"
 	"strings"
 )
 
-type Integrations struct {
-	_defaultClient  HTTPClient
-	_securityClient HTTPClient
-	_serverURL      string
-	_language       string
-	_sdkVersion     string
-	_genVersion     string
+type integrations struct {
+	defaultClient  HTTPClient
+	securityClient HTTPClient
+	serverURL      string
+	language       string
+	sdkVersion     string
+	genVersion     string
 }
 
-func NewIntegrations(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *Integrations {
-	return &Integrations{
-		_defaultClient:  defaultClient,
-		_securityClient: securityClient,
-		_serverURL:      serverURL,
-		_language:       language,
-		_sdkVersion:     sdkVersion,
-		_genVersion:     genVersion,
+func newIntegrations(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *integrations {
+	return &integrations{
+		defaultClient:  defaultClient,
+		securityClient: securityClient,
+		serverURL:      serverURL,
+		language:       language,
+		sdkVersion:     sdkVersion,
+		genVersion:     genVersion,
 	}
 }
 
 // DeleteIntegrationsCredentialsPlatformKey - Delete credentials used to authenticate with an accounting platform
-func (s *Integrations) DeleteIntegrationsCredentialsPlatformKey(ctx context.Context, request operations.DeleteIntegrationsCredentialsPlatformKeyRequest) (*operations.DeleteIntegrationsCredentialsPlatformKeyResponse, error) {
-	baseURL := s._serverURL
+func (s *integrations) DeleteIntegrationsCredentialsPlatformKey(ctx context.Context, request operations.DeleteIntegrationsCredentialsPlatformKeyRequest) (*operations.DeleteIntegrationsCredentialsPlatformKeyResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/integrations/credentials/{platformKey}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "DELETE", url, nil)
@@ -40,18 +40,21 @@ func (s *Integrations) DeleteIntegrationsCredentialsPlatformKey(ctx context.Cont
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.DeleteIntegrationsCredentialsPlatformKeyResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -63,15 +66,15 @@ func (s *Integrations) DeleteIntegrationsCredentialsPlatformKey(ctx context.Cont
 				return nil, err
 			}
 
-			res.CodatPublicAPIModelsPlatformCredentialsPlatformCredentials = out
+			res.DeleteIntegrationsCredentialsPlatformKey200ApplicationJSONObject = out
 		}
 	}
 
 	return res, nil
 }
 
-func (s *Integrations) GetIntegrations(ctx context.Context, request operations.GetIntegrationsRequest) (*operations.GetIntegrationsResponse, error) {
-	baseURL := s._serverURL
+func (s *integrations) GetIntegrations(ctx context.Context, request operations.GetIntegrationsRequest) (*operations.GetIntegrationsResponse, error) {
+	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/integrations"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -79,20 +82,25 @@ func (s *Integrations) GetIntegrations(ctx context.Context, request operations.G
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetIntegrationsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -111,8 +119,8 @@ func (s *Integrations) GetIntegrations(ctx context.Context, request operations.G
 	return res, nil
 }
 
-func (s *Integrations) GetIntegrationsBankSettings(ctx context.Context, request operations.GetIntegrationsBankSettingsRequest) (*operations.GetIntegrationsBankSettingsResponse, error) {
-	baseURL := s._serverURL
+func (s *integrations) GetIntegrationsBankSettings(ctx context.Context, request operations.GetIntegrationsBankSettingsRequest) (*operations.GetIntegrationsBankSettingsResponse, error) {
+	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/integrations/bankSettings"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -120,18 +128,21 @@ func (s *Integrations) GetIntegrationsBankSettings(ctx context.Context, request 
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetIntegrationsBankSettingsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -153,8 +164,8 @@ func (s *Integrations) GetIntegrationsBankSettings(ctx context.Context, request 
 // GetIntegrationsCredentialsPlatformKey - Fetch credentials required to authenticate with an accounting platform.
 // Used to determine presence and version of credentials. Due to masking the credentials returned cannot be used
 // to access the API.
-func (s *Integrations) GetIntegrationsCredentialsPlatformKey(ctx context.Context, request operations.GetIntegrationsCredentialsPlatformKeyRequest) (*operations.GetIntegrationsCredentialsPlatformKeyResponse, error) {
-	baseURL := s._serverURL
+func (s *integrations) GetIntegrationsCredentialsPlatformKey(ctx context.Context, request operations.GetIntegrationsCredentialsPlatformKeyRequest) (*operations.GetIntegrationsCredentialsPlatformKeyResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/integrations/credentials/{platformKey}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -162,18 +173,21 @@ func (s *Integrations) GetIntegrationsCredentialsPlatformKey(ctx context.Context
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetIntegrationsCredentialsPlatformKeyResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -185,15 +199,15 @@ func (s *Integrations) GetIntegrationsCredentialsPlatformKey(ctx context.Context
 				return nil, err
 			}
 
-			res.CodatPublicAPIModelsPlatformCredentialsPlatformCredentials = out
+			res.GetIntegrationsCredentialsPlatformKey200ApplicationJSONObject = out
 		}
 	}
 
 	return res, nil
 }
 
-func (s *Integrations) GetIntegrationsPlatformKey(ctx context.Context, request operations.GetIntegrationsPlatformKeyRequest) (*operations.GetIntegrationsPlatformKeyResponse, error) {
-	baseURL := s._serverURL
+func (s *integrations) GetIntegrationsPlatformKey(ctx context.Context, request operations.GetIntegrationsPlatformKeyRequest) (*operations.GetIntegrationsPlatformKeyResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/integrations/{platformKey}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -201,18 +215,21 @@ func (s *Integrations) GetIntegrationsPlatformKey(ctx context.Context, request o
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetIntegrationsPlatformKeyResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -231,8 +248,8 @@ func (s *Integrations) GetIntegrationsPlatformKey(ctx context.Context, request o
 	return res, nil
 }
 
-func (s *Integrations) GetIntegrationsPlatformKeyBranding(ctx context.Context, request operations.GetIntegrationsPlatformKeyBrandingRequest) (*operations.GetIntegrationsPlatformKeyBrandingResponse, error) {
-	baseURL := s._serverURL
+func (s *integrations) GetIntegrationsPlatformKeyBranding(ctx context.Context, request operations.GetIntegrationsPlatformKeyBrandingRequest) (*operations.GetIntegrationsPlatformKeyBrandingResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/integrations/{platformKey}/branding", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -240,18 +257,21 @@ func (s *Integrations) GetIntegrationsPlatformKeyBranding(ctx context.Context, r
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetIntegrationsPlatformKeyBrandingResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -270,8 +290,8 @@ func (s *Integrations) GetIntegrationsPlatformKeyBranding(ctx context.Context, r
 	return res, nil
 }
 
-func (s *Integrations) PutIntegrationsBankSettings(ctx context.Context, request operations.PutIntegrationsBankSettingsRequest) (*operations.PutIntegrationsBankSettingsResponse, error) {
-	baseURL := s._serverURL
+func (s *integrations) PutIntegrationsBankSettings(ctx context.Context, request operations.PutIntegrationsBankSettingsRequest) (*operations.PutIntegrationsBankSettingsResponse, error) {
+	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/integrations/bankSettings"
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
@@ -286,18 +306,21 @@ func (s *Integrations) PutIntegrationsBankSettings(ctx context.Context, request 
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PutIntegrationsBankSettingsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -317,8 +340,8 @@ func (s *Integrations) PutIntegrationsBankSettings(ctx context.Context, request 
 }
 
 // PutIntegrationsCredentialsPlatformKey - Update credentials required to authenticate with an accounting platform
-func (s *Integrations) PutIntegrationsCredentialsPlatformKey(ctx context.Context, request operations.PutIntegrationsCredentialsPlatformKeyRequest) (*operations.PutIntegrationsCredentialsPlatformKeyResponse, error) {
-	baseURL := s._serverURL
+func (s *integrations) PutIntegrationsCredentialsPlatformKey(ctx context.Context, request operations.PutIntegrationsCredentialsPlatformKeyRequest) (*operations.PutIntegrationsCredentialsPlatformKeyResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/integrations/credentials/{platformKey}", request.PathParams)
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
@@ -333,18 +356,21 @@ func (s *Integrations) PutIntegrationsCredentialsPlatformKey(ctx context.Context
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PutIntegrationsCredentialsPlatformKeyResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -356,15 +382,15 @@ func (s *Integrations) PutIntegrationsCredentialsPlatformKey(ctx context.Context
 				return nil, err
 			}
 
-			res.CodatPublicAPIModelsPlatformCredentialsPlatformCredentials = out
+			res.PutIntegrationsCredentialsPlatformKey200ApplicationJSONObject = out
 		}
 	}
 
 	return res, nil
 }
 
-func (s *Integrations) PutIntegrationsPlatformKeyEnabled(ctx context.Context, request operations.PutIntegrationsPlatformKeyEnabledRequest) (*operations.PutIntegrationsPlatformKeyEnabledResponse, error) {
-	baseURL := s._serverURL
+func (s *integrations) PutIntegrationsPlatformKeyEnabled(ctx context.Context, request operations.PutIntegrationsPlatformKeyEnabledRequest) (*operations.PutIntegrationsPlatformKeyEnabledResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/integrations/{platformKey}/enabled", request.PathParams)
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
@@ -379,18 +405,21 @@ func (s *Integrations) PutIntegrationsPlatformKeyEnabled(ctx context.Context, re
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PutIntegrationsPlatformKeyEnabledResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {

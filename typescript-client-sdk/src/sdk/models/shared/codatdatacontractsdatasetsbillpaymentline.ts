@@ -1,15 +1,20 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsBillPaymentLineLink } from "./codatdatacontractsdatasetsbillpaymentlinelink";
-
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsBillPaymentLine extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=allocatedOnDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "allocatedOnDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   allocatedOnDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=amount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "amount" })
   amount: number;
 
-  @SpeakeasyMetadata({ data: "json, name=links", elemType: CodatDataContractsDatasetsBillPaymentLineLink })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsBillPaymentLineLink })
+  @Expose({ name: "links" })
+  @Type(() => CodatDataContractsDatasetsBillPaymentLineLink)
   links?: CodatDataContractsDatasetsBillPaymentLineLink[];
 }

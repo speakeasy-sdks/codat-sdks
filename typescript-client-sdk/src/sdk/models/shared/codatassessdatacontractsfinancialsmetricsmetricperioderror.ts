@@ -1,15 +1,18 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatAssessDataContractsFinancialsMetricsMetricPeriodErrorTypeEnum } from "./codatassessdatacontractsfinancialsmetricsmetricperioderrortypeenum";
-
+import { Expose } from "class-transformer";
 
 
 export class CodatAssessDataContractsFinancialsMetricsMetricPeriodError extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=details" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "details" })
   details?: Record<string, string[]>;
 
-  @SpeakeasyMetadata({ data: "json, name=message" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "message" })
   message?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=type" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "type" })
   type?: CodatAssessDataContractsFinancialsMetricsMetricPeriodErrorTypeEnum;
 }

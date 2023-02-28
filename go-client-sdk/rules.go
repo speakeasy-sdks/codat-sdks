@@ -3,35 +3,35 @@ package sdk
 import (
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/utils"
 	"net/http"
 	"strings"
 )
 
-type Rules struct {
-	_defaultClient  HTTPClient
-	_securityClient HTTPClient
-	_serverURL      string
-	_language       string
-	_sdkVersion     string
-	_genVersion     string
+type rules struct {
+	defaultClient  HTTPClient
+	securityClient HTTPClient
+	serverURL      string
+	language       string
+	sdkVersion     string
+	genVersion     string
 }
 
-func NewRules(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *Rules {
-	return &Rules{
-		_defaultClient:  defaultClient,
-		_securityClient: securityClient,
-		_serverURL:      serverURL,
-		_language:       language,
-		_sdkVersion:     sdkVersion,
-		_genVersion:     genVersion,
+func newRules(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *rules {
+	return &rules{
+		defaultClient:  defaultClient,
+		securityClient: securityClient,
+		serverURL:      serverURL,
+		language:       language,
+		sdkVersion:     sdkVersion,
+		genVersion:     genVersion,
 	}
 }
 
-func (s *Rules) DeleteRulesRuleID(ctx context.Context, request operations.DeleteRulesRuleIDRequest) (*operations.DeleteRulesRuleIDResponse, error) {
-	baseURL := s._serverURL
+func (s *rules) DeleteRulesRuleID(ctx context.Context, request operations.DeleteRulesRuleIDRequest) (*operations.DeleteRulesRuleIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/rules/{ruleId}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "DELETE", url, nil)
@@ -39,18 +39,21 @@ func (s *Rules) DeleteRulesRuleID(ctx context.Context, request operations.Delete
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.DeleteRulesRuleIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -61,8 +64,8 @@ func (s *Rules) DeleteRulesRuleID(ctx context.Context, request operations.Delete
 }
 
 // GetRules - Fetch a list of rules
-func (s *Rules) GetRules(ctx context.Context, request operations.GetRulesRequest) (*operations.GetRulesResponse, error) {
-	baseURL := s._serverURL
+func (s *rules) GetRules(ctx context.Context, request operations.GetRulesRequest) (*operations.GetRulesResponse, error) {
+	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/rules"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -70,20 +73,25 @@ func (s *Rules) GetRules(ctx context.Context, request operations.GetRulesRequest
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetRulesResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -102,8 +110,8 @@ func (s *Rules) GetRules(ctx context.Context, request operations.GetRulesRequest
 	return res, nil
 }
 
-func (s *Rules) GetRulesAlerts(ctx context.Context, request operations.GetRulesAlertsRequest) (*operations.GetRulesAlertsResponse, error) {
-	baseURL := s._serverURL
+func (s *rules) GetRulesAlerts(ctx context.Context, request operations.GetRulesAlertsRequest) (*operations.GetRulesAlertsResponse, error) {
+	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/rules/alerts"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -111,20 +119,25 @@ func (s *Rules) GetRulesAlerts(ctx context.Context, request operations.GetRulesA
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetRulesAlertsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -143,8 +156,8 @@ func (s *Rules) GetRulesAlerts(ctx context.Context, request operations.GetRulesA
 	return res, nil
 }
 
-func (s *Rules) GetRulesAlertsAlertID(ctx context.Context, request operations.GetRulesAlertsAlertIDRequest) (*operations.GetRulesAlertsAlertIDResponse, error) {
-	baseURL := s._serverURL
+func (s *rules) GetRulesAlertsAlertID(ctx context.Context, request operations.GetRulesAlertsAlertIDRequest) (*operations.GetRulesAlertsAlertIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/rules/alerts/{alertId}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -152,18 +165,21 @@ func (s *Rules) GetRulesAlertsAlertID(ctx context.Context, request operations.Ge
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetRulesAlertsAlertIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -182,8 +198,8 @@ func (s *Rules) GetRulesAlertsAlertID(ctx context.Context, request operations.Ge
 	return res, nil
 }
 
-func (s *Rules) GetRulesRuleID(ctx context.Context, request operations.GetRulesRuleIDRequest) (*operations.GetRulesRuleIDResponse, error) {
-	baseURL := s._serverURL
+func (s *rules) GetRulesRuleID(ctx context.Context, request operations.GetRulesRuleIDRequest) (*operations.GetRulesRuleIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/rules/{ruleId}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -191,18 +207,21 @@ func (s *Rules) GetRulesRuleID(ctx context.Context, request operations.GetRulesR
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetRulesRuleIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -221,8 +240,8 @@ func (s *Rules) GetRulesRuleID(ctx context.Context, request operations.GetRulesR
 	return res, nil
 }
 
-func (s *Rules) GetRulesRuleIDAlerts(ctx context.Context, request operations.GetRulesRuleIDAlertsRequest) (*operations.GetRulesRuleIDAlertsResponse, error) {
-	baseURL := s._serverURL
+func (s *rules) GetRulesRuleIDAlerts(ctx context.Context, request operations.GetRulesRuleIDAlertsRequest) (*operations.GetRulesRuleIDAlertsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/rules/{ruleId}/alerts", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -230,20 +249,25 @@ func (s *Rules) GetRulesRuleIDAlerts(ctx context.Context, request operations.Get
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetRulesRuleIDAlertsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -263,8 +287,8 @@ func (s *Rules) GetRulesRuleIDAlerts(ctx context.Context, request operations.Get
 }
 
 // PostRules - Subscribe to a rule
-func (s *Rules) PostRules(ctx context.Context, request operations.PostRulesRequest) (*operations.PostRulesResponse, error) {
-	baseURL := s._serverURL
+func (s *rules) PostRules(ctx context.Context, request operations.PostRulesRequest) (*operations.PostRulesResponse, error) {
+	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/rules"
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
@@ -279,18 +303,21 @@ func (s *Rules) PostRules(ctx context.Context, request operations.PostRulesReque
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PostRulesResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -309,8 +336,8 @@ func (s *Rules) PostRules(ctx context.Context, request operations.PostRulesReque
 	return res, nil
 }
 
-func (s *Rules) PutRulesRuleID(ctx context.Context, request operations.PutRulesRuleIDRequest) (*operations.PutRulesRuleIDResponse, error) {
-	baseURL := s._serverURL
+func (s *rules) PutRulesRuleID(ctx context.Context, request operations.PutRulesRuleIDRequest) (*operations.PutRulesRuleIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/rules/{ruleId}", request.PathParams)
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
@@ -325,18 +352,21 @@ func (s *Rules) PutRulesRuleID(ctx context.Context, request operations.PutRulesR
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PutRulesRuleIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {

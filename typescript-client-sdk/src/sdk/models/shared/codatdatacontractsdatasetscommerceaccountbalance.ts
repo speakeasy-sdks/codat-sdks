@@ -1,17 +1,21 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsCommerceAccountBalance extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=available" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "available" })
   available?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=currency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currency" })
   currency?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=pending" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pending" })
   pending?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=reserved" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "reserved" })
   reserved?: number;
 }

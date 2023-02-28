@@ -1,7 +1,7 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { CodatDataContractsDatasetsBankingTransactionCategoryPagedResponseLinksModel } from "./codatdatacontractsdatasetsbankingtransactioncategorypagedresponselinksmodel";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsBankingTransactionCategory } from "./codatdatacontractsdatasetsbankingtransactioncategory";
-
+import { CodatDataContractsDatasetsBankingTransactionCategoryPagedResponseLinksModel } from "./codatdatacontractsdatasetsbankingtransactioncategorypagedresponselinksmodel";
+import { Expose, Type } from "class-transformer";
 
 
 // CodatDataContractsDatasetsBankingTransactionCategoryPagedResponseModel
@@ -10,18 +10,25 @@ import { CodatDataContractsDatasetsBankingTransactionCategory } from "./codatdat
  * Usable with the [ProducesResponseType] attribute on a controller action.
 **/
 export class CodatDataContractsDatasetsBankingTransactionCategoryPagedResponseModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=_links" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "_links" })
+  @Type(() => CodatDataContractsDatasetsBankingTransactionCategoryPagedResponseLinksModel)
   links?: CodatDataContractsDatasetsBankingTransactionCategoryPagedResponseLinksModel;
 
-  @SpeakeasyMetadata({ data: "json, name=pageNumber" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageNumber" })
   pageNumber?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=pageSize" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageSize" })
   pageSize?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=results", elemType: CodatDataContractsDatasetsBankingTransactionCategory })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsBankingTransactionCategory })
+  @Expose({ name: "results" })
+  @Type(() => CodatDataContractsDatasetsBankingTransactionCategory)
   results?: CodatDataContractsDatasetsBankingTransactionCategory[];
 
-  @SpeakeasyMetadata({ data: "json, name=totalResults" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "totalResults" })
   totalResults?: number;
 }

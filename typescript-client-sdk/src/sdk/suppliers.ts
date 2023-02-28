@@ -1,6 +1,8 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
-import * as operations from "./models/operations";
 import * as utils from "../internal/utils";
+import * as operations from "./models/operations";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class Suppliers {
   _defaultClient: AxiosInstance;
@@ -30,7 +32,7 @@ export class Suppliers {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/suppliers/{supplierId}/attachments", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -47,7 +49,11 @@ export class Suppliers {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsAttachmentsDataset = httpRes?.data;
+              res.codatDataContractsDatasetsAttachmentsDataset = plainToInstance(
+                shared.CodatDataContractsDatasetsAttachmentsDataset,
+                httpRes?.data as shared.CodatDataContractsDatasetsAttachmentsDataset,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -68,7 +74,7 @@ export class Suppliers {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/suppliers/{supplierId}/attachments/{attachmentId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -85,7 +91,11 @@ export class Suppliers {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsAttachmentsDatasetAttachment = httpRes?.data;
+              res.codatDataContractsDatasetsAttachmentsDatasetAttachment = plainToInstance(
+                shared.CodatDataContractsDatasetsAttachmentsDatasetAttachment,
+                httpRes?.data as shared.CodatDataContractsDatasetsAttachmentsDatasetAttachment,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -106,7 +116,7 @@ export class Suppliers {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/suppliers/{supplierId}/attachments/{attachmentId}/download", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -144,21 +154,14 @@ export class Suppliers {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/suppliers", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -169,7 +172,11 @@ export class Suppliers {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsSupplierPagedResponseModel = httpRes?.data;
+              res.codatDataContractsDatasetsSupplierPagedResponseModel = plainToInstance(
+                shared.CodatDataContractsDatasetsSupplierPagedResponseModel,
+                httpRes?.data as shared.CodatDataContractsDatasetsSupplierPagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -193,7 +200,7 @@ export class Suppliers {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/suppliers/{supplierId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -210,7 +217,11 @@ export class Suppliers {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsSupplier = httpRes?.data;
+              res.codatDataContractsDatasetsSupplier = plainToInstance(
+                shared.CodatDataContractsDatasetsSupplier,
+                httpRes?.data as shared.CodatDataContractsDatasetsSupplier,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -241,24 +252,17 @@ export class Suppliers {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "post",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -269,7 +273,11 @@ export class Suppliers {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsSupplierPushOperation = httpRes?.data;
+              res.codatDataContractsDatasetsSupplierPushOperation = plainToInstance(
+                shared.CodatDataContractsDatasetsSupplierPushOperation,
+                httpRes?.data as shared.CodatDataContractsDatasetsSupplierPushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -300,24 +308,17 @@ export class Suppliers {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "put",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -328,7 +329,11 @@ export class Suppliers {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsSupplierPushOperation = httpRes?.data;
+              res.codatDataContractsDatasetsSupplierPushOperation = plainToInstance(
+                shared.CodatDataContractsDatasetsSupplierPushOperation,
+                httpRes?.data as shared.CodatDataContractsDatasetsSupplierPushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

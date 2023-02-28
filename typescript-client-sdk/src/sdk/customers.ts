@@ -1,6 +1,8 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
-import * as operations from "./models/operations";
 import * as utils from "../internal/utils";
+import * as operations from "./models/operations";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class Customers {
   _defaultClient: AxiosInstance;
@@ -30,7 +32,7 @@ export class Customers {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/customers/{customerId}/attachments", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -47,7 +49,11 @@ export class Customers {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsAttachmentsDataset = httpRes?.data;
+              res.codatDataContractsDatasetsAttachmentsDataset = plainToInstance(
+                shared.CodatDataContractsDatasetsAttachmentsDataset,
+                httpRes?.data as shared.CodatDataContractsDatasetsAttachmentsDataset,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -68,7 +74,7 @@ export class Customers {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/customers/{customerId}/attachments/{attachmentId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -85,7 +91,11 @@ export class Customers {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsAttachmentsDatasetAttachment = httpRes?.data;
+              res.codatDataContractsDatasetsAttachmentsDatasetAttachment = plainToInstance(
+                shared.CodatDataContractsDatasetsAttachmentsDatasetAttachment,
+                httpRes?.data as shared.CodatDataContractsDatasetsAttachmentsDatasetAttachment,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -106,7 +116,7 @@ export class Customers {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/customers/{customerId}/attachments/{attachmentId}/download", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -144,21 +154,14 @@ export class Customers {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/customers", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -169,7 +172,11 @@ export class Customers {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsCustomerPagedResponseModel = httpRes?.data;
+              res.codatDataContractsDatasetsCustomerPagedResponseModel = plainToInstance(
+                shared.CodatDataContractsDatasetsCustomerPagedResponseModel,
+                httpRes?.data as shared.CodatDataContractsDatasetsCustomerPagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -193,7 +200,7 @@ export class Customers {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/customers/{customerId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -210,7 +217,11 @@ export class Customers {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsCustomer = httpRes?.data;
+              res.codatDataContractsDatasetsCustomer = plainToInstance(
+                shared.CodatDataContractsDatasetsCustomer,
+                httpRes?.data as shared.CodatDataContractsDatasetsCustomer,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -244,24 +255,17 @@ export class Customers {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "post",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -272,7 +276,11 @@ export class Customers {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsCustomerPushOperation = httpRes?.data;
+              res.codatDataContractsDatasetsCustomerPushOperation = plainToInstance(
+                shared.CodatDataContractsDatasetsCustomerPushOperation,
+                httpRes?.data as shared.CodatDataContractsDatasetsCustomerPushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -306,24 +314,17 @@ export class Customers {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "put",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -334,7 +335,11 @@ export class Customers {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsCustomerPushOperation = httpRes?.data;
+              res.codatDataContractsDatasetsCustomerPushOperation = plainToInstance(
+                shared.CodatDataContractsDatasetsCustomerPushOperation,
+                httpRes?.data as shared.CodatDataContractsDatasetsCustomerPushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

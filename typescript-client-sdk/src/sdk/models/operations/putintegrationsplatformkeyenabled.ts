@@ -1,6 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
+import { Type } from "class-transformer";
 
 
 export class PutIntegrationsPlatformKeyEnabledPathParams extends SpeakeasyBase {
@@ -8,15 +8,13 @@ export class PutIntegrationsPlatformKeyEnabledPathParams extends SpeakeasyBase {
   platformKey: string;
 }
 
-
 export class PutIntegrationsPlatformKeyEnabledSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class PutIntegrationsPlatformKeyEnabledRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -28,7 +26,6 @@ export class PutIntegrationsPlatformKeyEnabledRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
   security: PutIntegrationsPlatformKeyEnabledSecurity;
 }
-
 
 export class PutIntegrationsPlatformKeyEnabledResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

@@ -1,7 +1,7 @@
 import requests
-from typing import Optional
-from sdk.models import shared, operations
 from . import utils
+from sdk.models import operations, shared
+from typing import Optional
 
 class DataTypes:
     _client: requests.Session
@@ -44,7 +44,7 @@ class DataTypes:
         return res
 
     
-    def get_companies_company_id_connections_connection_id_data_types_data_type_options_post(self, request: operations.GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPostRequest) -> operations.GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPostResponse:
+    def get_companies_company_id_connections_connection_id_data_types_data_type_options_post(self, request: operations.GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPOSTRequest) -> operations.GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPOSTResponse:
         r"""Gets the POST push options for the given data type
         """
         
@@ -58,7 +58,7 @@ class DataTypes:
         r = client.request("GET", url)
         content_type = r.headers.get("Content-Type")
 
-        res = operations.GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPostResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPOSTResponse(status_code=r.status_code, content_type=content_type)
         
         if r.status_code == 200:
             if utils.match_content_type(content_type, "application/json"):
@@ -68,7 +68,7 @@ class DataTypes:
         return res
 
     
-    def get_companies_company_id_connections_connection_id_data_types_data_type_options_put(self, request: operations.GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPutRequest) -> operations.GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPutResponse:
+    def get_companies_company_id_connections_connection_id_data_types_data_type_options_put(self, request: operations.GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPUTRequest) -> operations.GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPUTResponse:
         r"""Gets the PUT push options for the given data type
         """
         
@@ -82,7 +82,7 @@ class DataTypes:
         r = client.request("GET", url)
         content_type = r.headers.get("Content-Type")
 
-        res = operations.GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPutResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPUTResponse(status_code=r.status_code, content_type=content_type)
         
         if r.status_code == 200:
             if utils.match_content_type(content_type, "application/json"):

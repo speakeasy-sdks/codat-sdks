@@ -1,11 +1,13 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatPublicApiModelsPlatformCredentialsSupportedFeatureState extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=featureState" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "featureState" })
   featureState?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=featureType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "featureType" })
   featureType?: string;
 }

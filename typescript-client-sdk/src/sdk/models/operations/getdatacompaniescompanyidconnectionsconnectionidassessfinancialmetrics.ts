@@ -1,6 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
+import { Transform, Type } from "class-transformer";
 
 
 export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessFinancialMetricsPathParams extends SpeakeasyBase {
@@ -11,7 +11,6 @@ export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessFinancialMetr
   connectionId: string;
 }
 
-
 export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessFinancialMetricsQueryParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=numberOfPeriods" })
   numberOfPeriods: number;
@@ -19,22 +18,20 @@ export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessFinancialMetr
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=periodLength" })
   periodLength: number;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=reportDate" })
+  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=reportDate;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ" })
   reportDate: Date;
 
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=showMetricInputs" })
   showMetricInputs?: boolean;
 }
 
-
 export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessFinancialMetricsSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessFinancialMetricsRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -46,7 +43,6 @@ export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessFinancialMetr
   @SpeakeasyMetadata()
   security: GetDataCompaniesCompanyIdConnectionsConnectionIdAssessFinancialMetricsSecurity;
 }
-
 
 export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessFinancialMetricsResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

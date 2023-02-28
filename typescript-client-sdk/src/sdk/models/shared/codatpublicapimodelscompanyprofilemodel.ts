@@ -1,29 +1,37 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatPublicApiModelsCompanyProfileModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=alertAuthHeader" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "alertAuthHeader" })
   alertAuthHeader?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=apiKey" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "apiKey" })
   apiKey?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=confirmCompanyName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "confirmCompanyName" })
   confirmCompanyName?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=iconUrl" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "iconUrl" })
   iconUrl?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=logoUrl" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "logoUrl" })
   logoUrl?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=redirectUrl" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "redirectUrl" })
   redirectUrl?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=whiteListUrls" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "whiteListUrls" })
   whiteListUrls?: string[];
 }

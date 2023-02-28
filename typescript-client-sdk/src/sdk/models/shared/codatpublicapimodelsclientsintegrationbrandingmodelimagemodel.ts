@@ -1,11 +1,13 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatPublicApiModelsClientsIntegrationBrandingModelImageModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=alt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "alt" })
   alt?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=src" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "src" })
   src?: string;
 }

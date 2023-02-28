@@ -1,6 +1,8 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
-import * as operations from "./models/operations";
 import * as utils from "../internal/utils";
+import * as operations from "./models/operations";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class Integrations {
   _defaultClient: AxiosInstance;
@@ -33,7 +35,7 @@ export class Integrations {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/integrations/credentials/{platformKey}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -50,7 +52,11 @@ export class Integrations {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsPlatformCredentialsPlatformCredentials = httpRes?.data;
+              res.deleteIntegrationsCredentialsPlatformKey200ApplicationJSONObject = plainToInstance(
+                ,
+                httpRes?.data as ,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -71,21 +77,14 @@ export class Integrations {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/integrations";
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -96,7 +95,11 @@ export class Integrations {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsPlatformCredentialsPlatformSourceModelPagedResponseModel = httpRes?.data;
+              res.codatPublicApiModelsPlatformCredentialsPlatformSourceModelPagedResponseModel = plainToInstance(
+                shared.CodatPublicApiModelsPlatformCredentialsPlatformSourceModelPagedResponseModel,
+                httpRes?.data as shared.CodatPublicApiModelsPlatformCredentialsPlatformSourceModelPagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -117,7 +120,7 @@ export class Integrations {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/integrations/bankSettings";
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -134,7 +137,11 @@ export class Integrations {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsClientsBankingSettingsModelsBankSettingsDataset = httpRes?.data;
+              res.codatPublicApiModelsClientsBankingSettingsModelsBankSettingsDataset = plainToInstance(
+                shared.CodatPublicApiModelsClientsBankingSettingsModelsBankSettingsDataset,
+                httpRes?.data as shared.CodatPublicApiModelsClientsBankingSettingsModelsBankSettingsDataset,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -161,7 +168,7 @@ export class Integrations {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/integrations/credentials/{platformKey}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -178,7 +185,11 @@ export class Integrations {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsPlatformCredentialsPlatformCredentials = httpRes?.data;
+              res.getIntegrationsCredentialsPlatformKey200ApplicationJSONObject = plainToInstance(
+                ,
+                httpRes?.data as ,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -199,7 +210,7 @@ export class Integrations {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/integrations/{platformKey}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -216,7 +227,11 @@ export class Integrations {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsPlatformCredentialsPlatformSourceModel = httpRes?.data;
+              res.codatPublicApiModelsPlatformCredentialsPlatformSourceModel = plainToInstance(
+                shared.CodatPublicApiModelsPlatformCredentialsPlatformSourceModel,
+                httpRes?.data as shared.CodatPublicApiModelsPlatformCredentialsPlatformSourceModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -237,7 +252,7 @@ export class Integrations {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/integrations/{platformKey}/branding", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -254,7 +269,11 @@ export class Integrations {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsClientsIntegrationBrandingModel = httpRes?.data;
+              res.codatPublicApiModelsClientsIntegrationBrandingModel = plainToInstance(
+                shared.CodatPublicApiModelsClientsIntegrationBrandingModel,
+                httpRes?.data as shared.CodatPublicApiModelsClientsIntegrationBrandingModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -285,7 +304,7 @@ export class Integrations {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -305,7 +324,11 @@ export class Integrations {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsClientsBankingSettingsModelsBankSettingsDataset = httpRes?.data;
+              res.codatPublicApiModelsClientsBankingSettingsModelsBankSettingsDataset = plainToInstance(
+                shared.CodatPublicApiModelsClientsBankingSettingsModelsBankSettingsDataset,
+                httpRes?.data as shared.CodatPublicApiModelsClientsBankingSettingsModelsBankSettingsDataset,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -339,7 +362,7 @@ export class Integrations {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -359,7 +382,11 @@ export class Integrations {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsPlatformCredentialsPlatformCredentials = httpRes?.data;
+              res.putIntegrationsCredentialsPlatformKey200ApplicationJSONObject = plainToInstance(
+                ,
+                httpRes?.data as ,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -390,7 +417,7 @@ export class Integrations {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -410,7 +437,11 @@ export class Integrations {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsPlatformCredentialsPlatformSourceModel = httpRes?.data;
+              res.codatPublicApiModelsPlatformCredentialsPlatformSourceModel = plainToInstance(
+                shared.CodatPublicApiModelsPlatformCredentialsPlatformSourceModel,
+                httpRes?.data as shared.CodatPublicApiModelsPlatformCredentialsPlatformSourceModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

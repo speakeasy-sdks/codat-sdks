@@ -1,27 +1,27 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 )
 
-type GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPostPathParams struct {
+type GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPOSTPathParams struct {
 	CompanyID    string `pathParam:"style=simple,explode=false,name=companyId"`
 	ConnectionID string `pathParam:"style=simple,explode=false,name=connectionId"`
 	DataType     string `pathParam:"style=simple,explode=false,name=dataType"`
 }
 
-type GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPostSecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
+type GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPOSTSecurity struct {
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
-type GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPostRequest struct {
-	PathParams GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPostPathParams
-	Security   GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPostSecurity
+type GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPOSTRequest struct {
+	PathParams GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPOSTPathParams
+	Security   GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPOSTSecurity
 }
 
-type GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPostResponse struct {
+type GetCompaniesCompanyIDConnectionsConnectionIDDataTypesDataTypeOptionsPOSTResponse struct {
 	CodatDataContractsPushPushOption *shared.CodatDataContractsPushPushOption
 	ContentType                      string
-	StatusCode                       int64
+	StatusCode                       int
 }

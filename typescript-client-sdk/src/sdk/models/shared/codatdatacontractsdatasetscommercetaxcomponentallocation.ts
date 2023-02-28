@@ -1,12 +1,15 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCommerceTaxComponentRef } from "./codatdatacontractsdatasetscommercetaxcomponentref";
-
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsCommerceTaxComponentAllocation extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=taxAmount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "taxAmount" })
   taxAmount?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=taxComponentRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "taxComponentRef" })
+  @Type(() => CodatDataContractsDatasetsCommerceTaxComponentRef)
   taxComponentRef?: CodatDataContractsDatasetsCommerceTaxComponentRef;
 }

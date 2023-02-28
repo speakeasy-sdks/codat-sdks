@@ -1,29 +1,38 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class CodatPublicApiModelsSyncSettingsSyncSettingModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=dataType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "dataType" })
   dataType?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=fetchOnFirstLink" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "fetchOnFirstLink" })
   fetchOnFirstLink?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=isLocked" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "isLocked" })
   isLocked?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=monthsToSync" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "monthsToSync" })
   monthsToSync?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=syncFromUtc" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "syncFromUtc" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   syncFromUtc?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=syncFromWindow" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "syncFromWindow" })
   syncFromWindow?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=syncOrder" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "syncOrder" })
   syncOrder?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=syncSchedule" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "syncSchedule" })
   syncSchedule?: number;
 }

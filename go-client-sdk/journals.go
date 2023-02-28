@@ -3,35 +3,35 @@ package sdk
 import (
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/utils"
 	"net/http"
 )
 
-type Journals struct {
-	_defaultClient  HTTPClient
-	_securityClient HTTPClient
-	_serverURL      string
-	_language       string
-	_sdkVersion     string
-	_genVersion     string
+type journals struct {
+	defaultClient  HTTPClient
+	securityClient HTTPClient
+	serverURL      string
+	language       string
+	sdkVersion     string
+	genVersion     string
 }
 
-func NewJournals(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *Journals {
-	return &Journals{
-		_defaultClient:  defaultClient,
-		_securityClient: securityClient,
-		_serverURL:      serverURL,
-		_language:       language,
-		_sdkVersion:     sdkVersion,
-		_genVersion:     genVersion,
+func newJournals(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *journals {
+	return &journals{
+		defaultClient:  defaultClient,
+		securityClient: securityClient,
+		serverURL:      serverURL,
+		language:       language,
+		sdkVersion:     sdkVersion,
+		genVersion:     genVersion,
 	}
 }
 
 // GetCompaniesCompanyIDDataJournals - Gets the latest journals for a company, with pagination
-func (s *Journals) GetCompaniesCompanyIDDataJournals(ctx context.Context, request operations.GetCompaniesCompanyIDDataJournalsRequest) (*operations.GetCompaniesCompanyIDDataJournalsResponse, error) {
-	baseURL := s._serverURL
+func (s *journals) GetCompaniesCompanyIDDataJournals(ctx context.Context, request operations.GetCompaniesCompanyIDDataJournalsRequest) (*operations.GetCompaniesCompanyIDDataJournalsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/data/journals", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -39,20 +39,25 @@ func (s *Journals) GetCompaniesCompanyIDDataJournals(ctx context.Context, reques
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDDataJournalsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -72,8 +77,8 @@ func (s *Journals) GetCompaniesCompanyIDDataJournals(ctx context.Context, reques
 }
 
 // GetCompaniesCompanyIDDataJournalsJournalID - Gets a single journal corresponding to the supplied Id
-func (s *Journals) GetCompaniesCompanyIDDataJournalsJournalID(ctx context.Context, request operations.GetCompaniesCompanyIDDataJournalsJournalIDRequest) (*operations.GetCompaniesCompanyIDDataJournalsJournalIDResponse, error) {
-	baseURL := s._serverURL
+func (s *journals) GetCompaniesCompanyIDDataJournalsJournalID(ctx context.Context, request operations.GetCompaniesCompanyIDDataJournalsJournalIDRequest) (*operations.GetCompaniesCompanyIDDataJournalsJournalIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/data/journals/{journalId}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -81,18 +86,21 @@ func (s *Journals) GetCompaniesCompanyIDDataJournalsJournalID(ctx context.Contex
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDDataJournalsJournalIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -112,8 +120,8 @@ func (s *Journals) GetCompaniesCompanyIDDataJournalsJournalID(ctx context.Contex
 }
 
 // PostCompaniesCompanyIDConnectionsConnectionIDPushJournals - Posts a new journal to the accounting package for a given company.
-func (s *Journals) PostCompaniesCompanyIDConnectionsConnectionIDPushJournals(ctx context.Context, request operations.PostCompaniesCompanyIDConnectionsConnectionIDPushJournalsRequest) (*operations.PostCompaniesCompanyIDConnectionsConnectionIDPushJournalsResponse, error) {
-	baseURL := s._serverURL
+func (s *journals) PostCompaniesCompanyIDConnectionsConnectionIDPushJournals(ctx context.Context, request operations.PostCompaniesCompanyIDConnectionsConnectionIDPushJournalsRequest) (*operations.PostCompaniesCompanyIDConnectionsConnectionIDPushJournalsResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/connections/{connectionId}/push/journals", request.PathParams)
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
@@ -128,20 +136,25 @@ func (s *Journals) PostCompaniesCompanyIDConnectionsConnectionIDPushJournals(ctx
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PostCompaniesCompanyIDConnectionsConnectionIDPushJournalsResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {

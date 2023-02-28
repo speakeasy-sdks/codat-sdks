@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from enum import Enum
 
@@ -7,4 +8,3 @@ class CodatDataContractsDatasetsSalesOrderStatusEnum(str, Enum):
     OPEN = "Open"
     CLOSED = "Closed"
     VOID = "Void"
-

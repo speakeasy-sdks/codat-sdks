@@ -1,7 +1,7 @@
+from __future__ import annotations
 import dataclasses
+from ..shared import security as shared_security
 from typing import Optional
-from ..shared import security as shared_security
-from ..shared import security as shared_security
 
 
 @dataclasses.dataclass

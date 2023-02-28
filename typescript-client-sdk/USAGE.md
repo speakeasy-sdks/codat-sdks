@@ -1,32 +1,36 @@
 <!-- Start SDK Example Usage -->
 ```typescript
-import { SDK, withSecurity} from "@codatio/codat-ts";
-import { GetCompaniesCompanyIdConnectionsConnectionIdDataAccountTransactionsRequest, GetCompaniesCompanyIdConnectionsConnectionIdDataAccountTransactionsResponse } from "@codatio/codat-ts/src/sdk/models/operations";
-import { AxiosError } from "axios";
+import {
+  GetCompaniesCompanyIdConnectionsConnectionIdDataAccountTransactionsRequest,
+  GetCompaniesCompanyIdConnectionsConnectionIdDataAccountTransactionsResponse 
+} from "@codatio/codat-ts/dist/sdk/models/operations";
 
-const sdk = new SDK(withSecurity(
+import { AxiosError } from "axios";
+import { SDK } from "@codatio/codat-ts";
+
+const sdk = new SDK({
   security: {
     apiKeyAuth: {
       apiKey: "YOUR_API_KEY_HERE",
     },
   }
-));
+});
     
 const req: GetCompaniesCompanyIdConnectionsConnectionIdDataAccountTransactionsRequest = {
   security: {
-    codatLogin: {
-      authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    apiKeyAuth: {
+      apiKey: "YOUR_API_KEY_HERE",
     },
   },
   pathParams: {
-    companyId: "sit",
-    connectionId: "voluptas",
+    companyId: "unde",
+    connectionId: "deserunt",
   },
   queryParams: {
-    orderBy: "culpa",
-    page: 501233450539197794,
-    pageSize: 3390393562759376202,
-    query: "dolor",
+    orderBy: "porro",
+    page: 844266,
+    pageSize: 602763,
+    query: "vero",
   },
 };
 

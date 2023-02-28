@@ -1,7 +1,7 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 )
 
 type PostCompaniesCompanyIDConnectionsConnectionIDPushBankAccountsAccountIDBankTransactionsPathParams struct {
@@ -11,13 +11,13 @@ type PostCompaniesCompanyIDConnectionsConnectionIDPushBankAccountsAccountIDBankT
 }
 
 type PostCompaniesCompanyIDConnectionsConnectionIDPushBankAccountsAccountIDBankTransactionsQueryParams struct {
-	AllowSyncOnPushComplete *bool  `queryParam:"style=form,explode=true,name=allowSyncOnPushComplete"`
-	TimeoutInMinutes        *int32 `queryParam:"style=form,explode=true,name=timeoutInMinutes"`
+	AllowSyncOnPushComplete *bool `queryParam:"style=form,explode=true,name=allowSyncOnPushComplete"`
+	TimeoutInMinutes        *int  `queryParam:"style=form,explode=true,name=timeoutInMinutes"`
 }
 
 type PostCompaniesCompanyIDConnectionsConnectionIDPushBankAccountsAccountIDBankTransactionsSecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
 type PostCompaniesCompanyIDConnectionsConnectionIDPushBankAccountsAccountIDBankTransactionsRequest struct {
@@ -30,5 +30,5 @@ type PostCompaniesCompanyIDConnectionsConnectionIDPushBankAccountsAccountIDBankT
 type PostCompaniesCompanyIDConnectionsConnectionIDPushBankAccountsAccountIDBankTransactionsResponse struct {
 	CodatDataContractsDatasetsBankTransactionsPushOperation *shared.CodatDataContractsDatasetsBankTransactionsPushOperation
 	ContentType                                             string
-	StatusCode                                              int64
+	StatusCode                                              int
 }

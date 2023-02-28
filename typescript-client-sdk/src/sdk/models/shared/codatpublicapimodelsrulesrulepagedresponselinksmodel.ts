@@ -1,18 +1,26 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsRulesRulePagedResponseHrefModel } from "./codatpublicapimodelsrulesrulepagedresponsehrefmodel";
-
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatPublicApiModelsRulesRulePagedResponseLinksModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=current" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "current" })
+  @Type(() => CodatPublicApiModelsRulesRulePagedResponseHrefModel)
   current?: CodatPublicApiModelsRulesRulePagedResponseHrefModel;
 
-  @SpeakeasyMetadata({ data: "json, name=next" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "next" })
+  @Type(() => CodatPublicApiModelsRulesRulePagedResponseHrefModel)
   next?: CodatPublicApiModelsRulesRulePagedResponseHrefModel;
 
-  @SpeakeasyMetadata({ data: "json, name=previous" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "previous" })
+  @Type(() => CodatPublicApiModelsRulesRulePagedResponseHrefModel)
   previous?: CodatPublicApiModelsRulesRulePagedResponseHrefModel;
 
-  @SpeakeasyMetadata({ data: "json, name=self" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "self" })
+  @Type(() => CodatPublicApiModelsRulesRulePagedResponseHrefModel)
   self?: CodatPublicApiModelsRulesRulePagedResponseHrefModel;
 }

@@ -1,6 +1,8 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
-import * as operations from "./models/operations";
 import * as utils from "../internal/utils";
+import * as operations from "./models/operations";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class BillCreditNotes {
   _defaultClient: AxiosInstance;
@@ -33,21 +35,14 @@ export class BillCreditNotes {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/billCreditNotes", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -58,7 +53,11 @@ export class BillCreditNotes {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsBillCreditNotePagedResponseModel = httpRes?.data;
+              res.codatDataContractsDatasetsBillCreditNotePagedResponseModel = plainToInstance(
+                shared.CodatDataContractsDatasetsBillCreditNotePagedResponseModel,
+                httpRes?.data as shared.CodatDataContractsDatasetsBillCreditNotePagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -82,7 +81,7 @@ export class BillCreditNotes {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/billCreditNotes/{billCreditNoteId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -99,7 +98,11 @@ export class BillCreditNotes {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsBillCreditNote = httpRes?.data;
+              res.codatDataContractsDatasetsBillCreditNote = plainToInstance(
+                shared.CodatDataContractsDatasetsBillCreditNote,
+                httpRes?.data as shared.CodatDataContractsDatasetsBillCreditNote,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -133,24 +136,17 @@ export class BillCreditNotes {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "post",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -161,7 +157,11 @@ export class BillCreditNotes {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsBillCreditNotePushOperation = httpRes?.data;
+              res.codatDataContractsDatasetsBillCreditNotePushOperation = plainToInstance(
+                shared.CodatDataContractsDatasetsBillCreditNotePushOperation,
+                httpRes?.data as shared.CodatDataContractsDatasetsBillCreditNotePushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -195,24 +195,17 @@ export class BillCreditNotes {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "put",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -223,7 +216,11 @@ export class BillCreditNotes {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsBillCreditNotePushOperation = httpRes?.data;
+              res.codatDataContractsDatasetsBillCreditNotePushOperation = plainToInstance(
+                shared.CodatDataContractsDatasetsBillCreditNotePushOperation,
+                httpRes?.data as shared.CodatDataContractsDatasetsBillCreditNotePushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

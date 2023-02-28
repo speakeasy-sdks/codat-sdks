@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from enum import Enum
 
@@ -8,4 +9,3 @@ class CodatDataContractsDatasetsAccountTypeEnum(str, Enum):
     INCOME = "Income"
     LIABILITY = "Liability"
     EQUITY = "Equity"
-

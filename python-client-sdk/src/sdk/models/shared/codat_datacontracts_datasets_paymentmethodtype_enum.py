@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from enum import Enum
 
@@ -9,4 +10,3 @@ class CodatDataContractsDatasetsPaymentMethodTypeEnum(str, Enum):
     DEBIT_CARD = "DebitCard"
     BANK_TRANSFER = "BankTransfer"
     OTHER = "Other"
-

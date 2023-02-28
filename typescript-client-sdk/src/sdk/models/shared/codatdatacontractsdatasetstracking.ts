@@ -1,9 +1,11 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsRecordRef } from "./codatdatacontractsdatasetsrecordref";
-
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsTracking extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=recordRefs", elemType: CodatDataContractsDatasetsRecordRef })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsRecordRef })
+  @Expose({ name: "recordRefs" })
+  @Type(() => CodatDataContractsDatasetsRecordRef)
   recordRefs?: CodatDataContractsDatasetsRecordRef[];
 }

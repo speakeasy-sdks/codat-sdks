@@ -1,8 +1,8 @@
+from __future__ import annotations
 import dataclasses
-from typing import Optional
-from ..shared import security as shared_security
-from ..shared import security as shared_security
 from ..shared import codat_datacontracts_datasets_journalentry as shared_codat_datacontracts_datasets_journalentry
+from ..shared import security as shared_security
+from typing import Optional
 
 
 @dataclasses.dataclass

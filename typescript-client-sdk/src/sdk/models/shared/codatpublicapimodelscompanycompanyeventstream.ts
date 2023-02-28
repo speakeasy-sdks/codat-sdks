@@ -1,18 +1,25 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsCompanyCompanyEventStreamItem } from "./codatpublicapimodelscompanycompanyeventstreamitem";
-
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatPublicApiModelsCompanyCompanyEventStream extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=companyId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "companyId" })
   companyId: string;
 
-  @SpeakeasyMetadata({ data: "json, name=data", elemType: CodatPublicApiModelsCompanyCompanyEventStreamItem })
+  @SpeakeasyMetadata({ elemType: CodatPublicApiModelsCompanyCompanyEventStreamItem })
+  @Expose({ name: "data" })
+  @Type(() => CodatPublicApiModelsCompanyCompanyEventStreamItem)
   data: CodatPublicApiModelsCompanyCompanyEventStreamItem[];
 
-  @SpeakeasyMetadata({ data: "json, name=from" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "from" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   from?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=to" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "to" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   to?: Date;
 }

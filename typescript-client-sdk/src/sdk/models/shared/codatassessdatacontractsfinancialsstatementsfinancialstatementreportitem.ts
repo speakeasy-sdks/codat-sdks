@@ -1,18 +1,27 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatAssessDataContractsFinancialsStatementsAccountCategory } from "./codatassessdatacontractsfinancialsstatementsaccountcategory";
-
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatAssessDataContractsFinancialsStatementsFinancialStatementReportItem extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=accountCategory" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountCategory" })
+  @Type(() => CodatAssessDataContractsFinancialsStatementsAccountCategory)
   accountCategory?: CodatAssessDataContractsFinancialsStatementsAccountCategory;
 
-  @SpeakeasyMetadata({ data: "json, name=accountName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountId" })
+  accountId?: string;
+
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountName" })
   accountName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=balance" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "balance" })
   balance?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=date" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "date" })
   date?: string;
 }

@@ -1,9 +1,11 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsClientsBankingSettingsModelsBankSetting } from "./codatpublicapimodelsclientsbankingsettingsmodelsbanksetting";
-
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatPublicApiModelsClientsBankingSettingsModelsBankSettingsDataset extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=bankSettings", elemType: CodatPublicApiModelsClientsBankingSettingsModelsBankSetting })
+  @SpeakeasyMetadata({ elemType: CodatPublicApiModelsClientsBankingSettingsModelsBankSetting })
+  @Expose({ name: "bankSettings" })
+  @Type(() => CodatPublicApiModelsClientsBankingSettingsModelsBankSetting)
   bankSettings?: CodatPublicApiModelsClientsBankingSettingsModelsBankSetting[];
 }

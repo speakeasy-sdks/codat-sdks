@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from enum import Enum
 
@@ -13,4 +14,3 @@ class CodatDataContractsDatasetsCommerceDisputeStatusEnum(str, Enum):
     INQUIRY_PROCESSING = "InquiryProcessing"
     INQUIRY_CLOSED = "InquiryClosed"
     WAITING_THIRD_PARTY = "WaitingThirdParty"
-

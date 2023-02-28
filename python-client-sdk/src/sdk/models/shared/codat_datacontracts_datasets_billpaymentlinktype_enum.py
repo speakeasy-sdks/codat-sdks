@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from enum import Enum
 
@@ -12,4 +13,3 @@ class CodatDataContractsDatasetsBillPaymentLinkTypeEnum(str, Enum):
     REFUND = "Refund"
     MANUAL_JOURNAL = "ManualJournal"
     DISCOUNT = "Discount"
-

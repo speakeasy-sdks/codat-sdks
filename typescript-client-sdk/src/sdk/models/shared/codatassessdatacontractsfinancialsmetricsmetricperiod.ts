@@ -1,22 +1,31 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatAssessDataContractsFinancialsMetricsMetricPeriodError } from "./codatassessdatacontractsfinancialsmetricsmetricperioderror";
 import { CodatAssessDataContractsFinancialsMetricsMetricPeriodInput } from "./codatassessdatacontractsfinancialsmetricsmetricperiodinput";
-
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatAssessDataContractsFinancialsMetricsMetricPeriod extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=errors", elemType: CodatAssessDataContractsFinancialsMetricsMetricPeriodError })
+  @SpeakeasyMetadata({ elemType: CodatAssessDataContractsFinancialsMetricsMetricPeriodError })
+  @Expose({ name: "errors" })
+  @Type(() => CodatAssessDataContractsFinancialsMetricsMetricPeriodError)
   errors?: CodatAssessDataContractsFinancialsMetricsMetricPeriodError[];
 
-  @SpeakeasyMetadata({ data: "json, name=fromDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "fromDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   fromDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=inputs", elemType: CodatAssessDataContractsFinancialsMetricsMetricPeriodInput })
+  @SpeakeasyMetadata({ elemType: CodatAssessDataContractsFinancialsMetricsMetricPeriodInput })
+  @Expose({ name: "inputs" })
+  @Type(() => CodatAssessDataContractsFinancialsMetricsMetricPeriodInput)
   inputs?: CodatAssessDataContractsFinancialsMetricsMetricPeriodInput[];
 
-  @SpeakeasyMetadata({ data: "json, name=toDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "toDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   toDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=value" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "value" })
   value?: number;
 }

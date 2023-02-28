@@ -1,50 +1,69 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsBankStatementAccount extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=accountName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountName" })
   accountName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=accountNumber" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountNumber" })
   accountNumber?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=availableBalance" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "availableBalance" })
   availableBalance?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=balance" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "balance" })
   balance?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=currency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currency" })
   currency?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=fromDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "fromDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   fromDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=iban" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "iban" })
   iban?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=institution" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "institution" })
   institution?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=modifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   modifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=nominalCode" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "nominalCode" })
   nominalCode?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=overdraftLimit" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "overdraftLimit" })
   overdraftLimit?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=sortCode" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sortCode" })
   sortCode?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceModifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceModifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   sourceModifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=toDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "toDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   toDate?: Date;
 }

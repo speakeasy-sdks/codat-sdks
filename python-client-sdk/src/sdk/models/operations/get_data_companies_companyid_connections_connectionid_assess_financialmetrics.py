@@ -1,11 +1,11 @@
+from __future__ import annotations
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
 import dateutil.parser
-from typing import Optional
-from ..shared import security as shared_security
-from ..shared import security as shared_security
 from ..shared import codat_assess_datacontracts_financials_metrics_financialmetricsdataset as shared_codat_assess_datacontracts_financials_metrics_financialmetricsdataset
+from ..shared import security as shared_security
+from datetime import datetime
+from marshmallow import fields
+from typing import Optional
 
 
 @dataclasses.dataclass

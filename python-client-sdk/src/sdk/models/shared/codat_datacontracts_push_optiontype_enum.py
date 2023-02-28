@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from enum import Enum
 
@@ -10,4 +11,3 @@ class CodatDataContractsPushOptionTypeEnum(str, Enum):
     DATE_TIME = "DateTime"
     FILE = "File"
     MULTI_PART = "MultiPart"
-

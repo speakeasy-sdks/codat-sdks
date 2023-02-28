@@ -1,28 +1,36 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { CodatDataContractsDatasetsCommerceTaxComponentAllocation } from "./codatdatacontractsdatasetscommercetaxcomponentallocation";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCommerceServiceChargeTypeEnum } from "./codatdatacontractsdatasetscommerceservicechargetypeenum";
-
+import { CodatDataContractsDatasetsCommerceTaxComponentAllocation } from "./codatdatacontractsdatasetscommercetaxcomponentallocation";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsCommerceServiceCharge extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=description" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "description" })
   description?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=quantity" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "quantity" })
   quantity?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=taxAmount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "taxAmount" })
   taxAmount?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=taxPercentage" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "taxPercentage" })
   taxPercentage?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=taxes", elemType: CodatDataContractsDatasetsCommerceTaxComponentAllocation })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsCommerceTaxComponentAllocation })
+  @Expose({ name: "taxes" })
+  @Type(() => CodatDataContractsDatasetsCommerceTaxComponentAllocation)
   taxes?: CodatDataContractsDatasetsCommerceTaxComponentAllocation[];
 
-  @SpeakeasyMetadata({ data: "json, name=totalAmount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "totalAmount" })
   totalAmount?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=type" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "type" })
   type?: CodatDataContractsDatasetsCommerceServiceChargeTypeEnum;
 }

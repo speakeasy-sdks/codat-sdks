@@ -1,7 +1,7 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { CodatDataContractsDatasetsCommerceProductCategoryPagedResponseLinksModel } from "./codatdatacontractsdatasetscommerceproductcategorypagedresponselinksmodel";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCommerceProductCategory } from "./codatdatacontractsdatasetscommerceproductcategory";
-
+import { CodatDataContractsDatasetsCommerceProductCategoryPagedResponseLinksModel } from "./codatdatacontractsdatasetscommerceproductcategorypagedresponselinksmodel";
+import { Expose, Type } from "class-transformer";
 
 
 // CodatDataContractsDatasetsCommerceProductCategoryPagedResponseModel
@@ -10,18 +10,25 @@ import { CodatDataContractsDatasetsCommerceProductCategory } from "./codatdataco
  * Usable with the [ProducesResponseType] attribute on a controller action.
 **/
 export class CodatDataContractsDatasetsCommerceProductCategoryPagedResponseModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=_links" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "_links" })
+  @Type(() => CodatDataContractsDatasetsCommerceProductCategoryPagedResponseLinksModel)
   links?: CodatDataContractsDatasetsCommerceProductCategoryPagedResponseLinksModel;
 
-  @SpeakeasyMetadata({ data: "json, name=pageNumber" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageNumber" })
   pageNumber?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=pageSize" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageSize" })
   pageSize?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=results", elemType: CodatDataContractsDatasetsCommerceProductCategory })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsCommerceProductCategory })
+  @Expose({ name: "results" })
+  @Type(() => CodatDataContractsDatasetsCommerceProductCategory)
   results?: CodatDataContractsDatasetsCommerceProductCategory[];
 
-  @SpeakeasyMetadata({ data: "json, name=totalResults" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "totalResults" })
   totalResults?: number;
 }

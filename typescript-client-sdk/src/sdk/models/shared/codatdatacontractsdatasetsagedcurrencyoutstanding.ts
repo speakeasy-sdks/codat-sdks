@@ -1,12 +1,15 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsAgedOutstandingAmount } from "./codatdatacontractsdatasetsagedoutstandingamount";
-
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsAgedCurrencyOutstanding extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=agedOutstandingAmounts", elemType: CodatDataContractsDatasetsAgedOutstandingAmount })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsAgedOutstandingAmount })
+  @Expose({ name: "agedOutstandingAmounts" })
+  @Type(() => CodatDataContractsDatasetsAgedOutstandingAmount)
   agedOutstandingAmounts?: CodatDataContractsDatasetsAgedOutstandingAmount[];
 
-  @SpeakeasyMetadata({ data: "json, name=currency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currency" })
   currency?: string;
 }

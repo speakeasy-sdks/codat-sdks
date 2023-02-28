@@ -1,6 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
+import { Transform, Type } from "class-transformer";
 
 
 export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessCommerceMetricsCustomerRetentionPathParams extends SpeakeasyBase {
@@ -10,7 +10,6 @@ export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessCommerceMetri
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=connectionId" })
   connectionId: string;
 }
-
 
 export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessCommerceMetricsCustomerRetentionQueryParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=includeDisplayNames" })
@@ -25,19 +24,17 @@ export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessCommerceMetri
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=periodUnit" })
   periodUnit: shared.CodatAssessDataContractsCommerceMetricsPeriodUnitEnum;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=reportDate" })
+  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=reportDate;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ" })
   reportDate: Date;
 }
 
-
 export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessCommerceMetricsCustomerRetentionSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessCommerceMetricsCustomerRetentionRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -49,7 +46,6 @@ export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessCommerceMetri
   @SpeakeasyMetadata()
   security: GetDataCompaniesCompanyIdConnectionsConnectionIdAssessCommerceMetricsCustomerRetentionSecurity;
 }
-
 
 export class GetDataCompaniesCompanyIdConnectionsConnectionIdAssessCommerceMetricsCustomerRetentionResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

@@ -1,9 +1,11 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataIntegrityContractsMetadataMatchMetadata } from "./codatdataintegritycontractsmetadatamatchmetadata";
-
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatDataIntegrityContractsMetadataMatchMetadataResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=metadata", elemType: CodatDataIntegrityContractsMetadataMatchMetadata })
+  @SpeakeasyMetadata({ elemType: CodatDataIntegrityContractsMetadataMatchMetadata })
+  @Expose({ name: "metadata" })
+  @Type(() => CodatDataIntegrityContractsMetadataMatchMetadata)
   metadata?: CodatDataIntegrityContractsMetadataMatchMetadata[];
 }

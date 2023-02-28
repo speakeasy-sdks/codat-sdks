@@ -1,50 +1,70 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsAddress } from "./codatdatacontractsdatasetsaddress";
 import { CodatDataContractsDatasetsPhone } from "./codatdatacontractsdatasetsphone";
 import { CodatDataContractsDatasetsWebLink } from "./codatdatacontractsdatasetsweblink";
-
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsCompanyDataset extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=accountingPlatformRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountingPlatformRef" })
   accountingPlatformRef?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=addresses", elemType: CodatDataContractsDatasetsAddress })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsAddress })
+  @Expose({ name: "addresses" })
+  @Type(() => CodatDataContractsDatasetsAddress)
   addresses?: CodatDataContractsDatasetsAddress[];
 
-  @SpeakeasyMetadata({ data: "json, name=baseCurrency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "baseCurrency" })
   baseCurrency?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=companyLegalName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "companyLegalName" })
   companyLegalName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=companyName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "companyName" })
   companyName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=contractVersion" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "contractVersion" })
   contractVersion?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=createdDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "createdDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   createdDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=financialYearStartDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "financialYearStartDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   financialYearStartDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=ledgerLockDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "ledgerLockDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   ledgerLockDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=phoneNumbers", elemType: CodatDataContractsDatasetsPhone })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsPhone })
+  @Expose({ name: "phoneNumbers" })
+  @Type(() => CodatDataContractsDatasetsPhone)
   phoneNumbers?: CodatDataContractsDatasetsPhone[];
 
-  @SpeakeasyMetadata({ data: "json, name=registrationNumber" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "registrationNumber" })
   registrationNumber?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceUrls" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceUrls" })
   sourceUrls?: Record<string, string>;
 
-  @SpeakeasyMetadata({ data: "json, name=taxNumber" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "taxNumber" })
   taxNumber?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=webLinks", elemType: CodatDataContractsDatasetsWebLink })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsWebLink })
+  @Expose({ name: "webLinks" })
+  @Type(() => CodatDataContractsDatasetsWebLink)
   webLinks?: CodatDataContractsDatasetsWebLink[];
 }

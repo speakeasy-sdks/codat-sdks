@@ -1,15 +1,19 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsRulesNotifiers } from "./codatpublicapimodelsrulesnotifiers";
-
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatPublicApiModelsRulesAddRuleModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=companyId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "companyId" })
   companyId: string;
 
-  @SpeakeasyMetadata({ data: "json, name=notifiers" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "notifiers" })
+  @Type(() => CodatPublicApiModelsRulesNotifiers)
   notifiers?: CodatPublicApiModelsRulesNotifiers;
 
-  @SpeakeasyMetadata({ data: "json, name=type" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "type" })
   type: string;
 }

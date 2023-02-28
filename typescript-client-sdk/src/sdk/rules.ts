@@ -1,6 +1,8 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
-import * as operations from "./models/operations";
 import * as utils from "../internal/utils";
+import * as operations from "./models/operations";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class Rules {
   _defaultClient: AxiosInstance;
@@ -30,7 +32,7 @@ export class Rules {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/rules/{ruleId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -68,21 +70,14 @@ export class Rules {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/rules";
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -93,7 +88,11 @@ export class Rules {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsRulesRulePagedResponseModel = httpRes?.data;
+              res.codatPublicApiModelsRulesRulePagedResponseModel = plainToInstance(
+                shared.CodatPublicApiModelsRulesRulePagedResponseModel,
+                httpRes?.data as shared.CodatPublicApiModelsRulesRulePagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -114,21 +113,14 @@ export class Rules {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/rules/alerts";
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -139,7 +131,11 @@ export class Rules {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsRulesAlertModelPagedResponseModel = httpRes?.data;
+              res.codatPublicApiModelsRulesAlertModelPagedResponseModel = plainToInstance(
+                shared.CodatPublicApiModelsRulesAlertModelPagedResponseModel,
+                httpRes?.data as shared.CodatPublicApiModelsRulesAlertModelPagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -160,7 +156,7 @@ export class Rules {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/rules/alerts/{alertId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -177,7 +173,11 @@ export class Rules {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsRulesAlertModel = httpRes?.data;
+              res.codatPublicApiModelsRulesAlertModel = plainToInstance(
+                shared.CodatPublicApiModelsRulesAlertModel,
+                httpRes?.data as shared.CodatPublicApiModelsRulesAlertModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -198,7 +198,7 @@ export class Rules {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/rules/{ruleId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -215,7 +215,11 @@ export class Rules {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsRulesRule = httpRes?.data;
+              res.codatPublicApiModelsRulesRule = plainToInstance(
+                shared.CodatPublicApiModelsRulesRule,
+                httpRes?.data as shared.CodatPublicApiModelsRulesRule,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -236,21 +240,14 @@ export class Rules {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/rules/{ruleId}/alerts", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -261,7 +258,11 @@ export class Rules {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsRulesAlertModelPagedResponseModel = httpRes?.data;
+              res.codatPublicApiModelsRulesAlertModelPagedResponseModel = plainToInstance(
+                shared.CodatPublicApiModelsRulesAlertModelPagedResponseModel,
+                httpRes?.data as shared.CodatPublicApiModelsRulesAlertModelPagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -295,7 +296,7 @@ export class Rules {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -315,7 +316,11 @@ export class Rules {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsRulesRule = httpRes?.data;
+              res.codatPublicApiModelsRulesRule = plainToInstance(
+                shared.CodatPublicApiModelsRulesRule,
+                httpRes?.data as shared.CodatPublicApiModelsRulesRule,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -346,7 +351,7 @@ export class Rules {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -366,7 +371,11 @@ export class Rules {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsRulesRule = httpRes?.data;
+              res.codatPublicApiModelsRulesRule = plainToInstance(
+                shared.CodatPublicApiModelsRulesRule,
+                httpRes?.data as shared.CodatPublicApiModelsRulesRule,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

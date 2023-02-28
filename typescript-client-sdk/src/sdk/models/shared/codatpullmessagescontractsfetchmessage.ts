@@ -1,14 +1,18 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class CodatPullMessagesContractsFetchMessage extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=logDateTimeUtc" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "logDateTimeUtc" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   logDateTimeUtc?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=logLevel" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "logLevel" })
   logLevel?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=message" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "message" })
   message?: string;
 }

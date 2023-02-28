@@ -1,7 +1,7 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-import { CodatDataContractsDatasetsCommercePaymentMethodPagedResponseLinksModel } from "./codatdatacontractsdatasetscommercepaymentmethodpagedresponselinksmodel";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsCommercePaymentMethod } from "./codatdatacontractsdatasetscommercepaymentmethod";
-
+import { CodatDataContractsDatasetsCommercePaymentMethodPagedResponseLinksModel } from "./codatdatacontractsdatasetscommercepaymentmethodpagedresponselinksmodel";
+import { Expose, Type } from "class-transformer";
 
 
 // CodatDataContractsDatasetsCommercePaymentMethodPagedResponseModel
@@ -10,18 +10,25 @@ import { CodatDataContractsDatasetsCommercePaymentMethod } from "./codatdatacont
  * Usable with the [ProducesResponseType] attribute on a controller action.
 **/
 export class CodatDataContractsDatasetsCommercePaymentMethodPagedResponseModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=_links" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "_links" })
+  @Type(() => CodatDataContractsDatasetsCommercePaymentMethodPagedResponseLinksModel)
   links?: CodatDataContractsDatasetsCommercePaymentMethodPagedResponseLinksModel;
 
-  @SpeakeasyMetadata({ data: "json, name=pageNumber" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageNumber" })
   pageNumber?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=pageSize" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "pageSize" })
   pageSize?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=results", elemType: CodatDataContractsDatasetsCommercePaymentMethod })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsCommercePaymentMethod })
+  @Expose({ name: "results" })
+  @Type(() => CodatDataContractsDatasetsCommercePaymentMethod)
   results?: CodatDataContractsDatasetsCommercePaymentMethod[];
 
-  @SpeakeasyMetadata({ data: "json, name=totalResults" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "totalResults" })
   totalResults?: number;
 }

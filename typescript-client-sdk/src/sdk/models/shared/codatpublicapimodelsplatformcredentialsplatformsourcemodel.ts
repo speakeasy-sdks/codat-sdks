@@ -1,51 +1,66 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsPlatformCredentialsDataProvidedByEnum } from "./codatpublicapimodelsplatformcredentialsdataprovidedbyenum";
 import { CodatPublicApiModelsPlatformCredentialsDatatypeFeatures } from "./codatpublicapimodelsplatformcredentialsdatatypefeatures";
-import { CodatPublicApiModelsPlatformCredentialsSourceTypeEnum } from "./codatpublicapimodelsplatformcredentialssourcetypeenum";
 import { CodatPublicApiModelsPlatformCredentialsIntegrationSupportedEnvironmentsEnum } from "./codatpublicapimodelsplatformcredentialsintegrationsupportedenvironmentsenum";
-
+import { CodatPublicApiModelsPlatformCredentialsSourceTypeEnum } from "./codatpublicapimodelsplatformcredentialssourcetypeenum";
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatPublicApiModelsPlatformCredentialsPlatformSourceModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=dataProvidedBy" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "dataProvidedBy" })
   dataProvidedBy?: CodatPublicApiModelsPlatformCredentialsDataProvidedByEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=datatypeFeatures", elemType: CodatPublicApiModelsPlatformCredentialsDatatypeFeatures })
+  @SpeakeasyMetadata({ elemType: CodatPublicApiModelsPlatformCredentialsDatatypeFeatures })
+  @Expose({ name: "datatypeFeatures" })
+  @Type(() => CodatPublicApiModelsPlatformCredentialsDatatypeFeatures)
   datatypeFeatures?: CodatPublicApiModelsPlatformCredentialsDatatypeFeatures[];
 
-  @SpeakeasyMetadata({ data: "json, name=enabled" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "enabled" })
   enabled?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=integrationId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "integrationId" })
   integrationId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=isBeta" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "isBeta" })
   isBeta?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=isOfflineConnector" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "isOfflineConnector" })
   isOfflineConnector?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=key" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "key" })
   key?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=linkedConnectionsCount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "linkedConnectionsCount" })
   linkedConnectionsCount?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=logoUrl" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "logoUrl" })
   logoUrl?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceId" })
   sourceId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceType" })
   sourceType?: CodatPublicApiModelsPlatformCredentialsSourceTypeEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=supportedEnvironments" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "supportedEnvironments" })
   supportedEnvironments?: CodatPublicApiModelsPlatformCredentialsIntegrationSupportedEnvironmentsEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=totalConnectionsCount" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "totalConnectionsCount" })
   totalConnectionsCount?: number;
 }

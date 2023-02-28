@@ -1,7 +1,7 @@
 import requests
-from typing import Any,Optional
-from sdk.models import shared, operations
 from . import utils
+from sdk.models import operations, shared
+from typing import Any, Optional
 
 class Integrations:
     _client: requests.Session
@@ -39,7 +39,7 @@ class Integrations:
         if r.status_code == 200:
             if utils.match_content_type(content_type, "application/json"):
                 out = utils.unmarshal_json(r.text, Optional[dict[str, Any]])
-                res.codat_public_api_models_platform_credentials_platform_credentials = out
+                res.delete_integrations_credentials_platform_key_200_application_json_object = out
 
         return res
 
@@ -108,7 +108,7 @@ class Integrations:
         if r.status_code == 200:
             if utils.match_content_type(content_type, "application/json"):
                 out = utils.unmarshal_json(r.text, Optional[dict[str, Any]])
-                res.codat_public_api_models_platform_credentials_platform_credentials = out
+                res.get_integrations_credentials_platform_key_200_application_json_object = out
 
         return res
 
@@ -161,13 +161,13 @@ class Integrations:
         url = base_url.removesuffix("/") + "/integrations/bankSettings"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("PUT", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("PUT", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.PutIntegrationsBankSettingsResponse(status_code=r.status_code, content_type=content_type)
@@ -189,13 +189,13 @@ class Integrations:
         url = utils.generate_url(base_url, "/integrations/credentials/{platformKey}", request.path_params)
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("PUT", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("PUT", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.PutIntegrationsCredentialsPlatformKeyResponse(status_code=r.status_code, content_type=content_type)
@@ -203,7 +203,7 @@ class Integrations:
         if r.status_code == 200:
             if utils.match_content_type(content_type, "application/json"):
                 out = utils.unmarshal_json(r.text, Optional[dict[str, Any]])
-                res.codat_public_api_models_platform_credentials_platform_credentials = out
+                res.put_integrations_credentials_platform_key_200_application_json_object = out
 
         return res
 
@@ -214,13 +214,13 @@ class Integrations:
         url = utils.generate_url(base_url, "/integrations/{platformKey}/enabled", request.path_params)
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("PUT", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("PUT", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.PutIntegrationsPlatformKeyEnabledResponse(status_code=r.status_code, content_type=content_type)

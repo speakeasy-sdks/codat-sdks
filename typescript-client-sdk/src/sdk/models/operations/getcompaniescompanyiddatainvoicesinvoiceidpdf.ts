@@ -1,6 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
+import { Type } from "class-transformer";
 
 
 export class GetCompaniesCompanyIdDataInvoicesInvoiceIdPdfPathParams extends SpeakeasyBase {
@@ -11,15 +11,13 @@ export class GetCompaniesCompanyIdDataInvoicesInvoiceIdPdfPathParams extends Spe
   invoiceId: string;
 }
 
-
 export class GetCompaniesCompanyIdDataInvoicesInvoiceIdPdfSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class GetCompaniesCompanyIdDataInvoicesInvoiceIdPdfRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -28,7 +26,6 @@ export class GetCompaniesCompanyIdDataInvoicesInvoiceIdPdfRequest extends Speake
   @SpeakeasyMetadata()
   security: GetCompaniesCompanyIdDataInvoicesInvoiceIdPdfSecurity;
 }
-
 
 export class GetCompaniesCompanyIdDataInvoicesInvoiceIdPdfResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

@@ -1,48 +1,70 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatDataContractsDatasetsContactRef } from "./codatdatacontractsdatasetscontactref";
-import { CodatDataContractsDatasetsRecordRef } from "./codatdatacontractsdatasetsrecordref";
+import { CodatDataContractsDatasetsDataInterfacesSupplementalData } from "./codatdatacontractsdatasetsdatainterfacessupplementaldata";
 import { CodatDataContractsDatasetsFromAccount } from "./codatdatacontractsdatasetsfromaccount";
 import { CodatDataContractsDatasetsMetadata } from "./codatdatacontractsdatasetsmetadata";
-import { CodatDataContractsDatasetsDataInterfacesSupplementalData } from "./codatdatacontractsdatasetsdatainterfacessupplementaldata";
+import { CodatDataContractsDatasetsRecordRef } from "./codatdatacontractsdatasetsrecordref";
 import { CodatDataContractsDatasetsToAccount } from "./codatdatacontractsdatasetstoaccount";
 import { CodatDataContractsDatasetsTrackingCategoryRef } from "./codatdatacontractsdatasetstrackingcategoryref";
-
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsTransfer extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=contactRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "contactRef" })
+  @Type(() => CodatDataContractsDatasetsContactRef)
   contactRef?: CodatDataContractsDatasetsContactRef;
 
-  @SpeakeasyMetadata({ data: "json, name=date" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "date" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   date?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=depositedRecordRefs", elemType: CodatDataContractsDatasetsRecordRef })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsRecordRef })
+  @Expose({ name: "depositedRecordRefs" })
+  @Type(() => CodatDataContractsDatasetsRecordRef)
   depositedRecordRefs?: CodatDataContractsDatasetsRecordRef[];
 
-  @SpeakeasyMetadata({ data: "json, name=description" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "description" })
   description?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=from" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "from" })
+  @Type(() => CodatDataContractsDatasetsFromAccount)
   from?: CodatDataContractsDatasetsFromAccount;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=metadata" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "metadata" })
+  @Type(() => CodatDataContractsDatasetsMetadata)
   metadata?: CodatDataContractsDatasetsMetadata;
 
-  @SpeakeasyMetadata({ data: "json, name=modifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   modifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceModifiedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceModifiedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   sourceModifiedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=supplementalData" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "supplementalData" })
+  @Type(() => CodatDataContractsDatasetsDataInterfacesSupplementalData)
   supplementalData?: CodatDataContractsDatasetsDataInterfacesSupplementalData;
 
-  @SpeakeasyMetadata({ data: "json, name=to" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "to" })
+  @Type(() => CodatDataContractsDatasetsToAccount)
   to?: CodatDataContractsDatasetsToAccount;
 
-  @SpeakeasyMetadata({ data: "json, name=trackingCategoryRefs", elemType: CodatDataContractsDatasetsTrackingCategoryRef })
+  @SpeakeasyMetadata({ elemType: CodatDataContractsDatasetsTrackingCategoryRef })
+  @Expose({ name: "trackingCategoryRefs" })
+  @Type(() => CodatDataContractsDatasetsTrackingCategoryRef)
   trackingCategoryRefs?: CodatDataContractsDatasetsTrackingCategoryRef[];
 }

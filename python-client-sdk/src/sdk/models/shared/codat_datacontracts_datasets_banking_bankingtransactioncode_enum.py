@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from enum import Enum
 
@@ -17,4 +18,3 @@ class CodatDataContractsDatasetsBankingBankingTransactionCodeEnum(str, Enum):
     CREDIT = "Credit"
     OTHER = "Other"
     NOT_SUPPORTED = "NotSupported"
-

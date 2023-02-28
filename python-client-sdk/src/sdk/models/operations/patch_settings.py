@@ -1,9 +1,9 @@
+from __future__ import annotations
 import dataclasses
-from typing import Optional
-from ..shared import security as shared_security
-from ..shared import security as shared_security
-from ..shared import codat_public_api_models_clients_clientsettingspatchmodel as shared_codat_public_api_models_clients_clientsettingspatchmodel
 from ..shared import codat_public_api_models_clients_clientsettingsmodel as shared_codat_public_api_models_clients_clientsettingsmodel
+from ..shared import codat_public_api_models_clients_clientsettingspatchmodel as shared_codat_public_api_models_clients_clientsettingspatchmodel
+from ..shared import security as shared_security
+from typing import Optional
 
 
 @dataclasses.dataclass

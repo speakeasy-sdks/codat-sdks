@@ -15,8 +15,8 @@ type CodatDataContractsDatasetsInvoicePushOperation struct {
 	PushOperationKey  string                                        `json:"pushOperationKey"`
 	RequestedOnUtc    time.Time                                     `json:"requestedOnUtc"`
 	Status            string                                        `json:"status"`
-	StatusCode        int32                                         `json:"statusCode"`
-	TimeoutInMinutes  *int32                                        `json:"timeoutInMinutes,omitempty"`
-	TimeoutInSeconds  *int32                                        `json:"timeoutInSeconds,omitempty"`
+	StatusCode        int                                           `json:"statusCode"`
+	TimeoutInMinutes  *int                                          `json:"timeoutInMinutes,omitempty"`
+	TimeoutInSeconds  *int                                          `json:"timeoutInSeconds,omitempty"`
 	Validation        *CodatDataContractsValidationValidationResult `json:"validation,omitempty"`
 }

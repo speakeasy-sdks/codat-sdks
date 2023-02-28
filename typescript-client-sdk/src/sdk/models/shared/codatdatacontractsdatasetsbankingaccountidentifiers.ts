@@ -1,26 +1,33 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatDataContractsDatasetsBankingAccountIdentifiers extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=bankCode" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "bankCode" })
   bankCode?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=bic" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "bic" })
   bic?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=iban" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "iban" })
   iban?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=maskedAccountNumber" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "maskedAccountNumber" })
   maskedAccountNumber?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=number" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "number" })
   number?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=subtype" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "subtype" })
   subtype?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=type" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "type" })
   type: string;
 }

@@ -1,6 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
+import { Type } from "class-transformer";
 
 
 export class PostDataCompaniesCompanyIdAssessExcelDownloadPathParams extends SpeakeasyBase {
@@ -8,21 +8,18 @@ export class PostDataCompaniesCompanyIdAssessExcelDownloadPathParams extends Spe
   companyId: string;
 }
 
-
 export class PostDataCompaniesCompanyIdAssessExcelDownloadQueryParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=reportType" })
   reportType?: string;
 }
 
-
 export class PostDataCompaniesCompanyIdAssessExcelDownloadSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class PostDataCompaniesCompanyIdAssessExcelDownloadRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -34,7 +31,6 @@ export class PostDataCompaniesCompanyIdAssessExcelDownloadRequest extends Speake
   @SpeakeasyMetadata()
   security: PostDataCompaniesCompanyIdAssessExcelDownloadSecurity;
 }
-
 
 export class PostDataCompaniesCompanyIdAssessExcelDownloadResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

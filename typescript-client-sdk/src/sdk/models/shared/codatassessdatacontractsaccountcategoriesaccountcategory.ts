@@ -1,23 +1,29 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatAssessDataContractsAccountCategoriesAccountCategory extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=detailType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "detailType" })
   detailType?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=detailTypeDescription" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "detailTypeDescription" })
   detailTypeDescription?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=detailTypeDisplayName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "detailTypeDisplayName" })
   detailTypeDisplayName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=subtype" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "subtype" })
   subtype?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=subtypeDisplayName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "subtypeDisplayName" })
   subtypeDisplayName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=type" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "type" })
   type?: string;
 }

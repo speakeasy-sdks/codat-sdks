@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from enum import Enum
 
@@ -8,4 +9,3 @@ class CodatDataIntegrityContractsMetadataRunStatusEnum(str, Enum):
     PROCESSING = "Processing"
     COMPLETE_WITH_WARNING = "CompleteWithWarning"
     COMPLETE = "Complete"
-

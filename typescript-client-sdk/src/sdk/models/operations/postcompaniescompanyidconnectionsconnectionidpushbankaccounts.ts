@@ -1,6 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
+import { Type } from "class-transformer";
 
 
 export class PostCompaniesCompanyIdConnectionsConnectionIdPushBankAccountsPathParams extends SpeakeasyBase {
@@ -11,7 +11,6 @@ export class PostCompaniesCompanyIdConnectionsConnectionIdPushBankAccountsPathPa
   connectionId: string;
 }
 
-
 export class PostCompaniesCompanyIdConnectionsConnectionIdPushBankAccountsQueryParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=allowSyncOnPushComplete" })
   allowSyncOnPushComplete?: boolean;
@@ -20,15 +19,13 @@ export class PostCompaniesCompanyIdConnectionsConnectionIdPushBankAccountsQueryP
   timeoutInMinutes?: number;
 }
 
-
 export class PostCompaniesCompanyIdConnectionsConnectionIdPushBankAccountsSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class PostCompaniesCompanyIdConnectionsConnectionIdPushBankAccountsRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -43,7 +40,6 @@ export class PostCompaniesCompanyIdConnectionsConnectionIdPushBankAccountsReques
   @SpeakeasyMetadata()
   security: PostCompaniesCompanyIdConnectionsConnectionIdPushBankAccountsSecurity;
 }
-
 
 export class PostCompaniesCompanyIdConnectionsConnectionIdPushBankAccountsResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

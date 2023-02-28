@@ -1,16 +1,21 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsClientsIntegrationBrandingModelButtonModel } from "./codatpublicapimodelsclientsintegrationbrandingmodelbuttonmodel";
 import { CodatPublicApiModelsClientsIntegrationBrandingModelLogoModel } from "./codatpublicapimodelsclientsintegrationbrandingmodellogomodel";
-
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatPublicApiModelsClientsIntegrationBrandingModel extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=button" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "button" })
+  @Type(() => CodatPublicApiModelsClientsIntegrationBrandingModelButtonModel)
   button?: CodatPublicApiModelsClientsIntegrationBrandingModelButtonModel;
 
-  @SpeakeasyMetadata({ data: "json, name=logo" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "logo" })
+  @Type(() => CodatPublicApiModelsClientsIntegrationBrandingModelLogoModel)
   logo?: CodatPublicApiModelsClientsIntegrationBrandingModelLogoModel;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceId" })
   sourceId?: string;
 }

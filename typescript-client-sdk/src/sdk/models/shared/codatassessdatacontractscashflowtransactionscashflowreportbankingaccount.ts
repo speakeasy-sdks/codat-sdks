@@ -1,27 +1,35 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatAssessDataContractsCashFlowTransactionsSourceRef } from "./codatassessdatacontractscashflowtransactionssourceref";
-
+import { Expose, Type } from "class-transformer";
 
 
 export class CodatAssessDataContractsCashFlowTransactionsCashFlowReportBankingAccount extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=accountName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountName" })
   accountName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=accountProvider" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountProvider" })
   accountProvider?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=accountType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "accountType" })
   accountType?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=currency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currency" })
   currency?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=currentBalance" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currentBalance" })
   currentBalance?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=platformName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "platformName" })
   platformName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceRef" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceRef" })
+  @Type(() => CodatAssessDataContractsCashFlowTransactionsSourceRef)
   sourceRef?: CodatAssessDataContractsCashFlowTransactionsSourceRef;
 }

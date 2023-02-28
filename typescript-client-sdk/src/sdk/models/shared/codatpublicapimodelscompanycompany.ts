@@ -1,33 +1,45 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CodatPublicApiModelsCompanyDataConnection } from "./codatpublicapimodelscompanydataconnection";
-
+import { Expose, Transform, Type } from "class-transformer";
 
 
 export class CodatPublicApiModelsCompanyCompany extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=created" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "created" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   created?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=createdByUserName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "createdByUserName" })
   createdByUserName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=dataConnections", elemType: CodatPublicApiModelsCompanyDataConnection })
+  @SpeakeasyMetadata({ elemType: CodatPublicApiModelsCompanyDataConnection })
+  @Expose({ name: "dataConnections" })
+  @Type(() => CodatPublicApiModelsCompanyDataConnection)
   dataConnections: CodatPublicApiModelsCompanyDataConnection[];
 
-  @SpeakeasyMetadata({ data: "json, name=description" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "description" })
   description?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id: string;
 
-  @SpeakeasyMetadata({ data: "json, name=lastSync" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "lastSync" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   lastSync?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name: string;
 
-  @SpeakeasyMetadata({ data: "json, name=platform" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "platform" })
   platform: string;
 
-  @SpeakeasyMetadata({ data: "json, name=redirect" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "redirect" })
   redirect: string;
 }

@@ -1,11 +1,8 @@
 
-
 import requests
-from sdk.models import shared
 from . import utils
-
-from .accounttransactions import AccountTransactions
 from .accounts import Accounts
+from .accounttransactions import AccountTransactions
 from .assess import Assess
 from .bankaccounts import BankAccounts
 from .bankingaccountbalances import BankingAccountBalances
@@ -30,9 +27,9 @@ from .connection import Connection
 from .creditnotes import CreditNotes
 from .customers import Customers
 from .data import Data
+from .datasetlogs import DatasetLogs
 from .datastatus import DataStatus
 from .datatypes import DataTypes
-from .datasetlogs import DatasetLogs
 from .directcosts import DirectCosts
 from .directincomes import DirectIncomes
 from .files import Files
@@ -57,7 +54,7 @@ from .suppliers import Suppliers
 from .taxrates import TaxRates
 from .trackingcategories import TrackingCategories
 from .transfers import Transfers
-
+from sdk.models import shared
 
 SERVERS = [
 	"https://api.codat.io",
@@ -125,8 +122,8 @@ class SDK:
     _security: shared.Security
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "1.2.2"
-    _gen_version: str = "0.22.1"
+    _sdk_version: str = "2.1.3"
+    _gen_version: str = "1.5.4"
 
     def __init__(self) -> None:
         self._client = requests.Session()

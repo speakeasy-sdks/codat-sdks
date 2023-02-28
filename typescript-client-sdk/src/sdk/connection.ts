@@ -1,6 +1,8 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
-import * as operations from "./models/operations";
 import * as utils from "../internal/utils";
+import * as operations from "./models/operations";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class Connection {
   _defaultClient: AxiosInstance;
@@ -35,7 +37,7 @@ export class Connection {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -52,7 +54,11 @@ export class Connection {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.deleteCompaniesCompanyIdConnectionsConnectionId200ApplicationJSONBoolean = httpRes?.data;
+              res.deleteCompaniesCompanyIdConnectionsConnectionId200ApplicationJSONBoolean = plainToInstance(
+                ,
+                httpRes?.data as ,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -76,21 +82,14 @@ export class Connection {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -101,7 +100,11 @@ export class Connection {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsCompanyDataConnectionPagedResponseModel = httpRes?.data;
+              res.codatPublicApiModelsCompanyDataConnectionPagedResponseModel = plainToInstance(
+                shared.CodatPublicApiModelsCompanyDataConnectionPagedResponseModel,
+                httpRes?.data as shared.CodatPublicApiModelsCompanyDataConnectionPagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -125,7 +128,7 @@ export class Connection {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -142,7 +145,11 @@ export class Connection {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsCompanyDataConnection = httpRes?.data;
+              res.codatPublicApiModelsCompanyDataConnection = plainToInstance(
+                shared.CodatPublicApiModelsCompanyDataConnection,
+                httpRes?.data as shared.CodatPublicApiModelsCompanyDataConnection,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -166,7 +173,7 @@ export class Connection {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -183,7 +190,11 @@ export class Connection {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatStandardizationBankFeedsAccountsContractBankFeedBankAccounts = httpRes?.data;
+              res.codatStandardizationBankFeedsAccountsContractBankFeedBankAccounts = plainToInstance(
+                ,
+                httpRes?.data as ,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -221,7 +232,7 @@ export class Connection {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -241,7 +252,11 @@ export class Connection {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsCompanyDataConnection = httpRes?.data;
+              res.codatPublicApiModelsCompanyDataConnection = plainToInstance(
+                shared.CodatPublicApiModelsCompanyDataConnection,
+                httpRes?.data as shared.CodatPublicApiModelsCompanyDataConnection,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -275,7 +290,7 @@ export class Connection {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -295,7 +310,11 @@ export class Connection {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatStandardizationBankFeedsAccountsContractBankFeedBankAccount = httpRes?.data;
+              res.codatStandardizationBankFeedsAccountsContractBankFeedBankAccount = plainToInstance(
+                shared.CodatStandardizationBankFeedsAccountsContractBankFeedBankAccount,
+                httpRes?.data as shared.CodatStandardizationBankFeedsAccountsContractBankFeedBankAccount,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -334,7 +353,7 @@ export class Connection {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -354,7 +373,11 @@ export class Connection {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsCompanyDataConnection = httpRes?.data;
+              res.codatPublicApiModelsCompanyDataConnection = plainToInstance(
+                shared.CodatPublicApiModelsCompanyDataConnection,
+                httpRes?.data as shared.CodatPublicApiModelsCompanyDataConnection,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -388,7 +411,7 @@ export class Connection {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -408,7 +431,11 @@ export class Connection {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatPublicApiModelsCompanyDataConnection = httpRes?.data;
+              res.codatPublicApiModelsCompanyDataConnection = plainToInstance(
+                shared.CodatPublicApiModelsCompanyDataConnection,
+                httpRes?.data as shared.CodatPublicApiModelsCompanyDataConnection,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -442,7 +469,7 @@ export class Connection {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
     
@@ -462,7 +489,11 @@ export class Connection {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatStandardizationBankFeedsAccountsContractBankFeedBankAccounts = httpRes?.data;
+              res.codatStandardizationBankFeedsAccountsContractBankFeedBankAccounts = plainToInstance(
+                ,
+                httpRes?.data as ,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

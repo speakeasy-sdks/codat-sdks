@@ -1,7 +1,7 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 )
 
 type PutCompaniesCompanyIDConnectionsConnectionIDPushCreditNotesCreditNoteIDPathParams struct {
@@ -11,13 +11,13 @@ type PutCompaniesCompanyIDConnectionsConnectionIDPushCreditNotesCreditNoteIDPath
 }
 
 type PutCompaniesCompanyIDConnectionsConnectionIDPushCreditNotesCreditNoteIDQueryParams struct {
-	ForceUpdate      *bool  `queryParam:"style=form,explode=true,name=forceUpdate"`
-	TimeoutInMinutes *int32 `queryParam:"style=form,explode=true,name=timeoutInMinutes"`
+	ForceUpdate      *bool `queryParam:"style=form,explode=true,name=forceUpdate"`
+	TimeoutInMinutes *int  `queryParam:"style=form,explode=true,name=timeoutInMinutes"`
 }
 
 type PutCompaniesCompanyIDConnectionsConnectionIDPushCreditNotesCreditNoteIDSecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
 type PutCompaniesCompanyIDConnectionsConnectionIDPushCreditNotesCreditNoteIDRequest struct {
@@ -30,5 +30,5 @@ type PutCompaniesCompanyIDConnectionsConnectionIDPushCreditNotesCreditNoteIDRequ
 type PutCompaniesCompanyIDConnectionsConnectionIDPushCreditNotesCreditNoteIDResponse struct {
 	CodatDataContractsDatasetsCreditNotePushOperation *shared.CodatDataContractsDatasetsCreditNotePushOperation
 	ContentType                                       string
-	StatusCode                                        int64
+	StatusCode                                        int
 }

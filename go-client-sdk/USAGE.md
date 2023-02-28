@@ -3,6 +3,8 @@
 package main
 
 import (
+    "context"
+    "log"
     "github.com/speakeasy-sdks/codat-sdks/go-client-sdk"
     "github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
     "github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/operations"
@@ -15,7 +17,7 @@ func main() {
                 APIKeyAuth: shared.SchemeAPIKeyAuth{
                     APIKey: "YOUR_API_KEY_HERE",
                 },
-            }
+            },
         ),
     }
 
@@ -23,22 +25,23 @@ func main() {
     
     req := operations.GetCompaniesCompanyIDConnectionsConnectionIDDataAccountTransactionsRequest{
         Security: operations.GetCompaniesCompanyIDConnectionsConnectionIDDataAccountTransactionsSecurity{
-            CodatLogin: &shared.SchemeCodatLogin{
-                Authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+            APIKeyAuth: &shared.SchemeAPIKeyAuth{
+                APIKey: "YOUR_API_KEY_HERE",
             },
         },
         PathParams: operations.GetCompaniesCompanyIDConnectionsConnectionIDDataAccountTransactionsPathParams{
-            CompanyID: "sit",
-            ConnectionID: "voluptas",
+            CompanyID: "unde",
+            ConnectionID: "deserunt",
         },
         QueryParams: operations.GetCompaniesCompanyIDConnectionsConnectionIDDataAccountTransactionsQueryParams{
-            OrderBy: "culpa",
-            Page: 501233450539197794,
-            PageSize: 3390393562759376202,
-            Query: "dolor",
+            OrderBy: "porro",
+            Page: 844266,
+            PageSize: 602763,
+            Query: "vero",
         },
     }
-    
+
+    ctx := context.Background()
     res, err := s.AccountTransactions.GetCompaniesCompanyIDConnectionsConnectionIDDataAccountTransactions(ctx, req)
     if err != nil {
         log.Fatal(err)
@@ -47,5 +50,6 @@ func main() {
     if res.CodatDataContractsDatasetsAccountTransactionPagedResponse != nil {
         // handle response
     }
+}
 ```
 <!-- End SDK Example Usage -->

@@ -1,6 +1,6 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
-
+import { Transform, Type } from "class-transformer";
 
 
 export class GetCompaniesCompanyIdReportsEventsPathParams extends SpeakeasyBase {
@@ -8,27 +8,24 @@ export class GetCompaniesCompanyIdReportsEventsPathParams extends SpeakeasyBase 
   companyId: string;
 }
 
-
 export class GetCompaniesCompanyIdReportsEventsQueryParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=fromDate" })
+  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=fromDate;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ" })
   fromDate?: Date;
 
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=pageSize" })
   pageSize?: number;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=toDate" })
+  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=toDate;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ" })
   toDate?: Date;
 }
 
-
 export class GetCompaniesCompanyIdReportsEventsSecurity extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
+  apiKeyAuth?: shared.SchemeAPIKeyAuth;
+
   @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2" })
   codatLogin?: shared.SchemeCodatLogin;
-
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header" })
-  apiKeyAuth?: shared.SchemeApiKeyAuth;
 }
-
 
 export class GetCompaniesCompanyIdReportsEventsRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
@@ -40,7 +37,6 @@ export class GetCompaniesCompanyIdReportsEventsRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
   security: GetCompaniesCompanyIdReportsEventsSecurity;
 }
-
 
 export class GetCompaniesCompanyIdReportsEventsResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()

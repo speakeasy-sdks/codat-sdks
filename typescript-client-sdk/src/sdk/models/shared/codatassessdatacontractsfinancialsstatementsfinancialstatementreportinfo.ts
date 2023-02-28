@@ -1,17 +1,22 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class CodatAssessDataContractsFinancialsStatementsFinancialStatementReportInfo extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=companyName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "companyName" })
   companyName?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=currency" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currency" })
   currency?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=generatedDate" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "generatedDate" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   generatedDate?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=reportName" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "reportName" })
   reportName?: string;
 }

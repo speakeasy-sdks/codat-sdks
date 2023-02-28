@@ -1,7 +1,7 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 )
 
 type PostDataCompaniesCompanyIDAssessExcelDownloadPathParams struct {
@@ -13,8 +13,8 @@ type PostDataCompaniesCompanyIDAssessExcelDownloadQueryParams struct {
 }
 
 type PostDataCompaniesCompanyIDAssessExcelDownloadSecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
 type PostDataCompaniesCompanyIDAssessExcelDownloadRequest struct {
@@ -25,6 +25,6 @@ type PostDataCompaniesCompanyIDAssessExcelDownloadRequest struct {
 
 type PostDataCompaniesCompanyIDAssessExcelDownloadResponse struct {
 	ContentType                                                                 string
-	StatusCode                                                                  int64
+	StatusCode                                                                  int
 	PostDataCompaniesCompanyIDAssessExcelDownload200ApplicationJSONBinaryString []byte
 }

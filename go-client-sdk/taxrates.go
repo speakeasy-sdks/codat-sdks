@@ -3,35 +3,35 @@ package sdk
 import (
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/utils"
 	"net/http"
 )
 
-type TaxRates struct {
-	_defaultClient  HTTPClient
-	_securityClient HTTPClient
-	_serverURL      string
-	_language       string
-	_sdkVersion     string
-	_genVersion     string
+type taxRates struct {
+	defaultClient  HTTPClient
+	securityClient HTTPClient
+	serverURL      string
+	language       string
+	sdkVersion     string
+	genVersion     string
 }
 
-func NewTaxRates(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *TaxRates {
-	return &TaxRates{
-		_defaultClient:  defaultClient,
-		_securityClient: securityClient,
-		_serverURL:      serverURL,
-		_language:       language,
-		_sdkVersion:     sdkVersion,
-		_genVersion:     genVersion,
+func newTaxRates(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *taxRates {
+	return &taxRates{
+		defaultClient:  defaultClient,
+		securityClient: securityClient,
+		serverURL:      serverURL,
+		language:       language,
+		sdkVersion:     sdkVersion,
+		genVersion:     genVersion,
 	}
 }
 
 // GetCompaniesCompanyIDDataTaxRates - Gets the latest tax rates for a given company.
-func (s *TaxRates) GetCompaniesCompanyIDDataTaxRates(ctx context.Context, request operations.GetCompaniesCompanyIDDataTaxRatesRequest) (*operations.GetCompaniesCompanyIDDataTaxRatesResponse, error) {
-	baseURL := s._serverURL
+func (s *taxRates) GetCompaniesCompanyIDDataTaxRates(ctx context.Context, request operations.GetCompaniesCompanyIDDataTaxRatesRequest) (*operations.GetCompaniesCompanyIDDataTaxRatesResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/data/taxRates", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -39,20 +39,25 @@ func (s *TaxRates) GetCompaniesCompanyIDDataTaxRates(ctx context.Context, reques
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateQueryParams(ctx, req, request.QueryParams)
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDDataTaxRatesResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {
@@ -72,8 +77,8 @@ func (s *TaxRates) GetCompaniesCompanyIDDataTaxRates(ctx context.Context, reques
 }
 
 // GetCompaniesCompanyIDDataTaxRatesTaxRateID - Gets the specified tax rate for a given company.
-func (s *TaxRates) GetCompaniesCompanyIDDataTaxRatesTaxRateID(ctx context.Context, request operations.GetCompaniesCompanyIDDataTaxRatesTaxRateIDRequest) (*operations.GetCompaniesCompanyIDDataTaxRatesTaxRateIDResponse, error) {
-	baseURL := s._serverURL
+func (s *taxRates) GetCompaniesCompanyIDDataTaxRatesTaxRateID(ctx context.Context, request operations.GetCompaniesCompanyIDDataTaxRatesTaxRateIDRequest) (*operations.GetCompaniesCompanyIDDataTaxRatesTaxRateIDResponse, error) {
+	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/companies/{companyId}/data/taxRates/{taxRateId}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -81,18 +86,21 @@ func (s *TaxRates) GetCompaniesCompanyIDDataTaxRatesTaxRateID(ctx context.Contex
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s._defaultClient, request.Security)
+	client := utils.ConfigureSecurityClient(s.defaultClient, request.Security)
 
 	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
 	}
 	defer httpRes.Body.Close()
 
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetCompaniesCompanyIDDataTaxRatesTaxRateIDResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {

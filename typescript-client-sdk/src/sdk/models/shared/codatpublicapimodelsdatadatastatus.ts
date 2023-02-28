@@ -1,20 +1,26 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class CodatPublicApiModelsDataDataStatus extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=currentStatus" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "currentStatus" })
   currentStatus?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=dataType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "dataType" })
   dataType: string;
 
-  @SpeakeasyMetadata({ data: "json, name=lastSuccessfulSync" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "lastSuccessfulSync" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   lastSuccessfulSync?: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=latestSuccessfulSyncId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "latestSuccessfulSyncId" })
   latestSuccessfulSyncId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=latestSyncId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "latestSyncId" })
   latestSyncId?: string;
 }

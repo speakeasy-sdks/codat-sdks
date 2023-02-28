@@ -1,5 +1,4 @@
-
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 
 export enum CodatDataContractsDatasetsAccountTypeEnum {
     Unknown = "Unknown",

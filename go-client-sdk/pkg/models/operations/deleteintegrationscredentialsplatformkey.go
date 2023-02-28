@@ -1,7 +1,7 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/codat-sdks/go-client-sdk/v2/pkg/models/shared"
 )
 
 type DeleteIntegrationsCredentialsPlatformKeyPathParams struct {
@@ -9,8 +9,8 @@ type DeleteIntegrationsCredentialsPlatformKeyPathParams struct {
 }
 
 type DeleteIntegrationsCredentialsPlatformKeySecurity struct {
-	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 	APIKeyAuth *shared.SchemeAPIKeyAuth `security:"scheme,type=apiKey,subtype=header"`
+	CodatLogin *shared.SchemeCodatLogin `security:"scheme,type=oauth2"`
 }
 
 type DeleteIntegrationsCredentialsPlatformKeyRequest struct {
@@ -19,7 +19,7 @@ type DeleteIntegrationsCredentialsPlatformKeyRequest struct {
 }
 
 type DeleteIntegrationsCredentialsPlatformKeyResponse struct {
-	CodatPublicAPIModelsPlatformCredentialsPlatformCredentials map[string]interface{}
-	ContentType                                                string
-	StatusCode                                                 int64
+	ContentType                                                      string
+	StatusCode                                                       int
+	DeleteIntegrationsCredentialsPlatformKey200ApplicationJSONObject map[string]interface{}
 }

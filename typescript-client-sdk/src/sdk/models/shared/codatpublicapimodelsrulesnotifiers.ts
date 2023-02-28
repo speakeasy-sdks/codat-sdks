@@ -1,11 +1,13 @@
-import { SpeakeasyMetadata, SpeakeasyBase } from "../../../internal/utils";
-
+import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CodatPublicApiModelsRulesNotifiers extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=emails" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "emails" })
   emails?: string[];
 
-  @SpeakeasyMetadata({ data: "json, name=webhook" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "webhook" })
   webhook?: string;
 }

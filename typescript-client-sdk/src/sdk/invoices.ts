@@ -1,6 +1,8 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
-import * as operations from "./models/operations";
 import * as utils from "../internal/utils";
+import * as operations from "./models/operations";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class Invoices {
   _defaultClient: AxiosInstance;
@@ -30,7 +32,7 @@ export class Invoices {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -47,7 +49,11 @@ export class Invoices {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsAttachmentsDataset = httpRes?.data;
+              res.codatDataContractsDatasetsAttachmentsDataset = plainToInstance(
+                shared.CodatDataContractsDatasetsAttachmentsDataset,
+                httpRes?.data as shared.CodatDataContractsDatasetsAttachmentsDataset,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -68,7 +74,7 @@ export class Invoices {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -85,7 +91,11 @@ export class Invoices {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsAttachmentsDatasetAttachment = httpRes?.data;
+              res.codatDataContractsDatasetsAttachmentsDatasetAttachment = plainToInstance(
+                shared.CodatDataContractsDatasetsAttachmentsDatasetAttachment,
+                httpRes?.data as shared.CodatDataContractsDatasetsAttachmentsDatasetAttachment,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -106,7 +116,7 @@ export class Invoices {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}/download", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -144,21 +154,14 @@ export class Invoices {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/invoices", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -169,7 +172,11 @@ export class Invoices {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsInvoicePagedResponseModel = httpRes?.data;
+              res.codatDataContractsDatasetsInvoicePagedResponseModel = plainToInstance(
+                shared.CodatDataContractsDatasetsInvoicePagedResponseModel,
+                httpRes?.data as shared.CodatDataContractsDatasetsInvoicePagedResponseModel,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -190,7 +197,7 @@ export class Invoices {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/invoices/{invoiceId}", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -207,7 +214,11 @@ export class Invoices {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsInvoice = httpRes?.data;
+              res.codatDataContractsDatasetsInvoice = plainToInstance(
+                shared.CodatDataContractsDatasetsInvoice,
+                httpRes?.data as shared.CodatDataContractsDatasetsInvoice,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -228,7 +239,7 @@ export class Invoices {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/invoices/{invoiceId}/pdf", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -276,24 +287,17 @@ export class Invoices {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "post",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -304,7 +308,11 @@ export class Invoices {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsInvoicePushOperation = httpRes?.data;
+              res.codatDataContractsDatasetsInvoicePushOperation = plainToInstance(
+                shared.CodatDataContractsDatasetsInvoicePushOperation,
+                httpRes?.data as shared.CodatDataContractsDatasetsInvoicePushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -325,7 +333,7 @@ export class Invoices {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/companies/{companyId}/connections/{connectionId}/push/invoices/{invoiceId}/attachment", req.pathParams);
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     
     const r = client.request({
@@ -373,24 +381,17 @@ export class Invoices {
       }
     }
     
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "put",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -401,7 +402,11 @@ export class Invoices {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.codatDataContractsDatasetsInvoicePushOperation = httpRes?.data;
+              res.codatDataContractsDatasetsInvoicePushOperation = plainToInstance(
+                shared.CodatDataContractsDatasetsInvoicePushOperation,
+                httpRes?.data as shared.CodatDataContractsDatasetsInvoicePushOperation,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
